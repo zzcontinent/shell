@@ -1,2 +1,2 @@
 #!/bin/sh
-sudo docker run --name master -id --privileged=true ubuntu_base /sbin/init
+sudo docker run --name master -id --privileged=true ubuntu_master /sbin/init
