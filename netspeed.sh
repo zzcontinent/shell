@@ -20,7 +20,8 @@ do
 	        up_speed=`echo "($up_speed_now-$up_speed_old)/1024"|bc`
 
 
-       		echo -ne "\rwifi \tDN:$down_speed KB/s\tUP:$up_speed KB/s"
+	       	#echo -ne "\rwifi \tDN:$down_speed KB/s\tUP:$up_speed KB/s"
+       		printf "\rwifi \tDN:%6s KB/s\tUP:%6s KB/s" $down_speed $up_speed 
 	fi
 	if [ "$eth_name" != "" ];then
 	        #记录初始bytes数目
@@ -37,7 +38,8 @@ do
         	down_speed=`echo "($down_speed_now-$down_speed_old)/1024"|bc`
         	up_speed=`echo "($up_speed_now-$up_speed_old)/1024"|bc`
 
-        	echo -ne "\reth \tDN:$down_speed KB/s\tUP:$up_speed KB/s"
+        	#echo -ne "\reth \tDN:$down_speed KB/s\tUP:$up_speed KB/s"
+       		printf "\reth \tDN:%6s KB/s\tUP:%6s KB/s" $down_speed $up_speed 
 	fi
 done
 
