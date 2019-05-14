@@ -36,15 +36,16 @@ do
 
 	fi
 			printf "\033c"	
-			#echo $eth_name $wifi_name
-			#echo $@
        		printf "$eth_name\tDN:%5sKB/s | UP:%5sKB/s \n" $down_speed_eth $up_speed_eth 
 		    printf "$wifi_name\tDN:%5sKB/s | UP:%5sKB/s" $down_speed_wifi $up_speed_wifi 
+			time=`date "+%Y-%m-%d %H:%M:%S"`
 			if [ $down_speed_wifi -gt $speed_notify -o $up_speed_wifi -gt $speed_notify ];then
-				notify-send "wifi speed $down_speed_wifi | $up_speed_wifi" > /dev/null 2>&1
+				notify-send "$time wifi DN:$down_speed_wifi|UP:$up_speed_wifi" > /dev/null 2>&1
+				echo -e "\a"
 			fi
 			if [ $down_speed_eth -gt $speed_notify -o $up_speed_eth -gt $speed_notify ];then
-				notify-send "eth speed $down_speed_eth | $up_speed_eth" > /dev/null 2>&1
+				notify-send "$time eth DN:$down_speed_eth|UP:$up_speed_eth" > /dev/null 2>&1
+				echo -e "\a"
 			fi
 done
 
