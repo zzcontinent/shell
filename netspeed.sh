@@ -1,6 +1,6 @@
 eth_name=`cat /proc/net/dev | awk '{i++; if(i>2){print $1}}' | sed 's/^[\t]*//g' | sed 's/[:]*$//g' | grep -e '^e.*'`
 wifi_name=`cat /proc/net/dev | awk '{i++; if(i>2){print $1}}' | sed 's/^[\t]*//g' | sed 's/[:]*$//g' | grep -e '^w.*'`
-speed_notify=200
+speed_notify=500
 while true 
 do
    	#记录初始bytes数目
@@ -35,17 +35,17 @@ do
         	up_speed_eth=`echo "($up_speed_now_eth-$up_speed_old_eth)/1024"|bc`
 
 	fi
-			printf "\033c"	
-       		printf "$eth_name\tDN:%5sKB/s | UP:%5sKB/s \n" $down_speed_eth $up_speed_eth 
-		    printf "$wifi_name\tDN:%5sKB/s | UP:%5sKB/s" $down_speed_wifi $up_speed_wifi 
-			time=`date "+%Y-%m-%d %H:%M:%S"`
-			if [ $down_speed_wifi -gt $speed_notify -o $up_speed_wifi -gt $speed_notify ];then
-				notify-send "$time wifi DN:$down_speed_wifi|UP:$up_speed_wifi" > /dev/null 2>&1
-				echo -e "\a"
-			fi
-			if [ $down_speed_eth -gt $speed_notify -o $up_speed_eth -gt $speed_notify ];then
-				notify-send "$time eth DN:$down_speed_eth|UP:$up_speed_eth" > /dev/null 2>&1
-				echo -e "\a"
-			fi
+	printf "\033c"	
+   	printf "$eth_name\tDN:%5sKB/s | UP:%5sKB/s \n" $down_speed_eth $up_speed_eth 
+	printf "$wifi_name\tDN:%5sKB/s | UP:%5sKB/s" $down_speed_wifi $up_speed_wifi 
+	time=`date "+%Y-%m-%d %H:%M:%S"`
+	if [ $down_speed_wifi -gt $speed_notify -o $up_speed_wifi -gt $speed_notify ];then
+		notify-send "$time wifi DN:$down_speed_wifi|UP:$up_speed_wifi" > /dev/null 2>&1
+		echo -e "\a"
+	fi
+	if [ $down_speed_eth -gt $speed_notify -o $up_speed_eth -gt $speed_notify ];then
+		notify-send "$time eth DN:$down_speed_eth|UP:$up_speed_eth" > /dev/null 2>&1
+		echo -e "\a"
+	fi
 done
 
