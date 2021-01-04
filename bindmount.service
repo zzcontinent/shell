@@ -1,0 +1,21 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          cliff
+# Required-Start:    $all
+# Required-Stop:
+# Default-Start:     S
+# Default-Stop:
+# Short-Description: bindmount
+### END INIT INFO
+
+[Unit]
+Description=bindmount ro-rw
+After=systemd-udevd.service
+Before=local-fs.target local-fs-pre.target systemd-networkd.service
+
+[Service]
+Type=oneshot
+ExecStart=/etc/init.d/bindmount
+
+[Install]
+WantedBy=multi-user.target

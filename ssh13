@@ -1,0 +1,28 @@
+#!/bin/sh
+
+try()
+{
+	cnt=0
+	cnt_max=60
+	echo $@
+	while true;
+	do
+		cnt=`expr $cnt + 1`
+		echo "==> try $cnt/$cnt_max"
+		$@
+		[ $? -eq 0 ] && return 0
+		if [ $cnt -ge $cnt_max ];then
+			return 1
+		fi
+		sleep 1
+	done
+}
+
+ip="192.168.12.13"
+[ x"$1" != x"" ] && ip="172.17.0."$1
+
+[ -z `which sshpass` ] && echo 'install sshpass first, sudo apt install sshpass' && exit 9
+
+try timeout --preserve-status 3 sshpass -v -pOn1shiuva4 ssh -o StrictHostKeyChecking=no root@${ip} -t 'uptime && exit 0'
+[ $? -eq 0 ] && sshpass -pOn1shiuva4 ssh -o StrictHostKeyChecking=no root@${ip}
+

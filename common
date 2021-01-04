@@ -1,0 +1,48 @@
+#include this file by using cmd: ". `dirname $0/common`"
+
+BLACK="\e[30;1m"
+RED="\e[31;1m"
+GREEN="\e[32;1m"
+YELLOW="\e[33;1m"
+BLUE="\e[34;1m"
+PURPLE="\e[35;1m"
+CYAN="\e[36;1m"
+WHITE="\e[37;1m"
+DONE="\033[0m"
+FILENAME=`basename $0`
+
+dbug(){
+	echo -e "${YELLOW}[$(date '+%Y-%m-%d %H:%M:%S')][$FILENAME:$BASH_LINENO] [$*]${DONE}"
+}
+
+okay(){
+	echo -e "${GREEN}[$(date '+%Y-%m-%d %H:%M:%S')][$FILENAME:$BASH_LINENO] [$*]${DONE}" 
+}
+
+help(){
+	echo -e "${GREEN}[$(date '+%Y-%m-%d %H:%M:%S')][$FILENAME:$BASH_LINENO] [$*]${DONE}" 
+}
+
+errexit(){
+	echo -e "${RED}[$(date '+%Y-%m-%d %H:%M:%S')][$FILENAME:$BASH_LINENO] [$*]${DONE}" 1>&2
+	if [ -z "$BASH_LINENO" ];then exit 1;fi 
+	exit 1
+}
+
+errnoexit(){
+	echo -e "${RED}[$(date '+%Y-%m-%d %H:%M:%S')][$FILENAME:$BASH_LINENO] [$*]${DONE}" 1>&2 
+	if [ -z "$BASH_LINENO" ];then return 1;fi 
+	return 1
+}
+
+if [ ! -z $ENV_PRODUCTION ] && [ true == $ENV_PRODUCTION ];then
+	dbug(){
+		return 0
+	}
+fi
+
+func_now() {
+	echo -e "${GREEN}[$(date '+%Y-%m-%d %H:%M:%S')] $*${DONE}" 
+}
+
+

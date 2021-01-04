@@ -1,0 +1,13 @@
+[Unit]
+Description=watch net and reboot
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+Restart=on-failure
+RestartSec=10s
+ExecStart=/usr/bin/watch_net.sh wlan0
+
+[Install]
+WantedBy=multi-user.target

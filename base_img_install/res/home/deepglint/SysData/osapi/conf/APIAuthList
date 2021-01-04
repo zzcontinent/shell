@@ -1,0 +1,21 @@
+{
+	"APIs":[
+                "Time",
+                "Net",
+                "DNS",
+                "Timezone",
+                "MMZ",
+                "GPIO",
+
+                "Import",
+                "InfoApply",
+                "InfoOrigin",
+
+                "Reboot",
+                "TransferFile",
+                "DownloadFile",
+                "FileServe",
+
+                "Trigger",
+        ]
+}

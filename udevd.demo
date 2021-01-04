@@ -1,0 +1,32 @@
+11-add-remove.rules
+    ACTION !="remove",GOTO="farsight"
+    SUBSYSTEM!="block",GOTO="farsight"
+    KERNEL=="sd[a-z][0-9]",RUN+="/sbin/umount-usb.sh"
+    LABEL="farsight"
+
+umount-usb.sh
+    #!/bin/sh
+    sync
+    umount /tmp/
+
+SD卡挂载
+
+ACTION!="add",GOTO="farsight"
+    KERNEL=="mmcblk[0-9]p[0-9]",RUN+="/sbin/mount-sd.sh %k"
+    LABEL="farsight"
+
+mount-sd.sh
+    #!/bin/sh
+    /bin/mount -t vfat /dev/$1 /tmp
+    Sync
+
+SD卡卸载
+    ACTION !="remove",GOTO="farsight"
+    SUBSYSTEM!="block",GOTO="farsight"
+    KERNEL=="mmcblk[0-9]p[0-9]",RUN+="/sbin/umount-sd.sh"
+    LABEL="farsight"
+
+umount-sd.sh
+    #!/bin/sh
+    sync
+    umount /tmp/

@@ -1,0 +1,15 @@
+[Unit]
+Description=DELinux Entry process
+After=multi-user.target
+
+[Service]
+Type=forking
+ExecStart=/bin/bash /usr/bin/DXEntry
+KillMode=control-group
+Restart=no
+RestartSec=3
+RestartPreventExitStatus=255
+
+[Install]
+WantedBy=multi-user.target
+

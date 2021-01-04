@@ -1,0 +1,178 @@
+#!/bin/bash
+###############################################################################
+#   Copyright (C), 2004-2020, Deepglint Co., Ltd.
+###############################################################################
+#   File Name     : DXEntry
+#   Version       : 1.0.1
+#   Author        : William Zhang(zhaozhang@deepglint.com)
+#   Created       : 2020/07/23
+#   Last Modified :
+#   Description   : DELinux Entry point 
+#   Function List :
+#   History       :
+#   Modified      :
+###############################################################################
+
+VERSION="1.0.2"
+PKG_PATH="/home/deepglint/PKG"
+APPS_PATH="/home/deepglint/Applications"
+APP_DATA_PATH="/home/deepglint/AppData"
+APP_LOG_PATH="/home/deepglint/AppLog"
+SYSAPP_LIST="sysapp.list"
+USRAPP_LIST="usrapp.list"
+
+DX_LOG_PATH="/home/deepglint/SysData/dxentry"
+DX_LOG_FILE=".delinux.sys.log"
+DX_LOG_FILE_OLD=".delinux.sys.log.0"
+DX_LOG_FILE_MAX_LINE=5000
+
+function check_path_exist() {
+    if [ ! -e "$1" ]; then
+        mkdir -p "$1"
+    fi
+}
+
+function write_log() {
+    echo `date "+%Y-%m-%d %H:%M:%S"` --- $1 >> ${DX_LOG_PATH}/${DX_LOG_FILE}
+}
+
+function mount_dpk() {
+    loop=`df -h | grep $1`
+    if [ -z "${loop}" ]; then
+        mount "${PKG_PATH}/$1" "${APPS_PATH}/$1.mnt"
+        write_log "    mount $1 @ ${APPS_PATH}/$1.mnt  "
+    fi
+}
+
+function handle_dpk() {
+    # check whether have the xxx.dpk.mnt point
+    check_path_exist "${APPS_PATH}/$1.mnt"
+    check_path_exist "${APP_DATA_PATH}/$1"
+    check_path_exist "${APP_LOG_PATH}/$1"
+
+    # mount dpk
+    mount_dpk "$1"
+
+    # run file in dpk
+    dpk_pkg_name=`ls -A "${APPS_PATH}/$1.mnt"`
+    # echo "dpk_pkg_name=${dpk_pkg_name}"
+    if [ -e "${APPS_PATH}/$1.mnt/${dpk_pkg_name}/run" ]; then
+	write_log "export APP_CURR_PATH=${APPS_PATH}/$1.mnt/${dpk_pkg_name}"
+        write_log "export APP_DATA_PATH=${APP_DATA_PATH}/$1"
+        write_log "export APP_LOG_PATH=${APP_LOG_PATH}/$1"
+        write_log "run ${dpk_pkg_name}/run file"
+        write_log "PATH=$PATH"
+        systemctl set-environment PATH="$PATH"
+        source /etc/profile
+        `export APP_CURR_PATH=${APPS_PATH}/$1.mnt/${dpk_pkg_name} export APP_DATA_PATH=${APP_DATA_PATH}/$1 && export APP_LOG_PATH=${APP_LOG_PATH}/$1 && nohup ${APPS_PATH}/$1.mnt/${dpk_pkg_name}/run > /dev/null 2>&1 &`
+    fi
+}
+
+function handle_dpks() {
+    DPK_LINE_NUM=`wc -l $1 | awk -F' ' '{print $1}'`
+    DPK_LINE_HANDLE=1
+
+    # read $1 file
+    while(( ${DPK_LINE_HANDLE} <= ${DPK_LINE_NUM} ))
+    do
+        # echo "current handle line=${DPK_LINE_HANDLE}" 
+        DPK_CURRENT_LINE=`sed -ne ${DPK_LINE_HANDLE}p $1`
+        echo "current handle line = ${DPK_LINE_HANDLE}, line content = [${DPK_CURRENT_LINE}]" 
+
+
+        LINE=`echo ${DPK_CURRENT_LINE} | sed 's/#.*//g' | sed  's/\t//g' | sed 's/ //g'`
+        # echo "prehandle line=${LINE}" 
+        if [ -n "${LINE}" ]; then
+            handle_dpk "${DPK_CURRENT_LINE}"    	
+        fi
+        # let "DPK_LINE_HANDLE++"
+        DPK_LINE_HANDLE=`expr ${DPK_LINE_HANDLE} + 1`
+        # echo "line no=${DPK_LINE_HANDLE}" 
+    done    
+}
+
+###############################################################################
+###############################################################################
+###############################################################################
+case $1 in
+    "-h")
+        echo "DXEntry is the entry of DELinux when the system load sysapp & userapp"
+        exit 0
+        ;;
+    "-v")
+        echo "DXEntry version: ${VERSION}"
+        exit 0
+        ;;
+esac
+
+write_log "========================================"
+write_log "DXEntry ${VERSION} ----- start"
+
+# 1 # check the log file
+check_path_exist "${DX_LOG_PATH}"
+LOG_FILE_LINES=`wc -l ${DX_LOG_PATH}/${DX_LOG_FILE} | awk -F' ' '{print $1}'`
+# echo "log file lines=${LOG_FILE_LINES}"
+if [ ${LOG_FILE_LINES} -ge ${DX_LOG_FILE_MAX_LINE} ]; then
+    # echo "log file is too long"
+    if [ -e ${DX_LOG_PATH}/${DX_LOG_FILE_OLD} ]; then
+        rm ${DX_LOG_PATH}/${DX_LOG_FILE_OLD}
+    fi
+    mv ${DX_LOG_PATH}/${DX_LOG_FILE} ${DX_LOG_PATH}/${DX_LOG_FILE_OLD}
+fi
+
+# 2 # check the sysapp (sysapp.list)
+DEV_INFO=`fgdevinfo`
+write_log "${DEV_INFO}"
+check_path_exist "${PKG_PATH}"
+if [ -e "${PKG_PATH}/${SYSAPP_LIST}" ]; then
+    echo "======================================"
+    write_log "    has sysapp.list file"
+    handle_dpks "${PKG_PATH}/${SYSAPP_LIST}"
+fi
+    
+write_log ""
+write_log "----------------------------------------"
+
+# 3 # check the work mode (for menufacture)
+source /etc/profile
+#echo "PATH=$PATH"
+write_log "PATH=$PATH"
+if [ -e "${APPS_PATH}/factory-test.app.dpk.mnt/factory-test/fgworkmode" ]; then
+    echo "have fgworkmode tool"
+    write_log "have fgworkmode tool"
+    mode=`${APPS_PATH}/factory-test.app.dpk.mnt/factory-test/fgworkmode`
+else
+    echo "don't have fgworkmode tool"
+    mode="normal-mode"
+fi
+write_log "current mode is ${mode}"
+case "${mode}" in
+"test-mode")
+    echo "beging testing"
+    `cd ${APPS_PATH}/factory-test.app.dpk.mnt/factory-test && ./fgtest factory-test`
+    ;;
+"aging-mode")
+    echo "beging aging"
+    `export PATH=$PATH:${APPS_PATH}/factory-test.app.dpk.mnt/factory-test && cd ${APPS_PATH}/factory-test.app.dpk.mnt/factory-test && fgaging`
+    ;;
+*)
+    echo "send dev-id & dev-mac from serial port"
+    devid=`fgdevinfo dev-id`
+    `echo ${devid} >> /dev/ttyAMA1`
+    devmac=`fgdevinfo dev-mac0`
+    `echo ${devmac} >> /dev/ttyAMA1`
+    write_log "dev-id = ${devid}"
+    write_log "dev-mac = ${devmac}"
+
+    echo "continue run usrapp"
+    # 4 # check the usrapp (usrapp.list)
+    if [ -e "${PKG_PATH}/${USRAPP_LIST}" ]; then
+        echo "======================================"
+        write_log "    has usrapp.list file"
+        handle_dpks "${PKG_PATH}/${USRAPP_LIST}"
+    fi    
+    ;;
+esac
+write_log "DXEntry ${VERSION} ----- exit"
+exit 0
+

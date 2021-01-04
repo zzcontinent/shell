@@ -1,0 +1,16 @@
+#distccd --user nobody --daemon --allow 127.0.0.1 --allow 172.17.0.0/24
+
+
+export DISTCC_HOSTS="localhost 172.17.0.52"
+export DISTCC_POTENTIAL_HOSTS="localhost 172.17.0.52"
+export DISTCC_LOG="./distcc.log" 
+
+
+export CC=distcc
+export CXX="distcc g++"
+alias make="make -j 4" 
+
+#mkdir build && cd build
+#cmake -DCMAKE_C_COMPILER=/usr/lib/distcc/cc -DCMAKE_CXX_COMPILER=/usr/lib/distcc/g++ ../
+#
+#distccmon-text

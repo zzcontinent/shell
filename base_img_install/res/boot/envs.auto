@@ -1,0 +1,9 @@
+is_boot_cmdline_root_partition=1
+is_boot_cmdline_root_squash_file=0
+is_boot_usb_root_partition=0
+is_boot_usb_root_squash_file=0
+initramfs_version='20.09.24.01'
+cmdline='mem=2560M console=ttyAMA0,115200 root=/dev/mmcblk0p3 rootfstype=ext4 rw rootflags=data=journal rootwait blkdevparts=mmcblk0:4M(uboot_4M),64M(kernel_64M),13000M(rootfs_13000M.ext4)'
+cmdline_root='/dev/mmcblk0p3'
+cmdline_root_partition='/dev/mmcblk0p3'
+cmdline_root_squash_file='/writable/sysdata/rootfs.dpk'

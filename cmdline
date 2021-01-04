@@ -1,0 +1,3 @@
+#!/bin/sh
+root=$(cat /proc/cmdline | sed -n 's/.*root=\(.*\)/\1/p' | awk '{print $1}')
+echo $root

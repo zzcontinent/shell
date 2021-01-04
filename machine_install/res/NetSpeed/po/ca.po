@@ -1,0 +1,149 @@
+#
+# This file is distributed under the same license as the PACKAGE package.
+# Jordi Mas i Hernandez <jmas@softcatala.org>, 2019
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Netspeed Gnome-Shell Extension\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-22 23:26+0100\n"
+"PO-Revision-Date: 2019-07-28 13:37+0200\n"
+"Last-Translator: Jordi Mas i Hernandez <jmas@softcatala.org>\n"
+"Language-Team: \n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+
+#: prefs.js:62
+msgid "ALL"
+msgstr "Tots"
+
+#: prefs.js:66
+msgid "Default Gateway"
+msgstr "Passarel·la per defecte"
+
+#: prefs.js:181
+msgid "Device to monitor"
+msgstr "Dispositiu a fer seguiment"
+
+#: prefs.js:182
+msgid "Timer (milisec)"
+msgstr "Temporitzador (mil·lisegons)"
+
+#: prefs.js:183
+msgid "Digits"
+msgstr "Dígits"
+
+#: prefs.js:184
+msgid "Label Size"
+msgstr "Mida de l'etiqueta"
+
+#: prefs.js:185
+msgid "Unit Label Size"
+msgstr "Mida de l'etiqueta de la unitat"
+
+#: prefs.js:186
+msgid "Menu Label Size"
+msgstr "Mida de l'etiqueta del menú"
+
+#: prefs.js:187
+msgid "HiDPI factor"
+msgstr ""
+
+#: prefs.js:191
+msgid "Show sum(UP+Down)"
+msgstr "Mostra la suma (pujada + baixada)"
+
+#: prefs.js:192
+msgid "Show the Icon"
+msgstr "Mostra la icona"
+
+#: prefs.js:235
+msgid "Use multiples of byte"
+msgstr "Usa múltiples de byte"
+
+#: prefs.js:236
+msgid "Use binary prefixes"
+msgstr "Usa prefixos binaris"
+
+#: prefs.js:245
+msgid "Show IPs"
+msgstr ""
+
+#: net_speed.js:106 net_speed.js:110 net_speed.js:114
+msgid "B/s"
+msgstr "B/s"
+
+#: net_speed.js:106
+msgid "kiB/s"
+msgstr ""
+
+#: net_speed.js:106
+msgid "MiB/s"
+msgstr ""
+
+#: net_speed.js:106
+msgid "GiB/s"
+msgstr ""
+
+#: net_speed.js:107 net_speed.js:111
+#, fuzzy
+msgid "b/s"
+msgstr "B/s"
+
+#: net_speed.js:107
+msgid "kib/s"
+msgstr ""
+
+#: net_speed.js:107
+msgid "Mib/s"
+msgstr ""
+
+#: net_speed.js:107
+msgid "Gib/s"
+msgstr ""
+
+#: net_speed.js:110
+msgid "kB/s"
+msgstr ""
+
+#: net_speed.js:110
+msgid "MB/s"
+msgstr "MB/s"
+
+#: net_speed.js:110
+msgid "GB/s"
+msgstr "GB/s"
+
+#: net_speed.js:111
+msgid "kb/s"
+msgstr ""
+
+#: net_speed.js:111
+msgid "Mb/s"
+msgstr ""
+
+#: net_speed.js:111
+msgid "Gb/s"
+msgstr ""
+
+#: net_speed_status_icon.js:86
+msgid "Device"
+msgstr "Dispositiu"
+
+#: net_speed_status_icon.js:88
+msgid "Up"
+msgstr "Pujada"
+
+#: net_speed_status_icon.js:88
+msgid "Down"
+msgstr "Baixada"
+
+#: net_speed_status_icon.js:89
+msgid "IP"
+msgstr ""
+
+#~ msgid "KB/s"
+#~ msgstr "KB/s"

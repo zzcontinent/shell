@@ -1,0 +1,149 @@
+#!/bin/bash
+
+# default vars
+default_env_auto_file='/boot/envs.auto'
+default_env_conf_file='/boot/envs.conf'
+
+# default envs.auto
+initramfs_version=''
+cmdline=''
+cmdline_root=''
+cmdline_root_partition=''
+cmdline_root_squash_file=''
+is_boot_cmdline_root_partition=0
+is_boot_cmdline_root_squash_file=0
+is_boot_usb_root_partition=0
+is_boot_usb_root_squash_file=0
+
+# writable envs from rootfs_partition:/boot/envs.conf
+writable_partition_rootfs=''
+writable_partition_rootfs_mountpoint=''
+bind_mount_rw_dirs=''
+bind_mount_rw_files=''
+
+# generated vars
+writable_partition_rootfs_partition=''
+writable_partition_rootfs_rootfs=''
+default_writable_partition_rootfs_rootfs='/SysData/rw_rootfs'
+default_writable_partition_rootfs_mountpoint='/writable/sysdata/rw_rootfs'
+
+try()
+{
+	cnt=0
+	cnt_max=5
+	echo $@
+	while true;
+	do
+		cnt=`expr $cnt + 1`
+		echo "==> try $cnt/$cnt_max"
+		$@
+		[ $? -eq 0 ] && return 0
+		if [ $cnt -ge $cnt_max ];then
+			return 1
+		fi
+		sleep 1
+	done
+}
+
+func_initramfs_pre_init()
+{
+	echo "+++ func_initramfs_pre_init +++"
+	mount -t proc -o defaults,nodev,nosuid proc /proc
+	mount -t sysfs -o defaults,nodev,nosuid sysfs /sys
+	mount -t tmpfs tmpfs /dev
+
+	mknod /dev/console c 5 1
+	mknod /dev/ttyAMA0 c 204 64
+	mknod /dev/ttyS000 c 204 64
+	mknod /dev/null	   c 1 3
+	mkdir /dev/pts
+	mount -t devpts devpts /dev/pts
+
+	mkdir -p /dev/.udev
+
+	udevd --daemon
+	udevadm trigger
+	sleep 1
+	mount -a
+}
+
+func_get_envs()
+{
+	echo "+++ func_get_envs +++"
+	if [ ! -e $default_env_auto_file ];then
+		echo "$default_env_auto_file not exists!!"
+	else
+		cat $default_env_auto_file
+		. $default_env_auto_file
+	fi
+	if [ ! -e $default_env_conf_file ];then
+		echo "$default_env_conf_file not exists!!"
+	else
+		cat $default_env_conf_file
+		. $default_env_conf_file
+	fi
+	# if writable_partition_rootfs is not configure, using cmdline_root_partition as writable_partition and default_writable_partition_rootfs_rootfs as writable_partition_rootfs directory
+	[ -z $writable_partition_rootfs ] && writable_partition_rootfs="${cmdline_root_partition}:$default_writable_partition_rootfs_rootfs"
+	[ -z $writable_partition_rootfs_mountpoint ] && writable_partition_rootfs_mountpoint=$default_writable_partition_rootfs_mountpoint
+	[ -z `echo $writable_partition_rootfs | grep ':'` ] && echo "writable_partition_rootfs ==> $writable_partition_rootfs format illegal!!" && return 1
+	writable_partition_rootfs_partition="`echo $writable_partition_rootfs | cut -d':' -f1`"
+	writable_partition_rootfs_rootfs="`echo $writable_partition_rootfs | cut -d':' -f2`"
+	[ "$writable_partition_rootfs_partition" == 'default' ] && writable_partition_rootfs_partition=$cmdline_root_partition
+	[ "$writable_partition_rootfs_rootfs" == 'default' ] && writable_partition_rootfs_rootfs=$default_writable_partition_rootfs_rootfs
+	echo "writable_partition_rootfs_partition=$writable_partition_rootfs_partition"
+	echo "writable_partition_rootfs_rootfs=$writable_partition_rootfs_rootfs"
+}
+
+func_mount_writable_partition()
+{
+	echo "+++ func_mount_writable_partition +++"
+	( [ $is_boot_cmdline_root_partition -eq 1 ] || [ $is_boot_usb_root_partition -eq 1 ] ) && echo "$cmdline_root_partition no need to mount writable partition" && cat $default_env_auto_file && return 1
+	( [ $is_boot_cmdline_root_squash_file -eq 0 ] && [ $is_boot_usb_root_squash_file -eq 0 ] ) && echo "$cmdline_root_partition no need to mount writable partition" && cat $default_env_auto_file && return 1
+
+	try mount $writable_partition_rootfs_partition $writable_partition_rootfs_mountpoint
+	try mount --bind ${writable_partition_rootfs_mountpoint}/${writable_partition_rootfs_rootfs} $writable_partition_rootfs_mountpoint
+}
+
+func_bind_mount()
+{
+	echo "+++ func_bind_mount +++"
+
+	for bind_dir in ${bind_mount_rw_dirs}
+	do
+		try mount --bind ${writable_partition_rootfs_mountpoint}/${bind_dir} ${bind_dir}
+	done
+
+	for bind_file in ${bind_mount_rw_files}
+	do
+		try mount --bind ${writable_partition_rootfs_mountpoint}/${bind_file} ${bind_file}
+	done
+}
+
+func_exec_real_init()
+{
+	for pid in `ps -aux| grep udev | grep -v grep | awk '{print $2}'`
+	do
+		kill -9 $pid 2>/dev/null
+	done
+	for net_dev in `ls /sys/class/net`
+	do
+		ifconfig $net_dev down 2>/dev/null
+		ip addr delete 192.168.12.12/32 dev eth0 2>/dev/null
+	done
+	umount /dev -l
+	umount /sys -l
+	umount /proc -l
+	exec /lib/systemd/systemd
+}
+
+func_initramfs_pre_init
+func_get_envs
+if [ $? -eq 0 ];then
+	func_mount_writable_partition
+	if [ $? -eq 0 ];then  
+		func_bind_mount
+	fi
+fi
+
+func_exec_real_init
+

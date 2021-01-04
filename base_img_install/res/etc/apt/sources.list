@@ -1,0 +1,10 @@
+deb http://mirrors.aliyun.com/ubuntu-ports/ bionic main restricted
+deb http://mirrors.aliyun.com/ubuntu-ports/ bionic-updates main restricted
+deb http://mirrors.aliyun.com/ubuntu-ports/ bionic universe
+deb http://mirrors.aliyun.com/ubuntu-ports/ bionic-updates universe
+deb http://mirrors.aliyun.com/ubuntu-ports/ bionic multiverse
+deb http://mirrors.aliyun.com/ubuntu-ports/ bionic-updates multiverse
+deb http://mirrors.aliyun.com/ubuntu-ports/ bionic-backports main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu-ports/ bionic-security main restricted
+deb http://mirrors.aliyun.com/ubuntu-ports/ bionic-security universe
+deb http://mirrors.aliyun.com/ubuntu-ports/ bionic-security multiverse

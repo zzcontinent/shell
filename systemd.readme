@@ -1,0 +1,30 @@
+1）service unit file 通常由三部分组成：
+　　　[Unit]：定义与Unit类型无关的通用选项；用于提供unit的描述信息、unit行为及依赖关系等；
+　　　[Service]：与特定类型相关的专用选项；此处为Service类型；
+　　　[Install]：定义由“systemctl enable”以及"systemctl disable“命令在实现服务启用或禁用时用到的一些选项
+2）各部分释义：
+　　　[Unit] 段的常用选项：
+　　　　　Description：描述信息； 意义性描述；
+　　　　　After：定义unit的启动次序，表示当前unit应该晚于哪些unit启动；其功能与Before相反；
+　　　　　Requies：依赖到的其它units；强依赖，被依赖的units无法激活时，当前unit即无法激活；
+　　　　　Wants：依赖到的其它units；弱依赖；
+　　　　　Conflicts：定义units间的冲突关系
+　　　[Service] 段的常用选项：
+　　　　　Type：用于定义影响ExecStart及相关参数的功能的unit进程启动类型，其类型有：
+　　　　　　　　simple：默认值，执行ExecStart指定的命令，启动主进程
+　　　　　　　　forking：以 fork 方式从父进程创建子进程，创建后父进程会立即退出
+　　　　　　　　oneshot：一次性进程，Systemd 会等当前服务退出，再继续往下执行
+　　　　　　　　dbus：当前服务通过D-Bus启动
+　　　　　　　　notify：当前服务启动完毕，会通知systemd再继续往下执行
+　　　　　　　　idle：若有其他任务执行完毕，当前服务才会运行
+　　　　　EnvironmentFile：环境配置文件；
+　　　　　ExecStart：指明启动unit要运行命令或脚本； 
+　　　　　ExecStartPre：在ExecStart之前运行；
+        ExecStartPost：在ExecStart之后运行；
+　　　　　ExecStop：指明停止unit要运行的命令或脚本；
+　　　　　Restart：当设定Restart=1时，则当次daemon服务意外终止后，会再次自动启动。
+　　　[Install] 段的常用选项：
+　　　　　Alias：别名，可使用systemctl command Alias.service；
+　　　　　RequiredBy：被哪些units所依赖；
+　　　　　WantedBy：被哪些units所依赖
+注意：对于新创建的unit文件或修改了的unit文件，要通知systemd重载此配置文件，通过命令 systemctl daemon-reload.

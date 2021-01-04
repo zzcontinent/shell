@@ -1,0 +1,9 @@
+Package: osapi
+Version: 20.10.13.01
+Architecture: arm64
+Maintainer: zhizhouzhao <zhizhouzhao@deepglint.com>
+Installed-Size: 20000
+Depends: 
+Suggests: 
+Description: osapi for delinux_hmv3 
+Original-Maintainer: zhizhouzhao <zhizhouzhao@deepglint.com>

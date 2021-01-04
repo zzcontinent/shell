@@ -1,0 +1,13 @@
+target extended-remote 172.17.0.178:1234
+file ../FGSysMon
+set remote exec-file /root/FGSysMon
+break main
+tui enable
+
+define hook-stop
+x /10i $pc
+i locals
+i args
+end
+
+r

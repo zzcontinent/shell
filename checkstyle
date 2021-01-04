@@ -1,0 +1,23 @@
+#!/bin/bash
+
+BLACK="\e[30;1m"
+RED="\e[31;1m"
+GREEN="\e[32;1m"
+YELLOW="\e[33;1m"
+BLUE="\e[34;1m"
+PURPLE="\e[35;1m"
+CYAN="\e[36;1m"
+WHITE="\e[37;1m"
+DONE="\033[0m"
+
+if [ $# -eq 0 ];then
+	echo -e "./checkstyle code.c "
+	exit 1
+fi
+until [ $# -eq 0 ]
+do
+	echo -e ${RED}'\nstart \t------'${DONE}
+	/home/cliff/cworkspace/github/linuxsrc/linux/scripts/checkpatch.pl --show-types  --terse -f $1
+	echo -e ${GREEN}'end \t------\n'${DONE}
+	shift 1
+done 

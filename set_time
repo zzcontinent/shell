@@ -1,0 +1,110 @@
+#!/bin/bash
+
+HOME_DIR="/home/deepglint"
+FGSYS_DIR="`cd $(dirname $0) && cd .. && pwd`"
+FGSYS_APPNAME="`cd $(dirname $0) && cd .. && sed -n 's/.*\"name\"\:\"\(.*\)\".*/\1/p' ./pkginfo`"
+FGSYS_DATA_DIR="${HOME_DIR}/SysData/$FGSYS_APPNAME"
+
+#include common funcs
+. $FGSYS_DIR/common/common
+
+#0 help
+helpmsg='
+usage: set_time [opt] [param]
+opt:
+	-ntp\t: set_time -ntp "cn.pool.ntp.org"
+	-local\t: set_time -local "2019-10-08 09:00:00"
+	-info\t: print format message
+	-h\t: show this'
+
+if [ $# -eq 0 ];then
+	help "$helpmsg"
+	exit 1
+fi
+
+bINFO=""
+bNTP=""
+NTP=""
+bLOCAL=""
+LOCAL=""
+NTP_FILE="/etc/ntp.conf"
+bAUTO=''
+
+until [ $# -eq 0 ] 
+do       
+        case "$1" in
+        "-ntp")
+		bNTP="y"
+		NTP=$2
+                shift 2
+        ;;
+        "-local")
+		bLOCAL="y"
+		LOCAL=$2
+                shift 2
+        ;;
+        "-auto")
+		bAUTO="y"
+                shift
+        ;;
+        "-info")
+		bINFO="y"
+                shift
+        ;;
+        "-h"|"--help"|*)
+                help "$helpmsg"
+                exit 1
+        ;;
+        esac
+done 
+
+# conflict check
+if [ ! -z $bINFO ] && ([ ! -z $bNTP ] || [ ! -z $bLOCAL ]);then 
+	errexit "input error: -info, do not need other params!"
+fi
+
+#==========================funcs
+read_config(){
+	FILE_CONFIG_NTP=`cat "$NTP_FILE" | awk 'NR==1 {print $2}'`
+}
+set_config(){
+	if [ ! -z $bNTP ];then
+		echo "server $NTP" > $FGSYS_DATA_DIR/rootfs$NTP_FILE
+		$FGSYS_DIR/sys_apis/fgsys_apply -merge -f $NTP_FILE
+	fi
+	if [ ! -z $bLOCAL ];then
+		echo "" > $FGSYS_DATA_DIR/rootfs$NTP_FILE
+		$FGSYS_DIR/sys_apis/fgsys_apply -merge -f $NTP_FILE
+	fi
+}
+auto_start(){
+	read_config
+	if [ ! -z $FILE_CONFIG_NTP ];then
+		ntpdate "$FILE_CONFIG_NTP"
+		if [ $? -eq 0 ];then
+			hwclock -w
+		fi
+		killall ntpd 2>/dev/null
+		ntpd
+	else
+		date -s "$LOCAL"
+		hwclock -s
+	fi
+}
+#==========================funcs
+
+if [ ! -z $bINFO ];then
+	NTPD_RUN="`ps aux | grep ntpd | grep -v grep | wc -l`"
+	if [ "$NTPD_RUN" == "0" ];then
+		echo 'time sync mode: MANUAL'
+		exit 0
+	fi
+	NTPCONF="`cat $NTP_FILE`"
+	echo -e "time sync mode:\tNTP
+ntp server:\t`echo "$NTPCONF" | awk '{print $2}'`"
+	exit 0
+fi
+
+set_config
+auto_start
+

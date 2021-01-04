@@ -1,0 +1,118 @@
+#!/bin/sh
+
+BLACK="\e[30;1m"
+RED="\e[31;1m"
+GREEN="\e[32;1m"
+YELLOW="\e[33;1m"
+BLUE="\e[34;1m"
+PURPLE="\e[35;1m"
+CYAN="\e[36;1m"
+WHITE="\e[37;1m"
+DONE="\033[0m"
+
+#0 help
+VERSION='19.11.13.01'
+help(){
+	echo "version: $VERSION"
+	echo "usage: usb_power_control -usb[0/1] [on/off] ..."
+	echo -e "usage:
+		-usb0 on  \t: config usb0 power on 
+		-usb0 off \t: config usb0 power off 
+		-usb1 on  \t: config usb1 power on 
+		-usb1 off \t: config usb1 power off 
+		-usb0 on -usb1 off \t: config usb0 power on, usb1 power off
+		"
+}
+
+
+USB0_ON_OFF=""
+USB1_ON_OFF=""
+
+if [ $# == 0 ];then
+	help
+	exit 0
+fi
+
+until [ $# -eq 0 ]
+do
+	case "$1" in
+	"-usb0")
+		USB0_ON_OFF="$2"
+		shift 2
+	;;
+	"-usb1")
+		USB1_ON_OFF="$2"
+		shift 2
+	;;
+	"-h"|"--help"|*)
+		help
+		shift
+		exit 0
+	;;
+	esac
+done
+
+echo USB0_ON_OFF=$USB0_ON_OFF
+echo USB1_ON_OFF=$USB1_ON_OFF
+
+# gen appfs datafs rootfs
+if [ "$USB0_ON_OFF" == "on" ];then
+	# 1 set gpio reuse from USB3_PWREN0 to GPIO0_6
+	cmd="himm 0x1F0000B8 0x400"
+	echo -e ${GREEN}$cmd${DONE} &&
+	$cmd 
+	# 2 set gpio dir to out
+	cmd="himm 0x12140400 0xC0"
+	echo -e ${GREEN}$cmd${DONE} &&
+	$cmd 
+	# 3 set gpio pin out to high
+	cmd="himm 0x12140100 0xFF"
+	echo -e ${GREEN}$cmd${DONE} &&
+	$cmd 
+elif [ "$USB0_ON_OFF" == "off" ];then
+	# 1 set gpio reuse from USB3_PWREN0 to GPIO0_6
+	cmd="himm 0x1F0000B8 0x400"
+	echo -e ${GREEn}$cmd${DONE} &&
+	$cmd 
+	# 2 set gpio dir to out
+	cmd="himm 0x12140400 0xC0"
+	echo -e ${GREEN}$cmd${DONE} &&
+	$cmd 
+	# 3 set gpio pin out to high
+	cmd="himm 0x12140100 0x00"
+	echo -e ${GREEN}$cmd${DONE} &&
+	$cmd 
+
+elif [ ! -z "$USB0_ON_OFF" ];then
+	echo -e ${RED}"not correct on/off"${DONE}
+fi
+
+if [ "$USB1_ON_OFF" == "on" ];then
+	# 1 set gpio reuse from USB3_PWREN1 to GPIO0_7
+	cmd="himm 0x1F0000BC 0x400"
+	echo -e ${GREEN}$cmd${DONE} &&
+	$cmd 
+	# 2 set gpio dir to out
+	cmd="himm 0x12140400 0xC0"
+	echo -e ${GREEN}$cmd${DONE} &&
+	$cmd 
+	# 3 set gpio pin out to high
+	cmd="himm 0x12140200 0xFF"
+	echo -e ${GREEN}$cmd${DONE} &&
+	$cmd 
+elif [ "$USB1_ON_OFF" == "off" ];then
+	# 1 set gpio reuse from USB3_PWREN0 to GPIO0_6
+	cmd="himm 0x1F0000BC 0x400"
+	echo -e ${GREEN}$cmd${DONE} &&
+	$cmd 
+	# 2 set gpio dir to out
+	cmd="himm 0x12140400 0xC0"
+	echo -e ${GREEN}$cmd${DONE} &&
+	$cmd 
+	# 3 set gpio pin out to high
+	cmd="himm 0x12140200 0x00"
+	echo -e ${GREEN}$cmd${DONE} &&
+	$cmd 
+elif [ ! -z "$USB1_ON_OFF" ];then
+	echo -e ${RED}"not correct on/off"${DONE}
+fi

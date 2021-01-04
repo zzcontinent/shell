@@ -1,0 +1,68 @@
+Host pi_remote
+	HostName 180.174.241.94
+	User root
+	Port 23
+
+Host pi_235
+	HostName 192.168.2.235
+	User pi
+	Port 22
+Host local_235
+	HostName 192.168.2.235
+	User root
+	Port 22
+
+Host local_234
+	HostName 192.168.2.234
+	User root
+	Port 22
+
+Host pi_local
+	HostName 192.168.2.234
+	User root
+	Port 22
+
+Host 181_remote
+	HostName dgsh.tpddns.cn
+	User dg
+	Port 18122
+	Compression yes
+
+Host office_170
+	HostName 172.17.0.170
+	User ubuntu
+	Port 22 
+	Compression yes
+	ProxyCommand ssh -x -W %h:%p 181_remote
+
+Host office_107
+	HostName 172.17.0.107
+	User cliff
+	Port 22
+	ProxyCommand ssh -C -x -W %h:%p 181_remote
+
+Host office_240
+	HostName 172.17.0.240
+	User deepglint
+	Port 22
+	ProxyCommand ssh -x -W %h:%p 181_remote
+
+Host frp_59A
+	HostName frp3.nemoface.com
+	User root
+	Port 10022
+
+Host yujie
+	HostName yujie.tech
+	User zzz
+	Port 22
+
+Host hecs
+	HostName 124.71.167.207
+	User root
+	Port 22
+
+Host office_y7000
+	HostName 124.71.167.207
+	User cliff
+	Port 10247

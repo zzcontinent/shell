@@ -1,0 +1,48 @@
+#!/bin/sh
+
+#compile
+apt install openssl libssl-dev libpcre3 libpcre3-dev
+
+#(1.0 compile nginx succeed!!)
+apt install libssl1.0-dev 
+
+wget http://nginx.org/download/nginx-1.9.9.tar.gz
+wget https://github.com/arut/nginx-rtmp-module/archive/master.zip
+./configure --add-module=../nginx-rtmp-module-master
+make -j
+make install
+
+#config
+# add /usr/local/nginx/conf/nginx.conf
+rtmp {  
+    server {  
+        listen 1935;  
+  	#直播
+        application live {  
+            live on;  
+        }
+ 
+        application hls {  
+            live on;  
+            hls on;  
+            hls_path /tmp/hls;  
+        } 
+ 
+	#点播
+	application vod {
+            play /tmp/video;
+    	}
+ 
+    }  
+}
+
+#http:server =>
+location /hls {
+            types {
+                application/vnd.apple.mpegurl m3u8;
+                video/mp2t ts;
+            }
+            root /tmp;
+            add_header Cache-Control no-cache;
+        }
+
