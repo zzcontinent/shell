@@ -247,6 +247,8 @@ nnoremap <silent> <F4> :!read key_s && find . \| grep --color=always "${key_s}" 
 "autoformat
 nnoremap <C-l> :Autoformat <CR>
 
+nnoremap <leader>gd :YcmCompleter GoToDefinition <CR>
+
 "imap { {}<ESC>i<CR><ESC>V<O
 "imap { {}<ESC>i<CR><ESC>k2==o
 "imap { {}<ESC>i
