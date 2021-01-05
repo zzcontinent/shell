@@ -239,6 +239,11 @@ vnoremap <S-c> "+y
 "ctrl-] with ts
 nnoremap <leader>cc :set colorcolumn=9
 nnoremap <leader>cc :set colorcolumn=9
+
+"nnoremap <silent> <F3> :vimgrep /<C-R><C-W>/g ** <CR>:cw<CR>
+nnoremap <silent> <F3> :!read key_s && grep --color=always -rni "${key_s}" \| less -N -r -I -p "${key_s}" <CR><CR>
+nnoremap <silent> <F4> :!read key_s && find . \| grep --color=always "${key_s}" \| less -N -r -I -p "${key_s}" <CR><CR>
+
 "autoformat
 nnoremap <C-l> :Autoformat <CR>
 
