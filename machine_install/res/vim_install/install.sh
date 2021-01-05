@@ -21,15 +21,13 @@ tar -zxvf ./YouCompleteMe.tgz -C ./res/bundle
 cp ./auto-highlight.vim ./res/plugin/
 
 #backup to ~/.vim
-sudo rm -r ${HOME}/.vim.bak
-sudo mv ${HOME}/.vim ${HOME}/.vim.bak
-mkdir -p ${HOME}/.vim
-sudo cp -a ./res/* ${HOME}/.vim/
+rm -r ${HOME}/vim_install
+sudo mv ./res ${HOME}/vim_install
+rm -r ${HOME}/.vim
+ln -s ${HOME}/vim_install ${HOME}/.vim
 
 #copy .vimrc
 sudo cp ./.vimrc ${HOME}/
 
 #remove ./res
-sudo rm -r ./res
-rm ./YouCompleteMe.tgz
 cd -
