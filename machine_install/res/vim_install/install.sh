@@ -1,5 +1,4 @@
 #!/bin/bash
-HOME="/home/`whoami`"
 CURDIR=`dirname $0`
 cd ${CURDIR}
 sudo rm -r ./res
@@ -11,6 +10,7 @@ unzip ./vim-autocomplpop.zip -d ./res
 tar -zxvf ./bundle.tgz -C ./res
 
 #unzip YouCompleteMe into bundle
+rm ./YouCompleteMe.tgz
 for sf in `ls xa*`
 do
 	cat $sf >> YouCompleteMe.tgz
