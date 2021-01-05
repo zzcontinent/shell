@@ -17,6 +17,9 @@ do
 done
 tar -zxvf ./YouCompleteMe.tgz -C ./res/bundle
 
+#copy auto-highlight
+cp ./auto-highlight.vim ./res/plugin/
+
 #backup to ~/.vim
 sudo rm -r ${HOME}/.vim.bak
 sudo mv ${HOME}/.vim ${HOME}/.vim.bak

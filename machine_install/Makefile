@@ -10,6 +10,7 @@ prepare:
 vim:
 	@echo "==========================[$@] <= [$^]"
 	@sudo apt install -y vim
+	@sudo apt install -y ctags
 	@cd ./res/vim_install/ && ./install.sh
 
 ssh:
