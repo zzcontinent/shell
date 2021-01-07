@@ -6,7 +6,17 @@ PERIOD=1
 TMP_FILE_FB="${HOME}/.tmp_netspeed"
 [ ! -f ${TMP_FILE_FB} ] && touch ${TMP_FILE_FB}
 
+net_devs_ok=""
+
 for dev in ${net_devs}
+do
+	if [ -z "`echo $dev | grep -E '\-|\:|\.'`" ];then
+		echo $dev
+		net_devs_ok="${net_devs_ok} ${dev}"
+	fi
+done
+
+for dev in ${net_devs_ok}
 do
 	eval rx_pre_${dev}='0'
 	eval tx_pre_${dev}='0'
@@ -21,7 +31,7 @@ done
 func_step_total()
 {
 	date "+%Y-%m-%d %H:%M:%S" >> ${TMP_FILE_FB}
-	for dev in ${net_devs}
+	for dev in ${net_devs_ok}
 	do
 		eval rx_cur_${dev}=`ifconfig ${dev}  | sed -n 's/RX.*bytes \([0-9]\+\).*/\1/p' | awk '{print $1}'`
 		eval tx_cur_${dev}=`ifconfig ${dev}  | sed -n 's/TX.*bytes \([0-9]\+\).*/\1/p' | awk '{print $1}'`

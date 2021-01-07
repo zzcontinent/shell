@@ -68,7 +68,8 @@ set cursorline
 "highlight CursorLine   cterm=NONE ctermbg=darkmagenta guibg=NONE guifg=NONE
 "highlight CursorColumn cterm=NONE ctermbg=darkmagenta guibg=NONE guifg=NONE
 highlight CursorLine   cterm=NONE ctermbg=darkgrey guibg=NONE guifg=NONE
-highlight CursorColumn cterm=NONE ctermbg=darkmagenta guibg=NONE guifg=NONE
+highlight CursorColumn cterm=NONE ctermbg=darkgrey guibg=NONE guifg=NONE
+"highlight CursorColumn cterm=NONE ctermbg=darkmagenta guibg=NONE guifg=NONE
 highlight clear Folded
 highlight clear FoldedColumn
 highlight ColorColumn ctermbg=red
@@ -248,6 +249,7 @@ nnoremap <silent> <F4> :!read key_s && find . \| grep --color=always "${key_s}" 
 nnoremap <C-l> :Autoformat <CR>
 
 nnoremap <leader>gd :YcmCompleter GoToDefinition <CR>
+nnoremap <leader>e :YcmDiags <CR>
 
 "imap { {}<ESC>i<CR><ESC>V<O
 "imap { {}<ESC>i<CR><ESC>k2==o
