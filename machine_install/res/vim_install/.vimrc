@@ -30,6 +30,14 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'ascenator/L9', {'name': 'newL9'}
 "Plugin 'ycmd-core/YouCompleteMe'
 Plugin 'Chiel92/vim-autoformat'
+" theme
+Plugin 'altercation/vim-colors-solarized'
+"nerdtree
+Plugin 'scrooloose/nerdtree'
+"tagbar
+Plugin 'majutsushi/tagbar'
+"taglist
+"Plugin 'vim-scripts/taglist.vim'
 
 " 你的所有插件需要在下面这行之前
 call vundle#end()            " 必须
@@ -67,8 +75,8 @@ set cursorline
 "highlight CursorLine   cterm=NONE ctermbg=darkgreen guibg=NONE guifg=NONE
 "highlight CursorLine   cterm=NONE ctermbg=darkmagenta guibg=NONE guifg=NONE
 "highlight CursorColumn cterm=NONE ctermbg=darkmagenta guibg=NONE guifg=NONE
-highlight CursorLine   cterm=NONE ctermbg=darkgrey guibg=NONE guifg=NONE
-highlight CursorColumn cterm=NONE ctermbg=darkgrey guibg=NONE guifg=NONE
+"highlight CursorLine   cterm=NONE ctermbg=darkgrey guibg=NONE guifg=NONE
+"highlight CursorColumn cterm=NONE ctermbg=darkgrey guibg=NONE guifg=NONE
 "highlight CursorColumn cterm=NONE ctermbg=darkmagenta guibg=NONE guifg=NONE
 highlight clear Folded
 highlight clear FoldedColumn
@@ -84,7 +92,7 @@ set foldlevel=1
 set nofoldenable
 set scrolloff=999
 "set sidescrolloff=999
-set list lcs=tab:\¦\ 
+"set list lcs=tab:\¦\
 hi Folded ctermbg=0
 set ignorecase
 hi MatchParen ctermbg=lightgreen ctermfg=black
@@ -95,6 +103,16 @@ set relativenumber
 syntax on
 "updatetime for auto-highlight.vim
 set ut=20
+
+"==============>vim-colors-solarized config
+let g:solarized_termtrans = 1  "terminal background color
+"let g:solarized_visibility= "high" " set list
+if has('gui_running')
+	set background=light
+else
+	set background=dark
+endif
+colorscheme solarized
 "=======================================================style==================
 "
 "
@@ -164,37 +182,54 @@ set encoding=utf-8
 "
 "
 "=======================================================plugins==================
-set autochdir
+"set autochdir
 "let Tlist_Auto_Open=1 "打开文件时自动打开taglist
-let Tlist_Exit_OnlyWindow=1 "关闭文件时自动关闭taglist
-let Tlist_File_Fold_Auto_Close=1 "taglist window中折叠非当前文件
-let Tlist_Process_File_Always=1 "taglist始终解析文件
+"let Tlist_Exit_OnlyWindow=1 "关闭文件时自动关闭taglist
+"let Tlist_File_Fold_Auto_Close=1 "taglist window中折叠非当前文件
+"let Tlist_Process_File_Always=1 "taglist始终解析文件
+
+"==============>newdtree config
+let NERDTreeHighlightCursorline = 1       " 高亮当前行
+let NERDTreeShowLineNumbers     = 1       " 显示行号
+" 忽略列表中的文件
+"let NERDTreeIgnore = [ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.egg$', '^\.git$', '^\.repo$', '^\.svn$', '^\.hg$' ]
+" 启动 vim 时打开 NERDTree
+"autocmd vimenter * NERDTree
+" 当打开 VIM，没有指定文件时和打开一个目录时，打开 NERDTree
+"autocmd StdinReadPre * let s:std_in = 1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+" 关闭 NERDTree，当没有文件打开的时候
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
+
+" <leader>nt 打开 nerdtree 窗口，在左侧栏显示
+"map <leader>nt :NERDTreeToggle<CR>
 
 
 
-"newdtree like
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 3
-let g:netrw_altv = 1
-let g:netrw_winsize = 20
-let g:NetrwIsOpen=0
-
-function! ToggleNetrw()
-	if g:NetrwIsOpen
-		let i = bufnr("$")
-		while (i >= 1)
-			if (getbufvar(i, "&filetype") == "netrw")
-				silent exe "bwipeout " . i
-			endif
-			let i-=1
-		endwhile
-		let g:NetrwIsOpen=0
-	else
-		let g:NetrwIsOpen=1
-		silent Vexplore
-	endif
-endfunction
+"==============>newdtree like config
+"let g:netrw_banner = 0
+"let g:netrw_liststyle = 3
+"let g:netrw_browse_split = 3
+"let g:netrw_altv = 1
+"let g:netrw_winsize = 20
+"let g:NetrwIsOpen=0
+"
+"function! ToggleNetrw()
+"	if g:NetrwIsOpen
+"		let i = bufnr("$")
+"		while (i >= 1)
+"			if (getbufvar(i, "&filetype") == "netrw")
+"				silent exe "bwipeout " . i
+"			endif
+"			let i-=1
+"		endwhile
+"		let g:NetrwIsOpen=0
+"	else
+"		let g:NetrwIsOpen=1
+"		silent Vexplore
+"	endif
+"endfunction
 
 "let g:winManagerWidth = 50
 "let g:winManagerWindowLayout = "FileExplorer"
@@ -204,6 +239,45 @@ endfunction
 "       autocmd!
 "       autocmd VimEnter * Vexplore
 "augroup END
+"
+"
+"
+"==============>ycm config
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_min_num_of_chars_for_completion               = 2 " 输入第 2 个字符开始补全
+let g:ycm_seed_identifiers_with_syntax                  = 1 " 语法关键字补全
+let g:ycm_complete_in_comments                          = 1 " 在注释中也可以补全
+let g:ycm_complete_in_strings                           = 1 " 在字符串输入中也能补全
+let g:ycm_collect_identifiers_from_tag_files            = 1 " 使用 ctags 生成的 tags 文件
+let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释和字符串中的文字也会被收入补全
+"let g:ycm_cache_omnifunc                                = 0 " 每次重新生成匹配项，禁止缓存匹配项
+"let g:ycm_use_ultisnips_completer                       = 0 " 不查询 ultisnips 提供的代码模板补全，如果需要，设置成 1 即可
+"let g:ycm_show_diagnostics_ui                           = 0 " 禁用语法检查
+"let g:ycm_key_list_select_completion   = ['<Down>']   " 选择下一条补全，Default: ['<TAB>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<Up>']     " 选择上一条补全，Default: ['<S-TAB>', '<Up>']
+"let g:ycm_key_list_stop_completion     = ['<Enter>']  " 中止此次补全，Default: ['<C-y>']
+"
+"==============>tagbar config
+
+let g:tagbar_ctags_bin = 'ctags' " tagbar 依赖 ctags 插件
+let g:tagbar_width     = 30      " 设置 tagbar 的宽度为 30 列，默认 40 列
+let g:tagbar_autofocus = 1       " 打开 tagbar 时光标在 tagbar 页面内，默认在 vim 打开的文件内
+let g:tagbar_left      = 1       " 让 tagbar 在页面左侧显示，默认右边
+"let g:tagbar_sort      = 0       " 标签不排序，默认排序
+" <leader>tb 打开 tagbar 窗口，在左侧栏显示
+
+"
+"==============>taglist config
+let Tlist_Show_One_File           = 1    " 只显示当前文件的tags
+let Tlist_GainFocus_On_ToggleOpen = 1    " 打开 Tlist 窗口时，光标跳到 Tlist 窗口
+let Tlist_Exit_OnlyWindow         = 1    " 如果 Tlist 窗口是最后一个窗口则退出 Vim
+let Tlist_Use_Left_Window         = 1    " 在左侧窗口中显示
+let Tlist_File_Fold_Auto_Close    = 1    " 自动折叠
+let Tlist_Auto_Update             = 1    " 自动更新
+" <leader>tl 打开 Tlist 窗口，在左侧栏显示
+nnoremap <leader>tl :TlistToggle <CR>
+
+"
 "=======================================================plugins==================
 "
 "
@@ -220,15 +294,17 @@ endfunction
 "nnoremap <F12> :!ctags -R --languages=Asm,c,c++,java,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf . <CR>
 nnoremap <F12> :!ctags -R --languages=Asm,c,c++,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf `pwd` <CR>
 "nnoremap <F12> :!ctags -R --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf . <CR>
-nnoremap <silent> <F8> :TlistToggle<CR>
+"nnoremap <silent> <F8> :TlistToggle<CR>
+nnoremap <silent> <F8> :TagbarToggle<CR>
 "nnoremap <silent> <F7> :WMToggle <CR>
-nnoremap <silent> <F7> :call ToggleNetrw() <CR>
+"nnoremap <silent> <F7> :call ToggleNetrw() <CR>
+nnoremap <silent> <F7> :NERDTreeToggle <CR>
 
 "nnoremap <C-k> :bp <CR>
 "nnoremap <C-j> :bn <CR>
 "nnoremap <C-i> :bdelete <CR>
 
-nnoremap <C-i> :pc <CR>
+nnoremap <C-i> :tabc <CR>
 nnoremap <C-k> :tabp <CR>
 nnoremap <C-j> :tabn <CR>
 nnoremap g] :pts <C-r><C-w><CR>
