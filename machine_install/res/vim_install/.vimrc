@@ -92,7 +92,7 @@ set foldlevel=1
 set nofoldenable
 set scrolloff=999
 "set sidescrolloff=999
-"set list lcs=tab:\¦\
+"set list lcs=tab:\¦\ 
 hi Folded ctermbg=0
 set ignorecase
 hi MatchParen ctermbg=lightgreen ctermfg=black
@@ -106,7 +106,7 @@ set ut=20
 
 "==============>vim-colors-solarized config
 let g:solarized_termtrans = 1  "terminal background color
-"let g:solarized_visibility= "high" " set list
+let g:solarized_visibility= "low" " set list
 if has('gui_running')
 	set background=light
 else
@@ -190,7 +190,7 @@ set encoding=utf-8
 
 "==============>newdtree config
 let NERDTreeHighlightCursorline = 1       " 高亮当前行
-let NERDTreeShowLineNumbers     = 1       " 显示行号
+"let NERDTreeShowLineNumbers     = 1       " 显示行号
 " 忽略列表中的文件
 "let NERDTreeIgnore = [ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.egg$', '^\.git$', '^\.repo$', '^\.svn$', '^\.hg$' ]
 " 启动 vim 时打开 NERDTree
