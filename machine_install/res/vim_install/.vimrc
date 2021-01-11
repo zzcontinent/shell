@@ -54,7 +54,7 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 " 查阅 :h vundle 获取更多细节和wiki以及FAQ
 " 将你自己对非插件片段放在这行之后
 let g:ycm_semantic_triggers =  {
-			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+			\ 'asm,c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
 			\ 'cs,lua,javascript': ['re!\w{2}'],
 			\ }
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
@@ -103,6 +103,8 @@ set relativenumber
 syntax on
 "updatetime for auto-highlight.vim
 set ut=20
+"line wrap
+set nowrap
 
 "==============>vim-colors-solarized config
 let g:solarized_termtrans = 1  "terminal background color
@@ -189,7 +191,8 @@ set encoding=utf-8
 "let Tlist_Process_File_Always=1 "taglist始终解析文件
 
 "==============>newdtree config
-let NERDTreeHighlightCursorline = 1       " 高亮当前行
+let NERDTreeHighlightCursorline = 0       " 高亮当前行
+let NERDTreeMinimalUI=0
 "let NERDTreeShowLineNumbers     = 1       " 显示行号
 " 忽略列表中的文件
 "let NERDTreeIgnore = [ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.egg$', '^\.git$', '^\.repo$', '^\.svn$', '^\.hg$' ]
@@ -263,7 +266,9 @@ let g:tagbar_ctags_bin = 'ctags' " tagbar 依赖 ctags 插件
 let g:tagbar_width     = 30      " 设置 tagbar 的宽度为 30 列，默认 40 列
 let g:tagbar_autofocus = 1       " 打开 tagbar 时光标在 tagbar 页面内，默认在 vim 打开的文件内
 let g:tagbar_left      = 1       " 让 tagbar 在页面左侧显示，默认右边
+"let g:tagbar_position = 'leftabove'
 "let g:tagbar_sort      = 0       " 标签不排序，默认排序
+let g:tagbar_compact = 1
 " <leader>tb 打开 tagbar 窗口，在左侧栏显示
 
 "
