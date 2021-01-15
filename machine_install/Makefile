@@ -1,4 +1,5 @@
 DATE_VERSION:=`date "+%y.%m.%d"`
+CPU_ARCH:=`lscpu  | grep Arch| awk '{print $$2}'`
 
 all:
 	@echo "==========================[$@] <= [$^]"
@@ -91,13 +92,19 @@ beautify.sh:
 	@sudo cp ./res/beautify.sh /usr/bin
 frp_install:
 	@echo "==========================[$@] <= [$^]"
-	@sudo cp ./res/frp/frp_0.34.1_linux_amd64/frpc /usr/bin
-	@sudo cp ./res/frp/frp_0.34.1_linux_amd64/frps /usr/bin
-	@sudo mkdir -p /etc/frp
-	@sudo cp ./res/frp/frpc.ini /etc/frp
-	@sudo cp ./res/frp/frps.ini /etc/frp
-	@sudo cp ./res/frp/frpc.service /lib/systemd/system
-	@sudo cp ./res/frp/frps.service /lib/systemd/system
+	@-[ ${CPU_ARCH} == 'x86_64' ] && cd ./res/frp && tar -zxvf ./frp_0.34.1_linux_amd64.tar.gz
+	@-[ ${CPU_ARCH} == 'x86_64' ] && sudo cp ./res/frp/frp_0.34.1_linux_amd64/frpc /usr/bin
+	@-[ ${CPU_ARCH} == 'x86_64' ] && sudo cp ./res/frp/frp_0.34.1_linux_amd64/frps /usr/bin
+	@-[ ${CPU_ARCH} == 'x86_64' ] && cd ./res/frp && rm -r ./frp_0.34.1_linux_amd64 
+	@-[ ${CPU_ARCH} != 'x86_64' ] && cd ./res/frp && tar -zxvf ./frp_0.34.1_linux_arm64.tar.gz
+	@-[ ${CPU_ARCH} != 'x86_64' ] && sudo cp ./res/frp/frp_0.34.1_linux_arm64/frpc /usr/bin
+	@-[ ${CPU_ARCH} != 'x86_64' ] && sudo cp ./res/frp/frp_0.34.1_linux_arm64/frps /usr/bin
+	@-[ ${CPU_ARCH} != 'x86_64' ] && cd ./res/frp && rm -r ./frp_0.34.1_linux_arm64
+	@-sudo mkdir -p /etc/frp
+	@-sudo cp ./res/frp/frpc.ini /etc/frp
+	@-sudo cp ./res/frp/frps.ini /etc/frp
+	@-sudo cp ./res/frp/frpc.service /lib/systemd/system
+	@-sudo cp ./res/frp/frps.service /lib/systemd/system
 frpc_enable:
 	@echo "==========================[$@] <= [$^]"
 	@sudo systemctl enable frpc
