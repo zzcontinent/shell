@@ -135,7 +135,7 @@ kill.sh:
 	@sudo cp ./res/kill.sh /usr/bin
 dev_watch:
 	@echo "==========================[$@] <= [$^]"
-	@sudo ./res/dev_watch/install.sh
+	@cd ./res/dev_watch && sudo ./install.sh
 
 #==============================================
 PHONY += all
