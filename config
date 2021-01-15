@@ -66,3 +66,8 @@ Host office_y7000
 	HostName 124.71.167.207
 	User cliff
 	Port 10247
+
+Host office_y7000_ali
+	HostName 47.93.90.30
+	User cliff
+	Port 10247
