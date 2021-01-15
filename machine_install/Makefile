@@ -102,8 +102,10 @@ frp_install:
 	@-[ ${CPU_ARCH} != 'x86_64' ] && cd ./res/frp && rm -r ./frp_0.34.1_linux_arm64
 	@-sudo mkdir -p /etc/frp
 	@-sudo cp ./res/frp/frpc.ini /etc/frp
+	@-sudo cp ./res/frp/frpc_ali.ini /etc/frp
 	@-sudo cp ./res/frp/frps.ini /etc/frp
 	@-sudo cp ./res/frp/frpc.service /lib/systemd/system
+	@-sudo cp ./res/frp/frpc_ali.service /lib/systemd/system
 	@-sudo cp ./res/frp/frps.service /lib/systemd/system
 frpc_enable:
 	@echo "==========================[$@] <= [$^]"
