@@ -124,6 +124,9 @@ cifs-utils:
 kill.sh:
 	@echo "==========================[$@] <= [$^]"
 	@sudo cp ./res/kill.sh /usr/bin
+dev_watch:
+	@echo "==========================[$@] <= [$^]"
+	@sudo ./res/dev_watch/install.sh
 
 #==============================================
 PHONY += all

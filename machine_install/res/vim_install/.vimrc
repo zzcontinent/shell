@@ -109,6 +109,22 @@ set nowrap
 "==============>vim-colors-solarized config
 let g:solarized_termtrans = 1  "terminal background color
 let g:solarized_visibility= "low" " set list
+"let g:solarized_contrast = "high" " set list
+"let g:solarized_italic = 1
+"let g:solarized_hitrail = 1
+let g:solarized_termcolors=16
+
+"g:solarized_termcolors=   16      |   256
+"g:solarized_termtrans =   0       |   1
+"g:solarized_degrade   =   0       |   1
+"g:solarized_bold      =   1       |   0
+"g:solarized_underline =   1       |   0
+"g:solarized_italic    =   1       |   0
+"g:solarized_contrast  =   "normal"|   "high" or "low"
+"g:solarized_visibility=   "normal"|   "high" or "low"
+"g:solarized_hitrail   =   0       |   1
+"g:solarized_menu      =   1       |   0
+
 if has('gui_running')
 	set background=light
 else
@@ -335,6 +351,7 @@ nnoremap <silent> <F4> :!read key_s && find . \| grep --color=always "${key_s}" 
 nnoremap <C-l> :Autoformat <CR>
 
 nnoremap <leader>gd :YcmCompleter GoToDefinition <CR>
+nnoremap <leader>gr :YcmCompleter GoToReferences <CR>
 nnoremap <leader>e :YcmDiags <CR>
 
 "imap { {}<ESC>i<CR><ESC>V<O

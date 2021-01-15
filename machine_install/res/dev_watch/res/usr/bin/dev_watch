@@ -1,0 +1,132 @@
+#!/bin/bash
+
+IN_CONF_NET_DEV=wlan0
+IN_bIP=""
+IN_bFRP=""
+REBOOT_WAIT=20
+
+help()
+{
+	echo 'usage:
+dev_watch [opt]
+1. -ip eth0  ; check ip exist? net device eth0
+2. -frp      ; check frpc connected ok?'
+}
+
+func_input()
+{
+	[ $# -eq 0 ] && help && exit 1
+	until [ $# -eq 0 ]
+	do
+		case "$1" in
+		"-ip")
+			IN_CONF_NET_DEV="$2"
+			IN_bIP="y"
+			shift 2
+		;;
+		"-frp")
+			IN_bFRP="y"
+			shift
+		;;
+		"-h"|"--help"|"")
+			help
+			exit 0
+		;;
+		esac
+	done
+}
+
+
+CONF_FRPC_CONF_FILE=/etc/frp/frpc.ini
+GVAR_IP=""
+GVAR_FRP=""
+
+try()
+{
+	cnt=0
+	cnt_max=3
+	while true;
+	do
+		cnt=`expr $cnt + 1`
+		echo "try $cnt/$cnt_max"
+		$@
+		[ $? -eq 0 ] && return 0
+		if [ $cnt -ge $cnt_max ];then
+			return 1
+		fi
+		sleep 1
+	done
+}
+
+####ip check
+func_is_ip_miss()
+{
+	echo "========> ${FUNCNAME}"
+	ip0="$(ifconfig $IN_CONF_NET_DEV 2>/dev/null | grep inet | awk 'NR==1 {print $2}')"
+	ip1="$(ifconfig $IN_CONF_NET_DEV 2>/dev/null | grep inet | awk -F':' 'NR==1 {print $2}' | cut -f1 -d' ')"
+	if [ -z $ip0 ] && [ -z $ip1 ];then
+		return 1
+	fi
+	[ ! -z $ip0 ] && GVAR_IP=$ip0
+	[ ! -z $ip1 ] && GVAR_IP=$ip1
+	return 0
+}
+
+func_check_ip_and_reboot()
+{
+	echo "========> ${FUNCNAME}"
+	in_tf=x$1
+	try func_is_ip_miss
+	if [ $? != 0 ];then
+		echo "$GVAR_IP => ${IN_CONF_NET_DEV} ip missed, rebooting in ${REBOOT_WAIT} seconds... "
+		echo "input: ($1)"
+		[ ${in_tf} == 'xy' ] && sleep $REBOOT_WAIT && reboot
+	else
+		echo "$GVAR_IP => ${IN_CONF_NET_DEV} ip exists, no need reboot"
+	fi
+}
+
+####frpc connect check
+func_is_frp_connect()
+{
+	echo "========> ${FUNCNAME}"
+	in_tf=x$1
+	frpc_port=`cat ${CONF_FRPC_CONF_FILE} | grep '^remote_port' | awk  '{print $3}'`
+	frp_server_addr=`cat ${CONF_FRPC_CONF_FILE} | grep '^server_addr' | awk  '{print $3}'`
+	GVAR_FRP="$frp_server_addr:$frpc_port"
+	if [ ! -z "`echo 1 | telnet ${frp_server_addr} ${frpc_port} 2>/dev/null | grep 'Connected to '`" ];then
+		return 0
+	else
+		return 1
+	fi
+}
+
+func_check_frp_and_reboot()
+{
+	echo "========> ${FUNCNAME}"
+	in_tf=x$1
+	in_tf=x$1
+	try func_is_frp_connect
+	if [ $? != 0 ];then
+		echo "${GVAR_FRP} not ok, rebooting in $REBOOT_WAIT seconds..."
+		echo "input: ($1)"
+		[ ${in_tf} == 'xy' ] && sleep $REBOOT_WAIT && reboot
+	else
+		echo "${GVAR_FRP} ok, no need reboot"
+	fi
+}
+
+####auto_run
+func_main()
+{
+	func_input $@
+	while true
+	do
+		date "+%Y-%m-%d %H:%M:%S"
+		[ ! -z $IN_bIP ] && func_check_ip_and_reboot y
+		[ ! -z $IN_bFRP ] && func_check_frp_and_reboot y
+		sleep 300
+	done
+}
+
+func_main $@

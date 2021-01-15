@@ -39,3 +39,12 @@ xz -dc initrd.img | cpio -id
 find . | cpio -c -o | xz -9 --format=lzma > initrd.img
 #lzma compress
 tar cfv backup.tar.lzma dir --lzma
+
+
+#qemu for x86 ubuntu-server-18.04.05
+qemu-img create ubuntu18.04.05.img 20G
+qemu-system-x86_64 --enable-kvm -m 2048 -smp 2 -boot order=d -hda ubuntu18.04.05.img -cdrom ubuntu-18.04.5-live-server-amd64.iso
+qemu-system-x86_64 --enable-kvm -m 2048 -smp 2 \
+	-netdev tap,id=dgnet0,hostfwd=tcp::8022-:22,hostfwd=tcp::8090-:80 \
+	-device virtio-net-pci,netdev=mynet0 \
+	-hda ubuntu18.04.05.img
