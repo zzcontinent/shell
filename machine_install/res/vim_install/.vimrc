@@ -269,6 +269,8 @@ let g:ycm_complete_in_comments                          = 1 " 在注释中也可
 let g:ycm_complete_in_strings                           = 1 " 在字符串输入中也能补全
 let g:ycm_collect_identifiers_from_tag_files            = 1 " 使用 ctags 生成的 tags 文件
 let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释和字符串中的文字也会被收入补全
+let g:ycm_error_symbol = '✗'
+let g:ycm_warning_symbol = '⚠'
 "let g:ycm_cache_omnifunc                                = 0 " 每次重新生成匹配项，禁止缓存匹配项
 "let g:ycm_use_ultisnips_completer                       = 0 " 不查询 ultisnips 提供的代码模板补全，如果需要，设置成 1 即可
 "let g:ycm_show_diagnostics_ui                           = 0 " 禁用语法检查
@@ -285,7 +287,7 @@ let g:tagbar_autofocus = 1       " 打开 tagbar 时光标在 tagbar 页面内�
 "let g:tagbar_position = 'leftabove'
 let g:tagbar_sort      = 0       " 标签不排序，默认排序
 let g:tagbar_compact = 1
-let g:tagbar_autopreview = 1
+let g:tagbar_autopreview = 0
 "autocmd VimEnter * nested :call tagbar#autoopen(1)
 "autocmd BufEnter * nested :silent TagbarOpen
 autocmd FileType make,sh,go,asm,python,js,c,cpp nested :TagbarOpen
