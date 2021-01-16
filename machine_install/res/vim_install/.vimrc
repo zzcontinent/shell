@@ -261,8 +261,18 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 "
 "
 "
+
+
+"==============>python  config
+let g:ycm_python_interpreter_path = '/home/cliff/pyenv/env38/bin/python'
+let g:ycm_python_sys_path = ['/home/cliff/pyenv/env38/lib/python3.8']
+let g:ycm_extra_conf_vim_data = [
+ \ 'g:ycm_python_interpreter_path',
+ \ 'g:ycm_python_sys_path'
+ \ ]
+
 "==============>ycm config
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_min_num_of_chars_for_completion               = 2 " 输入第 2 个字符开始补全
 let g:ycm_seed_identifiers_with_syntax                  = 1 " 语法关键字补全
 let g:ycm_complete_in_comments                          = 1 " 在注释中也可以补全

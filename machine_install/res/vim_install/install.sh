@@ -23,6 +23,7 @@ cp ./auto-highlight.vim ./res/plugin/
 
 #backup to ~/.vim
 sudo rm -r ${REAL_HOME}/vim_install
+sudo cp ./.ycm_extra_conf.py ./res
 sudo mv ./res ${REAL_HOME}/vim_install
 sudo rm -r ${REAL_HOME}/.vim
 ln -s ${REAL_HOME}/vim_install ${REAL_HOME}/.vim
