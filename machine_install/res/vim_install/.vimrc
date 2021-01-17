@@ -298,9 +298,12 @@ let g:tagbar_autofocus = 1       " 打开 tagbar 时光标在 tagbar 页面内�
 let g:tagbar_sort      = 0       " 标签不排序，默认排序
 let g:tagbar_compact = 1
 let g:tagbar_autopreview = 0
+let g:tagbar_show_tag_linenumbers=2
+let g:tagbar_expand = 1
+
 "autocmd VimEnter * nested :call tagbar#autoopen(1)
 "autocmd BufEnter * nested :silent TagbarOpen
-autocmd FileType make,sh,go,asm,python,js,c,cpp nested :TagbarOpen
+autocmd FileType vim,make,sh,go,asm,python,js,c,cpp nested :TagbarOpen
 
 " <leader>tb 打开 tagbar 窗口，在左侧栏显示
 
