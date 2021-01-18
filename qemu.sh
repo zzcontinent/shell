@@ -45,6 +45,7 @@ tar cfv backup.tar.lzma dir --lzma
 qemu-img create ubuntu18.04.05.img 20G
 qemu-system-x86_64 --enable-kvm -m 2048 -smp 2 -boot order=d -hda ubuntu18.04.05.img -cdrom ubuntu-18.04.5-live-server-amd64.iso
 qemu-system-x86_64 --enable-kvm -m 2048 -smp 2 \
-	-netdev tap,id=dgnet0,hostfwd=tcp::8022-:22,hostfwd=tcp::8090-:80 \
+	-netdev user,id=mynet0,hostfwd=tcp::8022-:22,hostfwd=tcp::8090-:80 \
 	-device virtio-net-pci,netdev=mynet0 \
-	-hda ubuntu18.04.05.img
+	-hda ubuntu18.04.05.img \
+	-hdb delinux_rootfs_18.04.amd64.img
