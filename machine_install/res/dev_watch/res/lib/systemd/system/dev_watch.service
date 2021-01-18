@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-User=nobody
+User=root
 Restart=on-failure
 RestartSec=10s
 ExecStart=/usr/bin/dev_watch -ip wlan0 -frp

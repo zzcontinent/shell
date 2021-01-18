@@ -90,7 +90,6 @@ func_check_ip_and_reboot()
 func_is_frp_connect()
 {
 	echo "========> ${FUNCNAME}"
-	in_tf=x$1
 	frpc_port=`cat ${CONF_FRPC_CONF_FILE} | grep '^remote_port' | awk  '{print $3}'`
 	frp_server_addr=`cat ${CONF_FRPC_CONF_FILE} | grep '^server_addr' | awk  '{print $3}'`
 	GVAR_FRP="$frp_server_addr:$frpc_port"
@@ -105,12 +104,11 @@ func_check_frp_and_reboot()
 {
 	echo "========> ${FUNCNAME}"
 	in_tf=x$1
-	in_tf=x$1
 	try func_is_frp_connect
 	if [ $? != 0 ];then
 		echo "${GVAR_FRP} not ok, rebooting in $REBOOT_WAIT seconds..."
-		echo "input: ($1)"
-		[ ${in_tf} == 'xy' ] && sleep $REBOOT_WAIT && reboot
+		echo "input: ${in_tf}"
+		[ ${in_tf} == 'xy' ] && sleep $REBOOT_WAIT && echo 'real boot now' && reboot
 	else
 		echo "${GVAR_FRP} ok, no need reboot"
 	fi
