@@ -3,7 +3,7 @@
 IN_CONF_NET_DEV=wlan0
 IN_bIP=""
 IN_bFRP=""
-REBOOT_WAIT=20
+REBOOT_WAIT=30
 
 help()
 {
@@ -93,11 +93,13 @@ func_is_frp_connect()
 	frpc_port=`cat ${CONF_FRPC_CONF_FILE} | grep '^remote_port' | awk  '{print $3}'`
 	frp_server_addr=`cat ${CONF_FRPC_CONF_FILE} | grep '^server_addr' | awk  '{print $3}'`
 	GVAR_FRP="$frp_server_addr:$frpc_port"
-	if [ ! -z "`echo 1 | telnet ${frp_server_addr} ${frpc_port} 2>/dev/null | grep 'Connected to '`" ];then
-		return 0
-	else
-		return 1
-	fi
+	for port in ${frpc_port}
+	do
+		if [ ! -z "`echo 1 | telnet ${frp_server_addr} ${port} 2>/dev/null | grep 'Connected to '`" ];then
+			return 0
+		fi
+	done
+	return 1
 }
 
 func_check_frp_and_reboot()

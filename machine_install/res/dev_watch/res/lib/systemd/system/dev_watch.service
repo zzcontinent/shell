@@ -7,7 +7,7 @@ Type=simple
 User=root
 Restart=on-failure
 RestartSec=10s
-ExecStart=/usr/bin/dev_watch -ip wlan0 -frp
+ExecStart=/usr/bin/dev_watch -frp
 
 [Install]
 WantedBy=multi-user.target
