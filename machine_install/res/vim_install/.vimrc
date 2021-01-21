@@ -111,7 +111,7 @@ let g:solarized_termtrans = 1  "terminal background color
 let g:solarized_visibility= "low" " set list
 "let g:solarized_contrast = "high" " set list
 "let g:solarized_italic = 1
-"let g:solarized_hitrail = 1
+let g:solarized_hitrail = 1
 let g:solarized_termcolors=16
 
 "g:solarized_termcolors=   16      |   256
@@ -139,6 +139,8 @@ colorscheme solarized
 "
 "=======================================================ctags==================
 set tags=tags;
+nnoremap <leader>tn :tn <CR>
+nnoremap <leader>tp :tp <CR>
 "set tags+=/usr/tags;
 "set tags+=/opt/hisi-linux/x86-arm/aarch64-himix100-linux/tags;
 "set tags+=/home/cliff/cworkspace/github/linuxsrc/tags;
@@ -277,7 +279,7 @@ let g:ycm_min_num_of_chars_for_completion               = 2 " 输入第 2 个字
 let g:ycm_seed_identifiers_with_syntax                  = 1 " 语法关键字补全
 let g:ycm_complete_in_comments                          = 1 " 在注释中也可以补全
 let g:ycm_complete_in_strings                           = 1 " 在字符串输入中也能补全
-let g:ycm_collect_identifiers_from_tag_files            = 1 " 使用 ctags 生成的 tags 文件
+let g:ycm_collect_identifiers_from_tags_files            = 1 " 使用 ctags 生成的 tags 文件
 let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释和字符串中的文字也会被收入补全
 let g:ycm_error_symbol = '✗'
 let g:ycm_warning_symbol = '⚠'
@@ -368,6 +370,7 @@ nnoremap <C-l> :Autoformat <CR>
 nnoremap <leader>gd :YcmCompleter GoToDefinition <CR>
 nnoremap <leader>gr :YcmCompleter GoToReferences <CR>
 nnoremap <leader>e :YcmDiags <CR>
+nnoremap <leader>ce :lclose <CR>
 
 "imap { {}<ESC>i<CR><ESC>V<O
 "imap { {}<ESC>i<CR><ESC>k2==o
