@@ -15,6 +15,10 @@ vim:
 	-@sudo apt install -y universal-ctags
 	@cd ./res/vim_install/ && ./install.sh
 
+ycmgentemp:
+	@echo "==========================[$@] <= [$^]"
+	@sudo cp ./res/vim_install/ycmgentemplate.sh /usr/bin/
+
 ssh:
 	@echo "==========================[$@] <= [$^]"
 	@sudo apt install -y git
@@ -95,7 +99,7 @@ frp_install:
 	@-[ ${CPU_ARCH} == 'x86_64' ] && cd ./res/frp && tar -zxvf ./frp_0.34.1_linux_amd64.tar.gz
 	@-[ ${CPU_ARCH} == 'x86_64' ] && sudo cp ./res/frp/frp_0.34.1_linux_amd64/frpc /usr/bin
 	@-[ ${CPU_ARCH} == 'x86_64' ] && sudo cp ./res/frp/frp_0.34.1_linux_amd64/frps /usr/bin
-	@-[ ${CPU_ARCH} == 'x86_64' ] && cd ./res/frp && rm -r ./frp_0.34.1_linux_amd64 
+	@-[ ${CPU_ARCH} == 'x86_64' ] && cd ./res/frp && rm -r ./frp_0.34.1_linux_amd64
 	@-[ ${CPU_ARCH} != 'x86_64' ] && cd ./res/frp && tar -zxvf ./frp_0.34.1_linux_arm64.tar.gz
 	@-[ ${CPU_ARCH} != 'x86_64' ] && sudo cp ./res/frp/frp_0.34.1_linux_arm64/frpc /usr/bin
 	@-[ ${CPU_ARCH} != 'x86_64' ] && sudo cp ./res/frp/frp_0.34.1_linux_arm64/frps /usr/bin
