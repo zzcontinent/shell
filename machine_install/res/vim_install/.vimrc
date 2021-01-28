@@ -139,6 +139,7 @@ colorscheme solarized
 "
 "=======================================================ctags==================
 set tags=tags;
+nnoremap <leader>ts :ts <CR>
 nnoremap <leader>tn :tn <CR>
 nnoremap <leader>tp :tp <CR>
 "set tags+=/usr/tags;
