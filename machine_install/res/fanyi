@@ -7,7 +7,7 @@ cat > $CMD <<"EOF"
 LOG="/home/cliff/cworkspace/github/words/fanyi.log"
 ARGS=1
 E_BADARGS=1
-TEM_FILE="/tmp/dict.tmp"
+TEM_FILE="${HOME}/dict.tmp"
 sudo rm $TEM_FILE 2>/dev/null
 example_enable=true
 
@@ -88,7 +88,7 @@ then
 else
 	echo -e "\033[31;1m====>$head\033[0m"
 fi
-[ ! -z "$head" ] && echo -e "`date '+%Y%m%d'` ====>$head" >> $LOG
+#[ ! -z "$head" ] && echo -e "`date '+%Y%m%d'` ====>$head" >> $LOG
 exit 0
 EOF
 
