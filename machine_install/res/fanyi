@@ -8,7 +8,6 @@ LOG="/home/cliff/cworkspace/github/words/fanyi.log"
 ARGS=1
 E_BADARGS=1
 TEM_FILE="${HOME}/dict.tmp"
-sudo rm $TEM_FILE 2>/dev/null
 example_enable=true
 
 if [ $# -lt "$ARGS" ]

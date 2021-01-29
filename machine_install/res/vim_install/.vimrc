@@ -65,10 +65,12 @@ let g:ycm_confirm_extra_conf = 0
 
 
 "=======================================================style==================
-set statusline=[%F]%y%r%m%*%=[%l/%L,%c,%n][%p%%] "显示文件名：总行数，总的字符数
+"set statusline=[%F]%y%r%m%*%=[%l/%L,%c,%n][%p%%] "显示文件名：总行数，总的字符数
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}][TYPE=%Y][POS=%l/%L,%v][%p%%][%{strftime(\"%m.%d-\%H:%M\")}]
 set ls=2
 set nu
-set fdm=indent
+"set fdm=indent
+set fdm=syntax
 "set ts=4
 set cursorcolumn
 set cursorline
@@ -88,7 +90,7 @@ set tabstop=8
 set softtabstop=8
 set shiftwidth=8
 set noexpandtab
-set foldlevel=1
+set foldlevel=0
 set nofoldenable
 set scrolloff=999
 "set sidescrolloff=999
@@ -276,7 +278,7 @@ let g:ycm_extra_conf_vim_data = [
 
 "==============>ycm config
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_min_num_of_chars_for_completion               = 2 " 输入第 2 个字符开始补全
+let g:ycm_min_num_of_chars_for_completion               = 1 " 输入第 2 个字符开始补全
 let g:ycm_seed_identifiers_with_syntax                  = 1 " 语法关键字补全
 let g:ycm_complete_in_comments                          = 1 " 在注释中也可以补全
 let g:ycm_complete_in_strings                           = 1 " 在字符串输入中也能补全
@@ -316,7 +318,7 @@ let Tlist_Show_One_File           = 1    " 只显示当前文件的tags
 let Tlist_GainFocus_On_ToggleOpen = 1    " 打开 Tlist 窗口时，光标跳到 Tlist 窗口
 let Tlist_Exit_OnlyWindow         = 1    " 如果 Tlist 窗口是最后一个窗口则退出 Vim
 let Tlist_Use_Left_Window         = 1    " 在左侧窗口中显示
-let Tlist_File_Fold_Auto_Close    = 1    " 自动折叠
+let Tlist_File_Fold_Auto_Close    = 0    " 自动折叠
 let Tlist_Auto_Update             = 1    " 自动更新
 " <leader>tl 打开 Tlist 窗口，在左侧栏显示
 nnoremap <leader>tl :TlistToggle <CR>
@@ -373,6 +375,8 @@ nnoremap <leader>gr :YcmCompleter GoToReferences <CR>
 nnoremap <leader>e :YcmDiags <CR>
 nnoremap <leader>ce :lclose <CR>
 
+"beautify trail
+nnoremap <leader>tr :%s/ *$//g<CR>
 "imap { {}<ESC>i<CR><ESC>V<O
 "imap { {}<ESC>i<CR><ESC>k2==o
 "imap { {}<ESC>i
