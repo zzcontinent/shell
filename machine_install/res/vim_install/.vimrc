@@ -53,12 +53,6 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 "
 " 查阅 :h vundle 获取更多细节和wiki以及FAQ
 " 将你自己对非插件片段放在这行之后
-let g:ycm_semantic_triggers =  {
-			\ 'asm,c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-			\ 'cs,lua,javascript': ['re!\w{2}'],
-			\ }
-"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf = 0
 "highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
 "highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
 
@@ -277,7 +271,12 @@ let g:ycm_extra_conf_vim_data = [
  \ ]
 
 "==============>ycm config
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_semantic_triggers =  {
+			\ 'asm,c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+			\ 'cs,lua,javascript': ['re!\w{2}'],
+			\ }
+let g:ycm_confirm_extra_conf = 0
 let g:ycm_min_num_of_chars_for_completion               = 1 " 输入第 2 个字符开始补全
 let g:ycm_seed_identifiers_with_syntax                  = 1 " 语法关键字补全
 let g:ycm_complete_in_comments                          = 1 " 在注释中也可以补全
