@@ -43,15 +43,22 @@ def PythonSysPath( **kwargs ):
 EOF
 
 dirs=$(find * -type d -exec echo `pwd`/{} \;)
-template_flags=''
-template_flags_python=''
+cnt=`echo $dirs | wc -w`
+cnt_cur=1
 for dir_one in $dirs
 do
-	template_flags+="\'-I\',\n\'${dir_one}\',\n"
-	template_flags_python+="p\.join\(\'${dir_one}\'\),\n"
+	printf "\r [$cnt_cur/$cnt] $dir_one"
+	sed -i "36a\p\.join\(\'${dir_one}\'\)," .ycm_extra_conf.py
+	cnt_cur=`expr $cnt_cur + 1`
 done
-echo -e 'flags ======>\n' ${template_flags}
-echo -e 'python flags ======>\n' ${template_flags_python}
-eval sed -i "/-Werror/a\${template_flags}" .ycm_extra_conf.py
-eval sed -i "/DIR_OF_THIS_SCRIPT\ \)/a\${template_flags_python}" .ycm_extra_conf.py
+echo
+
+cnt_cur=1
+for dir_one in $dirs
+do
+	printf "\r [$cnt_cur/$cnt] $dir_one"
+	sed -i "13a\\'-I\',\n\'${dir_one}\'," .ycm_extra_conf.py
+	cnt_cur=`expr $cnt_cur + 1`
+done
+echo
 
