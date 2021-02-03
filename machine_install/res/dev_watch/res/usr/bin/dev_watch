@@ -4,6 +4,7 @@ IN_CONF_NET_DEV=wlan0
 IN_bIP=""
 IN_bFRP=""
 REBOOT_WAIT=30
+CHECK_PERIOD=300
 
 help()
 {
@@ -122,10 +123,10 @@ func_main()
 	func_input $@
 	while true
 	do
+		sleep ${CHECK_PERIOD}
 		date "+%Y-%m-%d %H:%M:%S"
 		[ ! -z $IN_bIP ] && func_check_ip_and_reboot y
 		[ ! -z $IN_bFRP ] && func_check_frp_and_reboot y
-		sleep 300
 	done
 }
 
