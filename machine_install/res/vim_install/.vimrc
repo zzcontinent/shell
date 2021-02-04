@@ -338,12 +338,15 @@ nnoremap <leader>tl :TlistToggle <CR>
 "nnoremap <F12> :!ctags --languages=Asm,c,c++,java,go,Make,sh -R . <CR>"
 "nnoremap <F12> :!ctags -R --languages=Asm,c,c++,java,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf . <CR>
 nnoremap <F12> :!ctags -R --languages=Asm,c,c++,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf `pwd` <CR>
+nnoremap <leader>ct :!ctags -R --languages=Asm,c,c++,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf `pwd` <CR>
 "nnoremap <F12> :!ctags -R --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf . <CR>
 "nnoremap <silent> <F8> :TlistToggle<CR>
 nnoremap <silent> <F8> :TagbarToggle<CR>
+nnoremap <leader>tb :TagbarToggle<CR>
 "nnoremap <silent> <F7> :WMToggle <CR>
 "nnoremap <silent> <F7> :call ToggleNetrw() <CR>
 nnoremap <silent> <F7> :NERDTreeToggle <CR>
+nnoremap <leader>nt :NERDTreeToggle <CR>
 
 "nnoremap <C-k> :bp <CR>
 "nnoremap <C-j> :bn <CR>
