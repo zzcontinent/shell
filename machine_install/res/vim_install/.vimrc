@@ -378,7 +378,8 @@ nnoremap <leader>e :YcmDiags <CR>
 nnoremap <leader>ce :lclose <CR>
 
 "beautify trail
-nnoremap <leader>tr :%s/ *$//g<CR>
+nnoremap <leader>tr / \+$<CR>
+nnoremap <leader>td :%s/ \+$//g<CR>
 "imap { {}<ESC>i<CR><ESC>V<O
 "imap { {}<ESC>i<CR><ESC>k2==o
 "imap { {}<ESC>i
