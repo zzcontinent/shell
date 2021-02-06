@@ -1,0 +1,13 @@
+[Unit]
+Description=led 7219 8x8x4
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Restart=on-failure
+RestartSec=10s
+ExecStart=/usr/bin/python3 /usr/bin/clock.py
+
+[Install]
+WantedBy=multi-user.target

@@ -53,7 +53,7 @@ terminator:
 	@echo "==========================[$@] <= [$^]"
 	@sudo apt install -y terminator
 	@sudo mkdir -p ~/.config/terminator
-	@sudo cp ./res/term_config/configt ~/.config/terminator/
+	@sudo cp ./res/term_config/config ~/.config/terminator/
 language:
 	@echo "==========================[$@] <= [$^]"
 	@sudo apt install -y fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei fonts-arphic-ukai fonts-arphic-uming
@@ -140,6 +140,10 @@ kill.sh:
 dev_watch:
 	@echo "==========================[$@] <= [$^]"
 	@cd ./res/dev_watch && sudo ./install.sh
+
+led7219:
+	@echo "==========================[$@] <= [$^]"
+	@cd ./res/led7219 && sudo ./install.sh
 
 #==============================================
 PHONY += all
