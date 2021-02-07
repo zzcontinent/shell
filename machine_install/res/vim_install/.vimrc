@@ -38,6 +38,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 "taglist
 "Plugin 'vim-scripts/taglist.vim'
+"vim fold
+Plugin 'pseewald/vim-anyfold'
 
 " 你的所有插件需要在下面这行之前
 call vundle#end()            " 必须
@@ -321,6 +323,12 @@ let Tlist_File_Fold_Auto_Close    = 0    " 自动折叠
 let Tlist_Auto_Update             = 1    " 自动更新
 " <leader>tl 打开 Tlist 窗口，在左侧栏显示
 nnoremap <leader>tl :TlistToggle <CR>
+
+"==============>vim-anyfold config
+autocmd bufenter * AnyFoldActivate
+let g:anyfold_fold_comments=1
+set foldlevel=0
+hi folded term=None cterm=None
 
 "
 "=======================================================plugins==================
