@@ -388,6 +388,7 @@ nnoremap <leader>ce :lclose <CR>
 "beautify trail
 nnoremap <leader>tr / \+$<CR>
 nnoremap <leader>td :%s/ \+$//g<CR>
+nnoremap <leader>q :q! <CR>
 "imap { {}<ESC>i<CR><ESC>V<O
 "imap { {}<ESC>i<CR><ESC>k2==o
 "imap { {}<ESC>i
