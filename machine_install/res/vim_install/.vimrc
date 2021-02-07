@@ -217,10 +217,10 @@ let NERDTreeMinimalUI=0
 "autocmd vimenter * NERDTree
 " 当打开 VIM，没有指定文件时和打开一个目录时，打开 NERDTree
 "autocmd StdinReadPre * let s:std_in = 1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 " 关闭 NERDTree，当没有文件打开的时候
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
 
 " <leader>nt 打开 nerdtree 窗口，在左侧栏显示
 "map <leader>nt :NERDTreeToggle<CR>
@@ -298,7 +298,7 @@ let g:ycm_warning_symbol = '⚠'
 
 let g:tagbar_ctags_bin = 'ctags' " tagbar 依赖 ctags 插件
 let g:tagbar_width     = 30      " 设置 tagbar 的宽度为 30 列，默认 40 列
-let g:tagbar_autofocus = 1       " 打开 tagbar 时光标在 tagbar 页面内，默认在 vim 打开的文件内
+"let g:tagbar_autofocus = 1       " 打开 tagbar 时光标在 tagbar 页面内，默认在 vim 打开的文件内
 "let g:tagbar_left      = 1       " 让 tagbar 在页面左侧显示，默认右边
 "let g:tagbar_position = 'leftabove'
 let g:tagbar_sort      = 0       " 标签不排序，默认排序
@@ -309,7 +309,7 @@ let g:tagbar_expand = 1
 
 "autocmd VimEnter * nested :call tagbar#autoopen(1)
 "autocmd BufEnter * nested :silent TagbarOpen
-autocmd FileType vim,make,sh,go,asm,python,js,c,cpp nested :TagbarOpen
+"autocmd FileType vim,make,sh,go,asm,python,js,c,cpp nested :TagbarOpen
 
 " <leader>tb 打开 tagbar 窗口，在左侧栏显示
 
