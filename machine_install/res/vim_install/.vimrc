@@ -389,7 +389,7 @@ nnoremap <leader>ce :lclose <CR>
 "beautify trail
 nnoremap <leader>tr / \+$<CR>
 nnoremap <leader>td :%s/ \+$//g<CR>
-nnoremap <leader>q :wq<CR>
+nnoremap <leader>q :q<CR>
 nnoremap <leader>w :w<CR>
 "tab -> 4space
 nnoremap <leader>hr :%s/\t/    /g<CR>
