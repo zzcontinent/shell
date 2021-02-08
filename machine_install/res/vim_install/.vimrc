@@ -68,8 +68,8 @@ set nu
 "set fdm=indent
 set fdm=syntax
 "set ts=4
-set cursorcolumn
-set cursorline
+"set cursorcolumn
+"set cursorline
 "highlight CursorLine   cterm=NONE ctermbg=darkgreen guibg=NONE guifg=NONE
 "highlight CursorLine   cterm=NONE ctermbg=darkmagenta guibg=NONE guifg=NONE
 "highlight CursorColumn cterm=NONE ctermbg=darkmagenta guibg=NONE guifg=NONE
@@ -111,7 +111,8 @@ let g:solarized_visibility= "low" " set list
 "let g:solarized_italic = 1
 let g:solarized_hitrail = 1
 let g:solarized_termcolors=16
-
+"let g:solarized_bold      =   1 
+"
 "g:solarized_termcolors=   16      |   256
 "g:solarized_termtrans =   0       |   1
 "g:solarized_degrade   =   0       |   1
