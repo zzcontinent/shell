@@ -8,7 +8,7 @@ mkdir -p ./res
 #unzip bundle taghighlight_r2 vim-autocomplpop
 unzip ./taghighlight_r2.1.4.zip -d ./res
 unzip ./vim-autocomplpop.zip -d ./res
-tar -zxvf ./bundle.tgz -C ./res
+cp -a ./bundle ./res
 
 #unzip YouCompleteMe into bundle
 sudo rm ./YouCompleteMe.tgz
