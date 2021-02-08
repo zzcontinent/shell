@@ -144,6 +144,10 @@ dev_watch:
 led7219:
 	@echo "==========================[$@] <= [$^]"
 	@cd ./res/led7219 && sudo ./install.sh
+rtmp:
+	@echo "==========================[$@] <= [$^]"
+	@cd ./res/rtmp && cp ./res/rtmp/push_rtmp* /usr/local/bin
+	#@cd ./res/rtmp/nginx/ && ./install
 
 #==============================================
 PHONY += all
