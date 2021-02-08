@@ -395,8 +395,8 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>hr :%s/\t/    /g<CR>
 "imap { {}<ESC>i<CR><ESC>V<O
 "imap { {}<ESC>i<CR><ESC>k2==o
-"imap { {}<ESC>i
-"imap ( ()<ESC>i
+imap { {}<ESC>i
+imap ( ()<ESC>i
 "=======================================================map==================
 
 
