@@ -1,6 +1,6 @@
 DATE_VERSION:=`date "+%y.%m.%d"`
 CPU_ARCH:=`lscpu  | grep Arch| awk '{print $$2}'`
-USER=cliff
+CONF_USER=cliff
 
 all:
 	@echo "==========================[$@] <= [$^]"
@@ -15,9 +15,12 @@ all:
 	make net-speed
 	make rsync
 	make ycmgentemp
-	make vim
 	make virtualenv
 	make virtualbox
+	make cifs-utils
+	make compiles
+	make shell
+	make vim
 	
 
 sudoers:
@@ -27,12 +30,16 @@ sudoers:
 prepare:
 	@echo "==========================[$@] <= [$^]"
 	@sudo apt update
-vim:
+cmake:
+	@echo "==========================[$@] <= [$^]"
+	@sudo apt install -y cmake 
+
+vim: vim-gtk cmake
 	@echo "==========================[$@] <= [$^]"
 	@sudo apt install -y vim
 	-@sudo apt install -y ctags
 	-@sudo apt install -y universal-ctags
-	@cd ./res/vim_install/ && ./install.sh
+	-@if [ ! -d ~/vim_install ] ;then  cd ./res/vim_install/ && ./install.sh; fi
 
 ycmgentemp:
 	@echo "==========================[$@] <= [$^]"
@@ -72,9 +79,9 @@ terminator:
 	@echo "==========================[$@] <= [$^]"
 	@sudo apt install -y terminator
 	@sudo mkdir -p /root/.config/terminator
-	@sudo mkdir -p /${USER}/.config/terminator
+	@sudo mkdir -p /${CONF_USER}/.config/terminator
 	@sudo cp ./res/term_config/config /root/.config/terminator/
-	@sudo cp ./res/term_config/config /${USER}/.config/terminator/
+	@sudo cp ./res/term_config/config /${CONF_USER}/.config/terminator/
 language:
 	@echo "==========================[$@] <= [$^]"
 	@sudo apt install -y fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei fonts-arphic-ukai fonts-arphic-uming
@@ -84,6 +91,7 @@ vim-gtk:
 	@sudo apt install -y vim-gtk
 virtualenv:
 	@echo "==========================[$@] <= [$^]"
+	@sudo apt install python3-pip
 	@sudo pip install virtualenv
 	@echo 'virtualenv env38'
 	@echo 'virtualenv -p /usr/local/bin/python3.8 env38'
@@ -170,6 +178,18 @@ rtmp:
 	@echo "==========================[$@] <= [$^]"
 	@cd ./res/rtmp && cp ./res/rtmp/push_rtmp* /usr/local/bin
 	#@cd ./res/rtmp/nginx/ && ./install
+compiles:
+	@echo "==========================[$@] <= [$^]"
+	@sudo apt install gcc g++ -y
+	@sudo apt install qemu-system-x86 -y
+	@sudo apt install golang
+shell:
+	@echo "==========================[$@] <= [$^]"
+	@cp -a ../../shell ~/
+chromium-browser:
+	@echo "==========================[$@] <= [$^]"
+	@sudo apt install chromium-browser
+
 
 #==============================================
 PHONY += all
