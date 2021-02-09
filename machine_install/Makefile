@@ -1,9 +1,28 @@
 DATE_VERSION:=`date "+%y.%m.%d"`
 CPU_ARCH:=`lscpu  | grep Arch| awk '{print $$2}'`
+USER=cliff
 
 all:
 	@echo "==========================[$@] <= [$^]"
 	@echo ${DATE_VERSION}
+	make sudoers
+	make prepare
+	make netspeed.sh
+	make okular
+	make ssh
+	make fanyi
+	make terminator
+	make net-speed
+	make rsync
+	make ycmgentemp
+	make vim
+	make virtualenv
+	make virtualbox
+	
+
+sudoers:
+	@echo "==========================[$@] <= [$^]"
+	@echo '%sudo ALL=(ALL:ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/`whoami` 
 
 prepare:
 	@echo "==========================[$@] <= [$^]"
@@ -52,8 +71,10 @@ indicator-sysmonitor:
 terminator:
 	@echo "==========================[$@] <= [$^]"
 	@sudo apt install -y terminator
-	@sudo mkdir -p ~/.config/terminator
-	@sudo cp ./res/term_config/config ~/.config/terminator/
+	@sudo mkdir -p /root/.config/terminator
+	@sudo mkdir -p /${USER}/.config/terminator
+	@sudo cp ./res/term_config/config /root/.config/terminator/
+	@sudo cp ./res/term_config/config /${USER}/.config/terminator/
 language:
 	@echo "==========================[$@] <= [$^]"
 	@sudo apt install -y fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei fonts-arphic-ukai fonts-arphic-uming
@@ -86,6 +107,7 @@ debs-backup:
 	@./res/backup_debs.sh
 net-speed:
 	@echo "==========================[$@] <= [$^]"
+	@sudo apt install gettext -y
 	@make -C ./res/NetSpeed install
 	@make -C ./res/NetSpeed enable
 netspeed.sh:
