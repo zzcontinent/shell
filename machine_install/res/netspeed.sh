@@ -1,5 +1,6 @@
 #!/bin/bash
-net_devs=`ifconfig -s | awk '{i++; if(i>1){print $1}}' | awk '{print $1}'`
+#net_devs=`ifconfig -s | awk '{i++; if(i>1){print $1}}' | awk '{print $1}'`
+net_devs=`ifconfig | grep flags | awk -F':' '{print $1}'`
 #net_devs=`cat /proc/net/dev | awk '{i++; if(i>2){print $1}}' | sed 's/[:]*$//g'`
 speed_notify=1024
 PERIOD=2
