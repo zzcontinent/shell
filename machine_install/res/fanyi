@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CMD=/usr/bin/yd
+sudo apt install -y curl
 
 cat > $CMD <<"EOF"
 #!/bin/bash
