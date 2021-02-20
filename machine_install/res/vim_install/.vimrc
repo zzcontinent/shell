@@ -40,6 +40,8 @@ Plugin 'majutsushi/tagbar'
 "Plugin 'vim-scripts/taglist.vim'
 "vim fold
 Plugin 'pseewald/vim-anyfold'
+"space-vim-dark
+Plugin 'liuchengxu/space-vim-dark'
 
 " 你的所有插件需要在下面这行之前
 call vundle#end()            " 必须
@@ -78,7 +80,6 @@ set cursorline
 "highlight CursorColumn cterm=NONE ctermbg=darkmagenta guibg=NONE guifg=NONE
 highlight clear Folded
 highlight clear FoldedColumn
-highlight ColorColumn ctermbg=red
 
 set hlsearch
 set title
@@ -129,7 +130,22 @@ if has('gui_running')
 else
 	set background=dark
 endif
-colorscheme solarized
+"colorscheme solarized
+
+
+
+"==============>space-vim-dark config
+colorscheme space-vim-dark
+"hi Comment guifg=#5C6370 ctermfg=59
+hi Comment cterm=italic
+hi Normal     ctermbg=NONE guibg=NONE
+hi LineNr     ctermbg=NONE guibg=NONE
+hi SignColumn ctermbg=NONE guibg=NONE
+set termguicolors
+
+
+
+
 "=======================================================style==================
 "
 "
