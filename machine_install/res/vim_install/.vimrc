@@ -42,6 +42,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'pseewald/vim-anyfold'
 "space-vim-dark
 Plugin 'liuchengxu/space-vim-dark'
+" tabline 
+Plugin 'bling/vim-airline'
 
 " 你的所有插件需要在下面这行之前
 call vundle#end()            " 必须
