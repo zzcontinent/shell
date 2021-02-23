@@ -427,6 +427,7 @@ imap [ []<ESC>i
 "make cflow
 nnoremap <leader>cf :!cflow -T *.c<CR>
 "close previewpopup window
+set previewpopup=height:3,width:100
 nnoremap <leader>cp :pc <CR>
 "=======================================================map==================
 
