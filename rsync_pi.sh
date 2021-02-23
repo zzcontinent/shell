@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-SYNC_PATH="/home/cliff/Projects /home/cliff/dgworkspace /home/cliff/data /root/qemu-ubuntu-aarch64 /home/cliff/shell"
+SYNC_PATH="/home/cliff/Projects /home/cliff/dgworkspace /home/cliff/data /home/cliff/data/dg /root/qemu-ubuntu-aarch64 /home/cliff/shell /home/cliff/data/wiki"
 REMOTE_SSH="pi_235:/home/backup/y7000"
 LOCAL_SSH="pi_local:/home/backup/y7000"
 EXCLUDE="/home/cliff/data/dgftp /home/cliff/data/dgnfs /home/cliff/data/tftpd"
