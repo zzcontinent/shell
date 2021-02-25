@@ -414,8 +414,8 @@ nnoremap <leader>ce :lclose <CR>
 "beautify trail
 nnoremap <leader>tr / \+$<CR>
 nnoremap <leader>td :%s/ \+$//g<CR>
-nnoremap <leader>q :q<CR>
-nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q!<CR>
+nnoremap <leader>w :w!<CR>
 "tab -> 4space
 nnoremap <leader>hr :%s/\t/    /g<CR>
 "imap { {}<ESC>i<CR><ESC>V<O
@@ -425,7 +425,7 @@ imap ( ()<ESC>i
 imap [ []<ESC>i
 
 "make cflow
-nnoremap <leader>cf :!cflow -T *.c<CR>
+nnoremap <leader>cf :!cflow -T *.c \| less -N -r -I<CR>
 "close previewpopup window
 set previewpopup=height:3,width:100
 nnoremap <leader>cp :pc <CR>
