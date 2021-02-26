@@ -1,0 +1,28 @@
+SYNC_PATH := /home/cliff/shell /home/cliff/data/wiki /home/cliff/dgworkspace /home/cliff/Projects /home/cliff/data/dg /home/cliff/data/software_pkg
+REMOTE_SSH := pi_235:/home/backup/y7000
+LOCAL_SSH := pi_local:/home/backup/y7000
+EXCLUDE := /home/cliff/data/dgftp /home/cliff/data/dgnfs /home/cliff/data/tftpd
+LOG_FILE := /home/cliff/tmp/`date "+%Y-%m-%d"`
+retry_cnt := 0
+RETRY_MAX := 5
+
+# (target)
+#sudo rsync -azRPvhl --delete --exclude={"${EXCLUDE}"} $(1) ${LOCAL_SSH} 2>&1 >> ${LOG_FILE}
+define add_target
+$(1):
+	@echo +++ $$@:$$^+++
+	@echo "$$@ ==> $${REMOTE_SSH} " | tee $${LOG_FILE}
+	@sudo rsync -azRPvhl --delete $$(@) $${REMOTE_SSH} 2>&1 | tee $${LOG_FILE}
+endef
+
+all: clean $(SYNC_PATH)
+	@echo +++ $@:$^+++
+	@echo done!
+
+clean:
+	@echo +++ $@:$^+++
+	@echo -n > $(LOG_FILE)
+
+$(foreach t,$(SYNC_PATH),$(eval $(call add_target,$(t))))
+
+.PHONY: clean $(SYNC_PATH)

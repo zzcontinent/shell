@@ -15,17 +15,17 @@ while [ $retry_cnt -lt $RETRY_MAX ]
 do
 	echo -e "\ntry `expr $retry_cnt + 1` time--------------------------------------------------------------------\n" >> $LOG_FILE
 	if [ x"$1" == x"local" ];then
-		echo "+++ $SYNC_PATH ==> $LOCAL_SSH +++"
+		echo "+++ $SYNC_PATH ==> $LOCAL_SSH +++" >> $LOG_FILE
 		for x in $SYNC_PATH
 		do
-			echo "+++ $x ==> $LOCAL_SSH +++"
+			echo "+++ $x ==> $LOCAL_SSH +++" >> $LOG_FILE
 			sudo rsync -azRPvhl --delete --exclude={"${EXCLUDE}"} $x $LOCAL_SSH 2>&1 >> $LOG_FILE
 		done
 	else
-		echo "+++ $SYNC_PATH ==> $REMOTE_SSH +++"
+		echo "+++ $SYNC_PATH ==> $REMOTE_SSH +++" >> $LOG_FILE
 		for x in $SYNC_PATH
 		do
-			echo "+++ $x ==> $REMOTE_SSH +++"
+			echo "+++ $x ==> $REMOTE_SSH +++" >> $LOG_FILE
 			sudo rsync -azRPvhl --delete --exclude={"${EXCLUDE}"} $x $REMOTE_SSH 2>&1 >> $LOG_FILE
 		done
 	fi
