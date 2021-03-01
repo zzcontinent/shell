@@ -420,9 +420,10 @@ nnoremap <leader>w :w!<CR>
 nnoremap <leader>hr :%s/\t/    /g<CR>
 "imap { {}<ESC>i<CR><ESC>V<O
 "imap { {}<ESC>i<CR><ESC>k2==o
-imap { {}<ESC>i
-imap ( ()<ESC>i
-imap [ []<ESC>i
+inoremap { {}<ESC>i
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap " ""<ESC>i
 
 "make cflow
 nnoremap <leader>cf :!cflow -T *.c \| less -N -r -I<CR>
