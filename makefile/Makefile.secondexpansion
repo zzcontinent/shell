@@ -1,0 +1,16 @@
+.SECONDEXPANSION:
+AVAR = top
+all: one two
+one: $(AVAR)
+two: $$(AVAR)
+top:
+	@echo $@
+bottom:
+	@echo $@
+AVAR = bottom
+
+
+main_srcs := main.c try.c test.c
+lib_srcs := lib.c api.c
+.SECONDEXPANSION:
+main lib: $$(patsubst %.c,%.o,$$($$@_srcs))
