@@ -11,11 +11,13 @@ RETRY_MAX := 5
 define add_target
 $(1):
 	@echo +++ $$@:$$^+++
-	@echo "$$@ ==> $${REMOTE_SSH} " | tee $${LOG_FILE}
-	@sudo rsync -azRPvhl --delete $$(@) $${REMOTE_SSH} 2>&1 | tee $${LOG_FILE}
+	@echo "$$@ ==> $${REMOTE_SSH} " | tee -a $${LOG_FILE}
+	@echo $(shell date "+%Y-%m-%d %H:%M:%S") | tee -a $${LOG_FILE}
+	@sudo rsync -azRPvhl --delete $$(@) $${REMOTE_SSH} 2>&1 | tee -a $${LOG_FILE}
 endef
 
 all: clean $(SYNC_PATH)
+	@echo $(shell date "+%Y-%m-%d %H:%M:%S") | tee -a $(LOG_FILE)
 	@echo +++ $@:$^+++
 	@echo done!
 
