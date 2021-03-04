@@ -192,6 +192,10 @@ shell:
 chromium-browser:
 	@echo "==========================[$@] <= [$^]"
 	sudo apt install chromium-browser
+bashrc:
+	@echo "==========================[$@] <= [$^]"
+	cp ./res/bash/.bashrc ~
+	cp ./res/bash/bash.bashrc /etc/
 
 
 #==============================================
