@@ -105,7 +105,7 @@ syntax on
 "updatetime for auto-highlight.vim
 set ut=20
 "line wrap
-set nowrap
+"set nowrap
 
 "==============>vim-colors-solarized config
 let g:solarized_termtrans = 1  "terminal background color
