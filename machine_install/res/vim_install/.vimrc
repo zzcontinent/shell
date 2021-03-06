@@ -106,6 +106,7 @@ syntax on
 set ut=20
 "line wrap
 "set nowrap
+set wrap
 
 "==============>vim-colors-solarized config
 let g:solarized_termtrans = 1  "terminal background color
