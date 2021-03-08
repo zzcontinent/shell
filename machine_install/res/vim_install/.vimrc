@@ -181,6 +181,7 @@ nnoremap <leader>tp :tp <CR>
 "autocmd FileType go set omnifunc=ccomplete#Complete
 
 "set completeopt=menu,longest
+set completeopt=menuone
 "let OmniCpp_MayCompleteDot=1 "打开.操作符
 "let OmniCpp_MayCompleteArrow=1 "打开 -> 操作符
 "let OmniCpp_MayCompleteScope=1 "打开 :: 操作符
