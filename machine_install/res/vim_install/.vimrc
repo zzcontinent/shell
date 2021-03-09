@@ -93,7 +93,7 @@ set foldlevel=0
 set nofoldenable
 set scrolloff=999
 "set sidescrolloff=999
-"set list lcs=tab:\¦\ 
+set list lcs=tab:\¦\ 
 hi Folded ctermbg=0
 set ignorecase
 hi MatchParen ctermbg=lightgreen ctermfg=black
