@@ -181,7 +181,7 @@ nnoremap <leader>tp :tp <CR>
 "autocmd FileType go set omnifunc=ccomplete#Complete
 
 "set completeopt=menu,longest
-set completeopt=menuone
+"set completeopt=menuone
 "let OmniCpp_MayCompleteDot=1 "打开.操作符
 "let OmniCpp_MayCompleteArrow=1 "打开 -> 操作符
 "let OmniCpp_MayCompleteScope=1 "打开 :: 操作符
@@ -322,15 +322,15 @@ let g:ycm_warning_symbol = '⚠'
 "==============>tagbar config
 
 let g:tagbar_ctags_bin = 'ctags' " tagbar 依赖 ctags 插件
-let g:tagbar_width     = 30      " 设置 tagbar 的宽度为 30 列，默认 40 列
-"let g:tagbar_autofocus = 1       " 打开 tagbar 时光标在 tagbar 页面内，默认在 vim 打开的文件内
+"let g:tagbar_width     = 30      " 设置 tagbar 的宽度为 30 列，默认 40 列
+let g:tagbar_autofocus = 2       " 打开 tagbar 时光标在 tagbar 页面内，默认在 vim 打开的文件内
 "let g:tagbar_left      = 1       " 让 tagbar 在页面左侧显示，默认右边
 "let g:tagbar_position = 'leftabove'
 let g:tagbar_sort      = 0       " 标签不排序，默认排序
 let g:tagbar_compact = 1
 let g:tagbar_autopreview = 0
-let g:tagbar_show_tag_linenumbers=2
-let g:tagbar_expand = 1
+"let g:tagbar_show_tag_linenumbers=2
+"let g:tagbar_expand = 1
 
 "autocmd VimEnter * nested :call tagbar#autoopen(1)
 "autocmd BufEnter * nested :silent TagbarOpen
@@ -430,7 +430,8 @@ inoremap " ""<ESC>i
 "make cflow
 nnoremap <leader>cf :!cflow -T *.c \| less -N -r -I<CR>
 "close previewpopup window
-set previewpopup=height:5,width:100
+"set previewpopup=height:5,width:100
+set previewheight=5
 nnoremap <leader>cp :pc <CR>
 "=======================================================map==================
 
