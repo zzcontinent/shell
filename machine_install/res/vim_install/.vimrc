@@ -431,7 +431,7 @@ inoremap " ""<ESC>i
 nnoremap <leader>cf :!cflow -T *.c \| less -N -r -I<CR>
 "close previewpopup window
 "set previewpopup=height:5,width:100
-set previewheight=5
+set previewheight=10
 nnoremap <leader>cp :pc <CR>
 "=======================================================map==================
 
