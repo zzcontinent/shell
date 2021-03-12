@@ -322,14 +322,14 @@ let g:ycm_warning_symbol = '⚠'
 "==============>tagbar config
 
 let g:tagbar_ctags_bin = 'ctags' " tagbar 依赖 ctags 插件
-"let g:tagbar_width     = 30      " 设置 tagbar 的宽度为 30 列，默认 40 列
+let g:tagbar_width     = 30      " 设置 tagbar 的宽度为 30 列，默认 40 列
 let g:tagbar_autofocus = 2       " 打开 tagbar 时光标在 tagbar 页面内，默认在 vim 打开的文件内
 "let g:tagbar_left      = 1       " 让 tagbar 在页面左侧显示，默认右边
 "let g:tagbar_position = 'leftabove'
 let g:tagbar_sort      = 0       " 标签不排序，默认排序
 let g:tagbar_compact = 1
 let g:tagbar_autopreview = 0
-"let g:tagbar_show_tag_linenumbers=2
+let g:tagbar_show_tag_linenumbers=2
 "let g:tagbar_expand = 1
 
 "autocmd VimEnter * nested :call tagbar#autoopen(1)
