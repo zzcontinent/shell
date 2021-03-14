@@ -355,6 +355,10 @@ let g:anyfold_fold_comments=1
 set foldlevel=0
 hi folded term=None cterm=None
 
+"==============>vim-airline config
+let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
 "
 "=======================================================plugins==================
 "
