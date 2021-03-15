@@ -231,6 +231,8 @@ set encoding=utf-8
 "==============>newdtree config
 let NERDTreeHighlightCursorline = 0       " 高亮当前行
 let NERDTreeMinimalUI=0
+let NERDTreeMapJumpNextSibling=''
+let NERDTreeMapJumpPrevSibling=''
 "let NERDTreeShowLineNumbers     = 1       " 显示行号
 " 忽略列表中的文件
 "let NERDTreeIgnore = [ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.egg$', '^\.git$', '^\.repo$', '^\.svn$', '^\.hg$' ]
