@@ -1,15 +1,29 @@
 [global_config]
   borderless = True
+  scroll_tabbar = True
+  title_transmit_fg_color = "#000000"
+  title_transmit_bg_color = "#0076c9"
+  title_receive_fg_color = "#000000"
+  title_receive_bg_color = "#888a85"
+  title_inactive_bg_color = "#888a85"
+  inactive_color_offset = 1.0
+  suppress_multiple_term_dialog = True
+  title_use_system_font = False
+  title_font = Monospace 9
+  smart_copy = False
 [keybindings]
 [profiles]
   [[default]]
     icon_bell = False
-    background_darkness = 0.81
+    background_color = "#282828"
+    background_darkness = 0.8
     background_type = transparent
     cursor_color = "#aaaaaa"
-    font = Ubuntu Mono 15
-    show_titlebar = False
+    font = Monospace 11
+    foreground_color = "#ebdbb2"
     scrollbar_position = hidden
+    scrollback_lines = 10000
+    palette = "#282828:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
     use_system_font = False
 [layouts]
   [[default]]
@@ -19,4 +33,5 @@
     [[[child1]]]
       type = Terminal
       parent = window0
+      profile = default
 [plugins]
