@@ -196,6 +196,9 @@ bashrc:
 	@echo "==========================[$@] <= [$^]"
 	cp ./res/bash/.bashrc ~
 	cp ./res/bash/bash.bashrc /etc/
+ssh_analysis:
+	@echo "==========================[$@] <= [$^]"
+	cp ./res/ssh_analysis /usr/local/bin
 
 
 #==============================================

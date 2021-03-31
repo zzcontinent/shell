@@ -1,0 +1,4 @@
+#!/bin/bash
+grep "Failed password for root" /var/log/auth.log | awk '{print $11}' | sort | uniq -c | sort -nr | less -N
+grep "Failed password for root" /var/log/auth.log | less -N
+
