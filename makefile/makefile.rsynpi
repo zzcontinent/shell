@@ -13,7 +13,7 @@ $(1):
 	@echo +++ $$@:$$^+++
 	@echo "$$@ ==> $${REMOTE_SSH} " | tee -a $${LOG_FILE}
 	@echo $(shell date "+%Y-%m-%d %H:%M:%S") | tee -a $${LOG_FILE}
-	@sudo rsync -azRPvhl --delete $$(@) $${REMOTE_SSH} 2>&1 | tee -a $${LOG_FILE}
+	@sudo rsync -azRPvhl --delete $$(@) $${REMOTE_SSH} --log-file=$${LOG_FILE}
 endef
 
 all: clean $(SYNC_PATH)
