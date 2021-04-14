@@ -105,6 +105,11 @@ windows-font:
 	sudo mkfontscale
 	sudo mkfontdir
 	sudo fc-cache -fv
+font-mac:
+	@echo "==========================[$@] <= [$^]" 
+	-mkdir -p /usr/share/fonts/truetype/custom
+	cp ./res/font/monaco-font/Monaco_Linux.ttf /usr/share/fonts/truetype/custom/
+	sudo fc-cache -f -v
 npm:
 	@echo "==========================[$@] <= [$^]"
 	sudo apt install -y npm
