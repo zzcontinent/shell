@@ -1,0 +1,293 @@
+Highlight installation instructions
+-----------------------------------
+
+Content
+=======
+
+1. Package structure
+2. Dependencies
+3. Compilation and installation
+4. Known compiler issues
+5. LaTeX unicode support
+6. MacOS X - brew package ignores new filetypes.conf
+7. MacOS X - lazy pointer issue
+8. Static linking (to run highlight as service)
+9. Known distribution issues
+
+
+1. Package structure
+=====================
+
+root of highlight-x.x
+|
+|-- extras              # extras for highlight scripting
+|   |-- css-themes      # detailed theme explanation
+|   |-- eclipse-themes  # eclipsecolorthemes.org converter script
+|   |-- json            # Lua to JSON converters
+|   |-- langdefs-res.   # language definition template with explanations
+|   |-- pandoc          # Pandoc macros
+|   |-- tcl             # TCL extension
+|   |-- pywal           # pywal terminal colouring template
+|   `-- swig            # SWIG interface and sample code
+|-- gui_files           # supporting files for the optional GUI
+|   |-- ext             # file open filter configuration
+|   `-- l10n            # GUI translations
+|-- langDefs            # language definitions (*.lang)
+|-- man                 # man page
+|-- plugins             # Lua plugin scripts (*.lua)
+|-- src                 # source code
+|   |-- cli             # command line interface code
+|   |-- core            # highlight core code (builds the library)
+|   |   |-- astyle      # Artistic Style code
+|   |   `-- Diliculum   # Diliculum code
+|   `-- gui-qt          # optional GUI code
+|   `-- include         # Header files
+|   |   |-- astyle      # Artistic Style headers
+|   |   |-- Diliculum   # Diliculum headers
+|   |   `-- picojson    # PicoJSON headers
+`-- themes              # color themes (*.theme)
+
+AUTHORS                 # contributors of code and patches
+ChangeLog               # list of changes
+COPYING                 # license
+Doxyfile                # Doxygen configuration
+filetypes.conf          # file type extension configuration
+highlight.desktop       # desktop integration of optional GUI
+INSTALL                 # this file
+makefile                # basic makefile
+README                  # user manual
+README_DE               # German user manual
+README_LANGLIST         # list of supported languages
+README_LSP_CLIENT       # Language server instructions
+README_PLUGINS          # plug-in manual
+README_REGEX            # regular expression manual
+README_RELEASE          # information for packagers
+README_V4_MIGRATION     # version 4 breaking changes
+TODO                    # just ideas, no plans
+
+
+2. Dependencies
+===============
+
+In order to compile highlight, you need to install Lua (5.x or LuaJIT as
+devel package) and Boost (at least the header files).
+The optional GUI requires Qt5 and its development tools (qmake).
+
+
+3. Compilation and installation
+===============================
+
+3.1 Linux
+---------
+
+ 1. tar xjf highlight-x.x.tar.bz2
+
+ 2. cd highlight-x.x
+
+ 3. make help
+
+ 4. make / make cli   (compile static library and the CLI interface)
+    make lib-static   (optional, compile static library only)
+    make lib-shared   (optional, compile shared library only)
+    make gui          (optional, compile static library and the Qt GUI)
+
+ 5, make install
+    (depending on your installation destination, you need to be root)
+
+ 6. make install-gui (optional)
+    Install additional files if you have compiled the highlight GUI binary.
+    (depending on your installation destination, you need to be root)
+
+ 7. make clean (optional)
+
+ After the compilation of the CLI or GUI, a library (libhighlight.a) was
+ generated which may be used for other C++ projects.
+
+ Highlight's default data directory is /usr/share/highlight.
+ You may alter this directory at compile time or at run time:
+ - See the makefile how to add a compiler directive which defines an
+   installation directory (data_dir variable)
+ - See the makefile to change the configuration file directory
+   (conf_dir variable)
+ - See section CONFIG FILE SEARCH in README for run time options
+
+
+3.2 Windows
+-----------
+
+Install the following tools and libraries.
+
+a) Install Qt Creator IDE (www.qt.io)
+
+b) Install MingW (gcc toolchain)
+
+    -Download Online-Installer:
+     https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/
+    -Start mingw-w64-install.exe and select default options
+    -Add bin directory of the downloaded files to the system PATH
+    -open cmd.exe and type "g++ --version" to check
+
+c) Compile Qt:
+
+    -Install git, Python and Perl for Windows
+    -If you install Strawberry Perl, remove its g++ compiler path from your system PATH
+    -Open cmd.exe and change into a directory "QT-ROOT" which will contain the Qt sources
+    -Execute the following cmds
+     git clone git://code.qt.io/qt/qt5.git
+     cd qt5
+     git checkout 5.15.0
+     perl init-repository
+    -Configure Qt. Create new directories qt-build and qt-5.15.0-x64 in QT-ROOT. Change into qt-build and run
+     ..\qt5\configure -release -opensource -confirm-license -static -static-runtime -optimize-size -no-pch \
+                      -no-fontconfig -no-freetype -qt-libpng -qt-libjpeg -no-tiff -nomake examples -nomake tools \
+                      -nomake tests -skip webengine -skip qtlocation  -opengl desktop -prefix "F:\QT-ROOT\qt-5.15.0-x64"
+
+    -Compile Qt (set numbers of CPU cores after -j):
+     mingw32-make -j8
+
+    -Install the tools and libs in qt-5.15.0-x64:
+     mingw32-make -j8 install
+
+d) Add compiler and Qt paths (location of qmake.exe) in QtCreator
+
+e) Install Boost
+
+    -Download and extract package from boost.org (no compilation needed)
+
+f) Compile Lua
+
+    -Download source package: https://www.lua.org/download.html
+    -Open QtCreator and create a new Project ("without Qt")
+    -Import all c files of the Lua package except lua.c and luac.c
+    -Edit the project file like this:
+
+     TEMPLATE = lib
+     CONFIG += console
+     CONFIG -= app_bundle
+     CONFIG -= qt
+     DEFINES -= UNICODE
+     SOURCES += $$files(../lua-5.3.0/src/*.c)
+     SOURCES -= ../lua-5.3.0/src/lua.c ../lua-5.3.0/src/luac.c
+
+    -Compile the Lua library
+
+g) Install upx from http://upx.sourceforge.net/
+
+h) Open the pro files in src/w32-projects and src/gui_qt in QtCreator and
+   adjust the paths of libraries and tools. Compile the lib project first.
+
+
+3.3 Precompiled packages
+------------------------
+
+Highlight is written in ISO C++. The following packages are available:
+- UNIX console and GUI application
+- Windows console and GUI application
+- statically and dynamically linked library
+
+The website www.andre-simon.de offers links to precompiled packages for several
+operating systems (like Debian, Arch Linux, Ubuntu, Darwin, FreeBSD).
+The website distributes the latest upstream sources.
+
+Windows and MacOS executables
+http://www.andre-simon.de
+
+Arch Linux
+http://www.archlinux.org/packages/community/i686/highlight/
+
+Debian GNU/Linux
+https://packages.debian.org/search?keywords=highlight
+
+Fedora
+http://koji.fedoraproject.org/koji/packageinfo?packageID=2044
+
+FreeBSD
+http://www.freshports.org/textproc/highlight/
+
+Gentoo Portage
+https://packages.gentoo.org/packages/app-text/highlight
+
+Mac OS X
+http://braumeister.org/formula/highlight
+
+Slackware
+http://sotirov-bg.net/slackpack/search.cgi?q=highlight
+
+openSUSE
+https://build.opensuse.org/package/show/devel:tools/highlight
+
+Ubuntu
+http://packages.ubuntu.com/oneiric/allpackages
+
+Windows Chocolatey
+https://chocolatey.org/packages/highlight
+
+
+4. Known compiler issues
+========================
+
+Highlight was tested with gcc > 4.8 and clang 3.9.0. It will not compile with gcc 2.x.
+For gcc versions < 4.7, unique_ptr needs to be replaced by auto_ptr.
+
+
+5. LaTeX unicode support
+========================
+
+To enable UTF-8 support in LaTeX, the ucs package has to be installed.
+See the following package names or sources:
+
+Fedora: tetex-unicode
+SuSE:   latex-ucs
+
+
+6. MacOS X - brew package ignores new filetypes.conf
+====================================================
+
+If file suffixes like js, coffee, rs are no longer recognized, filetypes.conf might be out of date.<br>
+Upgrade thr config like this:
+
+cd $(brew --prefix)/etc/highlight
+mv filetypes.conf filetypes.conf.bak
+mv filetypes.conf.default filetypes.conf
+
+
+7. MacOS X - lazy pointer issue
+===============================
+
+Stripping the highlight binary causes program termination at runtime:
+
+dyld: lazy symbol binding failed: lazy pointer not found
+dyld: lazy pointer not found
+Trace/BPT trap
+
+To avoid this issue, edit the makefile to not strip the binary after
+linkage (see src/makefile, LDFLAGS variable).
+
+
+8. Static linking (to run highlight as service)
+===============================================
+
+If highlight cannot be run as service because of shared linkage, link
+it with the -static option (see src/makefile, LDFLAGS variable).
+
+
+9. Known distribution issues
+============================
+
+Linux Mint
+
+There is a system script called highlight which is located in a preferenced path:
+
+mintsystem provides: /usr/local/bin/highlight
+ highlight provides: /usr/bin/highlight
+
+Calling this script with the true highlight command line options will have no effect.
+See bug tracker items: https://bugs.launchpad.net/linuxmint/+bug/593583 and
+                       https://bugs.launchpad.net/linuxmint/+bug/815005
+
+
+OpenSUSE Leap 42.2
+
+The lua-devel package installation causes error messages.
+Workaround: ignore dependency conflict.
+

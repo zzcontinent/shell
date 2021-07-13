@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Highlight
+Type=Application
+Comment=Converts source code to formatted text (HTML, RTF, TeX, LaTeX, SVG, BBCode, Pango Markup, XML) with syntax highlighting
+Comment[de]=Konvertiert Sourcecode in formatierten Text (HTML, RTF, TeX, LaTeX, SVG, BBCode, Pango Markup, XML) mit Syntaxhervorhebung
+Exec=highlight-gui
+TryExec=highlight-gui
+Icon=highlight
+Categories=Utility;TextTools;
+StartupNotify=true

@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>highlight.xpm</file>
+        <file>highlight.png</file>
+        <file>file.png</file>
+        <file>plugin.png</file>
+        <file>folder.png</file>
+        <file>script.png</file>
+        <file>clipboard.png</file>
+        <file>script_blue.png</file>
+        <file>ls_not_supported.png</file>
+        <file>ls_supported.png</file>
+    </qresource>
+</RCC>

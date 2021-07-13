@@ -1,0 +1,46 @@
+
+Description="Acid"
+
+-- Theme created by Alexandre Bonneau
+
+Categories = {"light"}
+
+Default        = { Colour="#000000" }
+Canvas         = { Colour="#eeeeee" }
+Number         = { Colour="#800080", Bold=true }
+Escape         = { Colour="#ff00ff", Bold=true }
+String         = { Colour="#a68500" }
+StringPreProc  = { Colour="#0000ff" }
+BlockComment   = { Colour="#ff8000" }
+LineComment    = { Colour="#f27900" }
+PreProcessor   = { Colour="#0080c0", Bold=true }
+LineNum        = { Colour="#303030" }
+Operator       = { Colour="#ff0080", Bold=true }
+Interpolation  = { Colour="#9E5DFF" }
+
+Keywords = {
+  { Colour= "#bb7977", Bold=true },
+  { Colour= "#8080c0", Bold=true },
+  { Colour= "#0080c0" },
+  { Colour= "#004466" },
+  { Colour= "#0dc375" },
+  { Colour= "#0db6c3" },
+}
+
+-- new LSP based elements:
+
+SemanticTokenTypes  = {
+  { Type = 'type', Style = Keywords[2] },
+  { Type = 'class', Style =  Keywords[1] },
+  { Type = 'struct', Style =  Keywords[4] },
+  { Type = 'interface', Style = Keywords[1] },
+  { Type = 'parameter', Style = Keywords[6] },
+  { Type = 'variable', Style = Keywords[5] },
+  { Type = 'enumMember', Style = Keywords[5] },
+  { Type = 'function', Style = Keywords[4] },
+  { Type = 'method', Style = Keywords[4] },
+  { Type = 'keyword', Style =  Keywords[1]},
+  { Type = 'number', Style = Number },
+  { Type = 'regexp', Style = String },
+  { Type = 'operator', Style = Operator },
+}

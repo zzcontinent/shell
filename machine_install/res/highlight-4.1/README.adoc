@@ -1,0 +1,1007 @@
+= HIGHLIGHT MANUAL
+André Simon
+v4.1, April 2021
+:lang: en
+:toc: left
+:toc-title: Contents
+:toclevels: 4
+:sectnums:
+:sectnumlevels: 2
+:sectanchors:
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+
+// =====================================
+// Custom Attributes for Reference Links
+// =====================================
+// Highlight Docs (asciidoc):
+:README_DE: pass:q[link:README_DE.adoc[`README_DE`]]
+:README_LANGLIST: pass:q[link:README_LANGLIST.adoc[`README_LANGLIST`]]
+:README_PLUGINS: pass:q[link:README_PLUGINS.adoc[`README_PLUGINS`]]
+:README_REGEX: pass:q[link:README_REGEX.adoc[`README_REGEX`]]
+:README_TESTCASES: pass:q[link:README_TESTCASES.adoc[`README_TESTCASES`]]
+:README_LSP_CLIENT: pass:q[link:README_LSP_CLIENT.adoc[`README_LSP_CLIENT`]]
+// Highlight Docs (uncovenrted):
+:INSTALL: pass:q[link:INSTALL[`INSTALL`]]
+// Source files:
+:cpp_qt_lua: pass:q[link:plugins/cpp_qt.lua[`cpp_qt.lua`^]]
+:lsp_conf: pass:q[link:lsp.conf[`lsp.conf`^]]
+:filetypes_conf: pass:q[link:filetypes.conf[`filetypes.conf`^]]
+:fileopenfilter_conf: pass:q[link:gui_files/ext/fileopenfilter.conf[`gui_files/ext/fileopenfilter.conf`^]]
+:makefile: pass:q[link:makefile[`makefile`^]]
+// Folders:
+:langDefs: pass:q[link:langDefs/[`langDefs/`^]]
+:themes: pass:q[link:themes/[`themes/`^]]
+:themes_base16: pass:q[link:themes/base16/[`themes/base16/`^]]
+// Extras Folder:
+:extras: pass:q[link:extras/[`extras/`]]
+:extras_swig: pass:q[link:extras/swig/[`extras/swig/`]]
+:README_SWIG: pass:q[link:extras/swig/README_SWIG[`README_SWIG`]]
+:extras_pandoc: pass:q[link:extras/pandoc/[`extras/pandoc/`]]
+:README_pandoc: pass:q[link:extras/pandoc/README.html[`README.html`]]
+:extras_tcl: pass:q[link:extras/tcl/[`extras/tcl/`]]
+:README_TCL: pass:q[link:extras/tcl/README_TCL[`README_TCL`]]
+// External Links:
+:andre-simon_de: pass:[http://www.andre-simon.de[www.andre-simon.de^]]
+
+
+OSI Certified Open Source Software
+
+Deutsche Anleitung: {README_DE}
+
+
+== OVERVIEW
+
+Highlight converts sourcecode to HTML, XHTML, RTF, ODT, LaTeX, TeX, SVG, BBCode,
+Pango markup and terminal escape sequences with coloured syntax highlighting.
+Syntax definitions and colour themes are customizable.
+
+
+=== INTENDED PURPOSE
+
+Highlight was designed to offer a flexible but easy to use syntax highlighter
+for several output formats. No syntax or colouring information is hardcoded,
+instead all relevant data is stored in configuration scripts. These Lua scripts
+may be altered and enhanced with plug-ins.
+
+
+=== FEATURE LIST
+
+* highlighting of keywords, types, strings, numbers, escape sequences, comments,
+  operators and preprocessor directives
+* coloured output in HTML, XHTML 1.1, RTF, TeX, LaTeX, SVG, BBCode, Pango Markup
+  and terminal escape sequences
+* supports referenced stylesheet files for HTML, LaTeX, TeX or SVG output
+* configuration files are Lua scripts
+* supports plug-in scripts to tweak language definitions and themes
+* syntax elements are defined as regular expressions or plain string lists
+* customizable keyword groups
+* recognition of nested languages within a file
+* reformatting and indentation of C, C++, C# and Java source code
+* wrapping of long lines
+* configurable output of line numbers
+
+
+=== SUPPORTED PROGRAMMING AND MARKUP LANGUAGES
+
+
+Please see {README_LANGLIST} for the current set of supported languages.
+To get a list and associated file extensions you may also run:
+
+..............................
+highlight --list-scripts=langs
+..............................
+
+
+== USAGE AND OPTIONS
+
+=== QUICK INTRODUCTION
+
+The following examples show how to produce a highlighted C++ file, using
+`main.cpp` as input file:
+
+
+Generate HTML::
++
+.................................................
+highlight -i main.cpp -o main.cpp.html
+highlight < main.cpp > main.cpp.html --syntax cpp
+highlight < source.tmp > main.cpp.html --syntax-by-name main.cpp
+.................................................
++
+You will find the HTML file and `highlight.css` in the working directory.
+If you use IO redirection (2nd example), you must define the programming
+language with `--syntax` or `--syntax-by-name`.
+
+
+Generate HTML with embedded CSS definitions and line numbers::
++
+.....................................................................
+highlight -i main.cpp -o main.cpp.html --include-style --line-numbers
+.....................................................................
+
+
+Generate HTML with inline CSS definitions::
++
+...................................................
+highlight -i main.cpp -o main.cpp.html --inline-css
+...................................................
+
+
+Generate LaTeX using "`horstmann`" source formatting style and "`neon`" colour theme::
++
+................................................................................
+highlight -O latex -i main.cpp -o main.cpp.tex --reformat horstmann --style neon
+................................................................................
++
+The following output formats may be defined with `--out-format`:
++
+[horizontal]
+`html`      ::: HTML5 (default)
+`xhtml`     ::: XHTML 1.1
+`tex`       ::: Plain TeX
+`latex`     ::: LaTeX
+`rtf`       ::: RTF
+`odt`       ::: OpenDocument Text (Flat XML)
+`svg`       ::: SVG
+`bbcode`    ::: BBCode
+`pango`     ::: Pango markup
+`ansi`      ::: Terminal 16 color escape codes
+`xterm256`  ::: Terminal 256 color escape codes
+`truecolor` ::: Terminal 16m color escape codes
+
+
+Customize font settings::
++
+..........................................................................
+highlight --syntax ada --font-size 12 --font "'Courier New',monospace"
+highlight --syntax ada --out-format=latex --font-size tiny --font sffamily
+..........................................................................
+
+
+Define an output directory::
++
+.......................................
+highlight -d some/target/dir/ *.cpp *.h
+.......................................
+
+
+
+See `highlight --help` or `man highlight` for more details.
+
+
+=== CLI OPTIONS
+
+The command line version of highlight offers the following options:
+
+................................................................................
+USAGE: highlight [OPTIONS]... [FILES]...
+
+General options:
+
+ -B, --batch-recursive=<wc>     convert all matching files, searches subdirs
+                                  (Example: -B '*.cpp')
+ -D, --data-dir=<directory>     set path to data directory
+     --config-file=<file>       set path to a lang or theme file
+ -d, --outdir=<directory>       name of output directory
+ -h, --help[=topic]             print this help or a topic description
+                                  <topic> = [syntax, theme, plugin, config, test, lsp]
+ -i, --input=<file>             name of single input file
+ -o, --output=<file>            name of single output file
+ -P, --progress                 print progress bar in batch mode
+ -q, --quiet                    suppress progress info in batch mode
+ -S, --syntax=<type|path>       specify type of source code or syntax file path
+     --syntax-by-name=<name>    specify type of source code by given name
+                                  will not read a file of this name, useful for stdin
+     --syntax-supported         test if the given syntax can be loaded
+ -v, --verbose                  print debug info; repeat to show more information
+     --force[=syntax]           generate output if input syntax is unknown
+     --list-scripts=<type>      list installed scripts
+                                  <type> = [langs, themes, plugins]
+     --list-cat=<categories>    filter the scripts by the given categories
+                                  (example: --list-cat='source;script')
+     --max-size=<size>          set maximum input file size
+                                  (examples: 512M, 1G; default: 256M)
+     --plug-in=<script>         execute Lua plug-in script; repeat option to
+                                  execute multiple plug-ins
+     --plug-in-param=<value>    set plug-in input parameter
+     --print-config             print path configuration
+     --print-style              print stylesheet only (see --style-outfile)
+     --skip=<list>              ignore listed unknown file types
+                                  (Example: --skip='bak;c~;h~')
+     --stdout                   output to stdout (batch mode, --print-style)
+     --validate-input           test if input is text, remove Unicode BOM
+     --version                  print version and copyright information
+
+
+Output formatting options:
+
+ -O, --out-format=<format>      output file in given format
+                                  <format>=[html, xhtml, latex, tex, odt, rtf,
+                                  ansi, xterm256, truecolor, bbcode, pango, svg]
+ -c, --style-outfile=<file>     name of style file or print to stdout, if
+                                  'stdout' is given as file argument
+ -e, --style-infile=<file>      to be included in style-outfile (deprecated)
+                                  use a plug-in file instead
+ -f, --fragment                 omit document header and footer
+ -F, --reformat=<style>         reformats and indents output in given style
+                                  <style> = [allman, gnu, google, horstmann,
+                                  java, kr, linux, lisp, mozilla, otbs, pico,
+                                  vtk, ratliff, stroustrup, webkit, whitesmith]
+ -I, --include-style            include style definition in output file
+ -J, --line-length=<num>        line length before wrapping (see -V, -W)
+ -j, --line-number-length=<num> line number width incl. left padding (default: 5)
+     --line-range=<start-end>   output only lines from number <start> to <end>
+ -k, --font=<font>              set font (specific to output format)
+ -K, --font-size=<num?>         set font size (specific to output format)
+ -l, --line-numbers             print line numbers in output file
+ -m, --line-number-start=<cnt>  start line numbering with cnt (assumes -l)
+ -s, --style=<style|path>       set colour style (theme) or theme file path
+ -t, --replace-tabs=<num>       replace tabs by <num> spaces
+ -T, --doc-title=<title>        document title
+ -u, --encoding=<enc>           set output encoding which matches input file
+                                  encoding; omit encoding info if set to NONE
+ -V, --wrap-simple              wrap lines after 80 (default) characters w/o
+                                  indenting function parameters and statements
+ -W, --wrap                     wrap lines after 80 (default) characters
+     --wrap-no-numbers          omit line numbers of wrapped lines
+                                  (assumes -l)
+ -z, --zeroes                   pad line numbers with 0's
+     --isolate                  output each syntax token separately (verbose output)
+     --keep-injections          output plug-in injections in spite of -f
+     --kw-case=<case>           change case of case insensitive keywords
+                                  <case> =  [upper, lower, capitalize]
+     --no-trailing-nl[=mode]    omit trailing newline. If mode is empty-file, omit
+                                  only for empty input
+     --no-version-info          omit version info comment
+
+
+(X)HTML output options:
+
+ -a, --anchors                  attach anchor to line numbers
+ -y, --anchor-prefix=<str>      set anchor name prefix
+ -N, --anchor-filename          use input file name as anchor prefix
+ -C, --print-index              print index with hyperlinks to output files
+ -n, --ordered-list             print lines as ordered list items
+     --class-name=<name>        set CSS class name prefix;
+                                  omit class name if set to NONE
+     --inline-css               output CSS within each tag (verbose output)
+     --enclose-pre              enclose fragmented output with pre tag
+                                  (assumes -f)
+
+
+LaTeX output options:
+
+ -b, --babel                    disable Babel package shorthands
+ -r, --replace-quotes           replace double quotes by \dq{}
+     --beamer                   adapt output for the Beamer package
+     --pretty-symbols           improve appearance of brackets and other symbols
+
+
+RTF output options:
+
+     --page-color               include page color attributes
+ -x, --page-size=<ps>           set page size
+                                  <ps> = [a3, a4, a5, b4, b5, b6, letter]
+     --char-styles              include character stylesheets
+
+
+SVG output options:
+
+     --height                   set image height (units allowed)
+     --width                    set image width (see --height)
+
+
+Terminal escape output options (xterm256 or truecolor):
+
+     --canvas[=width]           set background colour padding (default: 80)
+
+
+Language Server options:
+
+     --ls-profile=<server>      read LSP configuration from lsp.conf
+     --ls-delay=<ms>            set server initialization delay
+     --ls-exec=<bin>            set server executable name
+     --ls-option=<option>       set server CLI option (can be repeated)
+     --ls-hover                 execute hover requests (HTML output only)
+     --ls-semantic              retrieve semantic token types (requires LSP 3.16)
+     --ls-syntax=<lang>         set syntax which is understood by the server
+     --ls-syntax-error          retrieve syntax error information
+                                  (assumes --ls-hover or --ls-semantic)
+     --ls-workspace=<dir>       set workspace directory to init. the server
+................................................................................
+
+=== GUI OPTIONS
+
+The Graphical User Interface offers a subset of the CLI's features. It includes
+a dynamic preview of the output file's apperarance. Please see screenshots and
+screencasts on the project website.
+Invoke highlight-gui with the `--portable` option to let it save its settings
+in the binary's current directory (instead of using the registry).
+
+
+=== INPUT AND OUTPUT
+
+If no input or output file name is defined by `--input` and `--output` options,
+highlight will use stdin and stdout for file processing.
+Since version 3.44, reading from stdin can also be triggered by the `-` option.
+
+If no input filename is defined by `--input` or given at the prompt, highlight is
+not able to determine the language type by means of the file extension (except
+some scripting languages which are figured out by the shebang in the first input
+line). In this case you have to pass highlight the language with `--syntax` or
+`--syntax-by-name` (this usually should be the file suffix of the source file or
+its name, respectively).
+Example: If you want to convert a Python file, highlight needs to load the
+`py.lang` definition. The correct argument of `--syntax` would be `py`.
+
+................................................................................
+highlight test.py
+highlight < test.py --syntax py       # --syntax option necessary
+cat test.py | highlight --syntax py
+................................................................................
+
+If there exist multiple suffixes (like `C`, `cc`, `cpp` and `h` for C++ files),
+they are mapped to a language definition in {filetypes_conf}.
+
+Highlight enters the batch processing mode if multiple input files are given
+or if `--batch-recursive` is set.
+In batch mode, highlight will save the generated files using the original
+filename, appending the extension of the chosen output type.
+If files in the input directories happen to share the same name, the output
+files will be prefixed with their source path name.
+The `--out-dir` option is recommended in batch mode. Use `--quiet` to improve
+performance (recommended for usage in shell scripts).
+
+==== HTML, TeX, LaTeX and SVG output
+
+The HTML, TeX, LaTeX and SVG output formats allow to reference a stylesheet
+file which contains the formatting information.
+
+In HTML and SVG output, this file contains CSS definitions and is saved as
+`highlight.css`. In LaTeX and TeX, it contains macro definitions, and is saved
+as 'highlight.sty'.
+
+Name and path of the stylesheet may be modified with `--style-outfile`.
+If the `--outdir` option is given, all generated output, including stylesheets,
+are stored in this directory.
+
+Use `--include-style` to embed the style information in the output documents
+without referencing a stylesheet.
+
+Referenced stylesheets have the advantage to share all formatting information
+in a single file, which affects all referencing documents.
+
+With `--style-infile` you define a file to be included in the final formatting
+information of the document. This way you enhance or redefine the default
+highlight style definitions without editing generated code.
+Note: Using a plug-in script is the preferred way to enhance styling.
+
+==== Terminal output:
+
+Since there are limited colours defined for ANSI terminal output, there exists
+only one hard coded colour theme with `--out-format=ansi`. You should therefore
+use `--out-format=xterm256` to enable output in 256 colours. The 256 colour mode
+is supported by recent releases of xterm, rxvt and Putty (among others).
+The latest terminal emulators also support 16m colors, this mode is enabled
+with `--out-format=truecolor`.
+
+.....................................................
+highlight --out-format=ansi <inputfile> | less -R
+highlight --out-format=xterm256 <inputfile> | less -R
+.....................................................
+
+==== Text processing:
+
+If the language definition is specified as `txt`, no highlighting takes place.
+
+.......................................................
+highlight -S txt --out-format=latex README > README.tex
+.......................................................
+
+
+=== ADVANCED OPTIONS
+
+==== Prevent parsing of binary input files
+
+If highlight might process untrusted input, you can disable parsing of binary
+files using `--validate-input`. This flag causes highlight to match the input file
+header with a list of magic numbers. If a binary file type is detected, highlight
+quits with an error message. This switch also removes an UTF-8 BOM in the output.
+
+==== Test new configuration scripts
+
+The option `--config-file` helps to test new config files. The argument file must be
+a lang or theme.
+
+...........................................................
+highlight --config-file xxx.lang --config-file yyy.theme -I
+...........................................................
+
+==== Debug language definitions
+
+Use `--verbose` to display Lua and syntax data. Apply twice to print more information.
+
+==== Remove an UTF8 BOM:
+
+Use `--validate-input` to get rid of UTF8 byte order marks.
+
+==== Force output to stdout
+
+Use `--stdout` to write output files in batch mode to stdout.
+
+==== Portable GUI (Windows build)
+
+Invoke highlight-gui.exe with the `--portable` switch to save its configuration
+in text files instead of the registry.
+
+
+=== ENVIRONMENT VARIABLES
+
+The command line version recognizes these variables:
+
+* `HIGHLIGHT_DATADIR`: sets the path to highlight's configuration scripts
+* `HIGHLIGHT_OPTIONS`: may contain command line options, but no input file paths.
+
+=== SYNTAX TESTING
+
+Since version 2.45, highlight supports special notations within comments to
+test its syntax recognition.
+See {README_TESTCASES} for details.
+
+=== LSP CLIENT
+
+Since version 4.0, highlight supports LSP to enhance its output.
+See {README_LSP_CLIENT} for details.
+
+== CONFIGURATION
+
+=== FILE FORMAT
+
+Configuration files are Lua scripts.
+
+For more details about the Lua syntax, please refer to:
+
+* http://www.lua.org/manual/5.1/manual.html
+
+These constructs are sufficient to edit the scripts:
+
+Variable assignment::
+`name = value` +
+(variables have no type, only values have)
+
+Strings::
+`string1="string literal with escape: \n"` +
+`string2=[[raw string without escape sequence]]`
++
+If raw string content starts with `[` or ends with `]`, pad the parenthesis
+with space to avoid a syntax error. Highlight will strip the string.
++
+If the string is a regular expression containing a set with a character class
+like [[:space:]], use string delimiters with a "`filler`": +
+`[=[ regex string ]=]`
+
+Comments::
+`-- line comment` +
+`--[[ block comment ]]`
+
+Arrays::
+`array = { first=1, second="2", 3, { 4,5 } }`
+
+
+=== LANGUAGE DEFINITIONS
+
+A language definition describes syntax elements of a programming language which
+will be highlighted by different colours and font types.
+Save the new file in {langDefs}, using the following name convention:
+
+..........................................
+<usual extension of sourcecode files>.lang
+..........................................
+
+Examples:
+
+[horizontal]
+PHP::  -> `php.lang`
+Java:: -> `java.lang`
+
+If there exist multiple suffixes, list them in {filetypes_conf}.
+
+
+==== Syntax elements
+
+................................................................................
+Keywords = { { Id, List|Regex, Group?, Priority?, Constraints? } }
+
+  Id:          Integer, keyword group id (can be reused for several groups).
+               Default themes support 4 and base16 themes 6 groups.
+  List:        List, list of keywords
+  Regex:       String, regular expression
+  Group:       Integer, capturing group id of regular expression, defines part of
+               regex which should be returned as keyword (optional; if not set,
+               the match with the highest group number is returned (counts from
+               left to right))
+  Priority:    Integer, if not zero no more regexes will be evaluated if this
+               regex matches
+  Constraints: table consisting of:
+               Line: Integer, limit match to line number,
+               Filename: String, limit match to input file name
+
+Regular expressions are evaluated in the their order within Keywords. If a regex
+does not appear to match, there might be a conflicting expression listed before.
+
+
+Comments = { {Block, Nested?, Delimiter={Open, Close?} }
+
+  Block:     Boolean, true if comment is a block comment
+  Nested:    Boolean, true if block comments can be nested (optional)
+  Delimiter: List, contains open delimiter regex (line comment) or open and close
+             delimiter regexes (block comment)
+
+
+Strings = { Delimiter|DelimiterPairs={Open, Close, Raw?}, Escape?, Interpolation?,
+            RawPrefix?, AssertEqualLength? }
+
+  Delimiter:         String, regular expression which describes string delimiters
+  DelimiterPairs:    List, includes open and close delimiter expressions if not
+                     equal, includes optional Raw flag as boolean which marks
+                     delimiter pair to contain a raw string
+  Escape:            String, regex of escape sequences (optional)
+  Interpolation:     String, regex of interpolation sequences (optional)
+  RawPrefix:         String, defines raw string indicator (optional)
+  AssertEqualLength: Boolean, set true if delimiters must have the same length
+
+
+PreProcessor = { Prefix, Continuation? }
+
+  Prefix:        String, regular expression which describes open delimiter
+  Continuation:  String, contains line continuation character (optional).
+
+
+NestedSections = {Lang, Delimiter= {} }
+
+  Lang:      String, name of nested language
+  Delimiter: List, contains open and close delimiters of the code section
+
+
+KeywordFormatHints={ { Id, Bold?, Italic?, Underline? } }
+  Id:         Integer, keyword group id whose attributes should be changed
+  Bold:       Boolean, font weight property
+  Italic:     Boolean, font style property
+  Underline:  Boolean, font decoration property
+
+These hints may have no effect if multiple syntax types are highlighted in batch
+mode without --include-style.
+
+Description:       String, Defines syntax description
+
+Categories:        Table, List of categories (config, source, script, etc)
+
+Digits:            String, Regular expression which defines digits (optional)
+
+Identifiers:       String, Regular expression which defines identifiers
+                   (optional)
+
+Operators:         String, Regular expression which defines operators
+
+EnableIndentation: Boolean, set true if syntax may be reformatted and indented
+
+IgnoreCase:        Boolean, set true if keyword case should be ignored
+
+EncodingHint:      String, default input file encoding
+
+................................................................................
+
+
+==== Global variables
+
+The following variables are available within a language definition:
+
+[horizontal]
+`HL_LANG_DIR`:: path of language definition directory (use with Lua dofile function)
+`Identifiers`:: Default regex for identifiers
+`Digits`::      Default regex for numbers
+
+The following integer variables represent the internal highlighting states:
+
+* `HL_STANDARD`
+* `HL_STRING`
+* `HL_NUMBER`
+* `HL_LINE_COMMENT`
+* `HL_BLOCK_COMMENT`
+* `HL_ESC_SEQ`
+* `HL_PREPROC`
+* `HL_PREPROC_STRING`
+* `HL_OPERATOR`
+* `HL_INTERPOLATION`
+* `HL_LINENUMBER`
+* `HL_KEYWORD`
+* `HL_STRING_END`
+* `HL_LINE_COMMENT_END`
+* `HL_BLOCK_COMMENT_END`
+* `HL_ESC_SEQ_END`
+* `HL_PREPROC_END`
+* `HL_OPERATOR_END`
+* `HL_INTERPOLATION_END`
+* `HL_KEYWORD_END`
+* `HL_EMBEDDED_CODE_BEGIN`
+* `HL_EMBEDDED_CODE_END`
+* `HL_IDENTIFIER_BEGIN`
+* `HL_IDENTIFIER_END`
+* `HL_UNKNOWN`
+* `HL_REJECT`
+
+==== The function `OnStateChange`
+
+This function is a hook which is called if an internal state changes (e.g. from
+`HL_STANDARD` to `HL_KEYWORD` if a keyword is found). It can be used to alter
+the new state or to manipulate syntax elements like keyword lists.
+
+[[OnStateChange]]
+................................................................................
+OnStateChange(oldState, newState, token, kwGroupID, lineno, column)
+
+  Hook Event: Highlighting parser state change
+  Parameters: oldState:  old state
+              newState:  intended new state
+              token:     the current token which triggered the new state
+              kwGroupID: if newState is HL_KEYWORD, the parameter
+                         contains the keyword group ID
+              lineno:    line number (since 3.50)
+              column:    line column (since 3.50)
+  Returns:    Correct state to continue OR HL_REJECT
+................................................................................
+
+Return `HL_REJECT` if the recognized token and state should be discarded; the
+first character of token will be outputted and highlighted as `oldState`.
+
+See {README_PLUGINS} for more available functions.
+
+
+.Example
+
+[source,lua]
+--------------------------------------------------------------------------------
+Description="C and C++"
+
+Categories = {"source"}
+
+Keywords={
+  {  Id=1,
+   List={"goto", "break", "return", "continue", "asm", "case", "default",
+         -- [..]
+        }
+  },
+  -- [..]
+}
+
+Strings = {
+  Delimiter=[["|']],
+  RawPrefix="R",
+}
+
+Comments = {
+   { Block=true,
+     Nested=false,
+     Delimiter = { [[\/\*]], [[\*\/]] }  },
+   { Block=false,
+     Delimiter = { [[//]] } }
+}
+
+IgnoreCase=false
+
+PreProcessor = {
+  Prefix=[[#]],
+  Continuation="\\",
+}
+
+Operators=[[\(|\)|\[|\]|\{|\}|\,|\;|\.|\:|\&|\<|\>|\!|\=|\/|\*|\%|\+|\-|\~]]
+
+EnableIndentation=true
+
+-- resolve issue with C++14 number separator syntax
+function OnStateChange(oldState, newState, token)
+
+   if token=="'" and oldState==HL_NUMBER and newState==HL_STRING then
+      return HL_NUMBER
+   end
+
+   return newState
+end
+--------------------------------------------------------------------------------
+
+
+=== REGULAR EXPRESSIONS
+
+Please see {README_REGEX} for the supported regex constructs.
+
+
+=== THEME DEFINITIONS
+
+Colour themes contain the formatting information of the syntax elements which
+are described in language definitions.
+
+The files have to be stored as `.theme` in {themes}.
+Apply a theme with the `--style` option. Prepend `base16/` to the name in order
+to use one of the included Base16 themes (located in {themes_base16}).
+
+
+==== Format attributes
+
+................................................................................
+Attributes = {Colour, Bold?, Italic?, Underline?, Custom? }
+................................................................................
+
+[horizontal]
+Colour::    String, defines colour in HTML hex notation (`#rrggbb`)
+Bold::      Boolean, true if font should be bold (optional)
+Italic::    Boolean, true if font should be italic (optional)
+Underline:: Boolean, true if font should be underlined (optional)
+Custom::    Array, contains `Format` and `Style` for custom styles
+
+==== Theme elements
+
+................................................................................
+Description:   = String, Defines theme description
+
+Categories     = Table, List of categories (dark, light, etc)
+
+Default        = Attributes (Colour of unspecified text)
+
+Canvas         = Attributes (Background colour)
+
+Number         = Attributes (numbers)
+
+Escape         = Attributes (escape sequences)
+
+String         = Attributes (strings)
+
+Interpolation  = Attributes (interpolation sequences)
+
+PreProcessor   = Attributes (preprocessor directives)
+
+StringPreProc  = Attributes (strings within preprocessor directives)
+
+BlockComment   = Attributes (block comments)
+
+LineComment    = Attributes (line comments)
+
+LineNum        = Attributes (line numbers)
+
+Operator       = Attributes (operators)
+
+Hover          = Attributes (LSP Hover elements)
+
+Error          = Attributes (LSP syntax errors)
+
+ErrorMessage   = Attributes (LSP error descriptions)
+
+Keywords= {
+  Attributes1,
+  Attributes2,
+  Attributes3,
+  Attributes4,
+  Attributes5,
+  Attributes6,
+}
+
+AttributesN: Formatting of keyword group N.
+
+SemanticAttributesN: An array consisting of:
+                     `Type`: Token Identifier of the LS protocol (V 3.16)
+                     `Style`: formatting of the token
+................................................................................
+
+.Example
+[source,lua]
+--------------------------------------------------------------------------------
+Description = "vim autumn"
+
+Categories = {"light", "vim"}
+
+Default	= { Colour="#404040" }
+Canvas	= { Colour="#fff4e8" }
+Number	= { Colour="#00884c" }
+Escape	= { Colour="#8040f0" }
+String	= { Colour="#00884c" }
+BlockComment	= { Colour="#ff5050" }
+StringPreProc = String
+LineComment   = BlockComment
+Operator      = { Colour="#513d2b" }
+LineNum      = { Colour="#555555" }
+PreProcessor      = {  Colour="#660000" }
+Interpolation  = { Colour="#CA6DE1" }
+
+Keywords = {
+  { Colour="#80a030" },
+  { Colour="#b06c58" },
+  { Colour="#30a188" },
+  { Colour="#990000" },
+  { Colour="#9a85ff" },
+  { Colour="#85adff" },
+}
+
+-- new LSP based elements:
+
+SemanticTokenTypes = {
+  { Type = 'type', Style = Keywords[2] },
+  { Type = 'class', Style =  Keywords[1] },
+  { Type = 'struct', Style =  Keywords[4] },
+  { Type = 'interface', Style = Keywords[1] },
+  { Type = 'parameter', Style = Keywords[6] },
+  { Type = 'variable', Style = Keywords[5] },
+  { Type = 'enumMember', Style = Keywords[5] },
+  { Type = 'function', Style = Keywords[4] },
+  { Type = 'method', Style = Keywords[4] },
+  { Type = 'keyword', Style =  Keywords[1]},
+  { Type = 'number', Style = Number },
+  { Type = 'regexp', Style = String },
+  { Type = 'operator', Style = Operator },
+}
+
+--ErrorMessage = {
+--  Custom = {
+--    { Format = "html", Style = "color: blue; border:solid 1px blue; margin-left: 3em" }
+--  }
+--}
+--------------------------------------------------------------------------------
+
+=== KEYWORD GROUPS
+
+You may define custom keyword groups and corresponding highlighting styles.
+This is useful if you want to highlight functions of a third party library,
+macros, constants etc.
+
+You define a new group in two steps:
+
+1. Define a new group in your language definition or plug-in:
++
+[source,lua]
+--------------------------------------------------------------------------------
+table.insert(Keywords, {
+  {Id=5, List = {"ERROR", "DEBUG", "WARN"} }
+})
+--------------------------------------------------------------------------------
+
+2. Add a corresponding highlighting style in your colour theme or plug-in:
++
+[source,lua]
+--------------------------------------------------------------------------------
+if #Keywords==4 then
+    table.insert(Keywords, {Colour= "#ff0000", Bold=true})
+end
+--------------------------------------------------------------------------------
+
+It is recommended to define keyword groups in user-defined plugin scripts to
+avoid editing of original highlight files.
+See the {cpp_qt_lua} sample plug-in script and {README_PLUGINS} for details.
+
+
+=== PLUG-INS
+
+The `--plug-in` option reads the path of a Lua script which overrides or
+enhances the settings of theme and language definition files. Plug-ins make
+it possible to apply custom settings without the need to edit installed
+configuration files.
+You can apply multiple plugins by using the `--plug-in` option more than once.
+See {README_PLUGINS} for a detailed description and examples of packaged plugins.
+
+
+
+=== FILE MAPPING
+
+The script {filetypes_conf} assigns file extensions and shebang descriptions to
+language definitions.
+A configuration is mandatory only if multiple file extensions are linked to
+one syntax or if a extension is ambiguous. Otherwise the syntax definition whose
+name corresponds to the input file extension will be applied.
+
+Format:
+
+................................................................................
+FileMapping={
+  {  Lang, Filenames|Extensions|Shebang },
+}
+
+Lang:       String, name of language definition
+Filenames:  list of strings, contains filenames referring to "Lang"
+Extensions: list of strings, contains file extensions referring to "Lang"
+Shebang:    String, Regular expression which matches the first line of the input
+            file
+
+Behaviour upon ambiguous file extensions:
+- CLI: the first association listed here will be used
+- GUI: a syntax selection prompt will be shown
+................................................................................
+
+Edit the file {fileopenfilter_conf} to add new syntax types to
+the GUI's file open filter.
+
+
+=== CONFIG FILE SEARCH
+
+Configuration scripts are searched in the following directories:
+
+1. `~/.highlight/`
+2. user defined directory set with `--data-dir`
+3. value of the environment variable `HIGHLIGHT_DATADIR`
+4. `/usr/share/highlight/`
+5. `/etc/highlight/` (default location of `filetypes.conf` and `lsp.conf`)
+6. current working directory (fallback)
+
+These subdirectories are expected to contain the corresponding scripts:
+
+* langDefs: `*.lang`
+* themes: `*.theme`
+* plugins: `*.lua`
+
+A custom `filetypes.conf` may be placed directly in `~/.highlight/`.
+This search order enables you to enhance the installed scripts without the need
+to copy preinstalled files somewhere else.
+
+Use `--print-config` to determine your settings::
++
+........................
+highlight --print-config
+........................
+
+
+== EMBEDDING HIGHLIGHT
+
+=== SAMPLE SCRIPTS
+
+See the {extras} subdirectory in the highlight package for some scripts in PHP,
+Perl and Python  which invoke highlight and retrieve its output as string.
+These scripts may be used as reference to develop plug-ins for other apps.
+
+=== PANDOC
+
+PP macros file and tutorial are located in {extras_pandoc}.
+See {README_pandoc} for usage instruction and example files as reference.
+
+=== SWIG
+
+A SWIG interface file is located in {extras_swig}.
+See {README_SWIG} for installation instructions and the example scripts in Perl,
+PHP and Python as programming reference.
+
+=== TCL
+
+A TCL extension is located in {extras_tcl}.
+See {README_TCL} for installation instructions.
+
+
+== BUILDING AND INSTALLING
+
+=== PRECOMPILED PACKAGES
+
+The file {INSTALL} describes the installation from source and includes links to
+precompiled packages.
+
+
+=== BUILDING DEPENDENCIES
+
+Highlight is known to compile with gcc and clang.
+
+It depends on Boost headers and Lua 5.x/LuaJit developer packages.
+
+The optional GUI depends on Qt5 developer packages.
+
+Please see the {makefile} for further options.
+
+
+== DEVELOPER CONTACT
+
+Andre Simon
+
+a.simon@mailbox.org
+
+{andre-simon_de}
+
+Git project with repository, bug tracker:
+
+* https://gitlab.com/saalen/highlight/
+
+// EOF //

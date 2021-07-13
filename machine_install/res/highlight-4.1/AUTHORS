@@ -1,0 +1,89 @@
+Developer/Maintainer:
+André Simon <a dot simon at mailbox dot org>
+
+Developer of the Diluculum Lua Wrapper:
+Leandro Motta Barros
+
+Developer of the Artistic Style lib:
+Tal Davidson <davidsont at bigfoot com>
+Jim Pattee <jimp03 at email com>
+
+Developer of the PicoJSON lib:
+Kazuho Oku
+
+Developer of xterm 256 colour best matching functions:
+Wolfgang Frisch <wf at frexx de>
+
+Developer of the argparser class:
+Antonio Diaz Diaz
+
+Developer of the PangoGenerator class:
+Dominik Schmidt
+
+
+Language definitions:
+
+Christian Perle (Povray)
+Andreas Schoenberg (AWK)
+Olivier Girondel (Pike)
+Christian Siefkes (NG Relax Compact)
+Paul Connell (Coldfusion MX)
+Peter Bartke (Miranda)
+Joerg Walter (Smalltalk)
+Pierre Larochelle (Arc, Clojure)
+Roberto Mendoza (IDL)
+Paulo Moura (Logtalk)
+Sandro Bilbeisi (Biferno)
+Frank Seidinger (RPL)
+Viraj Sinha (UPC)
+A. Aniruddha (GDB, Yang)
+Roland Hieber (PDF)
+Conrad Steenberg (Crack)
+Victor Ananjevsky (conf.lang)
+Raphael Droz (Ansible YAML)
+Lydia Duncan (Chapel)
+Max Christian Pohle (VIMScript)
+Jess Austin (Coffeescript)
+Tristano Ajmone (PureBasic, GDScript, FASM, PolyGen, EBNF2, Alan IF)
+Benjamin Kowarsch (Modula2)
+Mate Ory (EBNF)
+Julien Fontanet (BNF)
+
+Colour themes:
+
+David (matlab)
+Mark Hessling (THE)
+Alexandre Bonneau (Acid)
+Sunrise Telephone Systems Ltd. (ide-xcode)
+Joerg Walter (moe)
+Roger Sperberg (andes, oxygenated)
+Tristano Ajmone (edit-godot, edit-fasm)
+Andrei Rosca (edit-flashdevelop)
+
+Patches:
+
+Marc Duponcheel (gcc 3.x compatibility)
+Jonas Fonseca (Ruby language definition)
+Georg Young (gcc 3.x compatibility)
+weasel@debian.org (suppress compile warnings of Debian package)
+Jeremy Weinberger (RTF bugfix)
+Alan Briolat (shebang recognition with stdin stream)
+Jeremy Bopp (makefile prefix/destdir variables)
+Antonio Diaz Diaz (argparser replacement for getopt_long)
+Samuli Suominen (various makefile bugfixes)
+Detlef Reichelt (gcc 4.3 compatibility)
+Jochen Schmitt (gcc 4.4 compatibility)
+Nathaniel Gray (makefile bugfix)
+David Bremner (makefiles and SWIG scripts)
+Georgios M. Zarkadas (fixed file suffix recognition)
+MENG Wei (fixed memory leak in astyle's ASFormatter)
+Yimin Li (fontenc package in LaTeX output)
+Michael Enßlin (--wrap-no-numbers option)
+G. Wijaya (SWIG PHP binding)
+Troy Sankey (Javascript regex)
+Andrew Fuller (xterm256 bold and italic attributes)
+Dominik Schmidt (Pango markup)
+Ingo Krabbe (cweb LaTeX output)
+Victor Ananjevsky (various)
+Andrew Fuller (xterm256 font attributes)
+Troy Sankey (JS regex)

@@ -1,0 +1,44 @@
+-- Theme created by Joerg Walter
+
+Description="Moe"
+
+Categories = {"light"}
+
+Default        = { Colour="#000000" }
+Canvas         = { Colour="#f6f6f6" }
+Number         = { Colour="#880022" }
+Escape         = { Colour="#ff00ff", Bold=true }
+String         = { Colour="#aa4400" }
+StringPreProc  = { Colour="#008800" }
+BlockComment   = { Colour="#ff8800" }
+LineComment    = { Colour="#ee7700" }
+PreProcessor   = { Colour="#008844", Bold=true }
+LineNum        = { Colour="#333333" }
+Operator       = { Colour="#555555", Bold=true }
+Interpolation  = Escape
+
+Keywords = {
+  { Colour= "#661111", Bold=true },
+  { Colour= "#000066", Bold=true },
+  { Colour= "#000066" },
+  { Colour= "#004466" },
+  { Colour= "#000066" },
+  { Colour= "#000066" },
+}
+
+
+-- new LSP based elements:
+
+SemanticTokenTypes  = {
+  { Type = 'keyword', Style = Keywords[1] },
+  { Type = 'type', Style = Keywords[2] },
+  { Type = 'function', Style = Keywords[4] },
+  { Type = 'method', Style = Keywords[4] },
+  { Type = 'class', Style =  Keywords[1] },
+  { Type = 'struct', Style = Keywords[2] },
+  { Type = 'parameter', Style = Keywords[6] },
+  { Type = 'variable', Style = Keywords[5] },
+  { Type = 'number', Style = Number },
+  { Type = 'regexp', Style = String },
+  { Type = 'operator', Style = Operator },
+}

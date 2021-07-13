@@ -1,0 +1,111 @@
+= HIGHLIGHT VERSION 4.0 MIGRATION
+André Simon
+:revdate: March 2021
+:lang: en
+:toc: left
+:toc-title: Contents
+:toclevels: 4
+:sectnums:
+:sectnumlevels: 2
+:sectanchors:
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+
+
+The major version bump will be used to enforce the following interface
+and file changes:
+
+
+== REMOVED CLI OPTIONS
+
+The following options will be removed:
++
+..........................................................................
+    --start-nested=<lang>      define nested language which starts input
+                                  without opening delimiter
+
+    --reformat=user
+    --reformat-option=<opt>    apply an astyle cmd line option (assumes -F)
+
+    --base16[=theme]           use a theme of the Base16 collection
+
+    --delim-cr                 set CR as end-of-line delimiter (MacOS 9)
+    --plug-in-read             see --plug-in-param
+..........................................................................
+
+
+These options will no longer be documented but continue to work:
+
+
+=== GNU SOURCE-HIGHLIGHT COMPATIBILITY OPTIONS
++
+..........................................................................
+    --doc                      create stand alone document
+    --no-doc                   cancel the --doc option
+    --css=filename             the external style sheet filename
+    --src-lang=STRING          source language
+ -t, --tab=INT                  specify tab length
+ -n, --line-number[=0]          number all output lines, optional padding
+    --line-number-ref[=p]      number all output lines and generate an anchor,
+                                made of the specified prefix p + the line
+                                number  (default='line')
+    --output-dir=path          output directory
+    --failsafe                 if no language definition is found for the
+                                  input, it is simply copied to the output
+..........................................................................
+
+A deprecation notice is shown during the beta release cycle.
+
+
+== REMOVED LIBRARY FUNCTIONS
++
+..........................................................................
+DataDir::searchDataDir -> DataDir::initSearchDirectories
+CodeGenerator::setIndentationOptions
+CodeGenerator::setStartingNestedLang
+..........................................................................
+
+
+=== REMOVED FILES
++
+..........................................................................
+    extras/web_plugins/*
+..........................................................................
+
+
+=== RENAMED FILES
++
+..........................................................................
+    langDefs/abap4.lang -> langDefs/abap.lang
+    langDefs/coffee.lang -> langDefs/coffeescript.lang
+    langDefs/docker.lang -> langDefs/dockerfile.lang
+    langDefs/js.lang -> langDefs/javascript.lang
+    langDefs/make.lang -> langDefs/makefile.lang
+    langDefs/ps1.lang -> langDefs/powershell.lang
+    langDefs/rs.lang -> langDefs/rust.lang
+    langDefs/sh.lang -> langDefs/shellscript.lang
+    langDefs/ts.lang -> langDefs/typescript.lang
+
+    themes/fine_blue.theme -> themes/fineblue.theme
+..........................................................................
+
+
+== NEW CONFIG FILES
++
+
+lsp.conf
+
+
+== STYLE NAMES
++
+
+To avoid conflicts with new `st*` names, these classes were renamed:
+
+..........................................................................
+    str -> sng
+    std -> def
+..........................................................................
+
+// EOF //

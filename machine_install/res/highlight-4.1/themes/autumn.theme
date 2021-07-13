@@ -1,0 +1,44 @@
+
+Description = "vim autumn"
+
+Categories = {"light", "vim"}
+
+Default	= { Colour="#404040" }
+Canvas	= { Colour="#fff4e8" }
+Number	= { Colour="#00884c" }
+Escape	= { Colour="#8040f0" }
+String	= { Colour="#00884c" }
+BlockComment	= { Colour="#ff5050" }
+StringPreProc = String
+LineComment   = BlockComment
+Operator      = { Colour="#513d2b" }
+LineNum      = { Colour="#555555" }
+PreProcessor      = {  Colour="#660000" }
+Interpolation  = { Colour="#CA6DE1" }
+
+Keywords = {
+  { Colour="#80a030" },
+  { Colour="#b06c58" },
+  { Colour="#30a188" },
+  { Colour="#990000" },
+  { Colour="#9a85ff" },
+  { Colour="#85adff" },
+}
+
+-- new LSP based elements:
+
+SemanticTokenTypes = {
+  { Type = 'type', Style = Keywords[2] },
+  { Type = 'class', Style =  Keywords[1] },
+  { Type = 'struct', Style =  Keywords[4] },
+  { Type = 'interface', Style = Keywords[1] },
+  { Type = 'parameter', Style = Keywords[6] },
+  { Type = 'variable', Style = Keywords[5] },
+  { Type = 'enumMember', Style = Keywords[5] },
+  { Type = 'function', Style = Keywords[4] },
+  { Type = 'method', Style = Keywords[4] },
+  { Type = 'keyword', Style =  Keywords[1]},
+  { Type = 'number', Style = Number },
+  { Type = 'regexp', Style = String },
+  { Type = 'operator', Style = Operator },
+}

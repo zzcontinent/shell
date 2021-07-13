@@ -1,0 +1,42 @@
+-- copy this template in ~/.config/wal/templates
+-- pywal theme based on {wallpaper}
+
+Description = "pywal color theme"
+
+Default	= {{ Colour="{foreground}" }}
+Canvas	= {{ Colour="{background}" }}
+Number	= {{ Colour="{color0}" }}
+Escape	= {{ Colour="{color1}" }}
+String	= {{ Colour="{color2}" }}
+BlockComment	= {{ Colour="{color3}" }}
+PreProcessor	= {{ Colour="{color4}" }}
+LineNum	= {{ Colour="{color5}" }}
+StringPreProc = {{ Colour="{color6}" }}
+LineComment   = {{ Colour="{color7}" }}
+Operator      = {{ Colour="{color8}" }}
+Interpolation  = {{ Colour="{color9}" }}
+
+Keywords = {{
+  {{ Colour="{color10}" , Bold=true}},
+  {{ Colour="{color11}" }},
+  {{ Colour="{color12}" }},
+  {{ Colour="{color13}" }},
+  {{ Colour="{color14}" }},
+  {{ Colour="{color15}" }},
+}}
+
+SemanticTokenTypes = {{
+  {{ Type = "type", Style = Keywords[2] }},
+  {{ Type = "class", Style =  Keywords[1] }},
+  {{ Type = "struct", Style =  Keywords[4] }},
+  {{ Type = "interface", Style = Keywords[1] }},
+  {{ Type = "parameter", Style = Keywords[6] }},
+  {{ Type = "variable", Style = Keywords[5] }},
+  {{ Type = "enumMember", Style = Keywords[5] }},
+  {{ Type = "function", Style = Keywords[4] }},
+  {{ Type = "method", Style = Keywords[4] }},
+  {{ Type = "keyword", Style =  Keywords[1]}},
+  {{ Type = "number", Style = Number }},
+  {{ Type = "regexp", Style = String }},
+  {{ Type = "operator", Style = Operator }},
+}}

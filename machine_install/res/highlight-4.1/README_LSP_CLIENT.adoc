@@ -1,0 +1,148 @@
+= HIGHLIGHT LANGUAGE SERVER PROTOCOL CLIENT
+André Simon
+:revdate: February 2021
+:lang: en
+:toc: left
+:toc-title: Contents
+:toclevels: 4
+:sectnums:
+:sectnumlevels: 2
+:sectanchors:
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+
+
+== LSP SUPPORT
+
+Starting with version 4.0, highlight will use the LSP protocol to enhance
+its output.
+
+What does this mean?
+
+Many editors make use of "Language Servers" to get syntax information of various
+programming languages without the need to implement a deep understanding of the
+files'' syntax they process. Well known code editors with LSP support are VSCode,
+Kate, vim, Emacs and Eclipse.
+
+More information about LSP and editor support:
+https://langserver.org/
+
+Highlight''s LSP based features:
+
+* enhanced tooltips using hover requests
+* semantic highlighting
+* syntax error highlighting
+
+
+== PROFILES
+
+Language servers are configured in lsp.conf:
+
++
+..........................................................................
+
+Servers = {
+
+  { Server="clangd", Exec="clangd", Syntax="c", Options={"--log=error"} },
+  { Server="ccls", Exec="ccls", Syntax="c", Options={"-v=-3", "--"} },
+  { Server="ccls-objc", Exec="ccls", Syntax="objc", Options={"-v=-3", "--"} },
+
+  { Server="gopls", Exec="gopls", Syntax="go", Options={} },
+
+  { Server="rls", Exec="rls", Syntax="rust", Options={} },
+  { Server="rust-analyzer", Exec="rust-analyzer", Syntax="rust", Delay=250, Options={} },
+
+  { Server="pyls", Exec="pyls", Syntax="python", Options={"--check-parent-process"} },
+
+  { Server="R", Exec="R", Syntax="r", Options={"--slave", "-e", "languageserver::run()"} },
+
+  { Server="clangd-win", Exec="F:\\LLVM\\bin\\clangd.exe", Syntax="c", Options={"--log=error"} },
+
+}
+..........................................................................
+
+These profile settings may also be set with corresponding `--ls-*` options.
+
+
+== OPTIONS
+
+Command line options:
++
+..........................................................................
+Language Server options:
+
+     --ls-profile=<server>      read LSP configuration from lsp.conf
+     --ls-delay=<ms>            set server initialization delay
+     --ls-exec=<bin>            set server executable name
+     --ls-option=<option>       set server CLI option (can be repeated)
+     --ls-hover                 execute hover requests (HTML output only)
+     --ls-semantic              retrieve semantic token types (requires LSP 3.16)
+     --ls-syntax=<lang>         set syntax which is understood by the server
+     --ls-syntax-error          retrieve syntax error information
+                                  (assumes --ls-hover or --ls-semantic)
+     --ls-workspace=<dir>       set workspace directory to init. the server
+..........................................................................
+
+The GUI offers an LSP tab to enable these options.
+
+Important: LSP features require absolute input file paths.
+
+== THEMES
+
+Colour themes have a new section to define semantic token styles. These
+types use the same identifiers which are reported by the language server
+capabilities. If the server reports token types not listed here, they
+will be ignored.
+
++
+..........................................................................
+-- new LSP based elements:
+
+SemanticTokenTypes  = {
+  { Type = 'type', Style = Keywords[2] },
+  { Type = 'class', Style =  Keywords[1] },
+  { Type = 'struct', Style =  Keywords[4] },
+  { Type = 'interface', Style = Keywords[1] },
+  { Type = 'parameter', Style = Keywords[5] },
+  { Type = 'variable', Style = Keywords[6] },
+  { Type = 'enumMember', Style = Keywords[6] },
+  { Type = 'function', Style = Keywords[3] },
+  { Type = 'method', Style = Keywords[3] },
+  { Type = 'keyword', Style =  Keywords[1]},
+  { Type = 'number', Style = Number },
+  { Type = 'regexp', Style = String },
+  { Type = 'operator', Style = Operator },
+}
+
+-- Error token (default: red color)
+Error = { Custom = { { Format = "html", Style = "color: green" } } }
+
+-- Error message (default: color:red; border:solid 1px red;)
+ErrorMessage = { Custom = { { Format = "html", Style = "color: green" } } }
+
+-- Hover tooltip span (default: cursor:help )
+Hover = { Custom = { { Format = "html", Style = "cursor:help" } } }
+
+..........................................................................
+
+Additional elements to describe token modifiers will be added in a later release.
+
+
+=== EXAMPLE INVOCATION
++
+..........................................................................
+
+highlight  -I --ls-profile ccls --ls-workspace '/home/andre/Projekte/c' /home/andre/Projekte/c/re.cpp --out-format html  --ls-hover > /home/andre/Projekte/c/re.cpp.ccls.html
+
+highlight  -I  --ls-profile rust-analyzer --ls-workspace '/home/andre/Projekte/rust/fibo'  /home/andre/Projekte/rust/fibo/src/main.rs  --out-format html --ls-semantic > fibo.html
+..........................................................................
+
+
+=== DEBUGGING
+
+Apply `-v -v` to print LSP messages.
+
+
+// EOF //

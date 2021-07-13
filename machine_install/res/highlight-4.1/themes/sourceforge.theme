@@ -1,0 +1,41 @@
+Description="Sourceforge.net"
+
+Categories = {"light"}
+
+Default        = { Colour="#555555" }
+Canvas         = { Colour="#f8f8f8" }
+Number         = { Colour="#666666" }
+Escape         = { Colour="#BA2121" }
+String         = { Colour="#BA2121" }
+StringPreProc  = { Colour="#BC7A00" }
+BlockComment   = { Colour="#408080", Italic=true }
+PreProcessor   = { Colour="#BC7A00" }
+LineNum        = { Colour="#000000" }
+Operator       = Default
+LineComment = BlockComment
+Interpolation  = { Colour="#BA2121" }
+
+Keywords = {
+  { Colour= "#008000", Bold=true },
+  { Colour= "#B00040" },
+  { Colour= "#B00040" },
+  { Colour= "#555555" },
+  { Colour= "#464c81" },
+  { Colour= "#5e4681" },
+}
+
+-- new LSP based elements:
+
+SemanticTokenTypes  = {
+  { Type = 'keyword', Style = Keywords[1] },
+  { Type = 'type', Style = Keywords[2] },
+  { Type = 'function', Style = Keywords[4] },
+  { Type = 'method', Style = Keywords[4] },
+  { Type = 'class', Style =  Keywords[1] },
+  { Type = 'struct', Style = Keywords[2] },
+  { Type = 'parameter', Style = Keywords[6] },
+  { Type = 'variable', Style = Keywords[5] },
+  { Type = 'number', Style = Number },
+  { Type = 'regexp', Style = String },
+  { Type = 'operator', Style = Operator },
+}

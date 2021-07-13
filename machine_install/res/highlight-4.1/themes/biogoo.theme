@@ -1,0 +1,44 @@
+
+Description = "vim biogoo"
+
+Categories = {"light", "vim"}
+
+Default	= { Colour="#000000" }
+Canvas	= { Colour="#d6d6d6" }
+Number	= { Colour="#b85d00" }
+Escape	= { Colour="#007f00" }
+String	= { Colour="#d10000" }
+BlockComment	= { Colour="#0000c3" }
+StringPreProc = String
+LineComment   = BlockComment
+Operator      = { Colour="#2f7428" }
+LineNum      = BlockComment
+PreProcessor      = { Colour="#540054" }
+Interpolation  = { Colour="#BE58A0" }
+
+Keywords = {
+  { Colour="#00007f" },
+  { Colour="#540054" , Bold=true},
+  { Colour="#005400" },
+  { Colour="#002a54" },
+  { Colour="#920bbb" },
+  { Colour="#920bbb" },
+}
+
+-- new LSP based elements:
+
+SemanticTokenTypes = {
+  { Type = 'type', Style = Keywords[2] },
+  { Type = 'class', Style =  Keywords[1] },
+  { Type = 'struct', Style =  Keywords[4] },
+  { Type = 'interface', Style = Keywords[1] },
+  { Type = 'parameter', Style = Keywords[6] },
+  { Type = 'variable', Style = Keywords[5] },
+  { Type = 'enumMember', Style = Keywords[5] },
+  { Type = 'function', Style = Keywords[4] },
+  { Type = 'method', Style = Keywords[4] },
+  { Type = 'keyword', Style =  Keywords[1]},
+  { Type = 'number', Style = Number },
+  { Type = 'regexp', Style = String },
+  { Type = 'operator', Style = Operator },
+}

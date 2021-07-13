@@ -42,7 +42,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'pseewald/vim-anyfold'
 "space-vim-dark
 Plugin 'liuchengxu/space-vim-dark'
-" tabline 
+" tabline
 Plugin 'bling/vim-airline'
 
 " 你的所有插件需要在下面这行之前
@@ -93,7 +93,7 @@ set foldlevel=0
 set nofoldenable
 set scrolloff=999
 "set sidescrolloff=999
-set list lcs=tab:\¦\ 
+set list lcs=tab:\¦\
 hi Folded ctermbg=0
 set ignorecase
 hi MatchParen ctermbg=lightgreen ctermfg=black
@@ -115,7 +115,7 @@ let g:solarized_visibility= "low" " set list
 "let g:solarized_italic = 1
 let g:solarized_hitrail = 1
 let g:solarized_termcolors=16
-"let g:solarized_bold      =   1 
+"let g:solarized_bold      =   1
 "
 "g:solarized_termcolors=   16      |   256
 "g:solarized_termtrans =   0       |   1
@@ -139,8 +139,8 @@ endif
 
 "==============>space-vim-dark config
 colorscheme space-vim-dark
-"hi Comment guifg=#5C6370 ctermfg=59
-hi Comment cterm=italic
+hi Comment guifg=#5C6370 ctermfg=59
+"hi Comment cterm=italic
 hi Normal     ctermbg=NONE guibg=NONE
 hi LineNr     ctermbg=NONE guibg=NONE
 hi SignColumn ctermbg=NONE guibg=NONE
@@ -291,9 +291,9 @@ let NERDTreeMapJumpPrevSibling=''
 let g:ycm_python_interpreter_path = '/home/cliff/pyenv/env38/bin/python'
 let g:ycm_python_sys_path = ['/home/cliff/pyenv/env38/lib/python3.8']
 let g:ycm_extra_conf_vim_data = [
- \ 'g:ycm_python_interpreter_path',
- \ 'g:ycm_python_sys_path'
- \ ]
+			\ 'g:ycm_python_interpreter_path',
+			\ 'g:ycm_python_sys_path'
+			\ ]
 
 "==============>ycm config
 "let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
@@ -434,10 +434,10 @@ inoremap [ []<ESC>i
 inoremap " ""<ESC>i
 
 "make cflow
-nnoremap <leader>cf :!cflow -T *.c \| less -N -r -I<CR>
+nnoremap <leader>cf :!cflow -bnT -f posix *.c  \| highlight -O ansi --syntax c \| less -r -I<CR>
 "close previewpopup window
 "set previewpopup=height:5,width:100
-set previewheight=10
+"set previewheight=10
 nnoremap <leader>cp :pc <CR>
 "=======================================================map==================
 
