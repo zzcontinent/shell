@@ -432,7 +432,8 @@ inoremap " ""<ESC>i
 
 "make cflow
 "nnoremap <leader>cf :!cflow -bnT -f posix *.c  \| highlight -O ansi --syntax c \| less -r -I<CR>
-nnoremap <leader>cf :!for f in `find -type f\| grep \.c$`; do echo ===========$f; cflow -nT -f posix $f; done \| highlight -O ansi --syntax c \| less -r -I<CR>
+nnoremap <leader>rcf :!for f in `find -type f\| grep -E '\.c$\|\.h$'`; do echo ===========$f; cflow -nT -f posix $f 2>/dev/null; done \| highlight -O ansi --syntax c \| less -r -I<CR>
+nnoremap <leader>cf :!for f in `ls .`; do echo ===========$f; cflow -nT -f posix $f 2>/dev/null; done \| highlight -O ansi --syntax c \| less -r -I<CR>
 
 "close previewpopup window
 "set previewpopup=height:5,width:100
