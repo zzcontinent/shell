@@ -431,7 +431,9 @@ inoremap [ []<ESC>i
 inoremap " ""<ESC>i
 
 "make cflow
-nnoremap <leader>cf :!cflow -bnT -f posix *.c  \| highlight -O ansi --syntax c \| less -r -I<CR>
+"nnoremap <leader>cf :!cflow -bnT -f posix *.c  \| highlight -O ansi --syntax c \| less -r -I<CR>
+nnoremap <leader>cf :!for f in `find -type f\| grep \.c$`; do echo ===========$f; cflow -nT -f posix $f; done \| highlight -O ansi --syntax c \| less -r -I<CR>
+
 "close previewpopup window
 "set previewpopup=height:5,width:100
 "set previewheight=10
