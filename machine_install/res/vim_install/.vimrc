@@ -437,7 +437,7 @@ nnoremap <leader>cf :!for f in `ls .`; do echo ===========$f; cflow -nT -f posix
 
 "close previewpopup window
 "set previewpopup=height:5,width:100
-"set previewheight=10
+set previewheight=17
 nnoremap <leader>cp :pc <CR>
 "=======================================================map==================
 

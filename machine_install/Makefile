@@ -21,18 +21,18 @@ all:
 	make compiles
 	make shell
 	make vim
-	
+
 
 sudoers:
 	@echo "==========================[$@] <= [$^]"
-	echo '%sudo ALL=(ALL:ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/`whoami` 
+	echo '%sudo ALL=(ALL:ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/`whoami`
 
 prepare:
 	@echo "==========================[$@] <= [$^]"
 	sudo apt update
 cmake:
 	@echo "==========================[$@] <= [$^]"
-	sudo apt install -y cmake 
+	sudo apt install -y cmake
 
 vim: vim-gtk cmake
 	@echo "==========================[$@] <= [$^]"
@@ -97,6 +97,15 @@ virtualenv:
 	udo pip install virtualenv
 	echo 'virtualenv env38'
 	echo 'virtualenv -p /usr/local/bin/python3.8 env38'
+	@echo 'mkdir ~/pyenv && cd ~/pyenv && virtualenv -p /usr/local/bin/python3.8 env38'
+
+jupyter:
+	@echo "==========================[$@] <= [$^]"
+	@echo 'install virtualenv first!'
+	@echo 'jupyter notebook --generate-config'
+	@echo 'jupyter notebook --generate-config'
+	@echo 'source ~/pyenv/env38/bin/activate && cd ~/pyworkspace && jupyter-notebook'
+
 windows-font:
 	@echo "==========================[$@] <= [$^]"
 	sudo mkdir /usr/share/fonts/truetype/windows-fonts
@@ -106,7 +115,7 @@ windows-font:
 	sudo mkfontdir
 	sudo fc-cache -fv
 font-mac:
-	@echo "==========================[$@] <= [$^]" 
+	@echo "==========================[$@] <= [$^]"
 	-mkdir -p /usr/share/fonts/truetype/custom
 	cp ./res/font/monaco-font/Monaco_Linux.ttf /usr/share/fonts/truetype/custom/
 	sudo fc-cache -f -v
