@@ -435,7 +435,9 @@ inoremap " ""<ESC>i
 nnoremap <leader>rcf :!for f in `find -type f\| grep -E '\.c$\|\.h$'`; do echo ===========$f; cflow -nT -f posix $f 2>/dev/null; done \| highlight -O ansi --syntax c \| less -r -I<CR>
 nnoremap <leader>cf :!for f in `ls .`; do echo ===========$f; cflow -nT -f posix $f 2>/dev/null; done \| highlight -O ansi --syntax c \| less -r -I<CR>
 "pycflow2dot
-nnoremap <leader>pycf :!cflow2dot --merge -r -f png -i $(echo `find -type f`)
+nnoremap <leader>cfpng :!cflow2dot --merge -r -f png -i $(echo `find -type f \| grep -Ei '\.c$\|\.h$\|\.s$'`) -o $(basename `pwd`) && rm $(basename `pwd`).dot <CR>
+nnoremap <leader>cfpdf :!cflow2dot --merge -r -f pdf -i $(echo `find -type f \| grep -Ei '\.c$\|\.h$\|\.s$'`) -o $(basename `pwd`) && rm $(basename `pwd`).dot <CR>
+nnoremap <leader>cff :!echo -n 'input filename:' && read tmp_f && cflow2dot --merge -r -f pdf -i ${tmp_f} -o ${tmp_f} && rm ${tmp_f}.dot <CR>
 
 "close previewpopup window
 "set previewpopup=height:5,width:100
