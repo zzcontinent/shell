@@ -213,6 +213,11 @@ bashrc:
 ssh_analysis:
 	@echo "==========================[$@] <= [$^]"
 	cp ./res/ssh_analysis /usr/local/bin
+cflow:
+	@echo "==========================[$@] <= [$^]"
+	apt install cflow graphviz -y
+	python3 -m pip install --upgrade pip
+	pip install pycflow2dot
 
 
 #==============================================
