@@ -438,6 +438,8 @@ nnoremap <leader>cf :!for f in `ls .`; do echo ===========$f; cflow -nT -f posix
 nnoremap <leader>cfpng :!cflow2dot --merge -r -f png -i $(echo `find -type f \| grep -Ei '\.c$\|\.h$\|\.s$'`) -o $(basename `pwd`) && rm $(basename `pwd`).dot <CR>
 nnoremap <leader>cfpdf :!cflow2dot --merge -r -f pdf -i $(echo `find -type f \| grep -Ei '\.c$\|\.h$\|\.s$'`) -o $(basename `pwd`) && rm $(basename `pwd`).dot <CR>
 nnoremap <leader>cff :!echo -n 'input filename:' && read tmp_f && cflow2dot --merge -r -f pdf -i ${tmp_f} -o ${tmp_f} && rm ${tmp_f}.dot <CR>
+nnoremap <leader>cfdpdf :!(for cur_f in `find -type f \| grep -Ei '\.c$\|\.h$\|\.s$'`; do echo ================${cur_f} && cd `dirname $cur_f` ; cur_f_name=`basename ${cur_f}` && cflow2dot --merge -r -f pdf -i ${cur_f_name} -o ${cur_f_name} && rm ${cur_f_name}.dot; cd -; done) <CR>
+nnoremap <leader>cfdpng :!(for cur_f in `find -type f \| grep -Ei '\.c$\|\.h$\|\.s$'`; do echo ================${cur_f} && cd `dirname $cur_f` ; cur_f_name=`basename ${cur_f}` && cflow2dot --merge -r -f png -i ${cur_f_name} -o ${cur_f_name} && rm ${cur_f_name}.dot; cd -; done) <CR>
 
 "close previewpopup window
 "set previewpopup=height:5,width:100
