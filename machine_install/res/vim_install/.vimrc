@@ -22,13 +22,13 @@ Plugin 'L9'
 Plugin 'git://git.wincent.com/command-t.git'
 " 本地的Git仓库(例如自己的插件) Plugin 'file:///+本地插件仓库绝对路径'
 "Plugin 'file:///home/gmarik/path/to/plugin'
-Plugin 'file:///home/cliff/cworkspace/github/YouCompleteMe'
+"Plugin 'file:///home/cliff/cworkspace/github/YouCompleteMe'
 " 插件在仓库的子目录中.
 " 正确指定路径用以设置runtimepath. 以下范例插件在sparkup/vim目录下
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " 安装L9，如果已经安装过这个插件，可利用以下格式避免命名冲突
 Plugin 'ascenator/L9', {'name': 'newL9'}
-"Plugin 'ycmd-core/YouCompleteMe'
+Plugin 'ycmd-core/YouCompleteMe'
 Plugin 'Chiel92/vim-autoformat'
 " theme
 Plugin 'altercation/vim-colors-solarized'
@@ -429,6 +429,23 @@ inoremap [ []<ESC>i
 "inoremap ( ()<ESC>i
 "inoremap " ""<ESC>i
 "inoremap ' ''<ESC>i
+
+"insert template
+function! GetFileOriginName()
+        return expand("%:t")
+endfunction
+
+function! GetTime()
+	return strftime("%Y-%m-%d %H:%M:%S")
+endfunction
+
+"sign header insert
+inoremap <leader>si /* ********************************************<cr>
+			\FILE NAME  : <c-r>=GetFileOriginName()<cr><cr>
+			\PROGRAMMER : ???<cr>
+			\START DATE : <c-r>=GetTime()<cr><cr>
+			\DESCIPTION : ???<cr>
+			\*******************************************/<cr>
 
 "make cflow
 "nnoremap <leader>cf :!cflow -bnT -f posix *.c  \| highlight -O ansi --syntax c \| less -r -I<CR>
