@@ -53,15 +53,15 @@ endif
 " Variable Definitions: {{{1
 " options, define them as you like in vimrc:
 if !exists("g:completekey")
-        let g:completekey = "<tab>"   "hotkey
+        let g:completekey = "`"   "hotkey
 endif
 
 if !exists("g:rs")
-        let g:rs = '`<'    "region start
+        let g:rs = '<'    "region start
 endif
 
 if !exists("g:re")
-        let g:re = '>`'    "region stop
+        let g:re = '>'    "region stop
 endif
 
 if !exists("g:user_defined_snippets")
@@ -175,7 +175,8 @@ function! SwitchRegion()
                 call cursor(s:jumppos,0)
                 let s:jumppos = -1
         endif
-        if match(getline('.'),g:rs.'.*'.g:re)!=-1 || search(g:rs.'.\{-}'.g:re)!=0
+        "if match(getline('.'),g:rs.'.*'.g:re)!=-1 || search(g:rs.'.\{-}'.g:re)!=0
+        if match(getline('.'),g:rs.'.*'.g:re)!=-1
                 normal 0
                 call search(g:rs,'c',line('.'))
                 normal v
@@ -246,24 +247,20 @@ let g:template['c']['cd'] = "/**<  */\<left>\<left>\<left>"
 let g:template['c']['de'] = "#define "
 let g:template['c']['in'] = "#include \"\"\<left>"
 let g:template['c']['is'] = "#include <>\<left>"
-let g:template['c']['ff'] = "#ifndef  __\<c-r>=GetFileName()\<cr>__\<CR>#define  __\<c-r>=GetFileName()\<cr>__".
-                        \repeat("\<cr>",5)."#endif  /* __\<c-r>=GetFileName()\<cr>__ */".repeat("\<up>",3)
-let g:template['c']['for'] = "for (".g:rs."...".g:re."; ".g:rs."...".g:re."; ".g:rs."...".g:re.")\<cr>{\<cr>".
-                        \g:rs."...".g:re."\<cr>}\<cr>"
+let g:template['c']['ff'] = "#ifndef  __\<c-r>=GetFileName()\<cr>__\<cr>#define  __\<c-r>=GetFileName()\<cr>__\<cr>\<cr>\<cr>#endif  /*__\<c-r>=GetFileName()\<cr>__*/"
+let g:template['c']['for'] = "for (".g:rs."...".g:re."; ".g:rs."...".g:re."; ".g:rs."...".g:re.")\<cr>{\<cr>".g:rs."...".g:re."\<cr>}"
 let g:template['c']['main'] = "int main (int argc, char \*argv\[\])\<cr>{\<cr>".g:rs."...".g:re."\<cr>}"
-let g:template['c']['switch'] = "switch (".g:rs."...".g:re.")\<cr>{\<cr>case ".g:rs."...".g:re." :\<cr>break;\<cr>case ".
-                        \g:rs."...".g:re." :\<cr>break;\<cr>default :\<cr>break;\<cr>}"
+let g:template['c']['switch'] = "switch (".g:rs."...".g:re.")\<cr>{\<cr>case ".g:rs."...".g:re." :\<cr>break;\<cr>case ".g:rs."...".g:re." :\<cr>break;\<cr>default :\<cr>break;\<cr>}"
 let g:template['c']['if'] = "if (".g:rs."...".g:re.")\<cr>{\<cr>".g:rs."...".g:re."\<cr>}"
 let g:template['c']['while'] = "while (".g:rs."...".g:re.")\<cr>{\<cr>".g:rs."...".g:re."\<cr>}"
-let g:template['c']['ife'] = "if (".g:rs."...".g:re.")\<cr>{\<cr>".g:rs."...".g:re."\<cr>} else\<cr>{\<cr>".g:rs."...".
-                        \g:re."\<cr>}"
+let g:template['c']['ife'] = "if (".g:rs."...".g:re.")\<cr>{\<cr>".g:rs."...".g:re."\<cr>} else\<cr>{\<cr>".g:rs."...".g:re."\<cr>}"
 
 let g:template['c']['sign'] = "\/* ********************************************\<cr>
-\FILE NAME  : \<c-r>=GetFileOriginName()\<cr>\<cr>
-\PROGRAMMER : ".g:rs."...".g:re."\<cr>
-\START DATE : \<c-r>=strftime(\"%Y-%m-%d %H:%M:%S\")\<cr>\<cr>
-\DESCIPTION : ".g:rs."...".g:re."\<cr>
-\*******************************************/"
+                        \FILE NAME  : \<c-r>=GetFileOriginName()\<cr>\<cr>
+                        \PROGRAMMER : ".g:rs."...".g:re."\<cr>
+                        \START DATE : \<c-r>=strftime(\"%Y-%m-%d %H:%M:%S\")\<cr>\<cr>
+                        \DESCIPTION : ".g:rs."...".g:re."\<cr>
+                        \*******************************************/\<cr>"
 
 " ---------------------------------------------
 " C++ templates
@@ -272,7 +269,7 @@ let g:template['cpp'] = g:template['c']
 " ---------------------------------------------
 " common templates
 let g:template['_'] = {}
-let g:template['_']['xt'] = "\<c-r>=strftime(\"%Y-%m-%d %H:%M:%S\")\<cr>"
+let g:template['_']['time'] = "\<c-r>=strftime(\"%Y-%m-%d %H:%M:%S\")\<cr>"
 
 " ---------------------------------------------
 " load user defined snippets

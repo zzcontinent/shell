@@ -424,12 +424,11 @@ nnoremap <leader>aq :qa!<CR>
 nnoremap <leader>w :w!<CR>
 "tab -> 4space
 nnoremap <leader>hr :%s/\t/    /g<CR>
-"imap { {}<ESC>i<CR><ESC>V<O
-"imap { {}<ESC>i<CR><ESC>k2==o
 inoremap { {}<ESC>i
-inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
-inoremap " ""<ESC>i
+"inoremap ( ()<ESC>i
+"inoremap " ""<ESC>i
+"inoremap ' ''<ESC>i
 
 "make cflow
 "nnoremap <leader>cf :!cflow -bnT -f posix *.c  \| highlight -O ansi --syntax c \| less -r -I<CR>
