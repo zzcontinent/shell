@@ -22,13 +22,13 @@ Plugin 'L9'
 Plugin 'git://git.wincent.com/command-t.git'
 " 本地的Git仓库(例如自己的插件) Plugin 'file:///+本地插件仓库绝对路径'
 "Plugin 'file:///home/gmarik/path/to/plugin'
-"Plugin 'file:///home/cliff/cworkspace/github/YouCompleteMe'
+Plugin 'file:///home/cliff/cworkspace/github/YouCompleteMe'
 " 插件在仓库的子目录中.
 " 正确指定路径用以设置runtimepath. 以下范例插件在sparkup/vim目录下
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " 安装L9，如果已经安装过这个插件，可利用以下格式避免命名冲突
 Plugin 'ascenator/L9', {'name': 'newL9'}
-Plugin 'ycmd-core/YouCompleteMe'
+"Plugin 'ycmd-core/YouCompleteMe'
 Plugin 'Chiel92/vim-autoformat'
 " theme
 Plugin 'altercation/vim-colors-solarized'
@@ -426,26 +426,39 @@ nnoremap <leader>w :w!<CR>
 nnoremap <leader>hr :%s/\t/    /g<CR>
 inoremap { {}<ESC>i
 inoremap [ []<ESC>i
-"inoremap ( ()<ESC>i
-"inoremap " ""<ESC>i
-"inoremap ' ''<ESC>i
+inoremap ( ()<ESC>i
+inoremap " ""<ESC>i
+inoremap ' ''<ESC>i
 
-"insert template
+"insert template ==============================
+function! GetFileHeaderName()
+	let filename=expand("%:t")
+	let filename=toupper(filename)
+	let ret=substitute(filename, '\.', '_', 'g')
+	let ret="__".ret."__"
+	return ret
+endfunction
 function! GetFileOriginName()
-        return expand("%:t")
+	return expand("%:t")
 endfunction
 
 function! GetTime()
 	return strftime("%Y-%m-%d %H:%M:%S")
 endfunction
 
-"sign header insert
+"insert sign header
 inoremap <leader>si /* ********************************************<cr>
 			\FILE NAME  : <c-r>=GetFileOriginName()<cr><cr>
 			\PROGRAMMER : ???<cr>
 			\START DATE : <c-r>=GetTime()<cr><cr>
 			\DESCIPTION : ???<cr>
-			\*******************************************/<cr>
+			\*******************************************/<cr><ESC>4k4w
+inoremap <leader>for for (;;) {<cr><cr>}<ESC>2kwa
+inoremap <leader>if if () {<cr><cr>} else {<cr><cr>}<ESC>4kwa
+inoremap <leader>el else if () {<cr><cr>}<ESC>2k2wa
+inoremap <leader>ff #ifndef  <c-r>=GetFileHeaderName()<cr><cr>#define  <c-r>=GetFileHeaderName()<cr><cr><cr><cr>#endif  /* <c-r>=GetFileHeaderName()<cr> */<cr>
+
+"insert template ============================== end
 
 "make cflow
 "nnoremap <leader>cf :!cflow -bnT -f posix *.c  \| highlight -O ansi --syntax c \| less -r -I<CR>
