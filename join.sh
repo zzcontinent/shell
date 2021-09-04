@@ -7,6 +7,7 @@ read rfile
 echo "input output file:"
 read ofile
 
+SEARCH_RANGE=1000
 i=0
 blen=`cat $bfile | wc -l`
 for pc in `cat $bfile`
@@ -15,7 +16,7 @@ do
 	i=`expr $i + 1`
 	LLINE="$pc"
 	RLINE="`grep "^$pc\:" $rfile`"
-	FUNC_NAME="`grep -B300 "^$pc" $rfile | grep '<*>:' | tail -n 1`"
+	FUNC_NAME="`grep -B${SEARCH_RANGE} "^$pc" $rfile | grep '<*>:' | tail -n 1`"
 	echo "$LLINE -> ${FUNC_NAME} -> $RLINE" >> $ofile
 done
 cat $ofile | column -t > ${ofile}_t
