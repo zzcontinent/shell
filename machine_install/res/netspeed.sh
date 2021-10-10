@@ -31,6 +31,7 @@ done
 
 func_step_total()
 {
+	echo "------------" >> ${TMP_FILE_FB}
 	date "+%Y-%m-%d %H:%M:%S" >> ${TMP_FILE_FB}
 	for dev in ${net_devs_ok}
 	do
@@ -75,5 +76,17 @@ func_run()
 	done
 }
 
+func_run_log()
+{
+	while true
+	do
+		echo -n > ${TMP_FILE_FB}
+		func_step_total
+		cat ${TMP_FILE_FB} | column -t
+		sleep ${PERIOD}
+	done
+}
+
 func_step_total
-func_run
+#func_run
+func_run_log
