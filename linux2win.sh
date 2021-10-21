@@ -1,8 +1,8 @@
 #!/bin/bash
 
-SRC_PATH="host_cliff:/home/cliff/hrworkspace/./hr2_src"
+SRC_PATH="host_cliff:/home/cliff/hcworkspace/./hr2_src"
 DES_PATH="/mnt/c/tmp"
-EXCLUDE=""
+EXCLUDE="${SRC_PATH##*:}/bspHr2/SylixOSSrc/Release ${SRC_PATH##*:}/home/cliff/hcworkspace/./hr2_src/Base_1_9_9_MipsHr2/libsylixos/Release"
 #IS_DELETE="--delete"
 IS_DELETE=""
 

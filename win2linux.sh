@@ -2,7 +2,7 @@
 
 SRC_PATH="/mnt/c/tmp/./hr2_src"
 DES_PATH="host_cliff:/home/cliff/hcworkspace/"
-EXCLUDE=""
+EXCLUDE="hr2_src/bspHr2/Release  hr2_src/bspHr2/SylixOSSrc/Release hr2_src/Base_1_9_9_MipsHr2/libsylixos/Release"
 IS_DELETE="--delete"
 #IS_DELETE=""
 
