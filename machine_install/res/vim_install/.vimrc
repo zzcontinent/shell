@@ -405,7 +405,7 @@ nnoremap <leader>cc :set colorcolumn=9
 nnoremap <leader>cc :set colorcolumn=9
 
 "nnoremap <leader>gp :!echo -n grep : && read key_s && grep -rni "${key_s}" \| highlight -O ansi --syntax c \| less -N -r -I -p "${key_s}" <CR><CR>
-nnoremap <leader>gp :!echo -n grep : && read key_s && grep -rni "${key_s}" \| less -N -r -I -p "${key_s}" <CR><CR>
+nnoremap <leader>gp :!echo -n grep : && read key_s && grep -rni "${key_s}" --color=always \| less -N -r -I -p "${key_s}" <CR><CR>
 nnoremap <leader>fd :!echo -n find : && read key_s && find . \| grep --color=always "${key_s}" \| less -N -r -I -p "${key_s}" <CR><CR>
 
 "autoformat

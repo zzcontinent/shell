@@ -2,9 +2,9 @@
 
 SRC_PATH="/mnt/c/tmp/./hr2_src"
 DES_PATH="host_cliff:/home/cliff/hcworkspace/"
-EXCLUDE="hr2_src/bspHr2/Release  hr2_src/bspHr2/SylixOSSrc/Release hr2_src/Base_1_9_9_MipsHr2/libsylixos/Release"
-IS_DELETE="--delete"
-#IS_DELETE=""
+EXCLUDE="${SRC_PATH}/bspHr2/SylixOSLoader ${SRC_PATH}/bspHr2/Release ${SRC_PATH}/Base_1_9_9_MipsHr2/libsylixos/Release ${SRC_PATH}/bspHr2/SylixOSSrc/Debug"
+#IS_DELETE="--delete"
+IS_DELETE=""
 
 #1 ===================================================
 retry_cnt=0
