@@ -3,8 +3,8 @@
 SRC_PATH="/mnt/c/tmp/./hr2_src"
 DES_PATH="host_cliff:/home/cliff/hcworkspace/"
 EXCLUDE=""
-#IS_DELETE="--delete"
-IS_DELETE=""
+IS_DELETE="--delete"
+#IS_DELETE=""
 
 #1 ===================================================
 retry_cnt=0
