@@ -129,5 +129,14 @@ export PATH="/home/cliff/shell:$PATH"
 #export http_proxy='http://172.17.0.72:1081'
 #export https_proxy='http://172.17.0.72:1081'
 export ANDROID_NDK_HOME='/home/cliff/data/software/android-ndk-r21'
+grepl()
+{
+	grep -rn $@ --color=always | less -N -r
+}
+findl()
+{
+	find | grep $@ --color=always | less -N -r
+}
+
 export ANDROID_HOME='/home/cliff/Android/Sdk'
 
