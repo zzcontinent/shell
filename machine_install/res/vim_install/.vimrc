@@ -448,12 +448,20 @@ function! GetTime()
 endfunction
 
 "insert sign header
-inoremap <leader>si /* ********************************************<cr>
-			\FILE NAME  : <c-r>=GetFileOriginName()<cr><cr>
-			\PROGRAMMER : ???<cr>
-			\START DATE : <c-r>=GetTime()<cr><cr>
-			\DESCIPTION : ???<cr>
-			\*******************************************/<cr><ESC>4k4w
+inoremap <leader>si /* ******************************************************************************************<cr>
+			\FILE NAME   : <c-r>=GetFileOriginName()<cr><cr>
+			\PROGRAMMER  : zhaozz<cr>
+			\DESCRIPTION : ???<cr>
+			\DATE        : <c-r>=GetTime()<cr><cr>
+			\*****************************************************************************************/<cr><ESC>4k4w
+
+inoremap <leader>func /* ******************************************************************************************<cr>
+			\FUNCTION    : ???<cr>
+			\DESCRIPTION : ???<cr>
+			\INPUT       : ???<cr>
+			\OUTPUT      : ???<cr>
+			\RETURN      : ???<cr>
+			\*****************************************************************************************/<cr><ESC>6k4w
 inoremap <leader>for for (;;) {<cr><cr>}<ESC>2kwa
 inoremap <leader>if if () {<cr><cr>} else {<cr><cr>}<ESC>4kwa
 inoremap <leader>el else if () {<cr><cr>}<ESC>2k2wa
