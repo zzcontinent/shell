@@ -447,6 +447,8 @@ function! GetTime()
 	return strftime("%Y-%m-%d %H:%M:%S")
 endfunction
 
+"insert comment line
+inoremap <leader>li /*******************************************************************************************/
 "insert sign header
 inoremap <leader>si /* ******************************************************************************************<cr>
 			\FILE NAME   : <c-r>=GetFileOriginName()<cr><cr>
@@ -465,7 +467,7 @@ inoremap <leader>func /* *******************************************************
 inoremap <leader>for for (;;) {<cr><cr>}<ESC>2kwa
 inoremap <leader>if if () {<cr><cr>} else {<cr><cr>}<ESC>4kwa
 inoremap <leader>el else if () {<cr><cr>}<ESC>2k2wa
-inoremap <leader>ff #ifndef  <c-r>=GetFileHeaderName()<cr><cr>#define  <c-r>=GetFileHeaderName()<cr><cr><cr><cr>#endif  /* <c-r>=GetFileHeaderName()<cr> */<cr>
+inoremap <leader>ff #ifndef  <c-r>=GetFileHeaderName()<cr><cr>#define  <c-r>=GetFileHeaderName()<cr><cr><cr><cr>#endif  /* <c-r>=GetFileHeaderName()<cr> */<ESC>2ki
 
 "insert template ============================== end
 
