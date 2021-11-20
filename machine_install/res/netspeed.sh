@@ -1,4 +1,30 @@
 #!/bin/bash
+
+# - Position the Cursor:
+#  \033[<L>;<C>H
+#     Or
+#  \033[<L>;<C>f
+#  puts the cursor at line L and column C.
+#- Move the cursor up N lines:
+#  \033[<N>A
+#- Move the cursor down N lines:
+#  \033[<N>B
+#- Move the cursor forward N columns:
+#  \033[<N>C
+#- Move the cursor backward N columns:
+#  \033[<N>D
+#
+#- Clear the screen, move to (0,0):
+#  \033[2J
+#- Erase to end of line:
+#  \033[K
+#
+#- Save cursor position:
+#  \033[s
+#- Restore cursor position:
+#  \033[u
+
+
 #net_devs=`ifconfig -s | awk '{i++; if(i>1){print $1}}' | awk '{print $1}'`
 net_devs=`ifconfig | grep flags | awk -F':' '{print $1}'`
 #net_devs=`cat /proc/net/dev | awk '{i++; if(i>2){print $1}}' | sed 's/[:]*$//g'`
@@ -12,7 +38,6 @@ net_devs_ok=""
 for dev in ${net_devs}
 do
 	if [ -z "`echo $dev | grep -E '\-|\:|\.'`" ];then
-		echo $dev
 		net_devs_ok="${net_devs_ok} ${dev}"
 	fi
 done
@@ -31,7 +56,7 @@ done
 
 func_step_total()
 {
-	echo "------------" >> ${TMP_FILE_FB}
+	#echo "------------" >> ${TMP_FILE_FB}
 	date "+%Y-%m-%d %H:%M:%S" >> ${TMP_FILE_FB}
 	for dev in ${net_devs_ok}
 	do
@@ -41,7 +66,7 @@ func_step_total()
 		eval rx_speed_${dev}=`echo "($(eval echo '$'rx_cur_${dev})-$(eval echo '$'rx_pre_${dev}))/1024/${PERIOD}"|bc`
 		eval tx_speed_${dev}=`echo "($(eval echo '$'tx_cur_${dev})-$(eval echo '$'tx_pre_${dev}))/1024/${PERIOD}"|bc`
 
-		printf "%s | DN:%sKB/s | UP:%sKB/s \n" ${dev} $(eval echo '$'rx_speed_${dev}) $(eval echo '$'tx_speed_${dev}) >> ${TMP_FILE_FB}
+		printf "%-15s | DN:%10sKB/s | UP:%10sKB/s \n" ${dev} $(eval echo '$'rx_speed_${dev}) $(eval echo '$'tx_speed_${dev}) >> ${TMP_FILE_FB}
 		eval rx_pre_${dev}=$(eval echo '$'rx_cur_${dev})
 		eval tx_pre_${dev}=$(eval echo '$'tx_cur_${dev})
 	done
@@ -54,16 +79,45 @@ func_step_pids()
 	sudo netstat  -alnp | grep -E '^tcp|^udp' | sort -rn -k2 | head -n 3 >> ${TMP_FILE_FB}
 }
 
+func_cursor_up()
+{
+	printf "\033[%dA" $1
+}
+
+func_cursor_down()
+{
+	printf "\033[%dB" $1
+}
+
+func_cursor_forward()
+{
+	printf "\033[%dC" $1
+}
+
+func_cursor_backward()
+{
+	printf "\033[%dD" $1
+}
+
+func_set_cursor()
+{
+	row=$1
+	col=$2
+	printf "\33[%d;%dH" $1 $2
+}
+
 
 func_run()
 {
+	line=`cat ${TMP_FILE_FB} | wc -l`
 	while true
 	do
 		echo -n > ${TMP_FILE_FB}
-		printf "\033c"
 		func_step_total
 		#func_step_pids
-		cat ${TMP_FILE_FB} | column -t
+		#cat ${TMP_FILE_FB} | column -t
+		cat ${TMP_FILE_FB}
+		func_cursor_up ${line}
 		#if [ $down_speed_wifi -gt $speed_notify -o $up_speed_wifi -gt $speed_notify ];then
 		#	notify-send "$time wifi DN:$down_speed_wifi|UP:$up_speed_wifi" > /dev/null 2>&1
 		#	echo -e "\a"
@@ -87,6 +141,6 @@ func_run_log()
 	done
 }
 
-func_step_total
-#func_run
-func_run_log
+#func_step_total
+func_run
+#func_run_log
