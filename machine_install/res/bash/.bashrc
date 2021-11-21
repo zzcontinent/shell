@@ -137,6 +137,12 @@ findl()
 {
 	find | grep $@ --color=always | less -N -r
 }
+alias gitl='git log --graph --all'
+alias gitst='git status'
+alias gitsh='git show'
+alias gitshs='git show --stat'
+alias gitd='git diff'
+alias gitds='git diff --stat'
 
 export ANDROID_HOME='/home/cliff/Android/Sdk'
 
