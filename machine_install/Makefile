@@ -137,6 +137,9 @@ net-speed:
 netspeed.sh:
 	@echo "==========================[$@] <= [$^]"
 	sudo cp ./res/netspeed.sh /usr/bin
+perrno:
+	@echo "==========================[$@] <= [$^]"
+	cp ./res/perrno /usr/bin
 beautify.sh:
 	@echo "==========================[$@] <= [$^]"
 	sudo cp ./res/beautify.sh /usr/bin
