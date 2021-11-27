@@ -57,14 +57,15 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-	PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u:\$(who|wc -l)]\[\033[00m\]\[\033[31;1m\][\$(uptime |awk '{print \$10}'|tr -d ',')][\$(date +%m%d)-\t]\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]\$ "
+	PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u:\$(who|wc -l)]\[\033[00m\]\[\033[31;1m\][\$(uptime |awk '{printf(\"%s][%s.%d/\"), \$10,\$3,\$5}'|tr -d ',')\$(date +%m%d)_\t]\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]\$ "
 	#PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u@\h]\[\033[00m\]\[\033[31;1m\][\$(date +%y%m%d) \t]\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]\$ "
 else
     #PS1='${debian_chroot:+($debian_chroot)}\u@\h\t\:\w\$ '
-    PS1="${debian_chroot:+($debian_chroot)}[\u:\$(who|wc -l)][\$(uptime |awk '{print \$10}'|tr -d ',')][\$(date +%m%d)-\t]:[\w]\$ "
+    PS1="${debian_chroot:+($debian_chroot)}[\u:\$(who|wc -l)][\$(uptime |awk '{printf(\"%s][%s.%d/\"), \$10,\$3,\$5}'|tr -d ',')\$(date +%m%d)_\t]:[\w]\$ "
 fi
 if [ ${USER} == root ];then
-    PS1="${debian_chroot:+($debian_chroot)}[\u:\$(who|wc -l)][\$(uptime |awk '{print \$10}'|tr -d ',')][\$(date +%m%d)-\t]:[\w]\$ "
+    PS1="${debian_chroot:+($debian_chroot)}[\u:\$(who|wc -l)][\$(uptime |awk '{printf(\"%s][%s.%d/\"), \$10,\$3,\$5}'|tr -d ',')\$(date +%m%d)_\t]:[\w]\$ "
+    #PS1="${debian_chroot:+($debian_chroot)}[\u:\$(who|wc -l)][\$(uptime |awk '{print \$10}'|tr -d ',')][\$(date +%m%d)-\t]:[\w]\$ "
     #PS1='${debian_chroot:+($debian_chroot)}[\u@\h\t]:[\w]\$ '
 fi
 unset color_prompt force_color_prompt
