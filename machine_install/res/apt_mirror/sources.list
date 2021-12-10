@@ -1,0 +1,10 @@
+deb http://127.0.0.1/ focal main restricted
+deb http://127.0.0.1/ focal-updates main restricted
+deb http://127.0.0.1/ focal universe
+deb http://127.0.0.1/ focal-updates universe
+deb http://127.0.0.1/ focal multiverse
+deb http://127.0.0.1/ focal-updates multiverse
+deb http://127.0.0.1/ focal-backports main restricted universe multiverse
+deb http://127.0.0.1/ focal-security main restricted
+deb http://127.0.0.1/ focal-security universe
+deb http://127.0.0.1/ focal-security multiverse

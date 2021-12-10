@@ -1,0 +1,41 @@
+############# config ##################
+#
+set base_path    /home/backup/apt_srcs
+#
+#set mirror_path  $base_path/mirror
+#set skel_path    $base_path/skel
+#set var_path     $base_path/var
+#set cleanscript $var_path/clean.sh
+#set defaultarch  
+#set postmirror_script $var_path/postmirror.sh
+set run_postmirror 0
+set nthreads     20
+set _tilde 0
+#
+############# end config ##############
+
+
+
+deb-amd64 http://mirrors.aliyun.com/ubuntu/ focal main restricted
+deb-amd64 http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted
+deb-amd64 http://mirrors.aliyun.com/ubuntu/ focal universe
+deb-amd64 http://mirrors.aliyun.com/ubuntu/ focal-updates universe
+deb-amd64 http://mirrors.aliyun.com/ubuntu/ focal multiverse
+deb-amd64 http://mirrors.aliyun.com/ubuntu/ focal-updates multiverse
+deb-amd64 http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+deb-amd64 http://mirrors.aliyun.com/ubuntu/ focal-security main restricted
+deb-amd64 http://mirrors.aliyun.com/ubuntu/ focal-security universe
+deb-amd64 http://mirrors.aliyun.com/ubuntu/ focal-security multiverse
+
+
+deb-i386 http://mirrors.aliyun.com/ubuntu/ focal main restricted
+deb-i386 http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted
+deb-i386 http://mirrors.aliyun.com/ubuntu/ focal universe
+deb-i386 http://mirrors.aliyun.com/ubuntu/ focal-updates universe
+deb-i386 http://mirrors.aliyun.com/ubuntu/ focal multiverse
+deb-i386 http://mirrors.aliyun.com/ubuntu/ focal-updates multiverse
+deb-i386 http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+deb-i386 http://mirrors.aliyun.com/ubuntu/ focal-security main restricted
+deb-i386 http://mirrors.aliyun.com/ubuntu/ focal-security universe
+deb-i386 http://mirrors.aliyun.com/ubuntu/ focal-security multiverse
+
