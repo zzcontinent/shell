@@ -109,9 +109,12 @@ func_set_cursor()
 
 func_run()
 {
+	echo -n  > ${TMP_FILE_FB}
+	func_step_total
 	line=`cat ${TMP_FILE_FB} | wc -l`
 	while true
 	do
+		sleep ${PERIOD}
 		echo -n > ${TMP_FILE_FB}
 		func_step_total
 		#func_step_pids
@@ -126,7 +129,6 @@ func_run()
 		#	notify-send "$time eth DN:$down_speed_eth|UP:$up_speed_eth" > /dev/null 2>&1
 		#	echo -e "\a"
 		#fi
-		sleep ${PERIOD}
 	done
 }
 
