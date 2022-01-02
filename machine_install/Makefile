@@ -221,6 +221,9 @@ cflow:
 	apt install cflow graphviz -y
 	python3 -m pip install --upgrade pip
 	pip install pycflow2dot
+xclip:
+	@echo "==========================[$@] <= [$^]"
+	apt install xclip -y
 
 
 #==============================================

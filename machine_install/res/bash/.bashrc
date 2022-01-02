@@ -177,5 +177,8 @@ alias gitshs='git show --stat'
 alias gitd='git diff'
 alias gitds='git diff --stat'
 
+alias xc='xclip'
+alias xv='xclip -o'
+
 export ANDROID_HOME='/home/cliff/Android/Sdk'
 

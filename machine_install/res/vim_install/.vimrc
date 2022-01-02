@@ -400,6 +400,8 @@ nnoremap g] :pts <C-r><C-w><CR>
 nnoremap <leader>cc :set colorcolumn=9
 "copy v mode to system clipboard
 vnoremap <S-c> "+y
+vnoremap <leader>c :<C-U>!echo '<c-r>=GetVisualSelection()<cr>' \| xclip <CR>
+nnoremap <leader>v :r!xclip -o <CR>
 "ctrl-] with ts
 nnoremap <leader>cc :set colorcolumn=9
 nnoremap <leader>cc :set colorcolumn=9
@@ -450,6 +452,22 @@ endfunction
 function! GetCurword()
 	return expand('<cword>')
 endfunction
+
+"/*******************************************************************************************/
+function! GetVisualSelection()
+    " Why is this not a built-in Vim script function?!
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+        return ''
+    endif
+    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][column_start - 1:]
+    return join(lines, "\n")
+endfunction
+"/*******************************************************************************************/
+
 
 "insert comment line
 inoremap <leader>li /*******************************************************************************************/
