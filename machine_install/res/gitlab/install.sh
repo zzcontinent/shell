@@ -49,3 +49,6 @@ sudo gitlab-ctl tail nginx/gitlab_acces.log
 
 sudo gitlab-ctl tail postgresql
 查看 postgresql 日志
+
+#http git remot --- no password input
+git config --global credential.helper store
