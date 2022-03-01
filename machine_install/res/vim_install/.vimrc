@@ -151,10 +151,13 @@ set termguicolors
 
 "=======================================================style==================
 "
-"
-"
-"
-"
+"=======================================================tabstop==================
+nnoremap <leader>ts4 :set ts=4 sts=4 sw=4 expandtab <CR>
+nnoremap <leader>ts8 :set ts=8 sts=8 sw=8 expandtab <CR>
+nnoremap <leader>tst :set ts=8 sts=8 sw=8 noexpandtab <CR>
+
+
+
 "=======================================================ctags==================
 set tags=tags;
 nnoremap <leader>ts :ts <CR>
