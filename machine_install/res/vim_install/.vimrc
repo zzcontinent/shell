@@ -22,7 +22,7 @@ Plugin 'L9'
 Plugin 'git://git.wincent.com/command-t.git'
 " 本地的Git仓库(例如自己的插件) Plugin 'file:///+本地插件仓库绝对路径'
 "Plugin 'file:///home/gmarik/path/to/plugin'
-Plugin 'file:///home/cliff/cworkspace/github/YouCompleteMe'
+"Plugin 'file:///home/cliff/cworkspace/github/YouCompleteMe'
 " 插件在仓库的子目录中.
 " 正确指定路径用以设置runtimepath. 以下范例插件在sparkup/vim目录下
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -156,6 +156,38 @@ nnoremap <leader>ts4 :set ts=4 sts=4 sw=4 expandtab <CR>
 nnoremap <leader>ts8 :set ts=8 sts=8 sw=8 expandtab <CR>
 nnoremap <leader>tst :set ts=8 sts=8 sw=8 noexpandtab <CR>
 
+"=======================================================tab select=================="
+function! Itab()
+	call feedkeys(pumvisible() ? "\<c-n>" : "\<tab>", 'n')
+	return ''
+endfunction
+
+function! Irtab()
+	call feedkeys(pumvisible() ? "\<c-p>" : "\<tab>", 'n')
+	return ''
+endfunction
+
+"function! Itab1()
+"	let tcmd="\<tab>"
+"	if len(GetPreword()) != 0 || pumvisible() != 0
+"		let tcmd = "\<c-n>"
+"	endif
+"	call feedkeys(tcmd, 'n')
+"	return ''
+"endfunction
+"
+"function! Irtab1()
+"	let tcmd=""
+"	if len(GetPreword()) != 0 || pumvisible() != 0
+"		let tcmd = "\<c-p>"
+"	endif
+"	call feedkeys(tcmd, 'n')
+"	return ''
+""endfunction
+
+inoremap <tab> <c-r>=Itab()<cr>
+inoremap <s-tab> <c-r>=Irtab()<cr>
+
 
 
 "=======================================================ctags==================
@@ -168,34 +200,33 @@ nnoremap <leader>tp :tp <CR>
 "set tags+=/home/cliff/cworkspace/github/linuxsrc/tags;
 
 
-" autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType c set omnifunc=ccomplete#Complete
 
-"set nocp
-"filetype plugin indent on
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-"autocmd FileType c set omnifunc=ccomplete#Complete
-"autocmd FileType cpp set omnifunc=ccomplete#Complete
-"autocmd FileType go set omnifunc=ccomplete#Complete
+set nocp
+filetype plugin indent on
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType cpp set omnifunc=ccomplete#Complete
+autocmd FileType go set omnifunc=ccomplete#Complete
 
-"set completeopt=menu,longest
-set completeopt=menuone
-"let OmniCpp_MayCompleteDot=1 "打开.操作符
-"let OmniCpp_MayCompleteArrow=1 "打开 -> 操作符
-"let OmniCpp_MayCompleteScope=1 "打开 :: 操作符
-"let OmniCpp_NamespaceSearch=1 "打开命名空间
-"let OmniCpp_GlobalScopeSearch=1
-"let OmniCpp_DefaultNamespace=["std"]
-"let OmniCpp_ShowPrototypeInAbbr=1 "打开显示函数原型
-"let OmniCpp_SelectFirstItem = 2  "自动弹出时自动跳至第一个
-"let OmniCpp_GlobalScopeSearch=1
-"let OmniCpp_DisplayMode=1
-"let OmniCpp_DefaultNamespaces=["std"]
+set completeopt=menuone,longest,preview
+let OmniCpp_MayCompleteDot=1 "打开.操作符
+let OmniCpp_MayCompleteArrow=1 "打开 -> 操作符
+let OmniCpp_MayCompleteScope=1 "打开 :: 操作符
+let OmniCpp_NamespaceSearch=1 "打开命名空间
+let OmniCpp_GlobalScopeSearch=1
+let OmniCpp_DefaultNamespace=["std"]
+let OmniCpp_ShowPrototypeInAbbr=1 "打开显示函数原型
+let OmniCpp_SelectFirstItem = 1  "自动弹出时自动跳至第一个
+let OmniCpp_GlobalScopeSearch=1
+let OmniCpp_DisplayMode=1
+let OmniCpp_DefaultNamespaces=["std"]
 
 "highlight Pmenu    guibg=darkgrey  guifg=black
 "highlight PmenuSel guibg=lightgrey guifg=black
@@ -313,7 +344,7 @@ let g:ycm_collect_identifiers_from_tags_files            = 1 " 使用 ctags 生�
 let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释和字符串中的文字也会被收入补全
 let g:ycm_error_symbol = '✗'
 let g:ycm_warning_symbol = '⚠'
-"let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_add_preview_to_completeopt = 0
 "let g:ycm_autoclose_preview_window_after_insertion = 1
 "let g:ycm_autoclose_preview_window_after_completion = 1
 
@@ -454,6 +485,13 @@ endfunction
 
 function! GetCurword()
 	return expand('<cword>')
+endfunction
+
+function! GetPreword()
+	let line = getline('.')
+	let substr = strpart(line, -1, col('.')+1)
+	let substr = matchstr(substr, "[^ \t]*$")
+	return substr
 endfunction
 
 "/*******************************************************************************************/
