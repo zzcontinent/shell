@@ -170,12 +170,19 @@ duls()
 	(eval $cmd) | sort -g | less -N -r
 }
 
+gitamend()
+{
+	git add .
+	git commit --amend --no-edit
+}
+
 alias gitl='git log --graph --all'
 alias gitst='git status'
 alias gitsh='git show'
 alias gitshs='git show --stat'
 alias gitd='git diff'
 alias gitds='git diff --stat'
+alias gitb='git branch --all'
 
 alias xc='xclip'
 alias xv='xclip -o'
