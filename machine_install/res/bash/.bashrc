@@ -56,27 +56,23 @@ if [ -n "$force_color_prompt" ]; then
 	fi
 fi
 
+basic_info()
+{
+	printf '[%.2f_%.2f][%s]' $(cut -d' ' -f1 /proc/loadavg) $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc) $(date +%y%m%d_%H%M%S)
+}
+
 if [ "$color_prompt" = yes ]; then
-	PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u:\$(who|wc -l)]\[\033[00m\]\[\033[31;1m\][$(cat /proc/loadavg|cut -d' ' -f1)_$(printf "%.1f" $(echo "scale=2;`cat /proc/uptime |cut -d' ' -f1`/86400" |bc))][\$(date +%y%m%d_%H%M%S)]\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]\$ "
-	#PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u@\h]\[\033[00m\]\[\033[31;1m\][\$(date +%y%m%d) \t]\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]\$ "
-else
-	#PS1='${debian_chroot:+($debian_chroot)}\u@\h\t\:\w\$ '
-	#PS1="${debian_chroot:+($debian_chroot)}[\u:\$(who|wc -l)][\$(uptime |cut -d, -f1,4|awk '{printf(\"%s][%d/\"), \$7,\$3}'|tr -d ',')\$(date +%m%d)_\t]:[\w]\$ "
-	PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u:\$(who|wc -l)]\[\033[00m\]\[\033[31;1m\][$(cat /proc/loadavg|cut -d' ' -f1)_$(printf "%.1f" $(echo "scale=2;`cat /proc/uptime |cut -d' ' -f1`/86400" |bc))][\$(date +%y%m%d_%H%M%S)]\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]\$ "
+	PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u:\$(who|wc -l)]\[\033[00m\]\[\033[31;1m\]\$(basic_info)\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]\$ "
 fi
 if [ ${USER} == root ];then
-	#PS1="${debian_chroot:+($debian_chroot)}[\u:\$(who|wc -l)][\$(uptime |cut -d, -f1,4|awk '{printf(\"%s][%d/\"), \$7,\$3}'|tr -d ',')\$(date +%m%d)_\t]:[\w]\$ "
-	PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u:\$(who|wc -l)]\[\033[00m\]\[\033[31;1m\][$(cat /proc/loadavg|cut -d' ' -f1)_$(printf "%.1f" $(echo "scale=2;`cat /proc/uptime |cut -d' ' -f1`/86400" |bc))][\$(date +%y%m%d_%H%M%S)]\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]\$ "
-	#PS1="${debian_chroot:+($debian_chroot)}[\u:\$(who|wc -l)][\$(uptime |awk '{print \$10}'|tr -d ',')][\$(date +%m%d)-\t]:[\w]\$ "
-	#PS1='${debian_chroot:+($debian_chroot)}[\u@\h\t]:[\w]\$ '
+	PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u:\$(who|wc -l)]\[\033[00m\]\[\033[31;1m\]\$(basic_info)\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]\$ "
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 	xterm*|rxvt*)
-		#PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-		PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u:\$(who|wc -l)]\[\033[00m\]\[\033[31;1m\][$(cat /proc/loadavg|cut -d' ' -f1)_$(printf "%.1f" $(echo "scale=2;`cat /proc/uptime |cut -d' ' -f1`/86400" |bc))][\$(date +%y%m%d_%H%M%S)]\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]\$ "
+		PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u:\$(who|wc -l)]\[\033[00m\]\[\033[31;1m\]\$(basic_info)\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]\$ "
 		;;
 	*)
 		;;
@@ -182,6 +178,7 @@ alias gitsh='git show'
 alias gitshs='git show --stat'
 alias gitd='git diff'
 alias gitds='git diff --stat'
+alias gitdt='git difftool --tool=vimdiff'
 alias gitb='git branch --all'
 
 alias xc='xclip'
