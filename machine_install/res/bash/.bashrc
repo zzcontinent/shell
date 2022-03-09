@@ -56,9 +56,17 @@ if [ -n "$force_color_prompt" ]; then
 	fi
 fi
 
+start_netspeed()
+{
+	cnt=`ps aux | grep netspeed.sh | grep -v grep | wc -l`
+	[ $cnt == 0 ] && (netspeed.sh >/dev/null 2>&1 &)
+}
+
+start_netspeed
+
 basic_info()
 {
-	printf '[%.2f_%.2f][%s]' $(cut -d' ' -f1 /proc/loadavg) $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc) $(date +%y%m%d_%H%M%S)
+	printf '[%.2f_%.2f_%s][%s]' $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  $(cat ~/.tmp_netspeed|awk '{print $4}'|sort -rn| head -n1) $(date +%m%d_%H%M)
 }
 
 if [ "$color_prompt" = yes ]; then

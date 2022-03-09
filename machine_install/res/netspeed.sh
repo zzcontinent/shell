@@ -60,8 +60,8 @@ func_step_total()
 	date "+%Y-%m-%d %H:%M:%S" >> ${TMP_FILE_FB}
 	for dev in ${net_devs_ok}
 	do
-		eval rx_cur_${dev}=`ifconfig ${dev}  | sed -n 's/RX.*bytes \([0-9]\+\).*/\1/p' | awk '{print $1}'`
-		eval tx_cur_${dev}=`ifconfig ${dev}  | sed -n 's/TX.*bytes \([0-9]\+\).*/\1/p' | awk '{print $1}'`
+		eval rx_cur_${dev}=`ifconfig ${dev}  2>/dev/null| sed -n 's/RX.*bytes \([0-9]\+\).*/\1/p' | awk '{print $1}'`
+		eval tx_cur_${dev}=`ifconfig ${dev}  2>/dev/null| sed -n 's/TX.*bytes \([0-9]\+\).*/\1/p' | awk '{print $1}'`
 
 		eval rx_speed_${dev}=`echo "($(eval echo '$'rx_cur_${dev})-$(eval echo '$'rx_pre_${dev}))/1024/${PERIOD}"|bc`
 		eval tx_speed_${dev}=`echo "($(eval echo '$'tx_cur_${dev})-$(eval echo '$'tx_pre_${dev}))/1024/${PERIOD}"|bc`
