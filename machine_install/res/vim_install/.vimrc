@@ -21,8 +21,13 @@ Plugin 'L9'
 " 由Git支持但不再github上的插件仓库 Plugin 'git clone 后面的地址'
 Plugin 'git://git.wincent.com/command-t.git'
 " 本地的Git仓库(例如自己的插件) Plugin 'file:///+本地插件仓库绝对路径'
+"
+"
+let g:use_ycm = 0
+if get(g:, 'use_ycm', 1)
 "Plugin 'file:///home/gmarik/path/to/plugin'
-"Plugin 'file:///home/cliff/cworkspace/github/YouCompleteMe'
+Plugin 'file:///home/cliff/cworkspace/github/YouCompleteMe'
+endif
 " 插件在仓库的子目录中.
 " 正确指定路径用以设置runtimepath. 以下范例插件在sparkup/vim目录下
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -200,34 +205,34 @@ nnoremap <leader>tp :tp <CR>
 "set tags+=/home/cliff/cworkspace/github/linuxsrc/tags;
 
 
-"autocmd FileType c set omnifunc=ccomplete#Complete
-
 set nocp
 filetype plugin indent on
-set omnifunc=syntaxcomplete#Complete
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-"autocmd FileType c set omnifunc=ccomplete#Complete
-"autocmd FileType cpp set omnifunc=ccomplete#Complete
-"autocmd FileType go set omnifunc=ccomplete#Complete
-
 set completeopt=menuone,longest
-let OmniCpp_MayCompleteDot=1 "打开.操作符
-let OmniCpp_MayCompleteArrow=1 "打开 -> 操作符
-let OmniCpp_MayCompleteScope=1 "打开 :: 操作符
-let OmniCpp_NamespaceSearch=1 "打开命名空间
-let OmniCpp_GlobalScopeSearch=1
-let OmniCpp_DefaultNamespace=["std"]
-let OmniCpp_ShowPrototypeInAbbr=1 "打开显示函数原型
-let OmniCpp_SelectFirstItem = 1  "自动弹出时自动跳至第一个
-let OmniCpp_GlobalScopeSearch=1
-let OmniCpp_DisplayMode=1
-let OmniCpp_DefaultNamespaces=["std"]
+if get(g:, 'use_ycm', 1)
+	autocmd FileType python set omnifunc=pythoncomplete#Complete
+	autocmd FileType python set omnifunc=pythoncomplete#Complete
+	autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+	autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+	autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+	autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+	autocmd FileType c set omnifunc=ccomplete#Complete
+	autocmd FileType cpp set omnifunc=ccomplete#Complete
+	autocmd FileType go set omnifunc=ccomplete#Complete
+else
+	set omnifunc=syntaxcomplete#Complete
+	let OmniCpp_MayCompleteDot=1 "打开.操作符
+	let OmniCpp_MayCompleteArrow=1 "打开 -> 操作符
+	let OmniCpp_MayCompleteScope=1 "打开 :: 操作符
+	let OmniCpp_NamespaceSearch=1 "打开命名空间
+	let OmniCpp_GlobalScopeSearch=1
+	let OmniCpp_DefaultNamespace=["std"]
+	let OmniCpp_ShowPrototypeInAbbr=1 "打开显示函数原型
+	let OmniCpp_SelectFirstItem = 1  "自动弹出时自动跳至第一个
+	let OmniCpp_GlobalScopeSearch=1
+	let OmniCpp_DisplayMode=1
+	let OmniCpp_DefaultNamespaces=["std"]
+endif
 
 "highlight Pmenu    guibg=darkgrey  guifg=black
 "highlight PmenuSel guibg=lightgrey guifg=black
