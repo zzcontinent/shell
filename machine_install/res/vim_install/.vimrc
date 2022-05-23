@@ -200,22 +200,23 @@ nnoremap <leader>tp :tp <CR>
 "set tags+=/home/cliff/cworkspace/github/linuxsrc/tags;
 
 
-autocmd FileType c set omnifunc=ccomplete#Complete
+"autocmd FileType c set omnifunc=ccomplete#Complete
 
 set nocp
 filetype plugin indent on
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
-autocmd FileType cpp set omnifunc=ccomplete#Complete
-autocmd FileType go set omnifunc=ccomplete#Complete
+set omnifunc=syntaxcomplete#Complete
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+"autocmd FileType c set omnifunc=ccomplete#Complete
+"autocmd FileType cpp set omnifunc=ccomplete#Complete
+"autocmd FileType go set omnifunc=ccomplete#Complete
 
-set completeopt=menuone,longest,preview
+set completeopt=menuone,longest
 let OmniCpp_MayCompleteDot=1 "打开.操作符
 let OmniCpp_MayCompleteArrow=1 "打开 -> 操作符
 let OmniCpp_MayCompleteScope=1 "打开 :: 操作符
