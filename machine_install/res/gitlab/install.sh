@@ -52,3 +52,13 @@ sudo gitlab-ctl tail postgresql
 
 #http git remot --- no password input
 git config --global credential.helper store
+
+
+# 打开控制台
+gitlab-rails console production
+
+# 找到用户，输入密码，确认密码，保存
+user = User.find_by(username: 'zhangsan')
+user.password = '12345678'
+user.password_confirmation = '12345678'
+user.save!

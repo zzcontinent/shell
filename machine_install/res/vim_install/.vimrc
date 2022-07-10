@@ -23,7 +23,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 " 本地的Git仓库(例如自己的插件) Plugin 'file:///+本地插件仓库绝对路径'
 "
 "
-let g:use_ycm = 0
+let g:use_ycm = 1
 if get(g:, 'use_ycm', 1)
 "Plugin 'file:///home/gmarik/path/to/plugin'
 Plugin 'file:///home/cliff/cworkspace/github/YouCompleteMe'
