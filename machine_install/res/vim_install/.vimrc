@@ -79,6 +79,7 @@ set fdm=syntax
 "set ts=4
 set cursorcolumn
 set cursorline
+set wildmenu
 "highlight CursorLine   cterm=NONE ctermbg=darkgreen guibg=NONE guifg=NONE
 "highlight CursorLine   cterm=NONE ctermbg=darkmagenta guibg=NONE guifg=NONE
 "highlight CursorColumn cterm=NONE ctermbg=darkmagenta guibg=NONE guifg=NONE
