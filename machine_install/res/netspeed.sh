@@ -29,8 +29,9 @@
 net_devs=`ifconfig | grep flags | awk -F':' '{print $1}'`
 #net_devs=`cat /proc/net/dev | awk '{i++; if(i>2){print $1}}' | sed 's/[:]*$//g'`
 speed_notify=1024
-PERIOD=2
-TMP_FILE_FB="${HOME}/.tmp_netspeed"
+PERIOD=5
+#TMP_FILE_FB="${HOME}/.tmp_netspeed"
+TMP_FILE_FB="/run/user/$(id -u)/.tmp_netspeed"
 [ ! -f ${TMP_FILE_FB} ] && touch ${TMP_FILE_FB}
 
 net_devs_ok=""
@@ -56,8 +57,7 @@ done
 
 func_step_total()
 {
-	#echo "------------" >> ${TMP_FILE_FB}
-	date "+%Y-%m-%d %H:%M:%S" >> ${TMP_FILE_FB}
+	date "+%Y-%m-%d %H:%M:%S"
 	for dev in ${net_devs_ok}
 	do
 		eval rx_cur_${dev}=`ifconfig ${dev}  2>/dev/null| sed -n 's/RX.*bytes \([0-9]\+\).*/\1/p' | awk '{print $1}'`
@@ -66,7 +66,7 @@ func_step_total()
 		eval rx_speed_${dev}=`echo "($(eval echo '$'rx_cur_${dev})-$(eval echo '$'rx_pre_${dev}))/1024/${PERIOD}"|bc`
 		eval tx_speed_${dev}=`echo "($(eval echo '$'tx_cur_${dev})-$(eval echo '$'tx_pre_${dev}))/1024/${PERIOD}"|bc`
 
-		printf "%-15s | DN:%10sKB/s | UP:%10sKB/s \n" ${dev} $(eval echo '$'rx_speed_${dev}) $(eval echo '$'tx_speed_${dev}) >> ${TMP_FILE_FB}
+		printf "%-15s | DN:%10sKB/s | UP:%10sKB/s \n" ${dev} $(eval echo '$'rx_speed_${dev}) $(eval echo '$'tx_speed_${dev})
 		eval rx_pre_${dev}=$(eval echo '$'rx_cur_${dev})
 		eval tx_pre_${dev}=$(eval echo '$'tx_cur_${dev})
 	done
@@ -109,18 +109,17 @@ func_set_cursor()
 
 func_run()
 {
-	echo -n  > ${TMP_FILE_FB}
-	func_step_total
+	func_step_total > ${TMP_FILE_FB}
 	line=`cat ${TMP_FILE_FB} | wc -l`
 	while true
 	do
 		sleep ${PERIOD}
 		echo -n > ${TMP_FILE_FB}
-		func_step_total
-		#func_step_pids
-		#cat ${TMP_FILE_FB} | column -t
+		func_step_total > ${TMP_FILE_FB}
 		cat ${TMP_FILE_FB}
 		func_cursor_up ${line}
+		#func_step_pids
+		#cat ${TMP_FILE_FB} | column -t
 		#if [ $down_speed_wifi -gt $speed_notify -o $up_speed_wifi -gt $speed_notify ];then
 		#	notify-send "$time wifi DN:$down_speed_wifi|UP:$up_speed_wifi" > /dev/null 2>&1
 		#	echo -e "\a"
