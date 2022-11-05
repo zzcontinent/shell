@@ -23,7 +23,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 " 本地的Git仓库(例如自己的插件) Plugin 'file:///+本地插件仓库绝对路径'
 "
 "
-let g:use_ycm = 1
+let g:use_ycm = 0
 if get(g:, 'use_ycm', 1)
 "Plugin 'file:///home/gmarik/path/to/plugin'
 Plugin 'file:///home/cliff/cworkspace/github/YouCompleteMe'
@@ -418,7 +418,8 @@ let g:airline#extensions#tabline#enabled = 1
 "nnoremap <F12> :!ctags --languages=Asm,c,c++,java,go,Make,sh -R . <CR>"
 "nnoremap <F12> :!ctags -R --languages=Asm,c,c++,java,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf . <CR>
 nnoremap <F12> :!ctags -R --languages=Asm,c,c++,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf `pwd` <CR>
-nnoremap <leader>ct :!ctags -R --languages=Asm,c,c++,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf `pwd` <CR>
+nnoremap <leader>act :!ctags -R --languages=Asm,c,c++,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf `pwd` <CR>
+nnoremap <leader>ct :!ctags -R --languages=Asm,c,c++,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf <CR>
 "nnoremap <F12> :!ctags -R --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf . <CR>
 "nnoremap <silent> <F8> :TlistToggle<CR>
 nnoremap <silent> <F8> :TagbarToggle<CR>
