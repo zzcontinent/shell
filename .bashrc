@@ -130,9 +130,9 @@ if ! shopt -oq posix; then
 		. /etc/bash_completion
 	fi
 fi
-export GOPATH="/home/cliff/goworkspace"
-export GOROOT="/home/cliff/data/software/go"
-export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
+# export GOPATH="/home/cliff/goworkspace"
+# export GOROOT="/home/cliff/data/software/go"
+# export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
 export PATH="/home/cliff/shell:$PATH"
 #export http_proxy='http://172.17.0.72:1081'
 #export https_proxy='http://172.17.0.72:1081'
@@ -180,7 +180,8 @@ gitamend()
 	git commit --amend --no-edit
 }
 
-alias gitl='git log --graph --all'
+alias gitl='git log --graph'
+alias gitla='git log --graph --all'
 alias gitst='git status'
 alias gitsh='git show'
 alias gitshs='git show --stat'
@@ -191,8 +192,16 @@ alias gitb='git branch --all'
 
 alias myc='tee ~/tmp/.myclip'
 alias myv='cat ~/tmp/.myclip'
+alias cdpi='cd /home/backup/pi'
+alias dfh='df -h | less'
 
-export ANDROID_HOME='/home/cliff/Android/Sdk'
+alias delugec='deluge-console 2>/dev/null'
+
+psg()
+{
+	[ ! -z $1 ] && ps auxf 2>&1 | grep $1 | less -NS -p $1 && return 0
+	ps auxf 2>&1 | less -NS
+}
 
 ts()
 {
