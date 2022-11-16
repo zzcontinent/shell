@@ -199,8 +199,8 @@ alias delugec='deluge-console 2>/dev/null'
 
 psg()
 {
-	[ ! -z $1 ] && ps auxf 2>&1 | grep $1 | less -NS -p $1 && return 0
-	ps auxf 2>&1 | less -NS
+	[ ! -z $1 ] && ps auxf 2>&1 | grep $1 --color=always| less -NR && return 0
+	ps auxf 2>&1 | less -NR
 }
 
 ts()
