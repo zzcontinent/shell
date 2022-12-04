@@ -129,6 +129,10 @@ nodejs:
 debs-backup:
 	@echo "==========================[$@] <= [$^]"
 	./res/backup_debs.sh
+indicator-netspeed:
+	@echo "==========================[$@] <= [$^]"
+	sudo apt install libappindicator3-1 libappindicator3-dev -y
+	make -C ./res/indicator-netspeed/ && make -C ./res/indicator-netspeed install
 net-speed:
 	@echo "==========================[$@] <= [$^]"
 	sudo apt install gettext -y

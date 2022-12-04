@@ -14,7 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 " 请将安装插件的命令放在vundle#begin和vundle#end之间.
 " Github上的插件
 " 格式为 Plugin '用户名/插件仓库名'
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive'
 " 来自 http://vim-scripts.org/vim/scripts.html 的插件
 " Plugin '插件名称' 实际上是 Plugin 'vim-scripts/插件仓库名' 只是此处的用户名可以省略
 Plugin 'L9'

@@ -58,8 +58,10 @@ fi
 
 start_netspeed()
 {
-	cnt=`ps aux | grep netspeed.sh | grep -v grep | wc -l`
-	[ $cnt == 0 ] && (netspeed.sh >/dev/null 2>&1 &)
+	cnt_0=`ps aux | grep netspeed.sh | grep -v grep | wc -l`
+	cnt_1=`ps aux | grep indicator-netspeed | grep -v grep | wc -l`
+	[ $cnt_0 == 0 ] && (nohup netspeed.sh >/dev/null 2>&1 &)
+	[ $cnt_1 == 0 ] && (nohup indicator-netspeed >/dev/null 2>&1 &)
 }
 
 start_netspeed
