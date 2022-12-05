@@ -135,7 +135,7 @@ fi
 # export GOPATH="/home/cliff/goworkspace"
 # export GOROOT="/home/cliff/data/software/go"
 # export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
-export PATH="/home/cliff/shell:$PATH"
+export PATH=$PATH:/home/cliff/shell
 #export http_proxy='http://172.17.0.72:1081'
 #export https_proxy='http://172.17.0.72:1081'
 export ANDROID_NDK_HOME='/home/cliff/data/software/android-ndk-r21'
