@@ -43,7 +43,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
 	if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -201,8 +201,14 @@ alias delugec='deluge-console 2>/dev/null'
 
 psg()
 {
-	[ ! -z $1 ] && ps auxf 2>&1 | grep $1 --color=always| less -NR && return 0
-	ps auxf 2>&1 | less -NR
+	[ ! -z $1 ] && ps auxf 2>&1 | grep $1 && return 0
+	ps auxf 2>&1
+}
+
+psgl()
+{
+	[ ! -z $1 ] && ps auxf 2>&1 | grep $1 | less -N && return 0
+	ps auxf 2>&1 | less -N
 }
 
 ts()
