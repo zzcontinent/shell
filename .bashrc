@@ -198,6 +198,8 @@ alias cdpi='cd /home/backup/pi'
 alias dfh='df -h | less'
 
 alias delugec='deluge-console 2>/dev/null'
+alias gitps='git push'
+alias gitpl='git pull'
 
 psg()
 {
