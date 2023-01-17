@@ -467,6 +467,9 @@ nnoremap <leader>td :%s/ \+$//g<CR>
 nnoremap <leader>q :q!<CR>
 nnoremap <leader>aq :qa!<CR>
 nnoremap <leader>w :w!<CR>
+nnoremap <leader>r :redraw!<CR>
+nnoremap <leader>sv :source ~/.vimrc<CR>
+
 "tab -> 4space
 nnoremap <leader>hr :%s/\t/    /g<CR>
 inoremap { {}<ESC>i
@@ -537,7 +540,7 @@ inoremap <leader>ff #ifndef  <c-r>=GetFileHeaderName()<cr><cr>#define  <c-r>=Get
 
 "make cflow
 "nnoremap <leader>cf :!cflow -bnT -f posix *.c  \| highlight -O ansi --syntax c \| less -r -I<CR>
-nnoremap <leader>rcf :!for f in `find -type f\| grep -E '\.c$\|\.h$'`; do echo ===========$f; cflow -nT -f posix $f 2>/dev/null; done \| highlight -O ansi --syntax c \| less -r -I<CR>
+"nnoremap <leader>rcf :!for f in `find -type f\| grep -E '\.c$\|\.h$'`; do echo ===========$f; cflow -nT -f posix $f 2>/dev/null; done \| highlight -O ansi --syntax c \| less -r -I<CR>
 nnoremap <leader>cf :!for f in `ls .`; do echo ===========$f; cflow -nT -f posix $f 2>/dev/null; done \| highlight -O ansi --syntax c \| less -r -I<CR>
 "pycflow2dot
 nnoremap <leader>cfpng :!cflow2dot --merge -f png -i $(echo `find -type f \| grep -Ei '\.c$\|\.h$\|\.s$'`) -o $(basename `pwd`) && rm $(basename `pwd`).dot <CR>
