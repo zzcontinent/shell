@@ -195,11 +195,14 @@ alias gitb='git branch --all'
 alias myc='tee ~/tmp/.myclip'
 alias myv='cat ~/tmp/.myclip'
 alias cdpi='cd /home/backup/pi'
-alias dfh='df -h | less'
+alias dfh='df -h'
 
 alias delugec='deluge-console 2>/dev/null'
 alias gitps='git push'
 alias gitpl='git pull'
+
+alias cdt='cd ~/toyos/src'
+alias sortf='find -type f | xargs wc 2>/dev/null | sort'
 
 psg()
 {
