@@ -142,12 +142,12 @@ export ANDROID_NDK_HOME='/home/cliff/data/software/android-ndk-r21'
 
 grepl()
 {
-	grep -rn $@ --color=always | less -N -r
+	grep -rn $@ --color=always 2>/dev/null | less -r
 }
 
 findl()
 {
-	find | grep $@ --color=always | less -N -r
+	find | grep $@ --color=always 2>/dev/null | less -r
 }
 
 treel()
@@ -202,7 +202,7 @@ alias gitps='git push'
 alias gitpl='git pull'
 
 alias cdt='cd ~/toyos/src'
-alias sortf='find -type f | xargs wc 2>/dev/null | sort'
+alias sortf='find -type f | xargs wc 2>/dev/null | sort -n | less -N'
 
 psg()
 {
