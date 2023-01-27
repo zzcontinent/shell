@@ -68,7 +68,7 @@ start_netspeed
 
 basic_info()
 {
-	printf '[%.2f_%.2f_%s][%s]' $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  $(cat /run/user/$(id -u)/.tmp_netspeed|awk '{print $4}'|sort -rn| head -n1) $(date +%m%d_%H%M)
+	printf '[%.2f_%.2f_%s][%s]' $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  $(cat /run/user/$(id -u)/.tmp_netspeed|awk '{print $4}'|sort -rn| head -n1) $(date +%m%d_%H:%M:%S)
 }
 
 if [ "$color_prompt" = yes ]; then
@@ -195,7 +195,7 @@ alias gitb='git branch --all'
 alias myc='tee ~/tmp/.myclip'
 alias myv='cat ~/tmp/.myclip'
 alias cdpi='cd /home/backup/pi'
-alias dfh='df -h'
+alias dfh='df -Th'
 
 alias delugec='deluge-console 2>/dev/null'
 alias gitps='git push'

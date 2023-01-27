@@ -449,8 +449,8 @@ nnoremap <leader>cc :set colorcolumn=9
 nnoremap <leader>cc :set colorcolumn=9
 
 "nnoremap <leader>gp :!echo -n grep : && read key_s && grep -rni "${key_s}" \| highlight -O ansi --syntax c \| less -N -r -I -p "${key_s}" <CR><CR>
-nnoremap <leader>gp :!echo [grep]:<c-r>=GetCurword()<cr> && read key_s && [ -z $key_s ] && key_s=<c-r>=GetCurword()<cr>; grep --color=always -rni "${key_s}" \| less -NR <CR><CR>
-nnoremap <leader>fd :!echo [find]:<c-r>=GetCurword()<cr> && read key_s && [ -z $key_s ] && key_s=<c-r>=GetCurword()<cr>; find \| grep --color=always "${key_s}" \| less -NR<CR><CR>
+nnoremap <leader>gp :!echo [grep]:<c-r>=GetCurword()<cr> && read key_s && [ -z $key_s ] && key_s=<c-r>=GetCurword()<cr>; grep --color=always -rni "${key_s}" 2>/dev/null \| less -R <CR><CR>
+nnoremap <leader>fd :!echo [find]:<c-r>=GetCurword()<cr> && read key_s && [ -z $key_s ] && key_s=<c-r>=GetCurword()<cr>; find \| grep --color=always "${key_s}" 2>/dev/null \| less -R<CR><CR>
 
 "autoformat
 nnoremap <C-l> :Autoformat <CR>
@@ -531,10 +531,10 @@ inoremap <leader>si /* *********************************************************
 			\DATE        : <c-r>=GetTime()<cr><cr>
 			\*******************************************************************************/<cr><ESC>4k4w
 
-inoremap <leader>for for (;;) {<cr><cr>}<ESC>2kwa
-inoremap <leader>if if () {<cr><cr>} else {<cr><cr>}<ESC>4kwa
-inoremap <leader>el else if () {<cr><cr>}<ESC>2k2wa
-inoremap <leader>ff #ifndef  <c-r>=GetFileHeaderName()<cr><cr>#define  <c-r>=GetFileHeaderName()<cr><cr><cr><cr>#endif  /* <c-r>=GetFileHeaderName()<cr> */<ESC>2ki
+inoremap <leader>for for (;;) {<cr><cr>}<ESC>2kw
+inoremap <leader>if if () {<cr><cr>} else {<cr><cr>}<ESC>4kw
+inoremap <leader>el else if () {<cr><cr>}<ESC>2k2w
+inoremap <leader>ff #ifndef  <c-r>=GetFileHeaderName()<cr><cr>#define  <c-r>=GetFileHeaderName()<cr><cr><cr>#endif  /* <c-r>=GetFileHeaderName()<cr> */<ESC>k
 
 "insert template ============================== end
 
