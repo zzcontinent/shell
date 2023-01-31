@@ -529,7 +529,7 @@ inoremap <leader>si /* *********************************************************
 			\PROGRAMMER  : zhaozz<cr>
 			\DESCRIPTION : ???<cr>
 			\DATE        : <c-r>=GetTime()<cr><cr>
-			\*******************************************************************************/<cr><ESC>4k4w
+			\*******************************************************************************/<cr><ESC>3k4w
 
 inoremap <leader>for for (;;) {<cr><cr>}<ESC>2kw
 inoremap <leader>if if () {<cr><cr>} else {<cr><cr>}<ESC>4kw
