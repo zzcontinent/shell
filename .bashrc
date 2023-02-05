@@ -220,3 +220,8 @@ ts()
 {
 	cp $1 $1_`date "+%y%m%d_%H%M%S"`
 }
+
+tsmv()
+{
+	mv $1 $1_`date "+%y%m%d_%H%M%S"`
+}
