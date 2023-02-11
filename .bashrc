@@ -184,6 +184,7 @@ gitamend()
 
 alias gitl='git log --graph'
 alias gitla='git log --graph --all'
+alias gitlo='git log --graph --all --pretty=oneline'
 alias gitst='git status'
 alias gitsh='git show'
 alias gitshs='git show --stat'
@@ -203,6 +204,7 @@ alias gitpl='git pull'
 
 alias cdt='cd ~/toyos/src'
 alias sortf='find -type f | xargs wc 2>/dev/null | sort -n | less -N'
+alias j='jobs'
 
 psg()
 {
