@@ -227,3 +227,13 @@ tsmv()
 {
 	mv $1 $1_`date "+%y%m%d_%H%M%S"`
 }
+
+lessc()
+{
+	if [ ! -z $1 ];then
+		cat $1 | highlight -O ansi --syntax c| less -R
+		return 0
+	fi
+	highlight -O ansi --syntax c | less -R
+
+}
