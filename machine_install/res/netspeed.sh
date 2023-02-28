@@ -29,9 +29,9 @@
 net_devs=`ifconfig | grep flags | awk -F':' '{print $1}'`
 #net_devs=`cat /proc/net/dev | awk '{i++; if(i>2){print $1}}' | sed 's/[:]*$//g'`
 speed_notify=1024
-PERIOD=5
-#TMP_FILE_FB="${HOME}/.tmp_netspeed"
-TMP_FILE_FB="/run/user/$(id -u)/.tmp_netspeed"
+PERIOD=2
+TMP_FILE_FB="${HOME}/.tmp_netspeed"
+#TMP_FILE_FB="/run/user/$(id -u)/.tmp_netspeed"
 [ ! -f ${TMP_FILE_FB} ] && touch ${TMP_FILE_FB}
 
 net_devs_ok=""

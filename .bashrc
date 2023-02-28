@@ -58,17 +58,20 @@ fi
 
 start_netspeed()
 {
-	cnt_0=`ps aux | grep netspeed.sh | grep -v grep | wc -l`
+	cnt_0=`ps aux | grep netspeed\.sh | grep -v grep | wc -l`
 	cnt_1=`ps aux | grep indicator-netspeed | grep -v grep | wc -l`
-	[ $cnt_0 == 0 ] && (nohup netspeed.sh >/dev/null 2>&1 &)
-	[ $cnt_1 == 0 ] && (nohup indicator-netspeed >/dev/null 2>&1 &)
-}
+	if [ $cnt_0 == 0 ];then
+		(nohup netspeed.sh >/dev/null 2>&1 >/dev/null&)
+	fi
 
-start_netspeed
+	if [ $cnt_1 == 0 ];then
+		(nohup indicator-netspeed >/dev/null 2>&1 >/dev/null&)
+	fi
+}
 
 basic_info()
 {
-	printf '[%.2f_%.2f_%s][%s]' $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  $(cat /run/user/$(id -u)/.tmp_netspeed|awk '{print $4}'|sort -rn| head -n1) $(date +%m%d_%H:%M:%S)
+	printf '[%.2f_%.2f_%s][%s]' $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  $(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1) $(date +%m%d_%H:%M:%S)
 }
 
 if [ "$color_prompt" = yes ]; then
@@ -237,3 +240,5 @@ lessc()
 	highlight -O ansi --syntax c | less -R
 
 }
+
+start_netspeed
