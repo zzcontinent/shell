@@ -444,8 +444,9 @@ nnoremap <leader>cc :set colorcolumn=9
 vnoremap <S-c> "+y
 vnoremap <leader>c :<C-U>!echo '<c-r>=GetVisualSelection()<cr>' \| xclip <CR>
 nnoremap <leader>v :r!xclip -o <CR>
+vnoremap <leader>cf :<C-U>!echo -n '<c-r>=GetVisualSelection()<cr>' > ~/.vim.cf <CR>
+nnoremap <leader>cv :r!cat ~/.vim.cf <CR>
 "ctrl-] with ts
-nnoremap <leader>cc :set colorcolumn=9
 nnoremap <leader>cc :set colorcolumn=9
 
 "nnoremap <leader>gp :!echo -n grep : && read key_s && grep -rni "${key_s}" \| highlight -O ansi --syntax c \| less -N -r -I -p "${key_s}" <CR><CR>

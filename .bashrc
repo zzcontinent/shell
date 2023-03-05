@@ -238,7 +238,17 @@ lessc()
 		return 0
 	fi
 	highlight -O ansi --syntax c | less -R
-
 }
+
+cf()
+{
+	if [ ! -z $1 ];then
+		cat $1  > ~/.vim.cf
+		return 0
+	fi
+	cat > ~/.vim.cf
+}
+
+alias cv='cat ~/.vim.cf'
 
 start_netspeed
