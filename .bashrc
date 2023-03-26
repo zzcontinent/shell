@@ -185,9 +185,14 @@ gitamend()
 	git commit --amend --no-edit
 }
 
-alias gitl='git log --graph'
-alias gitla='git log --graph --all'
-alias gitlo='git log --graph --all --pretty=oneline'
+alias gitl='git log --graph --date=iso8601'
+alias gitls='git log --graph --date=iso8601 --stat'
+alias gitlo='git log --graph --pretty=oneline --date=iso8601'
+alias gitlos='git log --graph --pretty=oneline --date=iso8601 --stat'
+alias gitla='git log --graph --all --date=iso8601'
+alias gitlas='git log --graph --all --date=iso8601 --stat'
+alias gitlao='git log --graph --all --pretty=oneline --date=iso8601'
+alias gitlaos='git log --graph --all --pretty=oneline --date=iso8601 --stat'
 alias gitst='git status'
 alias gitsh='git show'
 alias gitshs='git show --stat'
