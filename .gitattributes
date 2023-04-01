@@ -1,0 +1,1 @@
+chat-gpt_0.12.0_amd64.AppImage filter=lfs diff=lfs merge=lfs -text
