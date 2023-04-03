@@ -21,6 +21,7 @@ all:
 	make compiles
 	make shell
 	make vim
+	make markdown
 
 
 sudoers:
@@ -228,6 +229,9 @@ cflow:
 xclip:
 	@echo "==========================[$@] <= [$^]"
 	apt install xclip -y
+markdown:
+	@echo "==========================[$@] <= [$^]"
+	pip install markdown-it-py
 
 
 #==============================================

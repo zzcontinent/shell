@@ -141,7 +141,7 @@ fi
 export PATH=$PATH:/home/cliff/shell
 #export http_proxy='http://172.17.0.72:1081'
 #export https_proxy='http://172.17.0.72:1081'
-export ANDROID_NDK_HOME='/home/cliff/data/software/android-ndk-r21'
+#export ANDROID_NDK_HOME='/home/cliff/data/software/android-ndk-r21'
 
 grepl()
 {
@@ -254,6 +254,22 @@ cf()
 	cat > ~/.vim.cf
 }
 
-alias cv='cat ~/.vim.cf'
+md()
+{
+	if [ ! -z $1 ];then
+		markdown-it  $1| w3m -T text/html
+		return 0;
+	fi
+}
 
+mdf()
+{
+	if [ ! -z $1 ];then
+		markdown-it  $1 > $1.html
+		return 0;
+	fi
+}
+
+alias cv='cat ~/.vim.cf'
 start_netspeed
+

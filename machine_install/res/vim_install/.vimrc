@@ -21,8 +21,9 @@ Plugin 'L9'
 " 由Git支持但不再github上的插件仓库 Plugin 'git clone 后面的地址'
 Plugin 'git://git.wincent.com/command-t.git'
 " 本地的Git仓库(例如自己的插件) Plugin 'file:///+本地插件仓库绝对路径'
-"
-"
+"Plugin 'godlygeek/tabular'
+"Plugin 'preservim/vim-markdown'
+
 let g:use_ycm = 1
 if get(g:, 'use_ycm', 1)
 "Plugin 'file:///home/gmarik/path/to/plugin'
