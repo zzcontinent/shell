@@ -12,4 +12,4 @@ echo "=======need upgrade reinstall: ${pkg_list_upgrade}"
 [ x == "x${pkg_list_upgrade}" ] && exit 0
 
 sleep 1
-sudo apt install --reinstall ${pkg_list_upgrade}
+sudo apt install -y --reinstall ${pkg_list_upgrade}

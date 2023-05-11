@@ -254,6 +254,11 @@ cf()
 	cat > ~/.vim.cf
 }
 
+cv()
+{
+	cat ~/.vim.cf
+}
+
 md()
 {
 	if [ ! -z $1 ];then
@@ -272,4 +277,4 @@ mdf()
 
 alias cv='cat ~/.vim.cf'
 start_netspeed
-
+alias r='ranger'
