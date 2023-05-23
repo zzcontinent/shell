@@ -68,24 +68,35 @@ start_netspeed()
 		(nohup indicator-netspeed >/dev/null 2>&1 >/dev/null&)
 	fi
 }
+ GREEN='\[\033[01;32m\]'
+ RED='\[\033[31;1m\]'
+ BLUE='\[\033[01;34m\]'
+ DONE='\[\033[00m\]'
 
-basic_info()
+func_ps1_basic()
 {
 	printf '[%.2f_%.2f_%s][%s]' $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  $(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1) $(date +%m%d_%H:%M:%S)
 }
 
+func_ps1_git()
+{
+	gitb=$(git branch --show-current 2>/dev/null)
+	[ ! -z ${gitb} ] && gitb="(${gitb})"
+	echo ${gitb}
+}
+
 if [ "$color_prompt" = yes ]; then
-	PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u:\$(who|wc -l)]\[\033[00m\]\[\033[31;1m\]\$(basic_info)\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]\$ "
+	PS1="${debian_chroot:+($debian_chroot)}${GREEN}[\u:\$(who|wc -l)]${DONE}${RED}\$(func_ps1_basic)${DONE}:${BLUE}[\w]${DONE}${GREEN}\$(func_ps1_git)${DONE}\$ "
 fi
 if [ ${USER} == root ];then
-	PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u:\$(who|wc -l)]\[\033[00m\]\[\033[31;1m\]\$(basic_info)\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]\$ "
+	PS1="${debian_chroot:+($debian_chroot)}${GREEN}[\u:\$(who|wc -l)]${DONE}${RED}\$(func_ps1_basic)${DONE}:${BLUE}[\w]${DONE}${GREEN}\$(func_ps1_git)${DONE}\$ "
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 	xterm*|rxvt*)
-		PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u:\$(who|wc -l)]\[\033[00m\]\[\033[31;1m\]\$(basic_info)\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]\$ "
+		PS1="${debian_chroot:+($debian_chroot)}${GREEN}[\u:\$(who|wc -l)]${DONE}${RED}\$(func_ps1_basic)${DONE}:${BLUE}[\w]${DONE}${GREEN}\$(func_ps1_git)${DONE}\$ "
 		;;
 	*)
 		;;
