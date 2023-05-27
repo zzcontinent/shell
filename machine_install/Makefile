@@ -23,14 +23,19 @@ all:
 	make vim
 	make markdown
 
+pacman_pkgs:
+	@echo "==========================[$@] <= [$^]"
+	pacman -Syu --noconfirm curl ctags cflow git cmake rsync lftp okular terminator nmap nfs-utils git-lfs ttf-hack ttf-hack-nerd qemu-system-x86 adobe-source-han-sans-cn-fonts
+	fc-cache -fv
+
+clash:
+	@echo "==========================[$@] <= [$^]"
+	clash-linux-amd64-v1.13.0 -f ~/shell/clash/clash.yaml.txt &
 
 sudoers:
 	@echo "==========================[$@] <= [$^]"
-	echo '%sudo ALL=(ALL:ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/`whoami`
+	cp ./res/sudoers /etc/
 
-prepare:
-	@echo "==========================[$@] <= [$^]"
-	sudo apt update
 cmake:
 	@echo "==========================[$@] <= [$^]"
 	sudo apt install -y cmake
@@ -41,6 +46,7 @@ vim: vim-gtk cmake
 	-sudo apt install -y ctags
 	-sudo apt install -y universal-ctags
 	-if [ ! -d ~/vim_install ] ;then  cd ./res/vim_install/ && ./install.sh; fi
+	ln -sf `pwd`/res/vim_install/.vimrc ~/
 
 ycmgentemp:
 	@echo "==========================[$@] <= [$^]"
@@ -109,9 +115,9 @@ jupyter:
 
 windows-font:
 	@echo "==========================[$@] <= [$^]"
-	sudo mkdir /usr/share/fonts/truetype/windows-fonts
-	sudo chmod -R 777  /usr/share/fonts/truetype/windows-font
-	cd /usr/share/fonts/truetype/windows-font
+	sudo mkdir -p /usr/share/fonts/truetype/windows-fonts
+	sudo chmod -R 777  /usr/share/fonts/truetype/windows-fonts
+	cd /usr/share/fonts/truetype/windows-fonts
 	sudo mkfontscale
 	sudo mkfontdir
 	sudo fc-cache -fv
@@ -119,6 +125,8 @@ font-mac:
 	@echo "==========================[$@] <= [$^]"
 	-mkdir -p /usr/share/fonts/truetype/custom
 	cp ./res/font/monaco-font/Monaco_Linux.ttf /usr/share/fonts/truetype/custom/
+	sudo mkfontscale
+	sudo mkfontdir
 	sudo fc-cache -f -v
 npm:
 	@echo "==========================[$@] <= [$^]"
@@ -216,8 +224,8 @@ chromium-browser:
 	sudo apt install chromium-browser
 bashrc:
 	@echo "==========================[$@] <= [$^]"
-	cp ./res/bash/.bashrc ~
-	cp ./res/bash/bash.bashrc /etc/
+	ln -sf ~/shell/.bashrc ~/
+	#cp ./res/bash/bash.bashrc /etc/
 ssh_analysis:
 	@echo "==========================[$@] <= [$^]"
 	cp ./res/ssh_analysis /usr/local/bin

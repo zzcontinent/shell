@@ -27,7 +27,8 @@ Plugin 'git://git.wincent.com/command-t.git'
 let g:use_ycm = 1
 if get(g:, 'use_ycm', 1)
 "Plugin 'file:///home/gmarik/path/to/plugin'
-Plugin 'file:///home/cliff/cworkspace/github/YouCompleteMe'
+"Plugin 'file:///home/cliff/cworkspace/github/YouCompleteMe'
+Plugin 'file:///home/cliff/vim_install/bundle/YouCompleteMe'
 endif
 " 插件在仓库的子目录中.
 " 正确指定路径用以设置runtimepath. 以下范例插件在sparkup/vim目录下
