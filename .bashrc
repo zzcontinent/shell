@@ -289,3 +289,5 @@ mdf()
 alias cv='cat ~/.vim.cf'
 start_netspeed
 alias r='ranger'
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
