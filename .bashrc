@@ -68,35 +68,54 @@ start_netspeed()
 		(nohup indicator-netspeed >/dev/null 2>&1 >/dev/null&)
 	fi
 }
- GREEN='\[\033[01;32m\]'
- RED='\[\033[31;1m\]'
- BLUE='\[\033[01;34m\]'
- DONE='\[\033[00m\]'
+
+BLACK="\e[30;1m"
+RED="\e[31;1m"
+GREEN="\e[32;1m"
+YELLOW="\e[33;1m"
+BLUE="\e[34;1m"
+PURPLE="\e[35;1m"
+CYAN="\e[36;1m"
+WHITE="\e[37;1m"
+DONE="\033[0m"
 
 func_ps1_basic()
 {
-	printf '[%.2f_%.2f_%s][%s]' $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  $(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1) $(date +%m%d_%H:%M:%S)
+	if [ "x$(whoami)" == "xroot" ];then
+		printf "${RED}[%s:%d:${SSH_TTY}]${DONE}${YELLOW}[%.2f_%.2f%s]${DONE}${CYAN}[%s]${DONE}" $(whoami) $(who|wc -l) $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  "_$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)" $(date +%m%d_%H:%M:%S)
+	else
+		printf "${GREEN}[%s:%d:${SSH_TTY}]${DONE}${YELLOW}[%.2f_%.2f%s]${DONE}${CYAN}[%s]${DONE}" $(whoami) $(who|wc -l) $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  "_$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)" $(date +%m%d_%H:%M:%S)
+	fi
 }
 
 func_ps1_git()
 {
 	gitb=$(git branch --show-current 2>/dev/null)
 	[ ! -z ${gitb} ] && gitb="(${gitb})"
-	echo ${gitb}
+	printf "${RED}${gitb}${DONE}"
 }
 
 if [ "$color_prompt" = yes ]; then
-	PS1="${debian_chroot:+($debian_chroot)}${GREEN}[\u:\$(who|wc -l)]${DONE}${RED}\$(func_ps1_basic)${DONE}:${BLUE}[\w]${DONE}${GREEN}\$(func_ps1_git)${DONE}\$ "
+	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic):${BLUE}[\w]${DONE}\$(func_ps1_git)\$ "
+else
+	BLACK=
+	RED=
+	GREEN=
+	YELLOW=
+	BLUE=
+	PURPLE=
+	CYAN=
+	WHITE=
+	DONE=
+	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic):${BLUE}[\w]${DONE}\$(func_ps1_git)\$ "
 fi
-if [ ${USER} == root ];then
-	PS1="${debian_chroot:+($debian_chroot)}${GREEN}[\u:\$(who|wc -l)]${DONE}${RED}\$(func_ps1_basic)${DONE}:${BLUE}[\w]${DONE}${GREEN}\$(func_ps1_git)${DONE}\$ "
-fi
+
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 	xterm*|rxvt*)
-		PS1="${debian_chroot:+($debian_chroot)}${GREEN}[\u:\$(who|wc -l)]${DONE}${RED}\$(func_ps1_basic)${DONE}:${BLUE}[\w]${DONE}${GREEN}\$(func_ps1_git)${DONE}\$ "
+		PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic):${BLUE}[\w]${DONE}\$(func_ps1_git)\$ "
 		;;
 	*)
 		;;
@@ -196,6 +215,58 @@ gitamend()
 	git commit --amend --no-edit
 }
 
+psg() {
+	[ ! -z $1 ] && ps auxf 2>&1 | grep $1 && return 0
+	ps auxf 2>&1
+}
+
+psgl() {
+	[ ! -z $1 ] && ps auxf 2>&1 | grep $1 | less -N && return 0
+	ps auxf 2>&1 | less -N
+}
+
+ts() {
+	cp $1 $1_`date "+%y%m%d_%H%M%S"`
+}
+
+tsmv() {
+	mv $1 $1_`date "+%y%m%d_%H%M%S"`
+}
+
+lessc() {
+	if [ ! -z $1 ];then
+		cat $1 | highlight -O ansi --syntax c| less -R
+		return 0
+	fi
+	highlight -O ansi --syntax c | less -R
+}
+
+cf() {
+	if [ ! -z $1 ];then
+		cat $1  > ~/.vim.cf
+		return 0
+	fi
+	cat > ~/.vim.cf
+}
+
+cv() {
+	cat ~/.vim.cf
+}
+
+md() {
+	if [ ! -z $1 ];then
+		markdown-it  $1| w3m -T text/html
+		return 0;
+	fi
+}
+
+mdf() {
+	if [ ! -z $1 ];then
+		markdown-it  $1 > $1.html
+		return 0;
+	fi
+}
+
 alias gitl='git log --graph --date=iso8601'
 alias gitls='git log --graph --date=iso8601 --stat'
 alias gitlo='git log --graph --pretty=oneline --date=iso8601'
@@ -212,8 +283,6 @@ alias gitds='git diff --stat'
 alias gitdt='git difftool --tool=vimdiff'
 alias gitb='git branch --all'
 
-alias myc='tee ~/tmp/.myclip'
-alias myv='cat ~/tmp/.myclip'
 alias cdpi='cd /home/backup/pi'
 alias dfh='df -Th'
 
@@ -225,68 +294,6 @@ alias cdt='cd ~/toyos/src'
 alias sortf='find -type f | xargs wc 2>/dev/null | sort -n | less -N'
 alias j='jobs'
 
-psg()
-{
-	[ ! -z $1 ] && ps auxf 2>&1 | grep $1 && return 0
-	ps auxf 2>&1
-}
-
-psgl()
-{
-	[ ! -z $1 ] && ps auxf 2>&1 | grep $1 | less -N && return 0
-	ps auxf 2>&1 | less -N
-}
-
-ts()
-{
-	cp $1 $1_`date "+%y%m%d_%H%M%S"`
-}
-
-tsmv()
-{
-	mv $1 $1_`date "+%y%m%d_%H%M%S"`
-}
-
-lessc()
-{
-	if [ ! -z $1 ];then
-		cat $1 | highlight -O ansi --syntax c| less -R
-		return 0
-	fi
-	highlight -O ansi --syntax c | less -R
-}
-
-cf()
-{
-	if [ ! -z $1 ];then
-		cat $1  > ~/.vim.cf
-		return 0
-	fi
-	cat > ~/.vim.cf
-}
-
-cv()
-{
-	cat ~/.vim.cf
-}
-
-md()
-{
-	if [ ! -z $1 ];then
-		markdown-it  $1| w3m -T text/html
-		return 0;
-	fi
-}
-
-mdf()
-{
-	if [ ! -z $1 ];then
-		markdown-it  $1 > $1.html
-		return 0;
-	fi
-}
-
-alias cv='cat ~/.vim.cf'
 start_netspeed
 alias r='ranger'
 export LANG=en_US.UTF-8
