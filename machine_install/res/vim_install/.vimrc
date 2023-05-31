@@ -341,7 +341,7 @@ let g:ycm_extra_conf_vim_data = [
 "==============>ycm config
 "let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_semantic_triggers =  {
-			\ 'asm,c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+			\ 'asm,c,cpp,python,rust,java,go,erlang,perl': ['re!\w{2}'],
 			\ 'cs,lua,javascript': ['re!\w{2}'],
 			\ }
 let g:ycm_confirm_extra_conf = 0
@@ -419,9 +419,9 @@ let g:airline#extensions#tabline#enabled = 1
 "nnoremap <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 "nnoremap <F12> :!ctags --languages=Asm,c,c++,java,go,Make,sh -R . <CR>"
 "nnoremap <F12> :!ctags -R --languages=Asm,c,c++,java,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf . <CR>
-nnoremap <F12> :!ctags -R --languages=Asm,c,c++,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf `pwd` <CR>
-nnoremap <leader>act :!ctags -R --languages=Asm,c,c++,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf `pwd` <CR>
-nnoremap <leader>ct :!ctags -R --languages=Asm,c,c++,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf <CR>
+nnoremap <F12> :!ctags -R --languages=Asm,c,c++,go,Make,sh,rust --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf `pwd` <CR>
+nnoremap <leader>act :!ctags -R --languages=Asm,c,c++,go,Make,sh,rust --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf `pwd` <CR>
+nnoremap <leader>ct :!ctags -R --languages=Asm,c,c++,go,Make,sh,rust --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf <CR>
 "nnoremap <F12> :!ctags -R --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf . <CR>
 "nnoremap <silent> <F8> :TlistToggle<CR>
 nnoremap <silent> <F8> :TagbarToggle<CR>
