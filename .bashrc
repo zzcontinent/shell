@@ -91,12 +91,11 @@ func_ps1_basic()
 func_ps1_git()
 {
 	gitb=$(git branch --show-current 2>/dev/null)
-	[ ! -z ${gitb} ] && gitb="(${gitb})"
-	printf "${RED}${gitb}${DONE}"
+	[ ! -z ${gitb} ] && gitb="(${gitb})" && printf "${RED}${gitb}${DONE}"
 }
 
 if [ "$color_prompt" = yes ]; then
-	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic):${BLUE}[\w]${DONE}\$(func_ps1_git)\$ "
+	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic)${BLUE}:[\w]${DONE}\$(func_ps1_git)\$ "
 else
 	BLACK=
 	RED=
@@ -107,7 +106,7 @@ else
 	CYAN=
 	WHITE=
 	DONE=
-	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic):${BLUE}[\w]${DONE}\$(func_ps1_git)\$ "
+	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic)${BLUE}:[\w]${DONE}\$(func_ps1_git)\$ "
 fi
 
 unset color_prompt force_color_prompt
@@ -115,7 +114,7 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 	xterm*|rxvt*)
-		PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic):${BLUE}[\w]${DONE}\$(func_ps1_git)\$ "
+		PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic)${BLUE}:[\w]${DONE}\$(func_ps1_git)\$ "
 		;;
 	*)
 		;;
