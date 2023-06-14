@@ -443,6 +443,7 @@ nnoremap g] :pts <C-r><C-w><CR>
 
 nnoremap <leader>cc :set colorcolumn=9
 "copy v mode to system clipboard
+:set clipboard=unnamedplus,unnamed
 vnoremap <S-c> "+y
 vnoremap <leader>c :<C-U>!echo '<c-r>=GetVisualSelection()<cr>' \| xclip <CR>
 nnoremap <leader>v :r!xclip -o <CR>
@@ -523,6 +524,12 @@ function! GetVisualSelection()
 endfunction
 "/*******************************************************************************************/
 
+"/***************************************session****************************************************/
+nnoremap <leader>ms :mksession!<cr>
+nnoremap <leader>ls :so ./Session.vim<cr>
+"so ./Session.vim
+"set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,terminal
+set sessionoptions=buffers,curdir,tabpages,winsize,terminal
 
 "insert comment line
 inoremap <leader>li /*******************************************************************************************/
