@@ -47,11 +47,16 @@ DST_PACMAN_BACKUP_CURSYS_PATH_DB="$(dirname ${DST_PACMAN_BACKUP_CURSYS_PATH})"
 
 func_pacman_backup_server()
 {
+	PKGS="base  base-devel grub-bios \
+xorg gimp efibootmgr gcc \
+curl ctags git cmake rsync lftp okular terminator nmap \
+fcitx5-im fcitx5-chinese-addons fcitx5-rime gnome-shell-extension-appindicator gnome-shell-extension-dash-to-panel \
+nfs-utils git-lfs ttf-hack ttf-hack-nerd qemu-system-x86 adobe-source-han-sans-cn-fonts"
 	echo "+++ func_pacman_backup_server +++"
 	mkdir -p ${DST_PACMAN_BACKUP_SERVER_PATH}
 	mkdir -p ${DST_PACMAN_BACKUP_SERVER_PATH_DB}
 	#pacman -Syw --cachedir ${DST_PACMAN_BACKUP_SERVER_PATH} --dbpath ${DST_PACMAN_BACKUP_SERVER_PATH_DB} base base-devel grub-bios xorg gimp && \
-	pacman -Syw --cachedir ${DST_PACMAN_BACKUP_SERVER_PATH} --dbpath ${DST_PACMAN_BACKUP_SERVER_PATH_DB} base  && \
+	pacman -Syw --cachedir ${DST_PACMAN_BACKUP_SERVER_PATH} --dbpath ${DST_PACMAN_BACKUP_SERVER_PATH_DB}  --noconfirm ${PKGS} && \
 	cd ${DST_PACMAN_BACKUP_SERVER_PATH} && repo-add ./custom.db.tar.gz ./*.zst &&\
 	tar -cvf ${DST_PACMAN_BACKUP_SERVER_PATH_DB}.tar ${DST_PACMAN_BACKUP_SERVER_PATH_DB} &&\
 	tsmv ${DST_PACMAN_BACKUP_SERVER_PATH_DB}.tar
@@ -81,8 +86,8 @@ func_run()
 {
 	if [ -z "$1" ];then
 		echo "arch.sh efi            : efibootmgr"
-		echo "arch.sh baks           : backup_server"
-		echo "arch.sh bakc           : backup_cursys"
+		echo "arch.sh baks           : backup_server to ${DST_PACMAN_BACKUP_SERVER_PATH_DB}"
+		echo "arch.sh bakc           : backup_cursys from ${SRC_PACMAN_BACKUP_CURSYS_PATH} to ${DST_PACMAN_BACKUP_CURSYS_PATH_DB}"
 		echo "arch.sh change_local   : change to local config"
 		echo "arch.sh wiki           : wiki"
 	elif [ "$1" == "wiki" ];then
