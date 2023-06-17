@@ -438,6 +438,8 @@ nnoremap <leader>nt :NERDTreeToggle <CR>
 nnoremap <C-i> :tabc <CR>
 nnoremap <C-k> :tabp <CR>
 nnoremap <C-j> :tabn <CR>
+nnoremap <C-m> :tabm +<CR>
+nnoremap <C-n> :tabm -<CR>
 nnoremap g] :pts <C-r><C-w><CR>
 "nnoremap <C-]> :pt <C-r><C-w><CR>
 
@@ -457,7 +459,7 @@ nnoremap <leader>gp :!echo [grep]:<c-r>=GetCurword()<cr> && read key_s && [ -z $
 nnoremap <leader>fd :!echo [find]:<c-r>=GetCurword()<cr> && read key_s && [ -z $key_s ] && key_s=<c-r>=GetCurword()<cr>; find \| grep --color=always "${key_s}" 2>/dev/null \| less -R<CR><CR>
 
 "autoformat
-nnoremap <C-l> gg=G :RemoveTrailingSpaces<CR>
+nnoremap <C-l> gg=G:RemoveTrailingSpaces<CR><C-o><C-o>
 
 nnoremap <leader>gd :YcmCompleter GoToDefinition <CR>
 nnoremap <leader>gr :YcmCompleter GoToReferences <CR>
