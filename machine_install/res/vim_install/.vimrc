@@ -457,7 +457,7 @@ nnoremap <leader>gp :!echo [grep]:<c-r>=GetCurword()<cr> && read key_s && [ -z $
 nnoremap <leader>fd :!echo [find]:<c-r>=GetCurword()<cr> && read key_s && [ -z $key_s ] && key_s=<c-r>=GetCurword()<cr>; find \| grep --color=always "${key_s}" 2>/dev/null \| less -R<CR><CR>
 
 "autoformat
-nnoremap <C-l> :Autoformat <CR>
+nnoremap <C-l> gg=G :RemoveTrailingSpaces<CR>
 
 nnoremap <leader>gd :YcmCompleter GoToDefinition <CR>
 nnoremap <leader>gr :YcmCompleter GoToReferences <CR>
