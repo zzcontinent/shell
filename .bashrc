@@ -82,9 +82,9 @@ DONE="\033[0m"
 func_ps1_basic()
 {
 	if [ "x$(whoami)" == "xroot" ];then
-		printf "${RED}[%s:%d:${SSH_TTY}]${DONE}${YELLOW}[%.2f_%.2f%s]${DONE}${RED}[%s]${DONE}" $(whoami) $(who|wc -l) $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  "_$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)" $(date +%m%d_%H:%M:%S)
+		printf "${RED}[%s:%d:${SSH_TTY}]${DONE}${YELLOW}[%.2f_%.2f%s]${DONE}${CYAN}[%s]${DONE}" $(whoami) $(who|wc -l) $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  "_$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)" $(date +%m%d_%H:%M:%S)
 	else
-		printf "${GREEN}[%s:%d:${SSH_TTY}]${DONE}${YELLOW}[%.2f_%.2f%s]${DONE}${RED}[%s]${DONE}" $(whoami) $(who|wc -l) $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  "_$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)" $(date +%m%d_%H:%M:%S)
+		printf "${GREEN}[%s:%d:${SSH_TTY}]${DONE}${YELLOW}[%.2f_%.2f%s]${DONE}${CYAN}[%s]${DONE}" $(whoami) $(who|wc -l) $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  "_$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)" $(date +%m%d_%H:%M:%S)
 	fi
 }
 
@@ -95,7 +95,7 @@ func_ps1_git()
 }
 
 if [ "$color_prompt" = yes ]; then
-	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic)${BLUE}:[\w]${DONE}\$(func_ps1_git)\$ "
+	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic)${BLUE}:[\w]${DONE}\$(func_ps1_git)${GREEN}\$${DONE} "
 else
 	BLACK=
 	RED=
@@ -297,3 +297,7 @@ start_netspeed
 alias r='ranger'
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
+
+#export PYENV_ROOT="$HOME/.pyenv"
+#command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init -)"
