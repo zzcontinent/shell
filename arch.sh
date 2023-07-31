@@ -42,6 +42,7 @@ DST_PACMAN_BACKUP_SERVER_PATH="/home/cliff/backup/pacman/backup_server/pkg"
 DST_PACMAN_BACKUP_SERVER_PATH_DB="$(dirname ${DST_PACMAN_BACKUP_SERVER_PATH})"
 
 SRC_PACMAN_BACKUP_CURSYS_PATH="/var/cache/pacman/pkg"
+SRC_PACMAN_BACKUP_CURSYS_PATH_LIB="/var/lib/pacman/"
 DST_PACMAN_BACKUP_CURSYS_PATH="/home/cliff/backup/pacman/backup_cursys/pkg"
 DST_PACMAN_BACKUP_CURSYS_PATH_DB="$(dirname ${DST_PACMAN_BACKUP_CURSYS_PATH})"
 
@@ -65,9 +66,10 @@ nfs-utils git-lfs ttf-hack ttf-hack-nerd qemu-system-x86 adobe-source-han-sans-c
 func_pacman_backup_cursys()
 {
 	echo "+++ func_pacman_backup_cursys +++"
-	mkdir -p ${DST_PACMAN_BACKUP_CURSYS_PATH}
 	mkdir -p ${DST_PACMAN_BACKUP_CURSYS_PATH_DB}
-	cd $(dirname ${SRC_PACMAN_BACKUP_CURSYS_PATH}) && tar -cvf ${DST_PACMAN_BACKUP_CURSYS_PATH_DB}.tar $(basename ${SRC_PACMAN_BACKUP_CURSYS_PATH}) && tsmv ${DST_PACMAN_BACKUP_CURSYS_PATH_DB}.tar
+	cp -r ${SRC_PACMAN_BACKUP_CURSYS_PATH_LIB}/* ${DST_PACMAN_BACKUP_CURSYS_PATH_DB}
+	cp -r ${SRC_PACMAN_BACKUP_CURSYS_PATH} ${DST_PACMAN_BACKUP_CURSYS_PATH_DB}
+	cd $(dirname ${DST_PACMAN_BACKUP_CURSYS_PATH_DB}) && tar -zcvf ${DST_PACMAN_BACKUP_CURSYS_PATH_DB}.tgz $(basename ${DST_PACMAN_BACKUP_CURSYS_PATH_DB}) && tsmv ${DST_PACMAN_BACKUP_CURSYS_PATH_DB}.tgz
 }
 
 func_pacman_change_to_local_config()

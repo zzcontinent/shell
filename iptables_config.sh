@@ -35,3 +35,6 @@ tc qdisc change dev eth0 root netem delay 10ms reorder 25% 50%
 tc qdisc show dev eth0
 #删除
 tc qdisc del dev eth0 root
+
+#limit bandwidh
+sudo tc qdisc add dev enp0s3 root tbf rate 100000kbit burst 16kbit latency 50ms

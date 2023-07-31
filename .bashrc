@@ -69,15 +69,50 @@ start_netspeed()
 	fi
 }
 
-BLACK="\e[30;1m"
-RED="\e[31;1m"
-GREEN="\e[32;1m"
-YELLOW="\e[33;1m"
-BLUE="\e[34;1m"
-PURPLE="\e[35;1m"
-CYAN="\e[36;1m"
-WHITE="\e[37;1m"
-DONE="\033[0m"
+
+txtblk='\e[0;30m' # Black - Regular
+txtred='\e[0;31m' # Red
+txtgrn='\e[0;32m' # Green
+txtylw='\e[0;33m' # Yellow
+txtblu='\e[0;34m' # Blue
+txtpur='\e[0;35m' # Purple
+txtcyn='\e[0;36m' # Cyan
+txtwht='\e[0;37m' # White
+bldblk='\e[1;30m' # Black - Bold
+bldred='\e[1;31m' # Red
+bldgrn='\e[1;32m' # Green
+bldylw='\e[1;33m' # Yellow
+bldblu='\e[1;34m' # Blue
+bldpur='\e[1;35m' # Purple
+bldcyn='\e[1;36m' # Cyan
+bldwht='\e[1;37m' # White
+unkblk='\e[4;30m' # Black - Underline
+undred='\e[4;31m' # Red
+undgrn='\e[4;32m' # Green
+undylw='\e[4;33m' # Yellow
+undblu='\e[4;34m' # Blue
+undpur='\e[4;35m' # Purple
+undcyn='\e[4;36m' # Cyan
+undwht='\e[4;37m' # White
+bakblk='\e[40m'   # Black - Background
+bakred='\e[41m'   # Red
+bakgrn='\e[42m'   # Green
+bakylw='\e[43m'   # Yellow
+bakblu='\e[44m'   # Blue
+bakpur='\e[45m'   # Purple
+bakcyn='\e[46m'   # Cyan
+bakwht='\e[47m'   # White
+txtrst='\e[0m'    # Text Reset
+
+BLACK="${bldblk}"
+RED="${bldred}"
+GREEN=${bldgrn}
+YELLOW=${bldylw}
+BLUE=${bldblu}
+PURPLE=${bldpur}
+CYAN=${bldcyn}
+WHITE=${bldwht}
+DONE=${txtrst}
 
 func_ps1_basic()
 {
@@ -95,7 +130,7 @@ func_ps1_git()
 }
 
 if [ "$color_prompt" = yes ]; then
-	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic)${BLUE}:[\w]${DONE}\$(func_ps1_git)${GREEN}\$${DONE} "
+	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic)${BLUE}:[\w]${DONE}\$(func_ps1_git)\$ "
 else
 	BLACK=
 	RED=
@@ -110,15 +145,6 @@ else
 fi
 
 unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-	xterm*|rxvt*)
-		PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic)${BLUE}:[\w]${DONE}\$(func_ps1_git)\$ "
-		;;
-	*)
-		;;
-esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -167,7 +193,7 @@ fi
 # export GOPATH="/home/cliff/goworkspace"
 # export GOROOT="/home/cliff/data/software/go"
 # export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
-export PATH=$PATH:/home/cliff/shell
+export PATH=$PATH:/home/cliff/shell:/usr/local/go/bin
 #export http_proxy='http://172.17.0.72:1081'
 #export https_proxy='http://172.17.0.72:1081'
 #export ANDROID_NDK_HOME='/home/cliff/data/software/android-ndk-r21'
