@@ -117,9 +117,9 @@ DONE=${txtrst}
 func_ps1_basic()
 {
 	if [ "x$(whoami)" == "xroot" ];then
-		printf "${RED}[%s:%d:${SSH_TTY}]${DONE}${YELLOW}[%.2f_%.2f%s]${DONE}${CYAN}[%s]${DONE}" $(whoami) $(who|wc -l) $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  "_$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)" $(date +%m%d_%H:%M:%S)
+		printf "${RED}[%s|%d%s]${DONE}${YELLOW}[%.1f|%.1f%s]${DONE}${CYAN}[%s]${DONE}" $(whoami) $(who|wc -l) $(echo "|${SSH_CLIENT}"| awk '{print $1}') $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  "|$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)" $(date +%m%d\|%H%M%S)
 	else
-		printf "${GREEN}[%s:%d:${SSH_TTY}]${DONE}${YELLOW}[%.2f_%.2f%s]${DONE}${CYAN}[%s]${DONE}" $(whoami) $(who|wc -l) $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  "_$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)" $(date +%m%d_%H:%M:%S)
+		printf "${GREEN}[%s|%d%s]${DONE}${YELLOW}[%.1f|%.1f%s]${DONE}${CYAN}[%s]${DONE}" $(whoami) $(who|wc -l) $(echo "|${SSH_CLIENT}"| awk '{print $1}') $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  "|$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)" $(date +%m%d\|%H%M%S)
 	fi
 }
 
