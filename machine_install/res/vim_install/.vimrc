@@ -419,9 +419,9 @@ let g:airline#extensions#tabline#enabled = 1
 "nnoremap <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 "nnoremap <F12> :!ctags --languages=Asm,c,c++,java,go,Make,sh -R . <CR>"
 "nnoremap <F12> :!ctags -R --languages=Asm,c,c++,java,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf . <CR>
-nnoremap <F12> :!ctags -R --languages=Asm,c,c++,go,Make,sh,rust --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extras=+qf `pwd` <CR>
-nnoremap <leader>act :!ctags -R --languages=Asm,c,c++,go,Make,sh,rust --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extras=+qf `pwd` <CR>
-nnoremap <leader>ct :!ctags -R --languages=Asm,c,c++,go,Make,sh,rust --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extras=+qf <CR>
+nnoremap <F12> :!ctags -R --languages=Asm,c,c++,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extras=+qf `pwd` <CR>
+nnoremap <leader>act :!ctags -R --languages=Asm,c,c++,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf `pwd` <CR>
+nnoremap <leader>ct :!ctags -R --languages=Asm,c,c++,go,Make,sh --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf <CR>
 "nnoremap <F12> :!ctags -R --c-kinds=+px --c++-kinds=+px --fields=+iafksS --extra=+qf . <CR>
 "nnoremap <silent> <F8> :TlistToggle<CR>
 nnoremap <silent> <F8> :TagbarToggle<CR>

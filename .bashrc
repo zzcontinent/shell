@@ -103,6 +103,7 @@ bakpur='\e[45m'   # Purple
 bakcyn='\e[46m'   # Cyan
 bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
+blink='\e[5m'
 
 BLACK="${bldblk}"
 RED="${bldred}"
@@ -117,20 +118,30 @@ DONE=${txtrst}
 func_ps1_basic()
 {
 	if [ "x$(whoami)" == "xroot" ];then
-		printf "${RED}[%s|%d%s]${DONE}${YELLOW}[%.1f|%.1f%s]${DONE}${CYAN}[%s]${DONE}" $(whoami) $(who|wc -l) $(echo "|${SSH_CLIENT}"| awk '{print $1}') $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  "|$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)" $(date +%m%d\|%H%M%S)
+		printf "${RED}[%s|%d%s]${YELLOW}[%.1f|%.1f%s]${CYAN}[%s]" $(whoami) $(who|wc -l) $(echo "|${SSH_CLIENT}"| awk '{print $1}') $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  "|$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)" $(date +%m-%d\|%w\|%H:%M:%S)
 	else
-		printf "${GREEN}[%s|%d%s]${DONE}${YELLOW}[%.1f|%.1f%s]${DONE}${CYAN}[%s]${DONE}" $(whoami) $(who|wc -l) $(echo "|${SSH_CLIENT}"| awk '{print $1}') $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  "|$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)" $(date +%m%d\|%H%M%S)
+		printf "${GREEN}[%s|%d%s]${YELLOW}[%.1f|%.1f%s]${CYAN}[%s]" $(whoami) $(who|wc -l) $(echo "|${SSH_CLIENT}"| awk '{print $1}') $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  "|$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)" $(date +%m-%d\|%w\|%H:%M:%S)
 	fi
 }
 
 func_ps1_git()
 {
 	gitb=$(git branch --show-current 2>/dev/null)
-	[ ! -z ${gitb} ] && gitb="(${gitb})" && printf "${RED}${gitb}${DONE}"
+	[ ! -z ${gitb} ] && gitb="(${gitb})" && printf "${RED}${gitb}"
+}
+
+func_ps1_result()
+{
+	ret=$?
+	if [ $ret != 0 ];then
+		printf "${RED}($ret)"
+	else
+		printf "${GREEN}($ret)"
+	fi
 }
 
 if [ "$color_prompt" = yes ]; then
-	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic)${BLUE}:[\w]${DONE}\$(func_ps1_git)\$ "
+	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_result)\$(func_ps1_basic)${BLUE}:[\w]\$(func_ps1_git)${DONE}\n$ "
 else
 	BLACK=
 	RED=
@@ -141,7 +152,7 @@ else
 	CYAN=
 	WHITE=
 	DONE=
-	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic)${BLUE}:[\w]${DONE}\$(func_ps1_git)\$ "
+	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic)${BLUE}:[\w]\$(func_ps1_git)${DONE}\n\$ "
 fi
 
 unset color_prompt force_color_prompt
@@ -308,6 +319,13 @@ alias gitds='git diff --stat'
 alias gitdt='git difftool --tool=vimdiff'
 alias gitb='git branch --all'
 
+cd_func()
+{
+	cd $1
+	ls -alhF `pwd`
+}
+
+#alias cd='cd_func'
 alias cdpi='cd /home/backup/pi'
 alias dfh='df -Th'
 
