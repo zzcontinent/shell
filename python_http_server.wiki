@@ -1,0 +1,4 @@
+#!/bin/bash
+python -m http.server --directory . 8899
+
+ssh -N -L 8899:127.0.0.1:8899 pi1
