@@ -352,6 +352,9 @@ alias r='ranger'
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
+#riscv
+alias cdrv='cd /home/cliff/rvworkspace/native/'
+alias source_toolchain_rv='export PATH=/home/cliff/rvworkspace/native/riscv-gnu-toolchain/out/bin:${PATH}'
 #export PYENV_ROOT="$HOME/.pyenv"
 #command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 #eval "$(pyenv init -)"
