@@ -1,0 +1,46 @@
+#!/bin/bash
+#C_OUT_DIR=out_mips
+#C_ARCH=mips
+#C_CROSS_COMPILE=mips64el-linux-gnuabi64-
+#C_QEMU=qemu-system-mips64el
+#C_PATH=
+
+C_OUT_DIR=out_rv
+C_ARCH=riscv
+C_CROSS_COMPILE=riscv64-unknown-linux-gnu-
+C_QEMU=qemu-system-riscv64
+C_PATH=/home/cliff/rvworkspace/native/riscv-gnu-toolchain/out/bin
+
+if [ $# -eq 0 ];then
+	echo './run.sh p  (mrproper linux)'
+	echo './run.sh d  (defconfig linux)'
+	echo './run.sh m  (menuconfig linux)'
+	echo './run.sh r  (run qemu linux)'
+	echo './run.sh c  (compile linux)'
+	exit 1
+fi
+
+
+export PATH=${C_PATH}:${PATH}
+
+if [ "x$1" == "xp" ];then
+	cd linux && make ARCH=${C_ARCH} CROSS_COMPILE=${C_CROSS_COMPILE} mrproper
+fi
+
+if [ "x$1" == "xd" ];then
+	cd linux && make O=${C_OUT_DIR} ARCH=${C_ARCH} CROSS_COMPILE=${C_CROSS_COMPILE} defconfig
+fi
+
+if [ "x$1" == "xm" ];then
+	cd linux && make O=${C_OUT_DIR} ARCH=${C_ARCH} CROSS_COMPILE=${C_CROSS_COMPILE} menuconfig
+fi
+
+if [ "x$1" == "xr" ];then
+	${C_QEMU} -M virt -m 256M -nographic -kernel linux/${C_OUT_DIR}/arch/${C_ARCH}/boot/Image
+#	${C_QEMU} -M virt -m 256M -nographic -kernel linux/${C_OUT_DIR}/arch/${C_ARCH}/boot/Image  -drive file=rootfs.img,format=raw,id=hd0  -device virtio-blk-device,drive=hd0 -append "root=/dev/vda rw console=ttyS0"
+fi
+
+if [ "x$1" == "xc" ];then
+	cd linux && make O=${C_OUT_DIR} ARCH=${C_ARCH} CROSS_COMPILE=${C_CROSS_COMPILE} -j4
+fi
+
