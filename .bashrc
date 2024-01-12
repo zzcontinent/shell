@@ -219,6 +219,16 @@ findl()
 	find | grep $@ --color=always 2>/dev/null | less -r
 }
 
+grepn()
+{
+	grep -rn $@ --color=always 2>/dev/null
+}
+
+findn()
+{
+	find | grep $@ --color=always 2>/dev/null
+}
+
 treel()
 {
 	cmd='tree -C'
