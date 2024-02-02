@@ -16,6 +16,8 @@ appstream
 arch-install-scripts
 archinstall
 archlinux-keyring
+archlinux-themes-slim
+archlinux-wallpaper
 argon2
 at-spi2-core
 attr
@@ -59,6 +61,7 @@ cloud-init
 colord
 colord-gtk-common
 colord-gtk4
+confuse
 coreutils
 cracklib
 cryptsetup
@@ -71,6 +74,7 @@ db5.3
 dbus
 dbus-broker
 dbus-broker-units
+dbus-glib
 dbus-python
 dconf
 ddcutil
@@ -177,6 +181,7 @@ gettext
 gflags
 giflib
 git
+git-lfs
 gjs
 glib-networking
 glib2
@@ -212,6 +217,7 @@ gnome-shell-extension-desktop-icons-ng
 gnome-shell-extension-gtile
 gnome-shell-extensions
 gnome-themes-extra
+gnome-tweaks
 gnu-netcat
 gnupg
 gnutls
@@ -259,6 +265,7 @@ hwloc
 hyperv
 hyphen
 i2c-tools
+i3status
 iana-etc
 icu
 iio-sensor-proxy
@@ -361,6 +368,7 @@ libfontenc
 libfreeaptx
 libgcrypt
 libgdm
+libgee
 libgexiv2
 libgirepository
 libglvnd
@@ -579,6 +587,7 @@ nautilus
 nbd
 ncurses
 ndisc6
+neofetch
 net-tools
 nettle
 networkmanager
@@ -664,6 +673,7 @@ pipewire-session-manager
 pixman
 pixz
 pkcs11-helper
+pkgfile
 polkit
 polkit-qt5
 poppler
@@ -898,6 +908,7 @@ xorgproto
 xvidcore
 xxhash
 xz
+yajl
 yaml-cpp
 yelp
 yelp-tools
