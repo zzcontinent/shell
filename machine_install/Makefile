@@ -25,9 +25,8 @@ all:
 
 pacman_pkgs:
 	@echo "==========================[$@] <= [$^]"
-	pacman -Syu --noconfirm curl ctags cflow git cmake rsync lftp okular terminator nmap nfs-utils git-lfs ttf-hack ttf-hack-nerd qemu-system-x86 adobe-source-han-sans-cn-fonts
-	pacman -Syu --noconfirm fcitx5-im fcitx5-chinese-addons fcitx5-rime gnome-shell-extension-appindicator gnome-shell-extension-dash-to-panel
-	pacman -Syu --noconfirm gcc
+	pacman -Syu --noconfirm `cat ../pacman.list`
+	cd ./res/ttf-ms-fonts && makepkg -i
 	fc-cache -fv
 
 clash:
