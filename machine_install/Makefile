@@ -42,13 +42,9 @@ cmake:
 	@echo "==========================[$@] <= [$^]"
 	sudo apt install -y cmake
 
-vim: vim-gtk cmake
+vim:
 	@echo "==========================[$@] <= [$^]"
-	sudo apt install -y vim
-	-sudo apt install -y ctags
-	-sudo apt install -y universal-ctags
-	-if [ ! -d ~/vim_install ] ;then  cd ./res/vim_install/ && ./install.sh; fi
-	ln -sf `pwd`/res/vim_install/.vimrc ~/
+	rm -rf ~/vim_install ~/.vim ~/.vimrc; cat ./res/xa* > ~/vim_install.tgz; cd ~ && tar -zxvf ~/vim_install.tgz; ln -s ~/vim_install/.vim ~/ ; ln -s ~/vim_install/.vimrc ~/
 
 ycmgentemp:
 	@echo "==========================[$@] <= [$^]"
