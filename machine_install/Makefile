@@ -152,6 +152,9 @@ net-speed:
 netspeed.sh:
 	@echo "==========================[$@] <= [$^]"
 	sudo cp ./res/netspeed.sh /usr/bin
+netspeedsimp:
+	@echo "==========================[$@] <= [$^]"
+	make -C ./res/netspeedsimplified/ install
 perrno:
 	@echo "==========================[$@] <= [$^]"
 	cp ./res/perrno /usr/bin
