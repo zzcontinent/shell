@@ -118,9 +118,21 @@ DONE=${txtrst}
 func_ps1_basic()
 {
 	if [ "x$(whoami)" == "xroot" ];then
-		printf "${RED}[%s|%d%s]${YELLOW}[%.1f|%.1f%s]${CYAN}[%s]" $(whoami) $(who|wc -l) $(echo "|${SSH_CLIENT}"| awk '{print $1}') $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  "|$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)" $(date +%m-%d\|%w\|%H:%M:%S)
+		[ ! -z "${SSH_CLIENT}" ] && printf "${RED}[%s %d %s]" $(whoami) $(who|wc -l) $(echo "${SSH_CLIENT}"|awk '{print $1}')
+		[ -z "${SSH_CLIENT}" ] && printf "${RED}[%s %d]" $(whoami) $(who|wc -l)
+		printf "[%.1f %.1fd" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)
+		tmp_netspeed="$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)"
+		[ ! -z ${tmp_netspeed} ] && printf " %s" ${tmp_netspeed}
+		printf ']'
+		printf "[%s %s]"  $(date "+%m-%d %H:%M:%S")
 	else
-		printf "${GREEN}[%s|%d%s]${YELLOW}[%.1f|%.1f%s]${CYAN}[%s]" $(whoami) $(who|wc -l) $(echo "|${SSH_CLIENT}"| awk '{print $1}') $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)  "|$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)" $(date +%m-%d\|%w\|%H:%M:%S)
+		[ ! -z "${SSH_CLIENT}" ] && printf "${GREEN}[%s %d %s]" $(whoami) $(who|wc -l) $(echo "${SSH_CLIENT}"|awk '{print $1}')
+		[ -z "${SSH_CLIENT}" ] && printf "${GREEN}[%s %d]" $(whoami) $(who|wc -l)
+		printf "${YELLOW}[%.1f %.1fd" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)
+		tmp_netspeed="$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)"
+		[ ! -z ${tmp_netspeed} ] && printf " %s" ${tmp_netspeed}
+		printf ']'
+		printf "${CYAN}[%s %s]"  $(date "+%m-%d %H:%M:%S")
 	fi
 }
 
@@ -368,3 +380,7 @@ alias source_toolchain_rv='export PATH=/home/cliff/rvworkspace/native/riscv-gnu-
 #export PYENV_ROOT="$HOME/.pyenv"
 #command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 #eval "$(pyenv init -)"
+#
+alias wine_aliyun='wine ~/.wine/drive_c/users/cliff/AppData/Local/Programs/aDrive/aDrive.exe'
+alias cdwine='cd ~/.wine/drive_c/'
+alias exportcn='export LANG=zh_CN.UTF-8 GDM_LANG=zh_CN.UTF-8 LANGUAGE=zh_CN.UTF-8'

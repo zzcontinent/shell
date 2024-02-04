@@ -22,6 +22,6 @@ echo 'REGEDIT4
 "Arial Black"="wqy-microhei.ttc"
 ' > chn_font.reg
 
-winecfg  #import chn_font.reg
+regedit  #import chn_font.reg
 
 winetricks ddr=gdi  #black screen may use
