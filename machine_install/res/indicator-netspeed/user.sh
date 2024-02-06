@@ -1,3 +1,3 @@
 #!/bin/bash
-pkill indicator-netspeed
+pkill -f indicator-netspeed
 indicator-netspeed &

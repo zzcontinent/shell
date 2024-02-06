@@ -61,11 +61,11 @@ start_netspeed()
 	cnt_0=`ps aux | grep netspeed\.sh | grep -v grep | wc -l`
 	cnt_1=`ps aux | grep indicator-netspeed | grep -v grep | wc -l`
 	if [ $cnt_0 == 0 ];then
-		(nohup netspeed.sh >/dev/null 2>&1 >/dev/null&)
+		(nohup netspeed.sh >/dev/null 2>&1 &)
 	fi
 
 	if [ $cnt_1 == 0 ];then
-		(nohup indicator-netspeed >/dev/null 2>&1 >/dev/null&)
+		(nohup indicator-netspeed >/dev/null 2>&1 &)
 	fi
 }
 
@@ -118,17 +118,36 @@ DONE=${txtrst}
 func_ps1_basic()
 {
 	if [ "x$(whoami)" == "xroot" ];then
+		#users
 		[ ! -z "${SSH_CLIENT}" ] && printf "${RED}[%s %d %s]" $(whoami) $(who|wc -l) $(echo "${SSH_CLIENT}"|awk '{print $1}')
 		[ -z "${SSH_CLIENT}" ] && printf "${RED}[%s %d]" $(whoami) $(who|wc -l)
-		printf "[%.1f %.1fd" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)
+
+		#load misc
+		core_temp="$(sensors 2>/dev/null| grep Core | awk '{print $3}' | head -n1)"
+		[ ! -z ${core_temp} ] && \
+		printf "${YELLOW}[%.1f %.1fd %s" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc) ${core_temp}
+		[ -z ${core_temp} ] && \
+		printf "${YELLOW}[%.1f %.1fd" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)
+
+		#speed
 		tmp_netspeed="$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)"
 		[ ! -z ${tmp_netspeed} ] && printf " %s" ${tmp_netspeed}
 		printf ']'
-		printf "[%s %s]"  $(date "+%m-%d %H:%M:%S")
+		printf "${CYAN}[%s %s]"  $(date "+%m-%d %H:%M:%S")
+
 	else
+		#users
 		[ ! -z "${SSH_CLIENT}" ] && printf "${GREEN}[%s %d %s]" $(whoami) $(who|wc -l) $(echo "${SSH_CLIENT}"|awk '{print $1}')
 		[ -z "${SSH_CLIENT}" ] && printf "${GREEN}[%s %d]" $(whoami) $(who|wc -l)
+
+		#load misc
+		core_temp="$(sensors 2>/dev/null| grep Core | awk '{print $3}' | head -n1)"
+		[ ! -z ${core_temp} ] && \
+		printf "${YELLOW}[%.1f %.1fd %s" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc) ${core_temp}
+		[ -z ${core_temp} ] && \
 		printf "${YELLOW}[%.1f %.1fd" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)
+
+		#speed
 		tmp_netspeed="$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)"
 		[ ! -z ${tmp_netspeed} ] && printf " %s" ${tmp_netspeed}
 		printf ']'
