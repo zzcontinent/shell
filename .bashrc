@@ -262,9 +262,9 @@ findn()
 
 treel()
 {
-	cmd='tree -C'
-	[ ! -z $1 ] && cmd+=" -L $1 "
-	[ ! -z $2 ] && cmd+=" $2"
+	cmd='tree -h --du -C'
+	[ ! -z $1 ] && cmd+=" $1"
+	[ ! -z $2 ] && cmd+=" -L $2 "
 	(eval $cmd) | less -N -r
 }
 
@@ -401,5 +401,5 @@ alias source_toolchain_rv='export PATH=/home/cliff/rvworkspace/native/riscv-gnu-
 #eval "$(pyenv init -)"
 #
 alias wine_aliyun='wine ~/.wine/drive_c/users/cliff/AppData/Local/Programs/aDrive/aDrive.exe'
-alias cdwine='cd ~/.wine/drive_c/'
-alias exportcn='export LANG=zh_CN.UTF-8 GDM_LANG=zh_CN.UTF-8 LANGUAGE=zh_CN.UTF-8'
+alias wine_bili='wine ~/.wine/drive_c/Program\ Files/bilibili/哔哩哔哩.exe'
+alias wine_wechat='wine /home/cliff/.wine/drive_c/Program\ Files/Tencent/WeChat/WeChat.exe'
