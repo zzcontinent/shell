@@ -43,7 +43,7 @@ cmake:
 
 vim:
 	@echo "==========================[$@] <= [$^]"
-	rm -rf ~/vim_install ~/.vim ~/.vimrc; cat ./res/xa* > ~/vim_install.tgz; cd ~ && tar -zxvf ~/vim_install.tgz; ln -s ~/vim_install/.vim ~/ ; ln -s ~/vim_install/.vimrc ~/
+	rm -rf ~/vim_install ~/.vim ~/.vimrc; cat ./res/xa* > ~/vim_install.tgz; cd ~ && tar -zxvf ~/vim_install.tgz; ln -s ~/vim_install/.vim ~/ ; ln -s ./res/.vimrc ~/
 
 ycmgentemp:
 	@echo "==========================[$@] <= [$^]"
