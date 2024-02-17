@@ -130,8 +130,8 @@ func_ps1_basic()
 		printf "${YELLOW}[%.1f %.1fd" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)
 
 		#speed
-		tmp_netspeed="$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)"
-		[ ! -z ${tmp_netspeed} ] && printf " %s" ${tmp_netspeed}
+		tmp_netspeed="$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4$7}'|sort -rn| head -n1)"
+		[ ! -z "${tmp_netspeed}" ] && printf " %s" "${tmp_netspeed}"
 		printf ']'
 		printf "${CYAN}[%s %s]"  $(date "+%m-%d %H:%M:%S")
 
@@ -148,8 +148,8 @@ func_ps1_basic()
 		printf "${YELLOW}[%.1f %.1fd" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)
 
 		#speed
-		tmp_netspeed="$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4}'|sort -rn| head -n1)"
-		[ ! -z ${tmp_netspeed} ] && printf " %s" ${tmp_netspeed}
+		tmp_netspeed="$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4$7}'|sort -rn| head -n1)"
+		[ ! -z "${tmp_netspeed}" ] && printf " %s" "${tmp_netspeed}"
 		printf ']'
 		printf "${CYAN}[%s %s]"  $(date "+%m-%d %H:%M:%S")
 	fi
