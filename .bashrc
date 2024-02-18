@@ -387,6 +387,7 @@ alias gitpl='git pull'
 alias cdt='cd ~/toyos/src'
 alias sortf='find -type f | xargs wc 2>/dev/null | sort -n | less -N'
 alias j='jobs'
+alias proxyon="export http_proxy='http://127.0.0.1:7890' https_proxy='http://127.0.0.1:7890'"
 
 start_netspeed
 alias r='ranger'
