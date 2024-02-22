@@ -344,6 +344,13 @@ mdf() {
 	fi
 }
 
+cpr() {
+	rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 "$@"
+}
+mvr() {
+	rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files "$@"
+}
+
 alias gitl='git log --graph --date=iso8601'
 alias gitls='git log --graph --date=iso8601 --stat'
 alias gitlo='git log --graph --pretty=oneline --date=iso8601'
@@ -352,6 +359,9 @@ alias gitla='git log --graph --all --date=iso8601'
 alias gitlas='git log --graph --all --date=iso8601 --stat'
 alias gitlao='git log --graph --all --pretty=oneline --date=iso8601'
 alias gitlaos='git log --graph --all --pretty=oneline --date=iso8601 --stat'
+
+alias gits='git submodule'
+alias gitss='git submodule foreach git status'
 
 alias gitsl='git log --date=iso8601'
 alias gitsls='git log --date=iso8601 --stat'
