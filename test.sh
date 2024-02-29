@@ -2,7 +2,8 @@
 echo $$
 echo $#
 echo $0
-echo 
+echo x"$*"x
+echo y"$@"y
 exit 0
 try5()
 {

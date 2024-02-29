@@ -293,12 +293,14 @@ gitamend()
 }
 
 psg() {
-	[ ! -z $1 ] && ps auxf 2>&1 | grep $1 && return 0
+	a="$*"
+	[ ! -z "$a" ] && ps auxf 2>&1 | grep "$a" && return 0
 	ps auxf 2>&1
 }
 
 psgl() {
-	[ ! -z $1 ] && ps auxf 2>&1 | grep $1 | less -N && return 0
+	a="$*"
+	[ ! -z "$a" ] && ps auxf 2>&1 | grep "$a" | less -N && return 0
 	ps auxf 2>&1 | less -N
 }
 
@@ -360,9 +362,6 @@ alias gitlas='git log --graph --all --date=iso8601 --stat'
 alias gitlao='git log --graph --all --pretty=oneline --date=iso8601'
 alias gitlaos='git log --graph --all --pretty=oneline --date=iso8601 --stat'
 
-alias gits='git submodule'
-alias gitss='git submodule foreach git status'
-
 alias gitsl='git log --date=iso8601'
 alias gitsls='git log --date=iso8601 --stat'
 alias gitslo='git log --pretty=oneline --date=iso8601'
@@ -398,6 +397,8 @@ alias cdt='cd ~/toyos/src'
 alias sortf='find -type f | xargs wc 2>/dev/null | sort -n | less -N'
 alias j='jobs'
 alias proxyon="export http_proxy='http://127.0.0.1:7890' https_proxy='http://127.0.0.1:7890'"
+
+alias vms='vmstat --wide --timestamp 1'
 
 start_netspeed
 alias r='ranger'
