@@ -371,6 +371,9 @@ alias gitslas='git log --all --date=iso8601 --stat'
 alias gitslao='git log --all --pretty=oneline --date=iso8601'
 alias gitslaos='git log --all --pretty=oneline --date=iso8601 --stat'
 
+alias gits='git submodule'
+alias gitss='git submodule foreach git status'
+
 alias gitst='git status'
 alias gitsh='git show'
 alias gitshs='git show --stat'
