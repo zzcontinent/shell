@@ -1,3 +1,6 @@
-[submodule "machine_install/res/NvChad"]
-	path = machine_install/res/NvChad
-	url = https://github.com/NvChad/NvChad.git
+[submodule "machine_install/res/LazyVim"]
+	path = machine_install/res/LazyVim
+	url = https://github.com/LazyVim/LazyVim.git
+[submodule "machine_install/res/nvim_starter"]
+	path = machine_install/res/nvim_starter
+	url = https://github.com/LazyVim/starter

@@ -400,9 +400,22 @@ set foldlevel=0
 hi folded term=None cterm=None
 
 "==============>vim-airline config
+let g:airline_powerline_fonts = 1
+
+" 启用或禁用标签行
 let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" 配置标签行的显示
+let g:airline#extensions#tabline#buffer_nr_show = 0 " 显示缓冲区编号
+let g:airline#extensions#tabline#format = '%t' " 自定义标签行格式
+let g:airline#extensions#tabline#fnamemod = ':t' " 截断标签名，只显示文件名
+
+" 启用或禁用标签行上的关闭按钮
+"let g:airline#extensions#tabline#left_sep = ' ' " 设置左侧分隔符
+"let g:airline#extensions#tabline#left_alt_sep = '|' " 设置左侧备用分隔符
+"let g:airline#extensions#tabline#right_sep = ' ' " 设置右侧分隔符
+"let g:airline#extensions#tabline#right_alt_sep = '|' " 设置右侧备用分隔符
+
 "
 "=======================================================plugins==================
 "
@@ -435,6 +448,7 @@ nnoremap <leader>nt :NERDTreeToggle <CR>
 "nnoremap <C-i> :bdelete <CR>
 
 nnoremap <C-i> :tabc <CR>
+nnoremap <C-o> :tabo <CR>
 nnoremap <C-k> :tabp <CR>
 nnoremap <C-j> :tabn <CR>
 nnoremap <C-m> :tabm +<CR>
