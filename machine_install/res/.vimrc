@@ -30,6 +30,7 @@ if get(g:, 'use_ycm', 1)
 "Plugin 'file:///home/cliff/cworkspace/github/YouCompleteMe'
 Plugin 'file:///home/cliff/.vim/bundle/YouCompleteMe'
 endif
+
 " 插件在仓库的子目录中.
 " 正确指定路径用以设置runtimepath. 以下范例插件在sparkup/vim目录下
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -101,7 +102,8 @@ set foldlevel=0
 set nofoldenable
 set scrolloff=999
 "set sidescrolloff=999
-set list lcs=tab:\¦\ 
+set list lcs=tab:\|\ 
+"set list lcs=leadmultispace:\.\ \ \ 
 hi Folded ctermbg=0
 set ignorecase
 hi MatchParen ctermbg=lightgreen ctermfg=black
@@ -160,9 +162,14 @@ set termguicolors
 "=======================================================style==================
 "
 "=======================================================tabstop==================
-nnoremap <leader>ts4 :set ts=4 sts=4 sw=4 expandtab <CR>
-nnoremap <leader>ts8 :set ts=8 sts=8 sw=8 expandtab <CR>
-nnoremap <leader>tst :set ts=8 sts=8 sw=8 noexpandtab <CR>
+"nnoremap <leader>ts2 :set ts=2 sts=2 sw=2 expandtab lcs=leadmultispace:\.\ \ <CR>
+"nnoremap <leader>ts4 :set ts=4 sts=4 sw=4 expandtab lcs=leadmultispace:\.\ \ \ <CR>
+"nnoremap <leader>ts8 :set ts=8 sts=8 sw=8 expandtab lcs=leadmultispace:\.\ \ \ \ \ \ \ <CR>
+"nnoremap <leader>tst :set ts=8 sts=8 sw=8 noexpandtab lcs=tab:\\|\ <CR>
+nnoremap <leader>ts2 :set ts=2 sts=2 sw=2 expandtab lcs=multispace:\.\ \ <CR>
+nnoremap <leader>ts4 :set ts=4 sts=4 sw=4 expandtab lcs=multispace:\.\ \ \ <CR>
+nnoremap <leader>ts8 :set ts=8 sts=8 sw=8 expandtab lcs=multispace:\.\ \ \ \ \ \ \ <CR>
+nnoremap <leader>tst :set ts=8 sts=8 sw=8 noexpandtab lcs=tab:\\|\ <CR>
 
 "=======================================================tab select=================="
 function! Itab()
@@ -415,7 +422,6 @@ let g:airline#extensions#tabline#fnamemod = ':t' " 截断标签名，只显示�
 "let g:airline#extensions#tabline#left_alt_sep = '|' " 设置左侧备用分隔符
 "let g:airline#extensions#tabline#right_sep = ' ' " 设置右侧分隔符
 "let g:airline#extensions#tabline#right_alt_sep = '|' " 设置右侧备用分隔符
-
 "
 "=======================================================plugins==================
 "
