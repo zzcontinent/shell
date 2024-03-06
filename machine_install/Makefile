@@ -45,6 +45,12 @@ vim:
 	@echo "==========================[$@] <= [$^]"
 	rm -rf ~/vim_install ~/.vim ~/.vimrc; cat ./res/xa* > ~/vim_install.tgz; cd ~ && tar -zxvf ~/vim_install.tgz; ln -s ~/vim_install/.vim ~/ ; ln -s ./res/.vimrc ~/
 
+zram:
+	@echo "==========================[$@] <= [$^]"
+	pacman -S zram-generator
+	modprobe zram
+	cp ./res/zram-generator.conf /etc/systemd/
+
 ycmgentemp:
 	@echo "==========================[$@] <= [$^]"
 	-sudo cp ./res/vim_install/ycmgentemplate.sh /usr/bin/
