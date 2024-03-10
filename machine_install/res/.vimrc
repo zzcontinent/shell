@@ -476,6 +476,7 @@ nnoremap <leader>cc :set colorcolumn=9
 "nnoremap <leader>gp :!echo -n grep : && read key_s && grep -rni "${key_s}" \| highlight -O ansi --syntax c \| less -N -r -I -p "${key_s}" <CR><CR>
 nnoremap <leader>gp :!echo [grep]:<c-r>=GetCurword()<cr> && read key_s && [ -z $key_s ] && key_s=<c-r>=GetCurword()<cr>; grep --color=always -rni "${key_s}" 2>/dev/null \| less -R <CR><CR>
 nnoremap <leader>fd :!echo [find]:<c-r>=GetCurword()<cr> && read key_s && [ -z $key_s ] && key_s=<c-r>=GetCurword()<cr>; find \| grep --color=always "${key_s}" 2>/dev/null \| less -R<CR><CR>
+nnoremap <leader>yd :!echo [youdao]:<c-r>=GetCurword()<cr> && read key_s && [ -z $key_s ] && key_s=<c-r>=GetCurword()<cr>; yd "${key_s}" \| less -R<CR><CR>
 
 "autoformat
 nnoremap <C-l> gg=G:RemoveTrailingSpaces<CR><C-o><C-o>
