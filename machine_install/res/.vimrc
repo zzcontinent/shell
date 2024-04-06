@@ -454,7 +454,6 @@ nnoremap <leader>nt :NERDTreeToggle <CR>
 "nnoremap <C-i> :bdelete <CR>
 
 nnoremap <C-i> :tabc <CR>
-nnoremap <C-o> :tabo <CR>
 nnoremap <C-k> :tabp <CR>
 nnoremap <C-j> :tabn <CR>
 nnoremap <C-m> :tabm +<CR>
