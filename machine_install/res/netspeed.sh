@@ -1,4 +1,5 @@
 #!/bin/bash
+#set -x
 
 # - Position the Cursor:
 #  \033[<L>;<C>H
@@ -25,8 +26,7 @@
 #  \033[u
 
 
-#net_devs=`ifconfig -s | awk '{i++; if(i>1){print $1}}' | awk '{print $1}'`
-net_devs=`ifconfig | grep flags | awk -F':' '{print $1}'`
+net_devs=`cat /proc/net/dev | grep -E ':' | awk -F':' '{print$1}'`
 #net_devs=`cat /proc/net/dev | awk '{i++; if(i>2){print $1}}' | sed 's/[:]*$//g'`
 speed_notify=1024
 PERIOD=2
@@ -34,16 +34,8 @@ TMP_FILE_FB="${HOME}/.tmp_netspeed"
 #TMP_FILE_FB="/run/user/$(id -u)/.tmp_netspeed"
 [ ! -f ${TMP_FILE_FB} ] && touch ${TMP_FILE_FB}
 
-net_devs_ok=""
 
 for dev in ${net_devs}
-do
-	if [ -z "`echo $dev | grep -E '\-|\:|\.'`" ];then
-		net_devs_ok="${net_devs_ok} ${dev}"
-	fi
-done
-
-for dev in ${net_devs_ok}
 do
 	eval rx_pre_${dev}='0'
 	eval tx_pre_${dev}='0'
@@ -58,10 +50,10 @@ done
 func_step_total()
 {
 	date "+%Y-%m-%d %H:%M:%S"
-	for dev in ${net_devs_ok}
+	for dev in ${net_devs}
 	do
-		eval rx_cur_${dev}=`ifconfig ${dev}  2>/dev/null| sed -n 's/RX.*bytes \([0-9]\+\).*/\1/p' | awk '{print $1}'`
-		eval tx_cur_${dev}=`ifconfig ${dev}  2>/dev/null| sed -n 's/TX.*bytes \([0-9]\+\).*/\1/p' | awk '{print $1}'`
+		eval rx_cur_${dev}=`cat /proc/net/dev | grep ${dev} | awk '{print $2}'`
+		eval tx_cur_${dev}=`cat /proc/net/dev | grep ${dev} | awk '{print $10}'`
 
 		eval rx_speed_${dev}=`echo "($(eval echo '$'rx_cur_${dev})-$(eval echo '$'rx_pre_${dev}))/1024/${PERIOD}"|bc`
 		eval tx_speed_${dev}=`echo "($(eval echo '$'tx_cur_${dev})-$(eval echo '$'tx_pre_${dev}))/1024/${PERIOD}"|bc`
