@@ -15,96 +15,116 @@ dns:
     - tls://1.0.0.1:853
     - tls://dns.google:853
 proxies:
-  - {name: 美国 x01, server: abcdcddkdiydjj.bgka.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h164-ust.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h164-ust.yuanshare.org}}, udp: true}
-  - {name: 美国 x02, server: achk.cloudflarest.link, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h152-ust.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h152-ust.yuanshare.org}}, udp: true}
-  - {name: 美国 x03, server: c.nmd.gay, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h197-ust.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h197-ust.yuanshare.org}}, udp: true}
-  - {name: 美国 x04, server: a.hevchd.sbs, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h158-ust.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h158-ust.yuanshare.org}}, udp: true}
-  - {name: 美国 x05, server: cdn.freecdn.free.hr, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h194-ust.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h194-ust.yuanshare.org}}, udp: true}
-  - {name: 美国 x06, server: cftest5.feiyu001.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h140-ust.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h140-ust.yuanshare.org}}, udp: true}
-  - {name: 美国 x07, server: cdnsg.huabuxiang.vip, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h170-ust.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h170-ust.yunshare.org}}, udp: true}
-  - {name: 美国 x08, server: 2083.super5.eu.org.ydns.eu, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h101-ust.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h101-ust.yunshare.org}}, udp: true}
-  - {name: 美国 x09, server: cdn-seek-b090-2a5cee4bb04a.hk-cctv.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h124-ust.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h124-ust.yunshare.org}}, udp: true}
-  - {name: 美国 x10, server: 1.achen.link, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h152-ust.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h152-ust.yunshare.org}}, udp: true}
-  - {name: 美国 x11, server: 2083.super5.eu.org.ydns.eu, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h174-ust.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h174-ust.yunshare.org}}, udp: true}
-  - {name: 美国 x12, server: cfsp.187088.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h122-ust.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h122-ust.yunshare.org}}, udp: true}
-  - {name: 香港 v01, server: 4.868896.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h112-hk.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h112-hk.yuanshare.org}}, udp: true}
-  - {name: 香港 v02, server: 2083.super5.eu.org.ydns.eu, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h139-hk.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h139-hk.yuanshare.org}}, udp: true}
-  - {name: 香港 v03, server: agenting.draydns.de, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h102-hk.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h102-hk.yuanshare.org}}, udp: true}
-  - {name: 香港 v04, server: yx.yituw.link, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h100-hk.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h100-hk.yuanshare.org}}, udp: true}
-  - {name: 香港 v05, server: abcdcddkdiydjj.bgka.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h136-hk.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h136-hk.yuanshare.org}}, udp: true}
-  - {name: 香港 v06, server: yx.zpgulimall.buzz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h132-hk.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h132-hk.yuanshare.org}}, udp: true}
-  - {name: 香港 v07, server: www.itsq.org, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h102-hk.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h102-hk.yunshare.org}}, udp: true}
-  - {name: 香港 v08, server: yogasku.ng, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h169-hk.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h169-hk.yunshare.org}}, udp: true}
-  - {name: 香港 v09, server: dns3.m3u8list.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h161-hk.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h161-hk.yunshare.org}}, udp: true}
-  - {name: 香港 v10, server: fd.jaffax.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h126-hk.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h126-hk.yunshare.org}}, udp: true}
-  - {name: 香港 v11, server: www.iios.club, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h105-hk.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h105-hk.yunshare.org}}, udp: true}
-  - {name: 香港 v12, server: youiu.wang66.homes, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h189-hk.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h189-hk.yunshare.org}}, udp: true}
-  - {name: 日本 x01, server: uu.milka66.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h148-vn.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h148-vn.yuanshare.org}}, udp: true}
-  - {name: 日本 x02, server: 1.chlmxfcjy.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h153-vn.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h153-vn.yuanshare.org}}, udp: true}
-  - {name: 日本 x03, server: a.wuqu.pp.ua, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h155-vn.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h155-vn.yuanshare.org}}, udp: true}
-  - {name: 日本 x04, server: 4.868896.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h125-vn.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h125-vn.yuanshare.org}}, udp: true}
-  - {name: 日本 x05, server: agenting.draydns.de, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h161-vn.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h161-vn.yuanshare.org}}, udp: true}
-  - {name: 日本 x06, server: 2083.super5.eu.org.ydns.eu, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h157-vn.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h157-vn.yuanshare.org}}, udp: true}
-  - {name: 日本 x07, server: rb.riandays.cfd, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h176-jp.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h176-jp.yunshare.org}}, udp: true}
-  - {name: 日本 x08, server: abcdcddkdiydjj.bgka.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h156-jp.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h156-jp.yunshare.org}}, udp: true}
-  - {name: 日本 x09, server: fd.jaffax.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h137-jp.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h137-jp.yunshare.org}}, udp: true}
-  - {name: 日本 x10, server: sg.qqqqqq.cf, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h178-jp.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h178-jp.yunshare.org}}, udp: true}
-  - {name: 日本 x11, server: cover.mac2win.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h131-jp.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h131-jp.yunshare.org}}, udp: true}
-  - {name: 日本 x12, server: jp03.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h183-jp.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h183-jp.yunshare.org}}, udp: true}
-  - {name: 新加坡 v01, server: 4.868896.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h137-sg.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h137-sg.yuanshare.org}}, udp: true}
-  - {name: 新加坡 v02, server: sg.qqqqqq.cf, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h162-sg.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h162-sg.yuanshare.org}}, udp: true}
-  - {name: 新加坡 v03, server: 74fan.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h137-sg.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h137-sg.yuanshare.org}}, udp: true}
-  - {name: 新加坡 v04, server: pan.clun.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h137-sg.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h137-sg.yuanshare.org}}, udp: true}
-  - {name: 新加坡 v05, server: 1.chlmxfcjy.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h176-sg.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h176-sg.yuanshare.org}}, udp: true}
-  - {name: 新加坡 v06, server: cloudflare.cfgo.cc, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h143-sg.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h143-sg.yuanshare.org}}, udp: true}
-  - {name: 新加坡 v07, server: auto.hexsen.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h152-sg.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h152-sg.yunshare.org}}, udp: true}
-  - {name: 新加坡 v08, server: abcdcddkdiydjj.bgka.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h105-sg.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h105-sg.yunshare.org}}, udp: true}
-  - {name: 新加坡 v09, server: about.above.pp.ua, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h150-sg.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h150-sg.yunshare.org}}, udp: true}
-  - {name: 新加坡 v10, server: a1.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h106-sg.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h106-sg.yunshare.org}}, udp: true}
-  - {name: 新加坡 v11, server: 443.cfff.eu.org, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h177-sg.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h177-sg.yunshare.org}}, udp: true}
-  - {name: 新加坡 v12, server: jp03.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h112-sg.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h112-sg.yunshare.org}}, udp: true}
-  - {name: 美国 v01, server: 4.868896.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h126-us.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h126-us.yuanshare.org}}, udp: true}
-  - {name: 美国 v02, server: 2083.super5.eu.org.ydns.eu, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h141-us.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h141-us.yuanshare.org}}, udp: true}
-  - {name: 美国 v03, server: agenting.draydns.de, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h173-us.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h173-us.yuanshare.org}}, udp: true}
-  - {name: 美国 v04, server: abcdcddkdiydjj.bgka.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h122-us.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h122-us.yuanshare.org}}, udp: true}
-  - {name: 美国 v05, server: yx.zpgulimall.buzz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h198-us.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h198-us.yuanshare.org}}, udp: true}
-  - {name: 美国 v06, server: yx.yituw.link, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h148-us.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h148-us.yuanshare.org}}, udp: true}
-  - {name: 美国 v07, server: yogasku.ng, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h177-us.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h177-us.yunshare.org}}, udp: true}
-  - {name: 美国 v08, server: www.itsq.org, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h180-us.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h180-us.yunshare.org}}, udp: true}
-  - {name: 美国 v09, server: fd.jaffax.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h160-us.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h160-us.yunshare.org}}, udp: true}
-  - {name: 美国 v10, server: www.iios.club, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h137-us.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h137-us.yunshare.org}}, udp: true}
-  - {name: 美国 v11, server: youiu.wang66.homes, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h102-us.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h102-us.yunshare.org}}, udp: true}
-  - {name: 美国 v12, server: dns3.m3u8list.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h153-us.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h153-us.yunshare.org}}, udp: true}
-  - {name: 英国 v01, server: caluoli.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h177-gb.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h177-gb.yuanshare.org}}, udp: true}
-  - {name: 英国 v02, server: yogasku.ng, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h183-gb.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h183-gb.yuanshare.org}}, udp: true}
-  - {name: 英国 v03, server: doc.ro, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h117-gb.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h117-gb.yuanshare.org}}, udp: true}
-  - {name: 英国 v04, server: www.yiqianhg.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h108-gb.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h108-gb.yuanshare.org}}, udp: true}
-  - {name: 英国 v05, server: www.clun.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h110-gb.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h110-gb.yuanshare.org}}, udp: true}
-  - {name: 英国 v06, server: jp02.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h138-gb.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h138-gb.yuanshare.org}}, udp: true}
-  - {name: 英国 v07, server: zm6.m3u8list.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h112-gb.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h112-gb.yunshare.org}}, udp: true}
-  - {name: 英国 v08, server: dns3.m3u8list.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h169-gb.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h169-gb.yunshare.org}}, udp: true}
-  - {name: 英国 v09, server: gadgetsmagazine.com.ph, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h183-gb.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h183-gb.yunshare.org}}, udp: true}
-  - {name: 英国 v10, server: youiu.wang66.homes, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h185-gb.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h185-gb.yunshare.org}}, udp: true}
-  - {name: 英国 v11, server: index1.xxm3u8.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h111-gb.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h111-gb.yunshare.org}}, udp: true}
-  - {name: 英国 v12, server: www.iios.club, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h157-gb.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h157-gb.yunshare.org}}, udp: true}
-  - {name: 日本 v01, server: b.xiangmq1969.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h152-jp.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h152-jp.yuanshare.org}}, udp: true}
-  - {name: 日本 v02, server: 2083.super5.eu.org.ydns.eu, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h133-jp.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h133-jp.yuanshare.org}}, udp: true}
-  - {name: 日本 v03, server: 4.868896.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h185-jp.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h185-jp.yuanshare.org}}, udp: true}
-  - {name: 日本 v04, server: agenting.draydns.de, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h176-jp.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h176-jp.yuanshare.org}}, udp: true}
-  - {name: 日本 v05, server: abcdcddkdiydjj.bgka.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h101-jp.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h101-jp.yuanshare.org}}, udp: true}
-  - {name: 日本 v06, server: www.itsq.org, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h181-jp.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h181-jp.yuanshare.org}}, udp: true}
-  - {name: 日本 v07, server: femdom-strapon.net, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h150-vn.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h150-vn.yunshare.org}}, udp: true}
-  - {name: 日本 v08, server: 667.lutong.eu.org, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h133-vn.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h133-vn.yunshare.org}}, udp: true}
-  - {name: 日本 v09, server: dogofcum.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h154-vn.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h154-vn.yunshare.org}}, udp: true}
-  - {name: 日本 v10, server: dns3.m3u8list.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h108-vn.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h108-vn.yunshare.org}}, udp: true}
-  - {name: 日本 v11, server: testhk.migoo.eu.org, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h129-vn.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h129-vn.yunshare.org}}, udp: true}
-  - {name: 日本 v12, server: www.iios.club, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h178-vn.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h178-vn.yunshare.org}}, udp: true}
+  - {name: 距离下次重置剩余：274 天, server: normann-copenhagen.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h114-tr.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h114-tr.yuanshare.org}}, udp: true}
+  - {name: 去除1条不合适线路, server: normann-copenhagen.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h114-tr.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h114-tr.yuanshare.org}}, udp: true}
+  - {name: 香港 x01, server: normann-copenhagen.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h114-tr.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h114-tr.yuanshare.org}}, udp: true}
+  - {name: 香港 x02, server: ds.powervps.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h192-tr.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h192-tr.yuanshare.org}}, udp: true}
+  - {name: 香港 x03, server: harimanga.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h199-tr.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h199-tr.yuanshare.org}}, udp: true}
+  - {name: 香港 x04, server: ipban.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h118-tr.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h118-tr.yuanshare.org}}, udp: true}
+  - {name: 香港 x05, server: back.246000.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h195-tr.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h195-tr.yuanshare.org}}, udp: true}
+  - {name: 香港 x06, server: www.shuzw.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h155-tr.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h155-tr.yuanshare.org}}, udp: true}
+  - {name: 香港 x07, server: yx.2towdays.link, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h125-tr.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h125-tr.yunshare.org}}, udp: true}
+  - {name: 香港 x08, server: jp.opnv.link, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h176-tr.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h176-tr.yunshare.org}}, udp: true}
+  - {name: 香港 x09, server: 9941y.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h106-tr.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h106-tr.yunshare.org}}, udp: true}
+  - {name: 香港 x10, server: a6.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h175-tr.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h175-tr.yunshare.org}}, udp: true}
+  - {name: 美国 x01, server: www.stores-et-rideaux.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h140-ust.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h140-ust.yuanshare.org}}, udp: true}
+  - {name: 美国 x02, server: cheq.ai, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h111-ust.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h111-ust.yuanshare.org}}, udp: true}
+  - {name: 美国 x03, server: cantonfair.net, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h119-ust.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h119-ust.yuanshare.org}}, udp: true}
+  - {name: 美国 x04, server: cgltg.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h137-ust.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h137-ust.yuanshare.org}}, udp: true}
+  - {name: 美国 x05, server: m.50zw.co, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h112-ust.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h112-ust.yuanshare.org}}, udp: true}
+  - {name: 美国 x06, server: www.u5jj.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h132-ust.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h132-ust.yuanshare.org}}, udp: true}
+  - {name: 美国 x07, server: jp05.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h162-ust.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h162-ust.yunshare.org}}, udp: true}
+  - {name: 美国 x08, server: 9941y.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h169-ust.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h169-ust.yunshare.org}}, udp: true}
+  - {name: 美国 x09, server: a6.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h105-ust.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h105-ust.yunshare.org}}, udp: true}
+  - {name: 美国 x10, server: tw05.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h173-ust.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h173-ust.yunshare.org}}, udp: true}
+  - {name: 香港 v01, server: www.stores-et-rideaux.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h102-hk.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h102-hk.yuanshare.org}}, udp: true}
+  - {name: 香港 v02, server: newlooktime.com.br, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h173-hk.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h173-hk.yuanshare.org}}, udp: true}
+  - {name: 香港 v03, server: www.veol.hu, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h160-hk.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h160-hk.yuanshare.org}}, udp: true}
+  - {name: 香港 v04, server: harimanga.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h118-hk.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h118-hk.yuanshare.org}}, udp: true}
+  - {name: 香港 v05, server: www.javhdbest.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h144-hk.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h144-hk.yuanshare.org}}, udp: true}
+  - {name: 香港 v06, server: game.zyy56.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h173-hk.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h173-hk.yuanshare.org}}, udp: true}
+  - {name: 香港 v07, server: a6.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h192-hk.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h192-hk.yunshare.org}}, udp: true}
+  - {name: 香港 v08, server: jp05.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h179-hk.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h179-hk.yunshare.org}}, udp: true}
+  - {name: 香港 v09, server: 518720.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h166-hk.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h166-hk.yunshare.org}}, udp: true}
+  - {name: 香港 v10, server: 9941y.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h158-hk.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h158-hk.yunshare.org}}, udp: true}
+  - {name: 新加坡 v01, server: profellow.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h108-sg.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h108-sg.yuanshare.org}}, udp: true}
+  - {name: 新加坡 v02, server: www.newlooktime.com.br, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h146-sg.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h146-sg.yuanshare.org}}, udp: true}
+  - {name: 新加坡 v03, server: csdceo.ca, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h103-sg.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h103-sg.yuanshare.org}}, udp: true}
+  - {name: 新加坡 v04, server: www.veol.hu, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h130-sg.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h130-sg.yuanshare.org}}, udp: true}
+  - {name: 新加坡 v05, server: 69xx513.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h196-sg.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h196-sg.yuanshare.org}}, udp: true}
+  - {name: 新加坡 v06, server: m.ofaurj.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h114-sg.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h114-sg.yuanshare.org}}, udp: true}
+  - {name: 新加坡 v07, server: 518720.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h176-sg.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h176-sg.yunshare.org}}, udp: true}
+  - {name: 新加坡 v08, server: jp.opnv.link, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h181-sg.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h181-sg.yunshare.org}}, udp: true}
+  - {name: 新加坡 v09, server: jp.opnv.link, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h124-sg.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h124-sg.yunshare.org}}, udp: true}
+  - {name: 新加坡 v10, server: yx.2towdays.link, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h131-sg.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h131-sg.yunshare.org}}, udp: true}
+  - {name: 日本 v01, server: cantonfair.net, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h163-jp.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h163-jp.yuanshare.org}}, udp: true}
+  - {name: 日本 v02, server: normann-copenhagen.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h199-jp.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h199-jp.yuanshare.org}}, udp: true}
+  - {name: 日本 v03, server: profellow.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h143-jp.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h143-jp.yuanshare.org}}, udp: true}
+  - {name: 日本 v04, server: www.58158b.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h165-jp.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h165-jp.yuanshare.org}}, udp: true}
+  - {name: 日本 v05, server: www.gv2023.site, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h109-jp.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h109-jp.yuanshare.org}}, udp: true}
+  - {name: 日本 v06, server: xfltd.net, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h164-jp.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h164-jp.yuanshare.org}}, udp: true}
+  - {name: 日本 v07, server: tw05.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h113-jp.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h113-jp.yunshare.org}}, udp: true}
+  - {name: 日本 v08, server: tw05.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h111-jp.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h111-jp.yunshare.org}}, udp: true}
+  - {name: 日本 v09, server: 9941y.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h193-jp.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h193-jp.yunshare.org}}, udp: true}
+  - {name: 日本 v10, server: a6.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h154-jp.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h154-jp.yunshare.org}}, udp: true}
+  - {name: 美国 v01, server: cheq.ai, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h157-us.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h157-us.yuanshare.org}}, udp: true}
+  - {name: 美国 v02, server: www.cantonfair.net, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h144-us.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h144-us.yuanshare.org}}, udp: true}
+  - {name: 美国 v03, server: www.veol.hu, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h198-us.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h198-us.yuanshare.org}}, udp: true}
+  - {name: 美国 v04, server: ds.powervps.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h171-us.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h171-us.yuanshare.org}}, udp: true}
+  - {name: 美国 v05, server: m.micdxw.top, port: 80, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: false, tfo: false, skip-cert-verify: true, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h125-us.yuanshare.org}}, udp: true}
+  - {name: 美国 v06, server: www.web120.org, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h186-us.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h186-us.yuanshare.org}}, udp: true}
+  - {name: 美国 v07, server: jp05.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h132-us.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h132-us.yunshare.org}}, udp: true}
+  - {name: 美国 v08, server: jp.opnv.link, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h103-us.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h103-us.yunshare.org}}, udp: true}
+  - {name: 美国 v09, server: 518720.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h152-us.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h152-us.yunshare.org}}, udp: true}
+  - {name: 美国 v10, server: yx.2towdays.link, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h175-us.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h175-us.yunshare.org}}, udp: true}
+  - {name: 德国 v01, server: epicwow.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h191-de.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h191-de.yuanshare.org}}, udp: true}
+  - {name: 德国 v02, server: epicwow.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h191-de.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h191-de.yuanshare.org}}, udp: true}
+  - {name: 德国 v03, server: www.cgltg.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h191-de.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h191-de.yuanshare.org}}, udp: true}
+  - {name: 德国 v04, server: www.cantonfair.net, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h191-de.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h191-de.yuanshare.org}}, udp: true}
+  - {name: 德国 v05, server: yourporn.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h191-de.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h191-de.yuanshare.org}}, udp: true}
+  - {name: 德国 v06, server: www.hnxinlian.org, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h191-de.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h191-de.yuanshare.org}}, udp: true}
+  - {name: 德国 v07, server: yx.2towdays.link, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h191-de.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h191-de.yunshare.org}}, udp: true}
+  - {name: 德国 v08, server: 518720.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h191-de.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h191-de.yunshare.org}}, udp: true}
+  - {name: 德国 v09, server: a6.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h191-de.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h191-de.yunshare.org}}, udp: true}
+  - {name: 德国 v10, server: tw05.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h191-de.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h191-de.yunshare.org}}, udp: true}
+  - {name: 英国 v01, server: epicwow.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h156-gb.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h156-gb.yuanshare.org}}, udp: true}
+  - {name: 英国 v02, server: ipban.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h117-gb.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h117-gb.yuanshare.org}}, udp: true}
+  - {name: 英国 v03, server: ds.powervps.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h140-gb.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h140-gb.yuanshare.org}}, udp: true}
+  - {name: 英国 v04, server: profellow.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h194-gb.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h194-gb.yuanshare.org}}, udp: true}
+  - {name: 英国 v05, server: www.b7yy.cc, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h156-gb.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h156-gb.yuanshare.org}}, udp: true}
+  - {name: 英国 v06, server: 1688888888999999999.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h189-gb.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h189-gb.yuanshare.org}}, udp: true}
+  - {name: 英国 v07, server: 9941y.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h166-gb.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h166-gb.yunshare.org}}, udp: true}
+  - {name: 英国 v08, server: jp.opnv.link, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h134-gb.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h134-gb.yunshare.org}}, udp: true}
+  - {name: 英国 v09, server: jp05.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h139-gb.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h139-gb.yunshare.org}}, udp: true}
+  - {name: 英国 v10, server: yx.2towdays.link, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h188-gb.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h188-gb.yunshare.org}}, udp: true}
+  - {name: 日本 x01, server: evasboutique.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h153-vn.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h153-vn.yuanshare.org}}, udp: true}
+  - {name: 日本 x02, server: skjewellery.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h153-vn.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h153-vn.yuanshare.org}}, udp: true}
+  - {name: 日本 x03, server: www.cgltg.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h103-vn.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h103-vn.yuanshare.org}}, udp: true}
+  - {name: 日本 x04, server: www.58158b.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h121-vn.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h121-vn.yuanshare.org}}, udp: true}
+  - {name: 日本 x05, server: g.zyy56.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h109-vn.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h109-vn.yuanshare.org}}, udp: true}
+  - {name: 日本 x06, server: taosalias.top, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h127-vn.yuanshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h127-vn.yuanshare.org}}, udp: true}
+  - {name: 日本 x07, server: jp05.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h107-vn.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h107-vn.yunshare.org}}, udp: true}
+  - {name: 日本 x08, server: jp05.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h193-vn.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h193-vn.yunshare.org}}, udp: true}
+  - {name: 日本 x09, server: tw05.nttkk.com, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h164-vn.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h164-vn.yunshare.org}}, udp: true}
+  - {name: 日本 x10, server: 518720.xyz, port: 443, client-fingerprint: chrome, type: vmess, uuid: fad6e1d3-b8da-4be7-8031-8af72f0b4880, alterId: 0, cipher: auto, tls: true, tfo: false, skip-cert-verify: true, servername: h187-vn.yunshare.org, network: ws, ws-opts: {path: /D26xvdqUdCpvvPTz4R, headers: {Host: h187-vn.yunshare.org}}, udp: true}
 proxy-groups:
   - name: 🔰 节点选择
     type: select
     proxies:
       - ♻️ 自动选择
       - 🎯 全球直连
+      - 距离下次重置剩余：274 天
+      - 去除1条不合适线路
+      - 香港 x01
+      - 香港 x02
+      - 香港 x03
+      - 香港 x04
+      - 香港 x05
+      - 香港 x06
+      - 香港 x07
+      - 香港 x08
+      - 香港 x09
+      - 香港 x10
       - 美国 x01
       - 美国 x02
       - 美国 x03
@@ -115,8 +135,6 @@ proxy-groups:
       - 美国 x08
       - 美国 x09
       - 美国 x10
-      - 美国 x11
-      - 美国 x12
       - 香港 v01
       - 香港 v02
       - 香港 v03
@@ -127,20 +145,6 @@ proxy-groups:
       - 香港 v08
       - 香港 v09
       - 香港 v10
-      - 香港 v11
-      - 香港 v12
-      - 日本 x01
-      - 日本 x02
-      - 日本 x03
-      - 日本 x04
-      - 日本 x05
-      - 日本 x06
-      - 日本 x07
-      - 日本 x08
-      - 日本 x09
-      - 日本 x10
-      - 日本 x11
-      - 日本 x12
       - 新加坡 v01
       - 新加坡 v02
       - 新加坡 v03
@@ -151,32 +155,6 @@ proxy-groups:
       - 新加坡 v08
       - 新加坡 v09
       - 新加坡 v10
-      - 新加坡 v11
-      - 新加坡 v12
-      - 美国 v01
-      - 美国 v02
-      - 美国 v03
-      - 美国 v04
-      - 美国 v05
-      - 美国 v06
-      - 美国 v07
-      - 美国 v08
-      - 美国 v09
-      - 美国 v10
-      - 美国 v11
-      - 美国 v12
-      - 英国 v01
-      - 英国 v02
-      - 英国 v03
-      - 英国 v04
-      - 英国 v05
-      - 英国 v06
-      - 英国 v07
-      - 英国 v08
-      - 英国 v09
-      - 英国 v10
-      - 英国 v11
-      - 英国 v12
       - 日本 v01
       - 日本 v02
       - 日本 v03
@@ -187,13 +165,63 @@ proxy-groups:
       - 日本 v08
       - 日本 v09
       - 日本 v10
-      - 日本 v11
-      - 日本 v12
+      - 美国 v01
+      - 美国 v02
+      - 美国 v03
+      - 美国 v04
+      - 美国 v05
+      - 美国 v06
+      - 美国 v07
+      - 美国 v08
+      - 美国 v09
+      - 美国 v10
+      - 德国 v01
+      - 德国 v02
+      - 德国 v03
+      - 德国 v04
+      - 德国 v05
+      - 德国 v06
+      - 德国 v07
+      - 德国 v08
+      - 德国 v09
+      - 德国 v10
+      - 英国 v01
+      - 英国 v02
+      - 英国 v03
+      - 英国 v04
+      - 英国 v05
+      - 英国 v06
+      - 英国 v07
+      - 英国 v08
+      - 英国 v09
+      - 英国 v10
+      - 日本 x01
+      - 日本 x02
+      - 日本 x03
+      - 日本 x04
+      - 日本 x05
+      - 日本 x06
+      - 日本 x07
+      - 日本 x08
+      - 日本 x09
+      - 日本 x10
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
     proxies:
+      - 距离下次重置剩余：274 天
+      - 去除1条不合适线路
+      - 香港 x01
+      - 香港 x02
+      - 香港 x03
+      - 香港 x04
+      - 香港 x05
+      - 香港 x06
+      - 香港 x07
+      - 香港 x08
+      - 香港 x09
+      - 香港 x10
       - 美国 x01
       - 美国 x02
       - 美国 x03
@@ -204,8 +232,6 @@ proxy-groups:
       - 美国 x08
       - 美国 x09
       - 美国 x10
-      - 美国 x11
-      - 美国 x12
       - 香港 v01
       - 香港 v02
       - 香港 v03
@@ -216,20 +242,6 @@ proxy-groups:
       - 香港 v08
       - 香港 v09
       - 香港 v10
-      - 香港 v11
-      - 香港 v12
-      - 日本 x01
-      - 日本 x02
-      - 日本 x03
-      - 日本 x04
-      - 日本 x05
-      - 日本 x06
-      - 日本 x07
-      - 日本 x08
-      - 日本 x09
-      - 日本 x10
-      - 日本 x11
-      - 日本 x12
       - 新加坡 v01
       - 新加坡 v02
       - 新加坡 v03
@@ -240,32 +252,6 @@ proxy-groups:
       - 新加坡 v08
       - 新加坡 v09
       - 新加坡 v10
-      - 新加坡 v11
-      - 新加坡 v12
-      - 美国 v01
-      - 美国 v02
-      - 美国 v03
-      - 美国 v04
-      - 美国 v05
-      - 美国 v06
-      - 美国 v07
-      - 美国 v08
-      - 美国 v09
-      - 美国 v10
-      - 美国 v11
-      - 美国 v12
-      - 英国 v01
-      - 英国 v02
-      - 英国 v03
-      - 英国 v04
-      - 英国 v05
-      - 英国 v06
-      - 英国 v07
-      - 英国 v08
-      - 英国 v09
-      - 英国 v10
-      - 英国 v11
-      - 英国 v12
       - 日本 v01
       - 日本 v02
       - 日本 v03
@@ -276,14 +262,64 @@ proxy-groups:
       - 日本 v08
       - 日本 v09
       - 日本 v10
-      - 日本 v11
-      - 日本 v12
+      - 美国 v01
+      - 美国 v02
+      - 美国 v03
+      - 美国 v04
+      - 美国 v05
+      - 美国 v06
+      - 美国 v07
+      - 美国 v08
+      - 美国 v09
+      - 美国 v10
+      - 德国 v01
+      - 德国 v02
+      - 德国 v03
+      - 德国 v04
+      - 德国 v05
+      - 德国 v06
+      - 德国 v07
+      - 德国 v08
+      - 德国 v09
+      - 德国 v10
+      - 英国 v01
+      - 英国 v02
+      - 英国 v03
+      - 英国 v04
+      - 英国 v05
+      - 英国 v06
+      - 英国 v07
+      - 英国 v08
+      - 英国 v09
+      - 英国 v10
+      - 日本 x01
+      - 日本 x02
+      - 日本 x03
+      - 日本 x04
+      - 日本 x05
+      - 日本 x06
+      - 日本 x07
+      - 日本 x08
+      - 日本 x09
+      - 日本 x10
   - name: 🎥 NETFLIX
     type: select
     proxies:
       - 🔰 节点选择
       - ♻️ 自动选择
       - 🎯 全球直连
+      - 距离下次重置剩余：274 天
+      - 去除1条不合适线路
+      - 香港 x01
+      - 香港 x02
+      - 香港 x03
+      - 香港 x04
+      - 香港 x05
+      - 香港 x06
+      - 香港 x07
+      - 香港 x08
+      - 香港 x09
+      - 香港 x10
       - 美国 x01
       - 美国 x02
       - 美国 x03
@@ -294,8 +330,6 @@ proxy-groups:
       - 美国 x08
       - 美国 x09
       - 美国 x10
-      - 美国 x11
-      - 美国 x12
       - 香港 v01
       - 香港 v02
       - 香港 v03
@@ -306,20 +340,6 @@ proxy-groups:
       - 香港 v08
       - 香港 v09
       - 香港 v10
-      - 香港 v11
-      - 香港 v12
-      - 日本 x01
-      - 日本 x02
-      - 日本 x03
-      - 日本 x04
-      - 日本 x05
-      - 日本 x06
-      - 日本 x07
-      - 日本 x08
-      - 日本 x09
-      - 日本 x10
-      - 日本 x11
-      - 日本 x12
       - 新加坡 v01
       - 新加坡 v02
       - 新加坡 v03
@@ -330,32 +350,6 @@ proxy-groups:
       - 新加坡 v08
       - 新加坡 v09
       - 新加坡 v10
-      - 新加坡 v11
-      - 新加坡 v12
-      - 美国 v01
-      - 美国 v02
-      - 美国 v03
-      - 美国 v04
-      - 美国 v05
-      - 美国 v06
-      - 美国 v07
-      - 美国 v08
-      - 美国 v09
-      - 美国 v10
-      - 美国 v11
-      - 美国 v12
-      - 英国 v01
-      - 英国 v02
-      - 英国 v03
-      - 英国 v04
-      - 英国 v05
-      - 英国 v06
-      - 英国 v07
-      - 英国 v08
-      - 英国 v09
-      - 英国 v10
-      - 英国 v11
-      - 英国 v12
       - 日本 v01
       - 日本 v02
       - 日本 v03
@@ -366,8 +360,46 @@ proxy-groups:
       - 日本 v08
       - 日本 v09
       - 日本 v10
-      - 日本 v11
-      - 日本 v12
+      - 美国 v01
+      - 美国 v02
+      - 美国 v03
+      - 美国 v04
+      - 美国 v05
+      - 美国 v06
+      - 美国 v07
+      - 美国 v08
+      - 美国 v09
+      - 美国 v10
+      - 德国 v01
+      - 德国 v02
+      - 德国 v03
+      - 德国 v04
+      - 德国 v05
+      - 德国 v06
+      - 德国 v07
+      - 德国 v08
+      - 德国 v09
+      - 德国 v10
+      - 英国 v01
+      - 英国 v02
+      - 英国 v03
+      - 英国 v04
+      - 英国 v05
+      - 英国 v06
+      - 英国 v07
+      - 英国 v08
+      - 英国 v09
+      - 英国 v10
+      - 日本 x01
+      - 日本 x02
+      - 日本 x03
+      - 日本 x04
+      - 日本 x05
+      - 日本 x06
+      - 日本 x07
+      - 日本 x08
+      - 日本 x09
+      - 日本 x10
   - name: ⛔️ 广告拦截
     type: select
     proxies:
@@ -386,6 +418,18 @@ proxy-groups:
       - 🔰 节点选择
       - ♻️ 自动选择
       - 🎯 全球直连
+      - 距离下次重置剩余：274 天
+      - 去除1条不合适线路
+      - 香港 x01
+      - 香港 x02
+      - 香港 x03
+      - 香港 x04
+      - 香港 x05
+      - 香港 x06
+      - 香港 x07
+      - 香港 x08
+      - 香港 x09
+      - 香港 x10
       - 美国 x01
       - 美国 x02
       - 美国 x03
@@ -396,8 +440,6 @@ proxy-groups:
       - 美国 x08
       - 美国 x09
       - 美国 x10
-      - 美国 x11
-      - 美国 x12
       - 香港 v01
       - 香港 v02
       - 香港 v03
@@ -408,20 +450,6 @@ proxy-groups:
       - 香港 v08
       - 香港 v09
       - 香港 v10
-      - 香港 v11
-      - 香港 v12
-      - 日本 x01
-      - 日本 x02
-      - 日本 x03
-      - 日本 x04
-      - 日本 x05
-      - 日本 x06
-      - 日本 x07
-      - 日本 x08
-      - 日本 x09
-      - 日本 x10
-      - 日本 x11
-      - 日本 x12
       - 新加坡 v01
       - 新加坡 v02
       - 新加坡 v03
@@ -432,32 +460,6 @@ proxy-groups:
       - 新加坡 v08
       - 新加坡 v09
       - 新加坡 v10
-      - 新加坡 v11
-      - 新加坡 v12
-      - 美国 v01
-      - 美国 v02
-      - 美国 v03
-      - 美国 v04
-      - 美国 v05
-      - 美国 v06
-      - 美国 v07
-      - 美国 v08
-      - 美国 v09
-      - 美国 v10
-      - 美国 v11
-      - 美国 v12
-      - 英国 v01
-      - 英国 v02
-      - 英国 v03
-      - 英国 v04
-      - 英国 v05
-      - 英国 v06
-      - 英国 v07
-      - 英国 v08
-      - 英国 v09
-      - 英国 v10
-      - 英国 v11
-      - 英国 v12
       - 日本 v01
       - 日本 v02
       - 日本 v03
@@ -468,12 +470,60 @@ proxy-groups:
       - 日本 v08
       - 日本 v09
       - 日本 v10
-      - 日本 v11
-      - 日本 v12
+      - 美国 v01
+      - 美国 v02
+      - 美国 v03
+      - 美国 v04
+      - 美国 v05
+      - 美国 v06
+      - 美国 v07
+      - 美国 v08
+      - 美国 v09
+      - 美国 v10
+      - 德国 v01
+      - 德国 v02
+      - 德国 v03
+      - 德国 v04
+      - 德国 v05
+      - 德国 v06
+      - 德国 v07
+      - 德国 v08
+      - 德国 v09
+      - 德国 v10
+      - 英国 v01
+      - 英国 v02
+      - 英国 v03
+      - 英国 v04
+      - 英国 v05
+      - 英国 v06
+      - 英国 v07
+      - 英国 v08
+      - 英国 v09
+      - 英国 v10
+      - 日本 x01
+      - 日本 x02
+      - 日本 x03
+      - 日本 x04
+      - 日本 x05
+      - 日本 x06
+      - 日本 x07
+      - 日本 x08
+      - 日本 x09
+      - 日本 x10
   - name: 🌏 国内媒体
     type: select
     proxies:
       - 🎯 全球直连
+      - 香港 x01
+      - 香港 x02
+      - 香港 x03
+      - 香港 x04
+      - 香港 x05
+      - 香港 x06
+      - 香港 x07
+      - 香港 x08
+      - 香港 x09
+      - 香港 x10
       - 香港 v01
       - 香港 v02
       - 香港 v03
@@ -484,14 +534,24 @@ proxy-groups:
       - 香港 v08
       - 香港 v09
       - 香港 v10
-      - 香港 v11
-      - 香港 v12
       - 🔰 节点选择
   - name: Ⓜ️ 微软服务
     type: select
     proxies:
       - 🎯 全球直连
       - 🔰 节点选择
+      - 距离下次重置剩余：274 天
+      - 去除1条不合适线路
+      - 香港 x01
+      - 香港 x02
+      - 香港 x03
+      - 香港 x04
+      - 香港 x05
+      - 香港 x06
+      - 香港 x07
+      - 香港 x08
+      - 香港 x09
+      - 香港 x10
       - 美国 x01
       - 美国 x02
       - 美国 x03
@@ -502,8 +562,6 @@ proxy-groups:
       - 美国 x08
       - 美国 x09
       - 美国 x10
-      - 美国 x11
-      - 美国 x12
       - 香港 v01
       - 香港 v02
       - 香港 v03
@@ -514,20 +572,6 @@ proxy-groups:
       - 香港 v08
       - 香港 v09
       - 香港 v10
-      - 香港 v11
-      - 香港 v12
-      - 日本 x01
-      - 日本 x02
-      - 日本 x03
-      - 日本 x04
-      - 日本 x05
-      - 日本 x06
-      - 日本 x07
-      - 日本 x08
-      - 日本 x09
-      - 日本 x10
-      - 日本 x11
-      - 日本 x12
       - 新加坡 v01
       - 新加坡 v02
       - 新加坡 v03
@@ -538,32 +582,6 @@ proxy-groups:
       - 新加坡 v08
       - 新加坡 v09
       - 新加坡 v10
-      - 新加坡 v11
-      - 新加坡 v12
-      - 美国 v01
-      - 美国 v02
-      - 美国 v03
-      - 美国 v04
-      - 美国 v05
-      - 美国 v06
-      - 美国 v07
-      - 美国 v08
-      - 美国 v09
-      - 美国 v10
-      - 美国 v11
-      - 美国 v12
-      - 英国 v01
-      - 英国 v02
-      - 英国 v03
-      - 英国 v04
-      - 英国 v05
-      - 英国 v06
-      - 英国 v07
-      - 英国 v08
-      - 英国 v09
-      - 英国 v10
-      - 英国 v11
-      - 英国 v12
       - 日本 v01
       - 日本 v02
       - 日本 v03
@@ -574,13 +592,63 @@ proxy-groups:
       - 日本 v08
       - 日本 v09
       - 日本 v10
-      - 日本 v11
-      - 日本 v12
+      - 美国 v01
+      - 美国 v02
+      - 美国 v03
+      - 美国 v04
+      - 美国 v05
+      - 美国 v06
+      - 美国 v07
+      - 美国 v08
+      - 美国 v09
+      - 美国 v10
+      - 德国 v01
+      - 德国 v02
+      - 德国 v03
+      - 德国 v04
+      - 德国 v05
+      - 德国 v06
+      - 德国 v07
+      - 德国 v08
+      - 德国 v09
+      - 德国 v10
+      - 英国 v01
+      - 英国 v02
+      - 英国 v03
+      - 英国 v04
+      - 英国 v05
+      - 英国 v06
+      - 英国 v07
+      - 英国 v08
+      - 英国 v09
+      - 英国 v10
+      - 日本 x01
+      - 日本 x02
+      - 日本 x03
+      - 日本 x04
+      - 日本 x05
+      - 日本 x06
+      - 日本 x07
+      - 日本 x08
+      - 日本 x09
+      - 日本 x10
   - name: 📲 电报信息
     type: select
     proxies:
       - 🔰 节点选择
       - 🎯 全球直连
+      - 距离下次重置剩余：274 天
+      - 去除1条不合适线路
+      - 香港 x01
+      - 香港 x02
+      - 香港 x03
+      - 香港 x04
+      - 香港 x05
+      - 香港 x06
+      - 香港 x07
+      - 香港 x08
+      - 香港 x09
+      - 香港 x10
       - 美国 x01
       - 美国 x02
       - 美国 x03
@@ -591,8 +659,6 @@ proxy-groups:
       - 美国 x08
       - 美国 x09
       - 美国 x10
-      - 美国 x11
-      - 美国 x12
       - 香港 v01
       - 香港 v02
       - 香港 v03
@@ -603,20 +669,6 @@ proxy-groups:
       - 香港 v08
       - 香港 v09
       - 香港 v10
-      - 香港 v11
-      - 香港 v12
-      - 日本 x01
-      - 日本 x02
-      - 日本 x03
-      - 日本 x04
-      - 日本 x05
-      - 日本 x06
-      - 日本 x07
-      - 日本 x08
-      - 日本 x09
-      - 日本 x10
-      - 日本 x11
-      - 日本 x12
       - 新加坡 v01
       - 新加坡 v02
       - 新加坡 v03
@@ -627,32 +679,6 @@ proxy-groups:
       - 新加坡 v08
       - 新加坡 v09
       - 新加坡 v10
-      - 新加坡 v11
-      - 新加坡 v12
-      - 美国 v01
-      - 美国 v02
-      - 美国 v03
-      - 美国 v04
-      - 美国 v05
-      - 美国 v06
-      - 美国 v07
-      - 美国 v08
-      - 美国 v09
-      - 美国 v10
-      - 美国 v11
-      - 美国 v12
-      - 英国 v01
-      - 英国 v02
-      - 英国 v03
-      - 英国 v04
-      - 英国 v05
-      - 英国 v06
-      - 英国 v07
-      - 英国 v08
-      - 英国 v09
-      - 英国 v10
-      - 英国 v11
-      - 英国 v12
       - 日本 v01
       - 日本 v02
       - 日本 v03
@@ -663,14 +689,64 @@ proxy-groups:
       - 日本 v08
       - 日本 v09
       - 日本 v10
-      - 日本 v11
-      - 日本 v12
+      - 美国 v01
+      - 美国 v02
+      - 美国 v03
+      - 美国 v04
+      - 美国 v05
+      - 美国 v06
+      - 美国 v07
+      - 美国 v08
+      - 美国 v09
+      - 美国 v10
+      - 德国 v01
+      - 德国 v02
+      - 德国 v03
+      - 德国 v04
+      - 德国 v05
+      - 德国 v06
+      - 德国 v07
+      - 德国 v08
+      - 德国 v09
+      - 德国 v10
+      - 英国 v01
+      - 英国 v02
+      - 英国 v03
+      - 英国 v04
+      - 英国 v05
+      - 英国 v06
+      - 英国 v07
+      - 英国 v08
+      - 英国 v09
+      - 英国 v10
+      - 日本 x01
+      - 日本 x02
+      - 日本 x03
+      - 日本 x04
+      - 日本 x05
+      - 日本 x06
+      - 日本 x07
+      - 日本 x08
+      - 日本 x09
+      - 日本 x10
   - name: 🍎 苹果服务
     type: select
     proxies:
       - 🔰 节点选择
       - 🎯 全球直连
       - ♻️ 自动选择
+      - 距离下次重置剩余：274 天
+      - 去除1条不合适线路
+      - 香港 x01
+      - 香港 x02
+      - 香港 x03
+      - 香港 x04
+      - 香港 x05
+      - 香港 x06
+      - 香港 x07
+      - 香港 x08
+      - 香港 x09
+      - 香港 x10
       - 美国 x01
       - 美国 x02
       - 美国 x03
@@ -681,8 +757,6 @@ proxy-groups:
       - 美国 x08
       - 美国 x09
       - 美国 x10
-      - 美国 x11
-      - 美国 x12
       - 香港 v01
       - 香港 v02
       - 香港 v03
@@ -693,20 +767,6 @@ proxy-groups:
       - 香港 v08
       - 香港 v09
       - 香港 v10
-      - 香港 v11
-      - 香港 v12
-      - 日本 x01
-      - 日本 x02
-      - 日本 x03
-      - 日本 x04
-      - 日本 x05
-      - 日本 x06
-      - 日本 x07
-      - 日本 x08
-      - 日本 x09
-      - 日本 x10
-      - 日本 x11
-      - 日本 x12
       - 新加坡 v01
       - 新加坡 v02
       - 新加坡 v03
@@ -717,32 +777,6 @@ proxy-groups:
       - 新加坡 v08
       - 新加坡 v09
       - 新加坡 v10
-      - 新加坡 v11
-      - 新加坡 v12
-      - 美国 v01
-      - 美国 v02
-      - 美国 v03
-      - 美国 v04
-      - 美国 v05
-      - 美国 v06
-      - 美国 v07
-      - 美国 v08
-      - 美国 v09
-      - 美国 v10
-      - 美国 v11
-      - 美国 v12
-      - 英国 v01
-      - 英国 v02
-      - 英国 v03
-      - 英国 v04
-      - 英国 v05
-      - 英国 v06
-      - 英国 v07
-      - 英国 v08
-      - 英国 v09
-      - 英国 v10
-      - 英国 v11
-      - 英国 v12
       - 日本 v01
       - 日本 v02
       - 日本 v03
@@ -753,8 +787,46 @@ proxy-groups:
       - 日本 v08
       - 日本 v09
       - 日本 v10
-      - 日本 v11
-      - 日本 v12
+      - 美国 v01
+      - 美国 v02
+      - 美国 v03
+      - 美国 v04
+      - 美国 v05
+      - 美国 v06
+      - 美国 v07
+      - 美国 v08
+      - 美国 v09
+      - 美国 v10
+      - 德国 v01
+      - 德国 v02
+      - 德国 v03
+      - 德国 v04
+      - 德国 v05
+      - 德国 v06
+      - 德国 v07
+      - 德国 v08
+      - 德国 v09
+      - 德国 v10
+      - 英国 v01
+      - 英国 v02
+      - 英国 v03
+      - 英国 v04
+      - 英国 v05
+      - 英国 v06
+      - 英国 v07
+      - 英国 v08
+      - 英国 v09
+      - 英国 v10
+      - 日本 x01
+      - 日本 x02
+      - 日本 x03
+      - 日本 x04
+      - 日本 x05
+      - 日本 x06
+      - 日本 x07
+      - 日本 x08
+      - 日本 x09
+      - 日本 x10
   - name: 🎯 全球直连
     type: select
     proxies:
@@ -770,6 +842,18 @@ proxy-groups:
       - 🔰 节点选择
       - 🎯 全球直连
       - ♻️ 自动选择
+      - 距离下次重置剩余：274 天
+      - 去除1条不合适线路
+      - 香港 x01
+      - 香港 x02
+      - 香港 x03
+      - 香港 x04
+      - 香港 x05
+      - 香港 x06
+      - 香港 x07
+      - 香港 x08
+      - 香港 x09
+      - 香港 x10
       - 美国 x01
       - 美国 x02
       - 美国 x03
@@ -780,8 +864,6 @@ proxy-groups:
       - 美国 x08
       - 美国 x09
       - 美国 x10
-      - 美国 x11
-      - 美国 x12
       - 香港 v01
       - 香港 v02
       - 香港 v03
@@ -792,20 +874,6 @@ proxy-groups:
       - 香港 v08
       - 香港 v09
       - 香港 v10
-      - 香港 v11
-      - 香港 v12
-      - 日本 x01
-      - 日本 x02
-      - 日本 x03
-      - 日本 x04
-      - 日本 x05
-      - 日本 x06
-      - 日本 x07
-      - 日本 x08
-      - 日本 x09
-      - 日本 x10
-      - 日本 x11
-      - 日本 x12
       - 新加坡 v01
       - 新加坡 v02
       - 新加坡 v03
@@ -816,32 +884,6 @@ proxy-groups:
       - 新加坡 v08
       - 新加坡 v09
       - 新加坡 v10
-      - 新加坡 v11
-      - 新加坡 v12
-      - 美国 v01
-      - 美国 v02
-      - 美国 v03
-      - 美国 v04
-      - 美国 v05
-      - 美国 v06
-      - 美国 v07
-      - 美国 v08
-      - 美国 v09
-      - 美国 v10
-      - 美国 v11
-      - 美国 v12
-      - 英国 v01
-      - 英国 v02
-      - 英国 v03
-      - 英国 v04
-      - 英国 v05
-      - 英国 v06
-      - 英国 v07
-      - 英国 v08
-      - 英国 v09
-      - 英国 v10
-      - 英国 v11
-      - 英国 v12
       - 日本 v01
       - 日本 v02
       - 日本 v03
@@ -852,8 +894,46 @@ proxy-groups:
       - 日本 v08
       - 日本 v09
       - 日本 v10
-      - 日本 v11
-      - 日本 v12
+      - 美国 v01
+      - 美国 v02
+      - 美国 v03
+      - 美国 v04
+      - 美国 v05
+      - 美国 v06
+      - 美国 v07
+      - 美国 v08
+      - 美国 v09
+      - 美国 v10
+      - 德国 v01
+      - 德国 v02
+      - 德国 v03
+      - 德国 v04
+      - 德国 v05
+      - 德国 v06
+      - 德国 v07
+      - 德国 v08
+      - 德国 v09
+      - 德国 v10
+      - 英国 v01
+      - 英国 v02
+      - 英国 v03
+      - 英国 v04
+      - 英国 v05
+      - 英国 v06
+      - 英国 v07
+      - 英国 v08
+      - 英国 v09
+      - 英国 v10
+      - 日本 x01
+      - 日本 x02
+      - 日本 x03
+      - 日本 x04
+      - 日本 x05
+      - 日本 x06
+      - 日本 x07
+      - 日本 x08
+      - 日本 x09
+      - 日本 x10
 rules:
   - DOMAIN-SUFFIX,local,🎯 全球直连
   - IP-CIDR,192.168.0.0/16,🎯 全球直连,no-resolve
