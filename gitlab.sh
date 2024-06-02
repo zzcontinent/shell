@@ -1,13 +1,14 @@
 sudo docker run --detach \
-  --hostname gitlab.lixf.ink \
-  --publish 443:443 --publish 80:80 --publish 23:22 \
+  --publish 443:443 --publish 8888:80 --publish 23:22 \
   --name gitlab \
   --restart always \
-  --volume /data/gitlab/config:/etc/gitlab \
-  --volume /data/gitlab/logs:/var/log/gitlab \
-  --volume /data/gitlab/data:/var/opt/gitlab \
+  --volume ${HOME}/workspace/gitlab_workspace/config:/etc/gitlab \
+  --volume ${HOME}/workspace/gitlab_workspace/logs:/var/log/gitlab \
+  --volume ${HOME}/workspace/gitlab_workspace/data:/var/opt/gitlab \
   gitlab/gitlab-ce:latest
 
+exit 0
+#--hostname gitlab.lixf.ink \
 
 sudo docker exec -it gitlab /bin/bash
 
