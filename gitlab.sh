@@ -6,7 +6,7 @@ docker run --detach \
   --volume /home/cliff/workspace/gitlab_workspace/config:/etc/gitlab \
   --volume /home/cliff/workspace/gitlab_workspace/logs:/var/log/gitlab \
   --volume /home/cliff/workspace/gitlab_workspace/data:/var/opt/gitlab \
-  gitlab/gitlab-ce:nightly
+  gitlab/gitlab-ce:10.6.2-ce.0
 
 exit 0
 #--hostname gitlab.lixf.ink \
@@ -33,3 +33,6 @@ letsencrypt['auto_renew'] = true #删除前面的#号
 
 docker restart gitlab
 等容器重启之后，gitlab就会通过letsencrypt自动签发免费的HTTPS证书，等证书签发成功(大概3分钟左右)，就可以通过https://gitlab.lixf.ink访问我们的代码仓库了
+
+#delete some files and regen commit id
+git filter-repo --invert-paths --path PATH-TO-YOUR-FILE-WITH-SENSITIVE-DATA
