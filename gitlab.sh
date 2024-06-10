@@ -36,3 +36,10 @@ docker restart gitlab
 
 #delete some files and regen commit id
 git filter-repo --invert-paths --path PATH-TO-YOUR-FILE-WITH-SENSITIVE-DATA
+
+chmod 777 /var/opt/gitlab/backups/1530156812_2018_06_28_10.8.4_gitlab_backup.tar
+gitlab-rake gitlab:backup:restore BACKUP=1530156812_2018_06_28_10.8.4
+crontab -e
+0 2 * * * /opt/gitlab/bin/gitlab-rake gitlab:backup:create
+vim /etc/gitlab/gitlab.rb
+gitlab_rails['backup_keep_time'] = 604800

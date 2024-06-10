@@ -412,7 +412,7 @@ export LANGUAGE=en_US.UTF-8
 
 #riscv
 alias cdrv='cd /home/cliff/rvworkspace/native/'
-alias source_toolchain_rv='export PATH=/home/cliff/rvworkspace/native/riscv-gnu-toolchain/out/bin:${PATH}'
+alias source_toolchain_rv132='export PATH=/home/cliff/workspace/linux_workspace/native/riscv-gnu-toolchain/install_riscv/bin:${PATH} LD_LIBRARY_PATH=/home/cliff/workspace/linux_workspace/native/riscv-gnu-toolchain/install_riscv/'
 #export PYENV_ROOT="$HOME/.pyenv"
 #command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 #eval "$(pyenv init -)"
