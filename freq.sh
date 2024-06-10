@@ -19,6 +19,7 @@ if [ -z $(which cpupower 2>/dev/null) ];then
 else
 	if [ $# == 0 ];then
 		cpupower frequency-info
+		cpupower frequency-info -o
 		exit 0
 	elif [ $# != 3 ];then
 		echo "freq.sh cpucnt minfreq maxfreq"

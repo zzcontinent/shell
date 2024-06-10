@@ -74,7 +74,7 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 
 "=======================================================style==================
 "set statusline=[%F]%y%r%m%*%=[%l/%L,%c,%n][%p%%] "显示文件名：总行数，总的字符数
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}][TYPE=%Y][POS=%l/%L,%v][%p%%][%{strftime(\"%m.%d-\%H:%M\")}]
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}][TYPE=%Y][POS=%l/%L,%v][%p%%][%{strftime(\"%m.%d-\%H:%M\")}]
 set ls=2
 set nu
 "set fdm=indent
@@ -407,10 +407,10 @@ set foldlevel=0
 hi folded term=None cterm=None
 
 "==============>vim-airline config
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 
 " 启用或禁用标签行
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 
 " 配置标签行的显示
 let g:airline#extensions#tabline#buffer_nr_show = 0 " 显示缓冲区编号

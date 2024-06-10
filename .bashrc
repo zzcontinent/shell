@@ -119,8 +119,8 @@ func_ps1_basic()
 {
 	if [ "x$(whoami)" == "xroot" ];then
 		#users
-		[ ! -z "${SSH_CLIENT}" ] && printf "${RED}[%s %d %s]" $(whoami) $(who|wc -l) $(echo "${SSH_CLIENT}"|awk '{print $1}')
-		[ -z "${SSH_CLIENT}" ] && printf "${RED}[%s %d]" $(whoami) $(who|wc -l)
+		[ ! -z "${SSH_CONNECTION}" ] && printf "${RED}[%s %d %s->%s]" $(whoami) $(who|wc -l) $(echo "${SSH_CONNECTION}"|awk '{print $1,$3}')
+		[ -z "${SSH_CONNECTION}" ] && printf "${RED}[%s %d]" $(whoami) $(who|wc -l)
 
 		#load misc
 		core_temp="$(sensors 2>/dev/null| grep Core | awk '{print $3}' | head -n1)"
@@ -133,12 +133,12 @@ func_ps1_basic()
 		tmp_netspeed="$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4$7}'|sort -rn| head -n1)"
 		[ ! -z "${tmp_netspeed}" ] && printf " %s" "${tmp_netspeed}"
 		printf ']'
-		printf "${CYAN}[%s %s]"  $(date "+%m-%d %H:%M:%S")
+		printf "${PURPLE}[%s %s]"  $(date "+%m-%d %H:%M:%S")
 
 	else
 		#users
-		[ ! -z "${SSH_CLIENT}" ] && printf "${GREEN}[%s %d %s]" $(whoami) $(who|wc -l) $(echo "${SSH_CLIENT}"|awk '{print $1}')
-		[ -z "${SSH_CLIENT}" ] && printf "${GREEN}[%s %d]" $(whoami) $(who|wc -l)
+		[ ! -z "${SSH_CONNECTION}" ] && printf "${GREEN}[%s %d %s->%s]" $(whoami) $(who|wc -l) $(echo "${SSH_CONNECTION}"|awk '{print $1,$3}')
+		[ -z "${SSH_CONNECTION}" ] && printf "${GREEN}[%s %d]" $(whoami) $(who|wc -l)
 
 		#load misc
 		core_temp="$(sensors 2>/dev/null| grep Core | awk '{print $3}' | head -n1)"
@@ -151,7 +151,7 @@ func_ps1_basic()
 		tmp_netspeed="$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4$7}'|sort -rn| head -n1)"
 		[ ! -z "${tmp_netspeed}" ] && printf " %s" "${tmp_netspeed}"
 		printf ']'
-		printf "${CYAN}[%s %s]"  $(date "+%m-%d %H:%M:%S")
+		printf "${PURPLE}[%s %s]"  $(date "+%m-%d %H:%M:%S")
 	fi
 }
 
@@ -172,7 +172,7 @@ func_ps1_result()
 }
 
 if [ "$color_prompt" = yes ]; then
-	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_result)\$(func_ps1_basic)${BLUE}:[\w]\$(func_ps1_git)${DONE}\n$ "
+	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_result)\$(func_ps1_basic)${BLUE}[\w]\$(func_ps1_git)${DONE}\n$ "
 else
 	BLACK=
 	RED=
@@ -183,7 +183,7 @@ else
 	CYAN=
 	WHITE=
 	DONE=
-	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic)${BLUE}:[\w]\$(func_ps1_git)${DONE}\n\$ "
+	PS1="${debian_chroot:+($debian_chroot)}\$(func_ps1_basic)${BLUE}[\w]\$(func_ps1_git)${DONE}\n\$ "
 fi
 
 unset color_prompt force_color_prompt
@@ -412,7 +412,8 @@ export LANGUAGE=en_US.UTF-8
 
 #riscv
 alias cdrv='cd /home/cliff/rvworkspace/native/'
-alias source_toolchain_rv132='export PATH=/home/cliff/workspace/linux_workspace/native/riscv-gnu-toolchain/install_riscv/bin:${PATH} LD_LIBRARY_PATH=/home/cliff/workspace/linux_workspace/native/riscv-gnu-toolchain/install_riscv/'
+alias source_toolchain_rv132='export PATH=/home/cliff/workspace/linux_workspace/native/riscv-gnu-toolchain/install_riscv/bin:${PATH} LD_LIBRARY_PATH=/home/cliff/workspace/linux_workspace/native/riscv-gnu-toolchain/install_riscv:${LD_LIBRARY_PATH}'
+alias source_qemu_rv='export PATH=/home/cliff/workspace/linux_workspace/native/qemu/install_qemu/bin:${PATH} LD_LIBRARY_PATH=/home/cliff/workspace/linux_workspace/native/qemu/install_qemu/lib:${LD_LIBRARY_PATH}'
 #export PYENV_ROOT="$HOME/.pyenv"
 #command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 #eval "$(pyenv init -)"
