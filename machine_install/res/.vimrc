@@ -410,7 +410,7 @@ hi folded term=None cterm=None
 let g:airline_powerline_fonts = 0
 
 " 启用或禁用标签行
-let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
 
 " 配置标签行的显示
 let g:airline#extensions#tabline#buffer_nr_show = 0 " 显示缓冲区编号
