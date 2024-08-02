@@ -515,6 +515,10 @@ function! GetFileOriginName()
 	return expand("%:t")
 endfunction
 
+function! GetFileFullName()
+	return expand("%:p")
+endfunction
+
 function! GetTime()
 	return strftime("%Y-%m-%d %H:%M:%S")
 endfunction
@@ -574,6 +578,7 @@ inoremap <leader>ff #ifndef  <c-r>=GetFileHeaderName()<cr><cr>#define  <c-r>=Get
 nnoremap <leader>cfr :!for f in `find -type f\| grep -E '\.c$\|\.h$'`; do echo ===========$f; cflow -nT -i_st -f posix $f 2>/dev/null; done \| less -R -I<CR>
 nnoremap <leader>cfa :!cflow -nT -i_st -f posix `find -type f 2>/dev/null \| grep -E '\.h\$\|\.c\$' 2>/dev/null` \| less -R -I<CR>
 nnoremap <leader>cfar :!cflow -rnT -i_st -f posix `find -type f 2>/dev/null \| grep -E '\.h\$\|\.c\$' 2>/dev/null` \| less -R -I<CR>
+nnoremap <leader>cfc :let $tmp_f=GetFileFullName() \| !cflow -nT -i_st -f posix $tmp_f 2>/dev/null \| highlight -O ansi --syntax c \| less -RI <CR>
 
 nnoremap <leader>cfrc :!for f in `find -type f\| grep -E '\.c$\|\.h$'`; do echo ===========$f; cflow -nT -i_st -f posix $f 2>/dev/null; done \| highlight -O ansi --syntax c \| less -R -I<CR>
 nnoremap <leader>cfac :!cflow -nT -i_st -f posix `find -type f 2>/dev/null \| grep -E '\.h\$\|\.c\$' 2>/dev/null` \| highlight -O ansi --syntax c \| less -R -I<CR>

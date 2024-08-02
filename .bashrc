@@ -411,7 +411,8 @@ export LANGUAGE=en_US.UTF-8
 
 #riscv
 alias cdrv='cd /home/cliff/rvworkspace/native/'
-alias source_toolchain_rv132='export PATH=/home/cliff/workspace/linux_workspace/native/riscv-gnu-toolchain/install_riscv/bin:${PATH} LD_LIBRARY_PATH=/home/cliff/workspace/linux_workspace/native/riscv-gnu-toolchain/install_riscv:${LD_LIBRARY_PATH}'
+alias source_toolchain_buildroot_rv132='export PATH=/home/cliff/workspace/toolchain_workspace/buildroot_riscv/bin:${PATH} LD_LIBRARY_PATH=/home/cliff/workspace/toolchain_workspace/buildroot_riscv/lib:${LD_LIBRARY_PATH}'
+alias source_toolchain_rv132='export PATH=/home/cliff/workspace/toolchain_workspace/install_riscv/bin:${PATH} LD_LIBRARY_PATH=/home/cliff/workspace/toolchain_workspace/install_riscv/lib:${LD_LIBRARY_PATH}'
 alias source_qemu_rv='export PATH=/home/cliff/workspace/linux_workspace/native/qemu/install_qemu/bin:${PATH} LD_LIBRARY_PATH=/home/cliff/workspace/linux_workspace/native/qemu/install_qemu/lib:${LD_LIBRARY_PATH}'
 #export PYENV_ROOT="$HOME/.pyenv"
 #command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"

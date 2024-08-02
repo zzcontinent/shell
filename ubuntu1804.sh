@@ -13,13 +13,13 @@ elif [ x"$1" == "xr" ];then
 		-e DISPLAY=unix$DISPLAY \
 		-e GDK_SCALE \
 		-e GDK_DPI_SCALE \
-		--name ubuntu2204 \
+		--name ubuntu1804 \
 		--mount type=bind,source=/home/cliff/workspace,target=/mnt,consistency=consistent \
-		ubuntu:22.04
+		ubuntu:18.04
 		#--rm \
 elif [ x"$1" == "xe" ];then
-	docker exec -it ubuntu2204 bash
+	docker exec -it ubuntu1804 bash
 elif [ x"$1" == "xs" ];then
-	docker start ubuntu2204
+	docker start ubuntu1804
 fi
 
