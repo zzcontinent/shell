@@ -2,9 +2,9 @@
 echo $#
 
 if [ $# -eq 0 ];then
-	echo "./run.sh r  -- run docker ubuntu from images"
-	echo "./run.sh e  -- exec into container bash"
-	echo "./run.sh rs -- restart container"
+	echo "./run.sh r     -- run docker ubuntu from images"
+	echo "./run.sh e cmd -- exec into container bash"
+	echo "./run.sh rs    -- restart container"
 	exit 1
 elif [ x"$1" == "xr" ];then
 	docker run -itd \
@@ -14,12 +14,12 @@ elif [ x"$1" == "xr" ];then
 		-e GDK_SCALE \
 		-e GDK_DPI_SCALE \
 		--name ubuntu2204 \
-		--mount type=bind,source=/home/cliff/workspace,target=/mnt,consistency=consistent \
+		-v /home/cliff/workspace:/mnt \
 		ubuntu:22.04
 		#--rm \
 elif [ x"$1" == "xe" ];then
-	docker exec -it ubuntu2204 bash
-elif [ x"$1" == "xs" ];then
-	docker start ubuntu2204
+	docker exec -it ubuntu2204 $2
+elif [ x"$1" == "xrs" ];then
+	docker restart ubuntu2204
 fi
 

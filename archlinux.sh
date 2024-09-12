@@ -2,7 +2,7 @@
 echo $#
 
 if [ $# -eq 0 ];then
-	echo "./run.sh r     -- run docker ubuntu from images"
+	echo "./run.sh r     -- run docker archlinux from images"
 	echo "./run.sh e cmd -- exec into container bash"
 	echo "./run.sh rs    -- restart container"
 	exit 1
@@ -13,13 +13,14 @@ elif [ x"$1" == "xr" ];then
 		-e DISPLAY=unix$DISPLAY \
 		-e GDK_SCALE \
 		-e GDK_DPI_SCALE \
-		--name ubuntu1804 \
-		--mount type=bind,source=/home/cliff/workspace,target=/mnt,consistency=consistent \
-		ubuntu:18.04
+		--name archlinux \
+		--restart=unless-stopped \
+		-v /home/cliff/workspace/ai_workspace/root/:/root/ \
+		archlinux
 		#--rm \
 elif [ x"$1" == "xe" ];then
-	docker exec -it ubuntu1804 $2
+	docker exec -it archlinux $2
 elif [ x"$1" == "xrs" ];then
-	docker restart ubuntu1804
+	docker restart archlinux
 fi
 
