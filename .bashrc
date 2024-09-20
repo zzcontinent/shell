@@ -124,10 +124,12 @@ func_ps1_basic()
 
 		#load misc
 		core_temp="$(sensors 2>/dev/null| grep Core | awk '{print $3}' | head -n1)"
+		mem_used="$(free -Lh | awk  '{print $6}')"
 		[ ! -z ${core_temp} ] && \
-		printf "${YELLOW}[%s %sd %s" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc) ${core_temp}
+		printf "${YELLOW}[%s %sd %s %s" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc) ${core_temp} ${mem_used}
 		[ -z ${core_temp} ] && \
-		printf "${YELLOW}[%s %sd" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)
+		printf "${YELLOW}[%s %sd %s" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc) ${mem_used}
+
 
 		#speed
 		tmp_netspeed="$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4$7}'|sort -rn| head -n1)"
@@ -142,10 +144,11 @@ func_ps1_basic()
 
 		#load misc
 		core_temp="$(sensors 2>/dev/null| grep Core | awk '{print $3}' | head -n1)"
+		mem_used="$(free -Lh | awk  '{print $6}')"
 		[ ! -z ${core_temp} ] && \
-		printf "${YELLOW}[%s %sd %s" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc) ${core_temp}
+		printf "${YELLOW}[%s %sd %s %s" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc) ${core_temp} ${mem_used}
 		[ -z ${core_temp} ] && \
-		printf "${YELLOW}[%s %sd" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc)
+		printf "${YELLOW}[%s %sd %s" $(cut -d' ' -f1 /proc/loadavg)  $(echo "scale=2;$(cut -d' ' -f1 /proc/uptime)/86400" |bc) ${mem_used}
 
 		#speed
 		tmp_netspeed="$(cat ${HOME}/.tmp_netspeed 2>/dev/null|awk '{print $4$7}'|sort -rn| head -n1)"
